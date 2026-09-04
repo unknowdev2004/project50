@@ -1100,7 +1100,7 @@ A calculator is not considered part of Project 50 until it has been fully integr
 Every new tool must update:
 
 1. data/tools.json
-2. scripts/icon-map.js
+2. scripts/icons/icon-map.js
 3. sitemap.xml
 
 These three files represent the minimum integration requirements.
@@ -1668,4 +1668,4 @@ Following this workflow is mandatory. Improvements to the workflow should be bas
 
 ---
 
-**End of `docs/project-workflow.md` Version 1.0**
+**End of `.claude/project-workflow.md` Version 1.0**

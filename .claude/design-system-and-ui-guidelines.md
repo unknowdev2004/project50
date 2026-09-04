@@ -2792,4 +2792,4 @@ If there is ever uncertainty, choose the solution that makes Project 50 feel **m
 
 ---
 
-**End of `docs/design-system-and-ui-guidelines.md` Version 1.0**
+**End of `.claude/design-system-and-ui-guidelines.md` Version 1.0**

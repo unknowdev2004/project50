@@ -27,7 +27,7 @@
 - `tools/[category-slug]/` — category landing pages
 - `scripts/` — all shared JS globals (utils, storage, renderers, icons, search, partials, theme, animations)
 - `styles/variables.css` — all design tokens | `styles/tool.css` — shared tool page infrastructure
-- `docs/new-tool-checklist.md` — 15-step tool creation checklist
+- `.claude/new-tool-checklist.md` — mandatory pre-release checklist (phase-based). A `docs/new-tool-checklist.md` also exists as an older, superseded 15-step draft (emoji icons, 3 SEO sections) — do not follow it; it predates the current icon and SEO-section standards below.
 
 ---
 
@@ -127,7 +127,9 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 
 ## 6. Current Project State
 
-### Health & Fitness Tools (completed)
+> Verified against `data/tools.json` and the actual `tools/` directory. Last reconciled: documentation-consistency pass, Sept 2026.
+
+### Health & Fitness — 10/10 built (category complete)
 - ✅ BMI Calculator
 - ✅ Daily Calorie Planner
 - ✅ Body Fat Calculator
@@ -135,11 +137,34 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 - ✅ Water Intake Calculator
 - ✅ Calorie Burn Calculator
 - ✅ Ideal Weight Calculator
-- 🔄 **TDEE Calculator — currently paused / next tool in development**
+- ✅ TDEE Calculator
+- ✅ Protein Calculator
+- ✅ Target Weight Timeline Calculator
 
-### Other Categories
-- Category landing pages exist for: Finance, Student, Utility, Creator
-- Individual tools in these categories: not yet built
+### Student Tools — 7/10 built
+- ✅ SGPA Calculator
+- ✅ CGPA Calculator
+- ✅ Attendance Calculator
+- ✅ Marks Percentage Calculator
+- ✅ Grade & Required Marks Calculator
+- ✅ CGPA & Percentage Converter
+- ✅ Study Hours & Exam Planner
+- 3 more student tools remain to reach the category's planned `toolCount` of 10; none are registered in `tools.json` yet.
+
+### Finance Tools — 1/10 built
+- ✅ EMI Calculator
+- 9 more finance tools remain to reach the category's planned `toolCount` of 10; none are registered in `tools.json` yet.
+
+### Utility Tools — 0/10 built
+- ⚠️ **Password Generator** — registered in `data/tools.json` (`allTools`, `popular: true`) but no `tools/password-generator/` directory exists. Treat as a planned/reserved slot, not a shipped tool, until a folder exists.
+- 9 more utility tools remain unregistered and unbuilt.
+
+### Creator Tools — 0/10 built
+- ⚠️ **Color Palette Generator** (`id: color-palette`) — registered in `data/tools.json` (`allTools`, `popular: true`) but no matching `tools/` directory exists. Treat as a planned/reserved slot, not a shipped tool, until a folder exists.
+- 9 more creator tools remain unregistered and unbuilt.
+
+### Known data inconsistency (unresolved — do not silently fix)
+Password Generator and Color Palette Generator are marked `popular: true` in `allTools` but, unlike every other `popular: true` tool, have no matching entry in the separate `popularTools` array. This is consistent with early roadmap placeholders rather than proof the registrations are wrong, but it should be confirmed with the project owner before either building them out or removing the entries.
 
 ---
 
@@ -152,7 +177,7 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 5. **Results Architecture** — Define every result card before writing HTML: title, data shape, layout type (stat grid / range grid / table / schedule).
 6. **Technical Architecture** — Define DOM IDs, storage key, unit conversion needs, validation rules.
 7. **Integration Planning** — Register in `tools.json` (`allTools[]` + `popularTools[]` if featured). Add to `P50IconMap` if new icon needed.
-8. **Implementation** — Copy `tools/_template/`, rename files, replace all `[BRACKETED]` placeholders, implement logic, write SEO content, test at 320/375/768px, verify SEO checklist in `docs/new-tool-checklist.md`.
+8. **Implementation** — Copy `tools/_template/`, rename files, replace all `[BRACKETED]` placeholders, implement logic, write SEO content, test at 320/375/768px, verify SEO checklist in `.claude/new-tool-checklist.md`.
 
 ---
 

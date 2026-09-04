@@ -1501,7 +1501,7 @@ Every new tool must integrate cleanly into Project 50.
 Every tool must be registered in:
 
 * data/tools.json
-* scripts/icon-map.js
+* scripts/icons/icon-map.js
 * sitemap.xml
 
 No other registrations unless necessary.
@@ -2245,4 +2245,4 @@ If a decision conflicts with these priorities, use this document as the source o
 
 ---
 
-**End of `docs/tool-standards.md` Version 1.0**
+**End of `.claude/tool-standards.md` Version 1.0**

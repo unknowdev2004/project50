@@ -15,9 +15,11 @@ A tool is **not considered complete** until every applicable checklist item has 
 This checklist complements:
 
 - `.claude/CLAUDE.md`
-- `docs/tool-standards.md`
-- `docs/design-system-and-ui-guidelines.md`
-- `docs/project-workflow.md`
+- `.claude/tool-standards.md`
+- `.claude/design-system-and-ui-guidelines.md`
+- `.claude/project-workflow.md`
+
+(Note: `docs/tool-standards.md` and `docs/new-tool-checklist.md` also exist, but they are older, superseded drafts — e.g. they specify emoji icons and 3 SEO sections, which contradict the current standards in this repository. Use the `.claude/` versions.)
 
 If any checklist item fails, the tool returns to the appropriate workflow step before release.
 
