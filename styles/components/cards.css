@@ -1,0 +1,451 @@
+/* ============================================
+   CARDS.CSS — Project 50
+   ============================================ */
+
+/* ============================================
+   CATEGORY CARDS
+   ============================================ */
+
+   .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--sp-2);
+  }
+  
+  .category-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--sp-3);
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--color-text);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--cat-color, var(--color-primary));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .category-card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .category-card:hover::before {
+    opacity: 1;
+  }
+  
+  /* ---- Card Icon ---- */
+  .cat-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: color-mix(in srgb, var(--cat-color, #3b82f6) 12%, transparent);
+    margin-bottom: var(--sp-2);
+    flex-shrink: 0;
+  }
+  
+  /* ---- Card Content ---- */
+  .cat-card-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  
+  .cat-card-desc {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  
+  .cat-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--sp-2);
+  }
+  
+  .cat-card-count {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--cat-color, var(--color-primary));
+    background: color-mix(in srgb, var(--cat-color, #3b82f6) 10%, transparent);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+  }
+  
+  .cat-card-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-faint);
+    transition: all var(--transition-base);
+    flex-shrink: 0;
+  }
+  
+  .category-card:hover .cat-card-arrow {
+    background: var(--cat-color, var(--color-primary));
+    color: #fff;
+    transform: translateX(2px);
+  }
+  
+  /* ============================================
+     TOOL CARDS
+     ============================================ */
+  
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-2);
+  }
+  
+  .tool-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--sp-3);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--color-text);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tool-card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* ---- Tool Card Header ---- */
+  .tool-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .tool-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+    color: var(--color-text-muted);
+  }
+
+  .tool-card-icon svg {
+    display: block;
+    flex-shrink: 0;
+  }
+  
+  .tool-card:hover .tool-card-icon {
+    transform: scale(1.05);
+  }
+  
+  .tool-card-cat {
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--color-text-faint);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+  }
+  
+  /* ---- Tool Card Body ---- */
+  .tool-card-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+  
+  .tool-card-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+  
+  /* ---- Tool Card Footer ---- */
+  .tool-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+  
+  .tool-card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .tool-card-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: gap var(--transition-base);
+  }
+  
+  .tool-card:hover .tool-card-cta {
+    gap: 8px;
+  }
+  
+  .tool-card-cta-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-base);
+  }
+  
+  .tool-card:hover .tool-card-cta-icon {
+    transform: translateX(2px);
+  }
+
+  .popular-tag {
+    font-size: var(--fs-xs);
+  }
+  
+  /* ============================================
+     WHY CHOOSE US CARDS
+     ============================================ */
+  
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-2);
+  }
+  
+  .why-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--sp-3);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    transition: all var(--transition-base);
+  }
+  
+  .why-card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+  }
+  
+  .why-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .why-card-icon svg {
+    display: block;
+  }
+  
+  .why-card-body {}
+  
+  .why-card-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+  }
+  
+  .why-card-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+  
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  
+  @media (max-width: 1100px) {
+    .categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr; /* 3 cards → 1-col at 900px for readability */
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .category-card {
+      min-height: auto;
+      padding: var(--sp-2) 20px;
+    }
+  
+    .tool-card {
+      padding: 20px;
+    }
+  
+    .why-card {
+      padding: 20px;
+    }
+  }
+  
+  /* why-grid goes 1-col at 640px (handled in the block above) */
+
+  /* ============================================
+   FAQ.CSS — Project 50
+   ============================================ */
+
+.faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+  }
+  
+  .faq-item.open {
+    border-color: rgba(59,130,246,0.25);
+  }
+  
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    padding: 20px var(--sp-3);
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--transition-fast);
+  }
+  
+  .faq-question:hover {
+    background: var(--color-bg-card-hover);
+  }
+  
+  .faq-question-text {
+    font-size: var(--fs-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+  
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+  }
+  
+  .faq-icon svg {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-base);
+  }
+  
+  .faq-item.open .faq-icon {
+    background: var(--color-primary);
+    border-color: transparent;
+  }
+  
+  .faq-item.open .faq-icon svg {
+    color: #fff;
+    transform: rotate(45deg);
+  }
+  
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  
+  .faq-item.open .faq-answer {
+    grid-template-rows: 1fr;
+  }
+  
+  .faq-answer-inner {
+    overflow: hidden;
+  }
+  
+  .faq-answer-text {
+    padding: 0 var(--sp-3) 20px;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }

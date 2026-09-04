@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator — Project 50</title>
+  <meta name="description" content="Calculate your EMI (Equated Monthly Installment) for home loan, car loan or personal loan. See monthly payment, total interest and full amortization breakdown.">
+  <meta name="keywords" content="emi calculator, loan calculator, home loan emi, car loan calculator, equated monthly installment, india">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/emi-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/emi-calculator/">
+  <meta property="og:title" content="EMI Calculator — Free Loan EMI Calculator | Project 50">
+  <meta property="og:description" content="Calculate EMI for home, car or personal loans. See monthly payment, total interest and full breakdown. Free, private, instant.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="EMI Calculator — Free Loan EMI Calculator | Project 50">
+  <meta name="twitter:description" content="Plan your loan repayments. See monthly EMI and total interest instantly.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EMI Calculator",
+    "url": "https://project50.tools/tools/emi-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate Equated Monthly Installment (EMI) for home loans, car loans or personal loans. See total interest and amortization breakdown.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Finance Tools", "item": "https://project50.tools/tools/finance/" },
+      { "@type": "ListItem", "position": 3, "name": "EMI Calculator", "item": "https://project50.tools/tools/emi-calculator/" }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="emi.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/finance/">Finance Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">EMI Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#8b5cf6" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
+          <div>
+            <h1 class="tool-title">EMI Calculator</h1>
+            <p class="tool-subtitle">Plan your loan repayments. See monthly EMI and total interest instantly.</p>
+          </div>
+        </header>
+
+        <!-- Form — shared .tool-form; sliders are EMI-specific -->
+        <div class="tool-form">
+          <div class="tool-slider-group">
+            <div class="tool-slider-header">
+              <label class="tool-slider-label" for="loan-amount">Loan Amount</label>
+              <span class="tool-slider-value" id="loan-display">₹5,00,000</span>
+            </div>
+            <input type="range" class="tool-range" id="loan-amount" min="10000" max="10000000" value="500000" step="10000" aria-label="Loan amount">
+          </div>
+          <div class="tool-slider-group">
+            <div class="tool-slider-header">
+              <label class="tool-slider-label" for="interest-rate">Annual Interest Rate</label>
+              <span class="tool-slider-value" id="rate-display">8.5%</span>
+            </div>
+            <input type="range" class="tool-range" id="interest-rate" min="1" max="30" value="8.5" step="0.1" aria-label="Annual interest rate">
+          </div>
+          <div class="tool-slider-group">
+            <div class="tool-slider-header">
+              <label class="tool-slider-label" for="loan-tenure">Loan Tenure</label>
+              <span class="tool-slider-value" id="tenure-display">5 years</span>
+            </div>
+            <input type="range" class="tool-range" id="loan-tenure" min="1" max="30" value="5" step="1" aria-label="Loan tenure in years">
+          </div>
+          <div class="emi-btn-row">
+            <button class="btn btn-primary btn-lg" id="calc-emi" style="flex:1">Calculate EMI</button>
+            <button class="btn btn-secondary btn-lg" id="emi-reset-btn" aria-label="Reset all fields">Reset</button>
+          </div>
+        </div>
+
+        <!-- Result — shared .tool-result; stat grid uses .tool-stat-grid -->
+        <div class="tool-result" id="emi-result" hidden aria-live="polite" aria-atomic="true">
+          <p class="tool-result-label">Monthly EMI</p>
+          <div class="emi-result-value" id="emi-value">—</div>
+          <div class="tool-stat-grid">
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="principal-val">—</div>
+              <div class="tool-stat-label">Principal</div>
+            </div>
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="interest-val">—</div>
+              <div class="tool-stat-label">Total Interest</div>
+            </div>
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="total-val">—</div>
+              <div class="tool-stat-label">Total Amount</div>
+            </div>
+          </div>
+          <p class="tool-note">Results are indicative. Actual EMI may vary based on lender terms and processing fees.</p>
+        </div>
+
+        <!-- Related Tools — rendered by emi.js from tools.json, finance-tools only -->
+        <div class="tool-related" id="emi-related-wrap" style="--tool-related-color:#8b5cf6">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="emi-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- ==========================================
+           SEO CONTENT SECTIONS — Phase 3.4
+      =========================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="emi-about-heading">
+          <h2 class="tool-seo-section-title" id="emi-about-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+            About the EMI Calculator
+          </h2>
+          <p>An Equated Monthly Installment (EMI) is a fixed payment made by a borrower to a lender each calendar month. EMI consists of two parts: principal repayment and interest. Our EMI Calculator uses the standard reducing balance formula to give you accurate monthly payment figures for home loans, car loans, and personal loans.</p>
+          <p>Formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r is monthly interest rate, and n is loan tenure in months.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="emi-howto-heading">
+          <h2 class="tool-seo-section-title" id="emi-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This EMI Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Set your <strong>Loan Amount</strong> using the slider (₹10,000 – ₹1 Crore).</p>
+            </li>
+            <li>
+              <p>Adjust the <strong>Annual Interest Rate</strong> to match your lender's offer.</p>
+            </li>
+            <li>
+              <p>Set the <strong>Loan Tenure</strong> in years (1–30 years).</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate EMI</strong> to see your monthly payment, total interest, and total amount payable.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="emi-faq-heading">
+          <h2 class="tool-seo-section-title" id="emi-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="emi-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="emi-faq-a1">
+                What is the EMI formula?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="emi-faq-a1" role="region">
+                EMI = P × r × (1+r)^n ÷ ((1+r)^n − 1). P = Principal loan amount, r = Monthly interest rate (annual rate ÷ 12 ÷ 100), n = Loan tenure in months.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="emi-faq-a2">
+                How can I reduce my EMI?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="emi-faq-a2" role="region">
+                You can reduce your EMI by increasing the loan tenure, making a larger down payment to reduce the principal, or negotiating a lower interest rate with your lender. Use the sliders to explore different combinations instantly.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="emi-faq-a3">
+                Is this calculator accurate for Indian home loans?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="emi-faq-a3" role="region">
+                Yes. The tool uses the standard reducing balance formula used by Indian banks including SBI, HDFC, ICICI, and Axis Bank. Note that actual EMI may vary slightly due to processing fees, GST, or lender-specific rounding rules.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../scripts/icons/icons.js"></script>
+  <script src="../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="emi.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <!-- FOOTER PARTIAL — injected by partials.js -->
+  <div id="partial-footer"></div>
+
+</body>
+</html>

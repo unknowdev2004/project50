@@ -1,0 +1,737 @@
+/* ============================================
+   CGPA-PERCENTAGE.CSS — Project 50
+   CGPA & Percentage Converter — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers (mirrors grade-required-marks.css /
+   sgpa.css structure — same visual language, new prefix):
+     - Method selector (shared select, above tabs)
+     - Scale selector (2-button group, mirrors .sgpa-scale-selector)
+     - Method info panel (verified / general / custom)
+     - Custom formula builder row
+     - Mode selector (tab bar) — mirrors .grmc-mode-selector exactly
+     - Section cards / hero result / result details list
+     - Collapsible compare + reference sections
+     - Insights list
+     - Responsive: 768px, 640px, 480px
+============================================ */
+
+/* ============================================
+   METHOD SECTION (shared — sits above the tabs)
+============================================ */
+
+.cpc-method-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.cpc-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.cpc-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cpc-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.cpc-select-wrap .tool-select:focus + .cpc-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ---- Scale selector — mirrors .sgpa-scale-selector ---- */
+
+.cpc-scale-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.cpc-scale-group-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.cpc-scale-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+}
+
+.cpc-scale-btn {
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.cpc-scale-btn:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.cpc-scale-btn[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.cpc-scale-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.cpc-scale-fixed-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+}
+
+/* ---- Method info panel ---- */
+
+.cpc-method-info {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3);
+}
+
+.cpc-method-info-title {
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+
+.cpc-method-info-note {
+  margin: var(--sp-2) 0 0;
+  color: var(--color-text-faint);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+}
+
+.cpc-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.cpc-info-list dt {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 2px;
+}
+
+.cpc-info-list dd {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.cpc-info-list a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cpc-info-list a:hover,
+.cpc-info-list a:focus-visible {
+  text-decoration: underline;
+}
+
+.cpc-external-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Custom formula builder ---- */
+
+.cpc-custom-builder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3);
+}
+
+.cpc-custom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cpc-custom-static {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.cpc-custom-row .tool-input {
+  width: 100px;
+  flex: 0 0 100px;
+}
+
+.cpc-custom-row .cpc-select-wrap {
+  width: 84px;
+  flex: 0 0 84px;
+}
+
+.cpc-custom-formula-preview {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+}
+
+.cpc-reverse-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+.cpc-reverse-note--warning {
+  color: #f87171;
+}
+
+.cpc-custom-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+/* ============================================
+   MODE SELECTOR — compact tab bar
+   Mirrors .grmc-mode-selector exactly.
+============================================ */
+
+.cpc-mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cpc-mode-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.cpc-mode-tab {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.cpc-mode-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.cpc-mode-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.cpc-mode-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.cpc-panel[hidden] {
+  display: none;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.cpc-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+.cpc-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.cpc-unavailable-note {
+  padding: 10px 14px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #fbbf24;
+}
+
+/* ============================================
+   ACTION BUTTON ROW
+============================================ */
+
+.cpc-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cpc-actions .btn-primary {
+  flex: 1;
+}
+
+.cpc-actions .btn-secondary {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .grmc-section-card / .macro-section-card exactly.
+============================================ */
+
+.cpc-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.cpc-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cpc-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HERO RESULT
+============================================ */
+
+.cpc-hero-card {
+  text-align: center;
+}
+
+.cpc-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+.cpc-hero-sub {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ============================================
+   RESULT DETAILS LIST
+============================================ */
+
+.cpc-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cpc-detail-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--fs-sm);
+}
+
+.cpc-detail-label {
+  color: var(--color-text-faint);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cpc-detail-value {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* ============================================
+   COLLAPSIBLE SECTIONS — Compare / Reference
+============================================ */
+
+.cpc-collapse-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.cpc-collapse-chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+  color: var(--color-text-muted);
+}
+
+.cpc-collapse-toggle[aria-expanded="true"] .cpc-collapse-chevron {
+  transform: rotate(180deg);
+}
+
+.cpc-collapse-body {
+  margin-top: var(--sp-3);
+}
+
+.cpc-collapse-body[hidden] {
+  display: none;
+}
+
+/* ---- Compare cards ---- */
+
+.cpc-compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cpc-compare-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+}
+
+.cpc-compare-card-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cpc-compare-card-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.cpc-compare-card-value--invalid {
+  color: #f87171;
+  font-weight: 600;
+}
+
+.cpc-compare-empty {
+  font-size: var(--fs-sm);
+  color: var(--color-text-faint);
+  margin: 0;
+}
+
+/* ---- Reference table ---- */
+
+.cpc-ref-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.cpc-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.cpc-ref-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-bg-card);
+  text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  padding: 0 var(--sp-2) var(--sp-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cpc-ref-table thead th:last-child {
+  text-align: right;
+}
+
+.cpc-ref-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cpc-ref-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.cpc-ref-table tbody td {
+  padding: 10px var(--sp-2);
+  color: var(--color-text-muted);
+}
+
+.cpc-ref-table tbody td:first-child {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cpc-ref-table tbody td:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.cpc-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.cpc-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.cpc-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.cpc-insight-icon--positive { color: #34d399; }
+.cpc-insight-icon--neutral  { color: #60a5fa; }
+.cpc-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .cpc-mode-selector {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+
+  .cpc-mode-tab {
+    padding: 9px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .cpc-method-card,
+  .cpc-section-card {
+    padding: var(--sp-3);
+  }
+
+  .cpc-custom-row .tool-input {
+    width: 88px;
+    flex: 0 0 88px;
+  }
+
+  .cpc-custom-row .cpc-select-wrap {
+    width: 76px;
+    flex: 0 0 76px;
+  }
+
+  .cpc-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .cpc-actions .btn-secondary,
+  .cpc-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  .cpc-detail-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .cpc-detail-value {
+    text-align: left;
+  }
+
+  .cpc-compare-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .cpc-hero-card {
+    text-align: left;
+  }
+
+  .cpc-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .cpc-custom-row {
+    gap: 6px;
+  }
+}

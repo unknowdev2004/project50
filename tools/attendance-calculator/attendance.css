@@ -1,0 +1,389 @@
+/* ============================================
+   ATTENDANCE.CSS — Project 50
+   Attendance Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers:
+     - Number input spinner removal
+     - Two-column form row (.attendance-row)
+     - Validation message
+     - Button row
+     - Section cards (mirrors .macro-section-card /
+       .cgpa-section-card exactly — macro.css is not
+       loaded on this page)
+     - Hero result (big number + status)
+     - Eligibility badge + progress bar
+     - Forecast cards (attend next / miss next)
+     - Academic summary stat colour variants
+     - Insights list
+     - Responsive: 640px, 480px, 380px
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   TWO-COLUMN FORM ROW
+============================================ */
+.attendance-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.attendance-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+.attendance-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+/* ============================================
+   BUTTON ROW — Calculate + Reset side by side
+============================================ */
+.attendance-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .attendance-btn-row {
+    flex-direction: column;
+  }
+  .attendance-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+============================================ */
+.attendance-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.attendance-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.attendance-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.attendance-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   1. HERO RESULT
+============================================ */
+.attendance-hero-card {
+  text-align: center;
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.attendance-hero-card--good {
+  border-color: color-mix(in srgb, #34d399 35%, transparent);
+  background: color-mix(in srgb, #34d399 6%, var(--color-bg-card));
+}
+
+.attendance-hero-card--bad {
+  border-color: color-mix(in srgb, #f87171 35%, transparent);
+  background: color-mix(in srgb, #f87171 6%, var(--color-bg-card));
+}
+
+.attendance-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+.attendance-hero-status {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin-bottom: var(--sp-1);
+}
+
+.attendance-hero-status--good { color: #34d399; }
+.attendance-hero-status--bad  { color: #f87171; }
+
+/* ============================================
+   2. ELIGIBILITY
+============================================ */
+.attendance-eligibility-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.attendance-eligibility-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  flex-shrink: 0;
+}
+
+.attendance-eligibility-badge--good {
+  background: color-mix(in srgb, #34d399 15%, transparent);
+  color: #34d399;
+  border: 1px solid color-mix(in srgb, #34d399 40%, transparent);
+}
+
+.attendance-eligibility-badge--bad {
+  background: color-mix(in srgb, #f87171 15%, transparent);
+  color: #f87171;
+  border: 1px solid color-mix(in srgb, #f87171 40%, transparent);
+}
+
+.attendance-eligibility-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.attendance-progress-track {
+  position: relative;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  overflow: visible;
+  margin-bottom: var(--sp-1);
+}
+
+.attendance-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.attendance-progress-fill--good { background: #34d399; }
+.attendance-progress-fill--bad  { background: #f87171; }
+
+.attendance-progress-marker {
+  position: absolute;
+  top: -3px;
+  left: 0%;
+  width: 2px;
+  height: 16px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transform: translateX(-1px);
+}
+
+.attendance-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   4. ATTENDANCE FORECAST
+============================================ */
+.attendance-forecast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.attendance-forecast-card {
+  text-align: center;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3) var(--sp-2);
+  border: 1px solid;
+}
+
+.attendance-forecast-card--up {
+  background: color-mix(in srgb, #34d399 8%, transparent);
+  border-color: color-mix(in srgb, #34d399 25%, transparent);
+}
+
+.attendance-forecast-card--down {
+  background: color-mix(in srgb, #f87171 8%, transparent);
+  border-color: color-mix(in srgb, #f87171 25%, transparent);
+}
+
+.attendance-forecast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attendance-forecast-card--up .attendance-forecast-icon { color: #34d399; }
+.attendance-forecast-card--down .attendance-forecast-icon { color: #f87171; }
+
+.attendance-forecast-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.attendance-forecast-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.attendance-forecast-delta {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.attendance-forecast-card--up .attendance-forecast-delta { color: #34d399; }
+.attendance-forecast-card--down .attendance-forecast-delta { color: #f87171; }
+
+/* ============================================
+   5. ACADEMIC SUMMARY — stat colour variants
+============================================ */
+.attendance-stat--good .tool-stat-value { color: #34d399; }
+.attendance-stat--warn .tool-stat-value { color: #fbbf24; }
+
+/* ============================================
+   6. INSIGHTS LIST
+============================================ */
+.attendance-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.attendance-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.attendance-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.attendance-insight-icon--positive { color: #34d399; }
+.attendance-insight-icon--neutral  { color: #60a5fa; }
+.attendance-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+@media (max-width: 640px) {
+
+  .attendance-section-card {
+    padding: var(--sp-3);
+  }
+
+  .attendance-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .attendance-eligibility-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-1);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 480px)
+============================================ */
+@media (max-width: 480px) {
+
+  .attendance-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .attendance-forecast-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — VERY SMALL (≤ 380px)
+============================================ */
+@media (max-width: 380px) {
+
+  .attendance-row {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+}

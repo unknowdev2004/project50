@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Primary SEO -->
+  <title>Project 50 — 50 Powerful Free Online Tools</title>
+  <meta name="description" content="Project 50 is a free, fast, and private platform with 50 online tools across Health, Finance, Student, Utility, and Creator categories. No login required.">
+  <meta name="keywords" content="free online tools, bmi calculator, emi calculator, cgpa calculator, password generator, pomodoro timer, color palette generator, student tools, finance calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/">
+  <meta property="og:title" content="Project 50 — 50 Powerful Free Online Tools">
+  <meta property="og:description" content="50 free tools for health, finance, students, creators and more. Fast, private, no signup needed.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Project 50 — 50 Powerful Free Online Tools">
+  <meta name="twitter:description" content="50 free tools. No ads, no login, no nonsense.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="Project 50 — 50 free online tools">
+
+  <!-- JSON-LD: WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Project 50",
+    "url": "https://project50.tools/",
+    "description": "50 free online tools across Health, Finance, Student, Utility, and Creator categories.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://project50.tools/search/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Project 50",
+    "url": "https://project50.tools/",
+    "description": "A free platform offering 50 online tools across Health, Finance, Student, Utility, and Creator categories.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://project50.tools/pages/contact/"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/components/buttons.css">
+  <link rel="stylesheet" href="styles/components/header.css">
+  <link rel="stylesheet" href="styles/components/sidebar.css">
+  <link rel="stylesheet" href="styles/components/hero.css">
+  <link rel="stylesheet" href="styles/components/cards.css">
+  <link rel="stylesheet" href="styles/components/faq.css">
+  <link rel="stylesheet" href="styles/components/footer.css">
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ==========================================
+       HEADER PARTIAL — injected by partials.js
+       Static fallback: content below main-content
+  =========================================== -->
+  <div id="partial-header"></div>
+
+  <!-- ==========================================
+       SIDEBAR PARTIAL — injected by partials.js
+  =========================================== -->
+  <div id="partial-sidebar"></div>
+
+
+  <main id="main-content">
+
+    <!-- ==========================================
+         HERO SECTION
+    =========================================== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+
+        <div class="hero-badge" aria-hidden="true">
+          <span class="hero-badge-dot"></span>
+          Free · Private · No Signup
+        </div>
+
+        <h1 class="hero-heading" id="hero-heading">
+          50 Powerful Tools.<br>
+          <span class="highlight">One Smart Platform.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Everything from BMI to EMI — fast, private, and completely free. No login, no clutter, just tools that work.
+        </p>
+
+        <!-- Hero Search -->
+        <div class="hero-search-wrap" role="search">
+          <svg class="hero-search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input
+            type="search"
+            class="hero-search"
+            id="hero-search"
+            placeholder='Try "BMI calculator" or "color palette"…'
+            autocomplete="off"
+            aria-label="Search all 50 tools"
+            aria-autocomplete="list"
+            aria-controls="hero-suggestions"
+          >
+          <button class="hero-search-btn" id="hero-search-btn" aria-label="Search">
+            Search
+          </button>
+          <div class="search-suggestions hero-suggestions" id="hero-suggestions" role="listbox" aria-label="Search suggestions"></div>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats" aria-label="Platform statistics">
+          <div class="hero-stat">
+            <span class="hero-stat-value">50</span>
+            <span class="hero-stat-label">Tools</span>
+          </div>
+          <div class="hero-stat-sep" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">5</span>
+            <span class="hero-stat-label">Categories</span>
+          </div>
+          <div class="hero-stat-sep" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">100%</span>
+            <span class="hero-stat-label">Free</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CATEGORIES SECTION
+    =========================================== -->
+    <section class="section" id="categories" aria-labelledby="categories-heading">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            Browse Categories
+          </p>
+          <h2 class="section-title" id="categories-heading">5 Categories, Every Need Covered</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+        </header>
+
+        <!-- Dynamic Grid: rendered by JS -->
+        <div class="categories-grid stagger" id="categories-grid" role="list" aria-label="Tool categories">
+          <!-- Rendered by main.js from tools.json -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         POPULAR TOOLS SECTION
+    =========================================== -->
+    <section class="section" id="popular-tools" aria-labelledby="tools-heading">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Most Used
+          </p>
+          <h2 class="section-title" id="tools-heading">Popular Tools</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+        </header>
+
+        <!-- Dynamic Grid: rendered by JS -->
+        <div class="tools-grid stagger" id="tools-grid" role="list" aria-label="Popular tools">
+          <!-- Rendered by main.js from tools.json -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         WHY CHOOSE US
+    =========================================== -->
+    <section class="section-sm" id="why-us" aria-labelledby="why-heading">
+      <div class="container">
+
+        <header class="section-header" style="text-align:center">
+          <h2 class="section-title" id="why-heading" style="margin:0 auto">Why Thousands Use Project 50</h2>
+        </header>
+
+        <div class="why-grid stagger" id="why-grid" role="list" aria-label="Key features">
+
+          <article class="why-card fade-in" role="listitem">
+            <div class="why-card-icon" style="background:rgba(59,130,246,0.12)" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div class="why-card-body">
+              <h3 class="why-card-title">Blazing Fast</h3>
+              <p class="why-card-desc">Every tool loads instantly. No waiting, no spinners — just results.</p>
+            </div>
+          </article>
+
+          <article class="why-card fade-in" role="listitem">
+            <div class="why-card-icon" style="background:rgba(16,185,129,0.12)" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div class="why-card-body">
+              <h3 class="why-card-title">100% Private</h3>
+              <p class="why-card-desc">Everything runs in your browser. We never collect or store your data.</p>
+            </div>
+          </article>
+
+          <article class="why-card fade-in" role="listitem">
+            <div class="why-card-icon" style="background:rgba(245,158,11,0.12)" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect width="20" height="5" x="2" y="7" rx="1"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+            <div class="why-card-body">
+              <h3 class="why-card-title">Always Free</h3>
+              <p class="why-card-desc">No subscriptions, no paywalls, no account needed. Ever.</p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ SECTION
+    =========================================== -->
+    <section class="section-sm" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+
+        <header class="section-header" style="text-align:center">
+          <p class="section-label" style="justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            FAQ
+          </p>
+          <h2 class="section-title" id="faq-heading" style="margin:0 auto">Frequently Asked Questions</h2>
+          <div class="section-divider" aria-hidden="true" style="margin:12px auto 0"></div>
+        </header>
+
+        <div class="faq-list" id="faq-list" role="list" aria-label="Frequently asked questions">
+          <!-- Rendered by faq.js -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <!-- FOOTER PARTIAL — injected by partials.js -->
+  <div id="partial-footer"></div>
+
+
+
+  <!-- Scripts: utils → categories → storage → renderers (sync), then defer consumers -->
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/icons/icons.js"></script>
+  <script src="scripts/icons/icon-map.js"></script>
+  <script src="scripts/config/categories.js"></script>
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/renderers.js"></script>
+  <script src="scripts/partials.js" defer></script>
+  <script src="scripts/theme.js" defer></script>
+  <script src="scripts/sidebar.js" defer></script>
+  <script src="scripts/search.js" defer></script>
+  <script src="scripts/faq.js" defer></script>
+  <script src="scripts/animations.js" defer></script>
+  <script src="scripts/header.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+
+</body>
+</html>

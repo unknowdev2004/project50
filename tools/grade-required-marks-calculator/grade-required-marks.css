@@ -1,0 +1,725 @@
+/* ============================================
+   GRADE-REQUIRED-MARKS.CSS — Project 50
+   Grade & Required Marks Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers (mirrors marks-percentage.css structure
+   exactly — same visual language, new tool prefix):
+     - Mode selector (tab bar) — desktop + scrollable mobile
+     - Two-column field row (.grmc-row-2)
+     - Field groups (Required Final / What-If / Best Possible / Compare)
+     - Assessment row component (Current Grade mode)
+     - Validation message
+     - Action button rows (2-button and 3-button)
+     - Section cards (mirrors .mpc-section-card / .cgpa-section-card)
+     - Hero result (big number / status badge)
+     - Breakdown + insights lists
+     - Target Comparison table (desktop) + card list (mobile)
+     - Responsive: 768px, 640px, 480px, 380px
+============================================ */
+
+/* ============================================
+   MODE SELECTOR — compact tab bar
+============================================ */
+
+.grmc-mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.grmc-mode-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.grmc-mode-tab {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.grmc-mode-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.grmc-mode-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.grmc-mode-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PANELS
+============================================ */
+
+.grmc-panel[hidden] {
+  display: none;
+}
+
+/* ============================================
+   TWO-COLUMN FIELD ROW
+============================================ */
+
+.grmc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.grmc-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* ============================================
+   FIELD GROUPS
+============================================ */
+
+.grmc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.grmc-field-group-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.grmc-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+/* ============================================
+   ASSESSMENT ROW COMPONENT — Current Grade mode
+============================================ */
+
+.grmc-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 40px;
+  gap: 8px;
+  padding: 0 2px 2px;
+}
+
+.grmc-col-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.grmc-assessment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grmc-assessment-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.grmc-name-field,
+.grmc-score-field,
+.grmc-weight-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.grmc-field-mobile-label {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 5px;
+}
+
+.grmc-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.grmc-remove-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.grmc-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: scale(1.05);
+}
+
+.grmc-remove-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   ACTION BUTTON ROWS
+============================================ */
+
+.grmc-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.grmc-actions .btn-primary {
+  flex: 1;
+}
+
+.grmc-actions--three .btn-secondary:first-child {
+  min-width: 152px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.grmc-actions--three .btn-secondary:last-child {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.grmc-actions:not(.grmc-actions--three) .btn-secondary {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .mpc-section-card / .macro-section-card exactly.
+============================================ */
+
+.grmc-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.grmc-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.grmc-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HERO RESULT
+============================================ */
+
+.grmc-hero-card {
+  text-align: center;
+}
+
+.grmc-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+.grmc-hero-sub {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Status badge — Required Final / Target Comparison rows */
+.grmc-status-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  margin: var(--sp-1) 0 var(--sp-2);
+}
+
+.grmc-status-badge--achieved {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.grmc-status-badge--achievable {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+}
+
+.grmc-status-badge--perfect {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.grmc-status-badge--impossible {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.grmc-status-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Small inline status pill — used in Target Comparison table/cards */
+.grmc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.grmc-pill::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.grmc-pill--achieved { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+.grmc-pill--achieved::before { background: #34d399; }
+
+.grmc-pill--achievable { background: rgba(59, 130, 246, 0.12); color: #60a5fa; }
+.grmc-pill--achievable::before { background: #60a5fa; }
+
+.grmc-pill--perfect { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+.grmc-pill--perfect::before { background: #fbbf24; }
+
+.grmc-pill--impossible { background: rgba(248, 113, 113, 0.12); color: #f87171; }
+.grmc-pill--impossible::before { background: #f87171; }
+
+/* ============================================
+   BREAKDOWN LIST — Current Grade assessment breakdown
+============================================ */
+
+.grmc-breakdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grmc-breakdown-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--fs-sm);
+}
+
+.grmc-breakdown-name {
+  color: var(--color-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.grmc-breakdown-value {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.grmc-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.grmc-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.grmc-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.grmc-insight-icon--positive { color: #34d399; }
+.grmc-insight-icon--neutral  { color: #60a5fa; }
+.grmc-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   TARGET COMPARISON — table (desktop) + cards (mobile)
+============================================ */
+
+.grmc-compare-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.grmc-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.grmc-compare-table thead th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  padding: 0 var(--sp-2) var(--sp-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.grmc-compare-table thead th:nth-child(2) {
+  text-align: right;
+}
+
+.grmc-compare-table thead th:nth-child(3) {
+  text-align: right;
+}
+
+.grmc-compare-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.grmc-compare-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.grmc-compare-table tbody td {
+  padding: 12px var(--sp-2);
+  color: var(--color-text-muted);
+  vertical-align: middle;
+}
+
+.grmc-compare-table tbody td:first-child {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.grmc-compare-table tbody td:nth-child(2) {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.grmc-compare-table tbody td:nth-child(3) {
+  text-align: right;
+}
+
+/* Mobile card list — hidden on desktop, shown ≤640px */
+.grmc-compare-cards {
+  display: none;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.grmc-compare-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.grmc-compare-card-target {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  min-width: 56px;
+}
+
+.grmc-compare-card-mid {
+  flex: 1;
+  min-width: 0;
+  text-align: right;
+}
+
+.grmc-compare-card-required {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+}
+
+.grmc-compare-card-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  display: block;
+  margin-top: 1px;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .grmc-mode-selector {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+
+  .grmc-mode-tab {
+    padding: 9px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .grmc-section-card {
+    padding: var(--sp-3);
+  }
+
+  .grmc-row-2,
+  .grmc-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grmc-col-headers {
+    display: none;
+  }
+
+  .grmc-assessment-list {
+    gap: var(--sp-2);
+  }
+
+  .tool-form.grmc-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .grmc-assessment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "name    name"
+      "score   weight";
+    gap: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-2);
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .grmc-assessment-row:focus-within {
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .grmc-assessment-row .grmc-name-field   { grid-area: name; }
+  .grmc-assessment-row .grmc-score-field  { grid-area: score; }
+  .grmc-assessment-row .grmc-weight-field { grid-area: weight; }
+  .grmc-name-field {
+    margin-top: 10px;
+  }
+
+  .grmc-field-mobile-label { display: block; }
+
+  .grmc-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .grmc-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .grmc-actions .btn-secondary,
+  .grmc-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  .grmc-breakdown-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .grmc-breakdown-value {
+    text-align: left;
+  }
+
+  /* Target Comparison — switch from table to stacked cards */
+  .grmc-compare-table-wrap {
+    display: none;
+  }
+
+  .grmc-compare-cards {
+    display: flex;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .grmc-hero-card {
+    text-align: left;
+  }
+
+  .grmc-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .grmc-compare-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .grmc-compare-card-mid {
+    text-align: left;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+
+  .tool-form.grmc-form {
+    padding: var(--sp-1) 14px;
+    gap: 14px;
+  }
+
+  .grmc-assessment-row {
+    padding: 14px;
+  }
+
+  .grmc-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+
+  .grmc-mode-tab {
+    padding: 8px 10px;
+  }
+}

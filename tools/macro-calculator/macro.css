@@ -1,0 +1,855 @@
+/* ============================================
+   MACRO.CSS — Project 50
+   Macro Calculator — tool-specific styles.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-result, .tool-note, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers macro-specific components:
+     - Two-column form row (.macro-row)
+     - Unit label row (.macro-unit-label-row)
+     - Custom select wrapper (.macro-select-wrap)
+     - Compact unit select (.macro-unit-select)
+     - Optional badge
+     - Validation message
+     - Button row
+     - Section cards
+     - Target calories display
+     - Macro range cards (protein / fat / carbs)
+     - Carb range display
+     - Meal split grid
+     - Protein sources grid
+     - Why These Numbers grid
+     - Number input spinner removal
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+============================================ */
+.macro-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.macro-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.macro-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.macro-select-wrap .tool-select:focus + .macro-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UNIT LABEL ROW
+============================================ */
+.macro-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.macro-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+.macro-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.macro-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.macro-unit-select-wrap .macro-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   TWO-COLUMN FORM ROW
+============================================ */
+.macro-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.macro-row--tight {
+  gap: var(--sp-1);
+  margin-top: 0;
+}
+
+/* ============================================
+   OPTIONAL BADGE
+============================================ */
+.macro-optional-badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-faint);
+  border-radius: var(--radius-full);
+  padding: 1px 8px;
+  vertical-align: middle;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.macro-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* ============================================
+   BUTTON ROW — Calculate + Reset side by side
+============================================ */
+.macro-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .macro-btn-row {
+    flex-direction: column;
+  }
+  .macro-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+============================================ */
+.macro-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.macro-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.macro-section-icon {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   CALORIES DISPLAY
+============================================ */
+.macro-calories-display {
+  text-align: center;
+  margin-bottom: var(--sp-3);
+}
+
+.macro-calories-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.macro-calories-unit {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.macro-calories-meta {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--sp-3);
+  line-height: 1.55;
+}
+
+.macro-calories-meta strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ============================================
+   MACRO RANGE CARDS — Protein / Fat / Carbs
+============================================ */
+.macro-range-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.macro-range-card {
+  text-align: center;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3) var(--sp-2);
+  border: 1px solid;
+  position: relative;
+}
+
+.macro-range-card--highlight {
+  border-width: 2px;
+}
+
+.macro-range-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* Protein colors */
+.macro-protein {
+  background: color-mix(in srgb, #60a5fa 10%, transparent);
+  border-color: color-mix(in srgb, #60a5fa 25%, transparent);
+}
+.macro-protein.macro-range-card--highlight {
+  border-color: #60a5fa;
+}
+.macro-protein .macro-range-badge {
+  background: color-mix(in srgb, #60a5fa 15%, transparent);
+  color: #60a5fa;
+  border: 1px solid color-mix(in srgb, #60a5fa 40%, transparent);
+}
+
+/* Fat colors */
+.macro-fat {
+  background: color-mix(in srgb, #fbbf24 10%, transparent);
+  border-color: color-mix(in srgb, #fbbf24 25%, transparent);
+}
+.macro-fat.macro-range-card--highlight {
+  border-color: #fbbf24;
+}
+.macro-fat .macro-range-badge {
+  background: color-mix(in srgb, #fbbf24 15%, transparent);
+  color: #fbbf24;
+  border: 1px solid color-mix(in srgb, #fbbf24 40%, transparent);
+}
+
+.macro-range-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--sp-1);
+}
+
+.macro-range-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.macro-range-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.macro-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   CARBOHYDRATE RANGE DISPLAY
+============================================ */
+.macro-carb-display {
+  text-align: center;
+  padding: var(--sp-3) 0;
+  margin-bottom: var(--sp-2);
+}
+
+.macro-carb-range {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.macro-carb-low,
+.macro-carb-high {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.macro-carb-sep {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.macro-carb-unit {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
+
+/* ============================================
+   MEAL SPLIT GRID
+============================================ */
+.macro-meal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+}
+
+.macro-meal-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) 12px;
+}
+
+.macro-meal-count {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #10b981;
+  margin-bottom: 4px;
+}
+
+.macro-meal-protein {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.macro-meal-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.macro-meal-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* ============================================
+   PROTEIN SOURCES GRID
+============================================ */
+.macro-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-1);
+}
+
+.macro-source-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-2);
+  gap: var(--sp-1);
+}
+
+.macro-source-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 0;
+}
+
+.macro-source-amount {
+  font-size: var(--fs-xs);
+  color: #10b981;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   WHY THESE NUMBERS
+============================================ */
+.macro-why-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.macro-why-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3);
+}
+
+.macro-why-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+}
+
+.macro-why-protein {
+  background: color-mix(in srgb, #60a5fa 15%, transparent);
+  color: #60a5fa;
+  border: 1px solid color-mix(in srgb, #60a5fa 30%, transparent);
+}
+
+.macro-why-fat {
+  background: color-mix(in srgb, #fbbf24 15%, transparent);
+  color: #fbbf24;
+  border: 1px solid color-mix(in srgb, #fbbf24 30%, transparent);
+}
+
+.macro-why-carbs {
+  background: color-mix(in srgb, #34d399 15%, transparent);
+  color: #34d399;
+  border: 1px solid color-mix(in srgb, #34d399 30%, transparent);
+}
+
+.macro-why-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 640px) {
+  .macro-row {
+    grid-template-columns: 1fr;
+  }
+
+  .macro-section-card {
+    padding: var(--sp-3);
+  }
+
+  .macro-sources-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .macro-range-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+
+  .macro-range-badge {
+    position: static;
+    transform: none;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .macro-meal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .macro-unit-label-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .macro-calories-value {
+    font-size: clamp(2rem, 14vw, 3rem);
+  }
+}
+
+/* ============================================
+   RECOMMENDED DAILY TARGETS — Summary card
+============================================ */
+.macro-summary-card {
+  border-color: color-mix(in srgb, #10b981 35%, transparent);
+  background: color-mix(in srgb, #10b981 6%, var(--color-bg-card));
+}
+
+.macro-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.macro-summary-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+}
+
+.macro-summary-item--protein {
+  background: color-mix(in srgb, #60a5fa 10%, transparent);
+  border-color: color-mix(in srgb, #60a5fa 25%, transparent);
+}
+
+.macro-summary-item--fat {
+  background: color-mix(in srgb, #fbbf24 10%, transparent);
+  border-color: color-mix(in srgb, #fbbf24 25%, transparent);
+}
+
+.macro-summary-item--carbs {
+  background: color-mix(in srgb, #34d399 10%, transparent);
+  border-color: color-mix(in srgb, #34d399 25%, transparent);
+}
+
+.macro-summary-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.macro-summary-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.macro-summary-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+  .macro-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   CARBOHYDRATE TARGETS — 3-card layout
+   (reuses .macro-range-grid and .macro-range-card)
+============================================ */
+.macro-carbs {
+  background: color-mix(in srgb, #34d399 10%, transparent);
+  border-color: color-mix(in srgb, #34d399 25%, transparent);
+}
+.macro-carbs.macro-range-card--highlight {
+  border-color: #34d399;
+}
+.macro-carbs .macro-range-badge {
+  background: color-mix(in srgb, #34d399 15%, transparent);
+  color: #34d399;
+  border: 1px solid color-mix(in srgb, #34d399 40%, transparent);
+}
+
+/* ============================================
+   MEAL SPLIT — updated multi-macro layout
+============================================ */
+.macro-meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.macro-meal-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.macro-meal-count {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #10b981;
+  margin-bottom: var(--sp-2);
+}
+
+.macro-meal-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-1);
+}
+
+.macro-meal-stat {
+  text-align: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px 4px 6px;
+}
+
+.macro-meal-stat--protein { border-color: color-mix(in srgb, #60a5fa 30%, transparent); }
+.macro-meal-stat--fat     { border-color: color-mix(in srgb, #fbbf24 30%, transparent); }
+.macro-meal-stat--carbs   { border-color: color-mix(in srgb, #34d399 30%, transparent); }
+
+.macro-meal-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-base), 3vw, var(--fs-lg));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.macro-meal-unit {
+  font-size: 10px;
+  color: var(--color-text-faint);
+  margin-top: 3px;
+  line-height: 1.2;
+}
+
+/* ============================================
+   EXPECTED PROGRESS
+============================================ */
+.macro-progress-header {
+  margin-bottom: var(--sp-3);
+}
+
+.macro-progress-change {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 6vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.macro-progress-context {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.macro-proj-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.macro-proj-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-3);
+}
+
+.macro-proj-month {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.macro-proj-weight {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.macro-proj-delta {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-faint);
+  text-align: right;
+  min-width: 54px;
+}
+
+.macro-proj-delta--loss {
+  color: #60a5fa;
+}
+
+.macro-proj-delta--gain {
+  color: #34d399;
+}
+
+/* ============================================
+   WHAT SHOULD YOU FOCUS ON
+============================================ */
+.macro-focus-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.macro-focus-list li {
+  display: flex;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.macro-focus-list li::before {
+  content: counter(list-item);
+  counter-increment: list-item;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  color: #10b981;
+  background: color-mix(in srgb, #10b981 12%, transparent);
+  border: 1px solid color-mix(in srgb, #10b981 25%, transparent);
+  border-radius: var(--radius-full);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.macro-focus-list {
+  counter-reset: list-item;
+}
+
+.macro-focus-list li p {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.macro-focus-list li p strong {
+  color: var(--color-text);
+}
+
+/* ============================================
+   RESPONSIVE OVERRIDES FOR NEW COMPONENTS
+============================================ */
+@media (max-width: 480px) {
+  .macro-meal-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .macro-proj-row {
+    grid-template-columns: 1fr 1fr auto;
+    padding: 8px var(--sp-2);
+  }
+}
+
+@media (max-width: 380px) {
+  .macro-summary-val {
+    font-size: var(--fs-lg);
+  }
+
+  .macro-proj-row {
+    grid-template-columns: 1fr auto;
+    gap: var(--sp-1);
+  }
+
+  .macro-proj-weight {
+    text-align: right;
+  }
+
+  .macro-proj-delta {
+    display: none;
+  }
+}

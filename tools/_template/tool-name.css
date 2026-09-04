@@ -1,0 +1,78 @@
+/* ============================================
+   [TOOL-SLUG].CSS — Project 50
+   [TOOL NAME] — tool-specific styles ONLY.
+
+   DEPENDS ON (loaded before this file in HTML):
+     reset.css → variables.css → style.css →
+     buttons.css → header.css → sidebar.css →
+     footer.css → tool.css
+
+   tool.css already provides — DO NOT re-declare:
+     .tool-breadcrumb     breadcrumb trail
+     .tool-wrap           page wrapper (max-width, padding)
+     .tool-wrap--wide     wider variant
+     .tool-header         icon + title row
+     .tool-icon           icon box (uses --tool-color)
+     .tool-title          h1 typography
+     .tool-subtitle       subtitle typography
+     .tool-form           form card (bg, border, padding)
+     .tool-field          label + input pair
+     .tool-field-label    field label
+     .tool-input          text/number input
+     .tool-select         select element
+     .tool-field-hint     hint text (linked via aria-describedby)
+     .tool-result         result card
+     .tool-result-number  large result value
+     .tool-result-label   label above result number
+     .tool-result-status  classification text
+     .tool-stat-grid      3-col stat grid
+     .tool-stat           stat cell
+     .tool-stat-value     stat number
+     .tool-stat-label     stat caption
+     .tool-slider-group   slider + header row
+     .tool-slider-header  label/value row
+     .tool-slider-label   slider label
+     .tool-slider-value   live value display
+     .tool-range          range input
+     .tool-note           disclaimer text
+     .tool-seo-sections   SEO content wrapper
+     .tool-seo-section    individual section
+     .tool-seo-section-title section heading
+     .tool-seo-steps      numbered steps list
+     .tool-faq-list       FAQ accordion wrapper
+     .tool-faq-item       single FAQ entry
+     .tool-faq-question   accordion trigger button
+     .tool-faq-answer     collapsible answer
+     .tool-faq-chevron    chevron icon
+     .tool-related        related tools section
+     .tool-related-title  section heading
+     .tool-related-grid   card grid
+     All responsive breakpoints for the above.
+
+   MOBILE STANDARDS:
+     • Use width: 100% for inputs; avoid fixed px widths.
+     • Prefer min-width / max-width over fixed widths.
+     • Breakpoints: 768px (tablet), 480px (mobile).
+     • Use overflow-wrap: break-word on text containers.
+     • Avoid horizontal overflow: test at 320px viewport.
+
+   THIS FILE COVERS ONLY:
+     • Unique widgets specific to THIS tool
+     • Special layouts not covered by tool.css
+     • Custom visualisations (charts, scales, etc.)
+     • Tool-specific colour states
+
+   CSS CUSTOM PROPERTIES (from variables.css):
+     --bg-primary, --bg-secondary, --bg-card
+     --text-primary, --text-secondary, --text-muted
+     --border-color, --border-radius
+     --accent (category colour — set via --tool-color)
+============================================ */
+
+
+/* ---- [Component Name] --------------------------------
+   Replace this comment block with your component name.
+   Example: "Unit Toggle", "BMI Scale", "Amortization Table"
+------------------------------------------------------- */
+
+/* Add tool-specific styles here */

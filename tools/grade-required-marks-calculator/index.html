@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade &amp; Required Marks Calculator — Current Grade, Required Final &amp; More | Project 50</title>
+  <meta name="description" content="Calculate your current weighted course grade, the score you need on your final, what-if scenarios, your best possible grade, and compare multiple target grades — all in one calculator.">
+  <meta name="keywords" content="grade calculator, required marks calculator, weighted grade calculator, final exam grade calculator, what if grade calculator, best possible grade, target grade calculator, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/grade-required-marks-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/grade-required-marks-calculator/">
+  <meta property="og:title" content="Grade & Required Marks Calculator — Current Grade, Required Final & More | Project 50">
+  <meta property="og:description" content="One calculator, five modes: current grade, required final score, what-if scenarios, best possible grade, and target comparison. Free and private — no login.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Grade & Required Marks Calculator — Current Grade, Required Final & More | Project 50">
+  <meta name="twitter:description" content="Calculate your weighted course grade, required final score, what-if scenarios, best possible grade and target comparisons in one adaptive calculator.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Grade & Required Marks Calculator",
+    "url": "https://project50.tools/tools/grade-required-marks-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your current weighted course grade, the score needed on a final exam, what-if scenarios, your best possible grade, and compare multiple target grades.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "Grade & Required Marks Calculator", "item": "https://project50.tools/tools/grade-required-marks-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is my current weighted grade calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each assessment's score is multiplied by its weight to get a weighted contribution. All contributions are added together and divided by the total completed weight, giving your current grade as a percentage of the work finished so far." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Current Grade and Current Contribution?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Current Grade is your average across only the work you have completed so far. Current Contribution is how many percentage points that work has already added toward your full 100% course total. The two are equal only once 100% of the course weight is completed." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate the score I need on my final exam?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Required Final Score = (Target Grade − Current Grade × (1 − Final Weight)) ÷ Final Weight, with the final weight expressed as a decimal. This tells you exactly what you must score on the remaining exam to reach your target course grade." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'Perfect Score Required' mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means the required final score works out to exactly 100% — your target is mathematically reachable, but only with a flawless result on the final. There is no margin for a single dropped point." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the required final score is not achievable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If the required score comes out above 100%, no score on the final can reach your target — even a perfect result would not be enough. The calculator flags this clearly instead of showing a misleading percentage, and shows the highest grade you could still reach." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is my best possible grade calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Best Possible Grade = Current Grade × Completed Weight + 100 × Remaining Weight. This assumes a perfect 100% score across every assessment you have not completed yet, giving you the absolute ceiling for your final course grade." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Target Comparison mode for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Instead of checking one target grade at a time, Target Comparison shows the final score required for five common targets — 70%, 75%, 80%, 85% and 90% — side by side, so you can see at a glance which are realistic and which are out of reach." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use decimal scores and weights?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every mode accepts decimal values for scores and weights, which is useful for assessments with partial-mark grading or precisely weighted components." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Best Possible Grade equal my current grade when remaining weight is 0%?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If there is no remaining assessment weight, the course is already fully complete. With nothing left to score, your best possible grade and your current grade are the same number." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your inputs are saved to your browser's local storage so they persist between visits, separately for each calculation mode. Your data never leaves your device and is never sent to any server. Resetting a mode clears its saved data immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="grade-required-marks.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Grade &amp; Required Marks Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="8" x2="8" y1="14" y2="14"/><line x1="12" x2="12" y1="14" y2="14"/><line x1="16" x2="16" y1="14" y2="14"/><line x1="8" x2="8" y1="18" y2="18"/><line x1="12" x2="12" y1="18" y2="18"/><line x1="16" x2="16" y1="18" y2="18"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Grade &amp; Required Marks Calculator</h1>
+            <p class="tool-subtitle">One calculator, five modes — current grade, required final, what-if scenarios, best possible grade and target comparison.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             MODE SELECTOR — compact tab-style
+        ============================================== -->
+        <div class="grmc-mode-selector" role="tablist" aria-label="Calculation mode">
+          <button type="button" role="tab" class="grmc-mode-tab" id="grmc-tab-current-grade" aria-selected="true" aria-controls="grmc-panel-current-grade" tabindex="0" data-mode="current-grade">
+            Current Grade
+          </button>
+          <button type="button" role="tab" class="grmc-mode-tab" id="grmc-tab-required-final" aria-selected="false" aria-controls="grmc-panel-required-final" tabindex="-1" data-mode="required-final">
+            Required Final
+          </button>
+          <button type="button" role="tab" class="grmc-mode-tab" id="grmc-tab-what-if" aria-selected="false" aria-controls="grmc-panel-what-if" tabindex="-1" data-mode="what-if">
+            What-If Final
+          </button>
+          <button type="button" role="tab" class="grmc-mode-tab" id="grmc-tab-best-possible" aria-selected="false" aria-controls="grmc-panel-best-possible" tabindex="-1" data-mode="best-possible">
+            Best Possible
+          </button>
+          <button type="button" role="tab" class="grmc-mode-tab" id="grmc-tab-target-comparison" aria-selected="false" aria-controls="grmc-panel-target-comparison" tabindex="-1" data-mode="target-comparison">
+            Target Comparison
+          </button>
+        </div>
+
+        <!-- =============================================
+             MODE PANELS
+        ============================================== -->
+        <div class="grmc-panels">
+
+          <!-- =========================================
+               MODE 1 — CURRENT GRADE
+          ========================================== -->
+          <div class="grmc-panel" id="grmc-panel-current-grade" role="tabpanel" aria-labelledby="grmc-tab-current-grade" tabindex="0">
+
+            <div class="tool-form grmc-form" role="form" aria-label="Current Grade">
+
+              <div class="grmc-col-headers" aria-hidden="true">
+                <span>Assessment Name</span>
+                <span>Score %</span>
+                <span>Weight %</span>
+                <span></span>
+              </div>
+
+              <div class="grmc-validation" id="grmc-current-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="grmc-assessment-list" id="grmc-current-list" role="list" aria-label="Assessment list"></div>
+
+              <div class="grmc-actions grmc-actions--three">
+                <button class="btn btn-secondary btn-lg" id="grmc-current-add-btn" type="button" aria-label="Add another assessment">+ Add Assessment</button>
+                <button class="btn btn-primary btn-lg" id="grmc-current-calc-btn" type="button">Calculate Current Grade</button>
+                <button class="btn btn-secondary btn-lg" id="grmc-current-reset-btn" type="button" aria-label="Reset all assessments and results">Reset</button>
+              </div>
+            </div>
+
+            <div id="grmc-current-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="grmc-section-card grmc-hero-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Current Grade
+                </h2>
+                <div class="grmc-big-number" id="grmc-current-display">—</div>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Grade Summary
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-current-completed-weight">—</div>
+                    <div class="tool-stat-label">Completed Weight</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-current-remaining-weight">—</div>
+                    <div class="tool-stat-label">Remaining Weight</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-current-contribution">—</div>
+                    <div class="tool-stat-label">Current Contribution</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
+                  Assessment Breakdown
+                </h2>
+                <ul class="grmc-breakdown-list" id="grmc-current-breakdown" aria-label="Assessment breakdown"></ul>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-current-insights-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="grmc-insights-list" id="grmc-current-insights-list" aria-label="Current grade insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 2 — REQUIRED FINAL
+          ========================================== -->
+          <div class="grmc-panel" id="grmc-panel-required-final" role="tabpanel" aria-labelledby="grmc-tab-required-final" tabindex="0" hidden>
+
+            <div class="tool-form grmc-form" role="form" aria-label="Required Final">
+
+              <div class="grmc-field-group">
+                <h3 class="grmc-field-group-title">Current Performance</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-required-current-grade">Current Grade (%)</label>
+                  <input class="tool-input" type="number" id="grmc-required-current-grade" placeholder="e.g. 82" min="0" max="100" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Your weighted grade so far, before the final</span>
+                </div>
+              </div>
+
+              <div class="grmc-field-group">
+                <h3 class="grmc-field-group-title">Final Exam</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-required-final-weight">Final Exam Weight (%)</label>
+                  <input class="tool-input" type="number" id="grmc-required-final-weight" placeholder="e.g. 30" min="0" max="100" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">How much the final counts toward your total course grade</span>
+                </div>
+              </div>
+
+              <div class="grmc-field-group">
+                <h3 class="grmc-field-group-title">Your Goal</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-required-target-grade">Target Final Grade (%)</label>
+                  <input class="tool-input" type="number" id="grmc-required-target-grade" placeholder="e.g. 85" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="grmc-validation" id="grmc-required-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="grmc-actions">
+                <button class="btn btn-primary btn-lg" id="grmc-required-calc-btn" type="button">Calculate Required Score</button>
+                <button class="btn btn-secondary btn-lg" id="grmc-required-reset-btn" type="button" aria-label="Reset required final fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="grmc-required-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="grmc-section-card grmc-hero-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                  Required Final Score
+                </h2>
+                <div class="grmc-big-number" id="grmc-required-display">—</div>
+                <p class="grmc-hero-sub" id="grmc-required-hero-sub">—</p>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  The Numbers
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-required-current-stat">—</div>
+                    <div class="tool-stat-label">Current Grade</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-required-weight-stat">—</div>
+                    <div class="tool-stat-label">Final Weight</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-required-target-stat">—</div>
+                    <div class="tool-stat-label">Target Grade</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                  Target Status
+                </h2>
+                <div class="grmc-status-badge" id="grmc-required-status-badge">—</div>
+                <p class="grmc-status-text" id="grmc-required-status-text">—</p>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-required-best-possible-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+                  Best Possible Grade
+                </h2>
+                <div class="tool-stat-grid" style="grid-template-columns: 1fr;">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-required-best-possible-value">—</div>
+                    <div class="tool-stat-label">Maximum Reachable Grade</div>
+                  </div>
+                </div>
+                <p class="tool-note">This assumes a perfect 100% score on the final exam.</p>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-required-insights-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="grmc-insights-list" id="grmc-required-insights-list" aria-label="Required final insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 3 — WHAT-IF FINAL
+          ========================================== -->
+          <div class="grmc-panel" id="grmc-panel-what-if" role="tabpanel" aria-labelledby="grmc-tab-what-if" tabindex="0" hidden>
+
+            <div class="tool-form grmc-form" role="form" aria-label="What-If Final">
+
+              <div class="grmc-row-3">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-whatif-current-grade">Current Grade (%)</label>
+                  <input class="tool-input" type="number" id="grmc-whatif-current-grade" placeholder="e.g. 82" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-whatif-final-weight">Final Exam Weight (%)</label>
+                  <input class="tool-input" type="number" id="grmc-whatif-final-weight" placeholder="e.g. 30" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-whatif-expected-final">Expected Final Score (%)</label>
+                  <input class="tool-input" type="number" id="grmc-whatif-expected-final" placeholder="e.g. 75" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="grmc-validation" id="grmc-whatif-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="grmc-actions">
+                <button class="btn btn-primary btn-lg" id="grmc-whatif-calc-btn" type="button">See Projected Grade</button>
+                <button class="btn btn-secondary btn-lg" id="grmc-whatif-reset-btn" type="button" aria-label="Reset what-if fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="grmc-whatif-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="grmc-section-card grmc-hero-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Projected Final Grade
+                </h2>
+                <div class="grmc-big-number" id="grmc-whatif-display">—</div>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Your Inputs
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-whatif-current-stat">—</div>
+                    <div class="tool-stat-label">Current Grade</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-whatif-expected-stat">—</div>
+                    <div class="tool-stat-label">Expected Final</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-whatif-weight-stat">—</div>
+                    <div class="tool-stat-label">Final Weight</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-whatif-insights-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="grmc-insights-list" id="grmc-whatif-insights-list" aria-label="What-if insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 4 — BEST POSSIBLE
+          ========================================== -->
+          <div class="grmc-panel" id="grmc-panel-best-possible" role="tabpanel" aria-labelledby="grmc-tab-best-possible" tabindex="0" hidden>
+
+            <div class="tool-form grmc-form" role="form" aria-label="Best Possible">
+
+              <div class="grmc-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-best-current-grade">Current Grade (%)</label>
+                  <input class="tool-input" type="number" id="grmc-best-current-grade" placeholder="e.g. 82" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-best-remaining-weight">Remaining Assessment Weight (%)</label>
+                  <input class="tool-input" type="number" id="grmc-best-remaining-weight" placeholder="e.g. 30" min="0" max="100" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Total weight of everything not yet completed, including the final</span>
+                </div>
+              </div>
+
+              <div class="grmc-validation" id="grmc-best-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="grmc-actions">
+                <button class="btn btn-primary btn-lg" id="grmc-best-calc-btn" type="button">Calculate Best Possible</button>
+                <button class="btn btn-secondary btn-lg" id="grmc-best-reset-btn" type="button" aria-label="Reset best possible fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="grmc-best-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="grmc-section-card grmc-hero-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+                  Best Possible Grade
+                </h2>
+                <div class="grmc-big-number" id="grmc-best-display">—</div>
+                <p class="grmc-hero-sub" id="grmc-best-explain">—</p>
+              </div>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  The Breakdown
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-best-contribution-stat">—</div>
+                    <div class="tool-stat-label">Current Contribution</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-best-remaining-stat">—</div>
+                    <div class="tool-stat-label">Remaining Weight</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="grmc-best-future-stat">—</div>
+                    <div class="tool-stat-label">Max Future Contribution</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-best-insights-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="grmc-insights-list" id="grmc-best-insights-list" aria-label="Best possible insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 5 — TARGET COMPARISON
+          ========================================== -->
+          <div class="grmc-panel" id="grmc-panel-target-comparison" role="tabpanel" aria-labelledby="grmc-tab-target-comparison" tabindex="0" hidden>
+
+            <div class="tool-form grmc-form" role="form" aria-label="Target Comparison">
+
+              <div class="grmc-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-compare-current-grade">Current Grade (%)</label>
+                  <input class="tool-input" type="number" id="grmc-compare-current-grade" placeholder="e.g. 82" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="grmc-compare-remaining-weight">Remaining Assessment Weight (%)</label>
+                  <input class="tool-input" type="number" id="grmc-compare-remaining-weight" placeholder="e.g. 30" min="0" max="100" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Total weight left in the course, across all remaining assessments</span>
+                </div>
+              </div>
+
+              <div class="grmc-validation" id="grmc-compare-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="grmc-actions">
+                <button class="btn btn-primary btn-lg" id="grmc-compare-calc-btn" type="button">Compare Targets</button>
+                <button class="btn btn-secondary btn-lg" id="grmc-compare-reset-btn" type="button" aria-label="Reset target comparison fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="grmc-compare-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="grmc-section-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                  Target Comparison
+                </h2>
+
+                <div class="grmc-compare-table-wrap">
+                  <table class="grmc-compare-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Target</th>
+                        <th scope="col">Required in Remaining</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="grmc-compare-tbody"></tbody>
+                  </table>
+                </div>
+
+                <div class="grmc-compare-cards" id="grmc-compare-cards" aria-hidden="true"></div>
+              </div>
+
+              <div class="grmc-section-card" id="grmc-compare-insights-card">
+                <h2 class="grmc-section-title">
+                  <span class="grmc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="grmc-insights-list" id="grmc-compare-insights-list" aria-label="Target comparison insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /.grmc-panels -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="grmc-related-wrap" aria-labelledby="grmc-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="grmc-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="grmc-related-grid"
+               data-tool-id="grade-required-marks-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is a Weighted Grade? -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            What Is a Weighted Grade?
+          </h2>
+          <p>A weighted grade is a course grade built from several assessments — homework, quizzes, midterms, a final exam — where each one counts for a different share of the total. Instead of every assessment mattering equally, a heavier assessment like a final exam pulls the overall grade more than a lighter one like a single quiz.</p>
+          <p>This calculator handles five common situations around weighted grades in one connected tool: working out your current grade from completed work, finding the score you need on a remaining final, testing what-if scenarios, finding your best possible outcome, and comparing several target grades at once.</p>
+        </section>
+
+        <!-- 2. How Is Your Current Grade Calculated? -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-current-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-current-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            How Is Your Current Grade Calculated?
+          </h2>
+          <p>Each completed assessment contributes to your grade by its score multiplied by its weight:</p>
+          <p><strong>Weighted Contribution = Score × Weight</strong> (weight expressed as a decimal)</p>
+          <p>Adding up every contribution gives your <strong>Current Contribution</strong> — the percentage points you have already banked toward the full course. Dividing that total by your <strong>Completed Weight</strong> (the sum of the weights entered so far) gives your <strong>Current Grade</strong>: your average across the work finished so far. For example, 90% on a 20%-weighted assignment and 80% on a 30%-weighted midterm contribute 18 and 24 points — a Current Contribution of 42 points over a Completed Weight of 50%, for a Current Grade of 84%.</p>
+        </section>
+
+        <!-- 3. How to Calculate the Required Final Exam Score -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-required-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-required-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+            How to Calculate the Required Final Exam Score
+          </h2>
+          <p>Required Final mode works backward from your target course grade to tell you exactly what you need on the exam that is still ahead of you:</p>
+          <p><strong>Required Final Score = (Target − Current Grade × (1 − Final Weight)) ÷ Final Weight</strong></p>
+          <p>If the result is zero or below, your target is already secured regardless of the final. If it lands between 0% and 100%, that is the score you need. If it comes out to exactly 100%, only a perfect score will do — and if it exceeds 100%, the target cannot be reached through the final alone, no matter how well you score.</p>
+        </section>
+
+        <!-- 4. How What-If Grade Calculations Work -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-whatif-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-whatif-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            How What-If Grade Calculations Work
+          </h2>
+          <p>What-If Final mode runs the required-final formula in reverse: instead of solving for a score from a target, you supply a hypothetical final exam score and see exactly where it would leave your overall grade:</p>
+          <p><strong>Projected Final Grade = Current Grade × (1 − Final Weight) + Expected Final Score × Final Weight</strong></p>
+          <p>This is useful for testing scenarios — "what if I get a 70 instead of an 85?" — without committing to a single target grade. The projection only reflects the current grade, final weight and expected score you enter; it never assumes a target you haven't provided.</p>
+        </section>
+
+        <!-- 5. How to Calculate Your Best Possible Grade -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-best-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-best-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+            How to Calculate Your Best Possible Grade
+          </h2>
+          <p>Best Possible mode finds the absolute ceiling for your final course grade — the outcome if every remaining assessment goes perfectly:</p>
+          <p><strong>Best Possible Grade = Current Grade × Completed Weight + 100 × Remaining Weight</strong></p>
+          <p>Completed Weight here is simply 1 minus your Remaining Weight. If your remaining weight is 0% — meaning the course is already fully graded — there is nothing left to score, so your best possible grade is the same as your current grade.</p>
+        </section>
+
+        <!-- 6. How to Set a Realistic Grade Target -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-target-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-target-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How to Set a Realistic Grade Target
+          </h2>
+          <p>Target Comparison mode checks five common target grades — 70%, 75%, 80%, 85% and 90% — against your current position in one pass, using the same mathematics as Required Final for each target. Instead of testing one number at a time, you immediately see which targets are already achieved, which are realistically achievable, which need a perfect remaining performance, and which are mathematically out of reach.</p>
+          <p>This makes it easy to pick a target that is ambitious but grounded in what your remaining assessment weight can actually deliver, rather than guessing.</p>
+        </section>
+
+        <!-- 7. Common Weighted Grade Mistakes -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Weighted Grade Mistakes
+          </h2>
+          <p><strong>Mistake 1 — Confusing Current Grade with Current Contribution.</strong> Current Grade is your average over completed work only; Current Contribution is how many points that work has already added toward the full 100% course. They are only the same number once every assessment is complete.</p>
+          <p><strong>Mistake 2 — Entering weights that add up to more than 100%.</strong> Every assessment weight should reflect its actual share of the total course grade — the full set should never exceed 100%.</p>
+          <p><strong>Mistake 3 — Assuming any target is reachable.</strong> If the required score on your remaining work exceeds 100%, no result can close the gap. Check Required Final or Target Comparison before assuming a goal is realistic.</p>
+          <p><strong>Mistake 4 — Forgetting that Best Possible is a ceiling, not a prediction.</strong> It assumes a perfect score on everything remaining — treat it as the upper bound of what's mathematically possible, not an expected outcome.</p>
+          <p><strong>Tip: Recheck your weights against the syllabus.</strong> A common source of error is entering the wrong weight for an assessment — confirm the breakdown in your course syllabus before calculating.</p>
+        </section>
+
+        <!-- 8. Tips for Planning Your Final Grade -->
+        <section class="tool-seo-section" aria-labelledby="grmc-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="grmc-seo-tips-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.53 2.573a.5.5 0 0 1 .94 0l2.31 6.482a.5.5 0 0 0 .465.325h6.804a.5.5 0 0 1 .3.9l-5.61 4.156a.5.5 0 0 0-.176.556l2.31 6.481a.5.5 0 0 1-.767.559l-5.61-4.155a.5.5 0 0 0-.592 0l-5.61 4.155a.5.5 0 0 1-.767-.559l2.31-6.48a.5.5 0 0 0-.176-.557L2.152 10.28a.5.5 0 0 1 .3-.9h6.803a.5.5 0 0 0 .465-.326z"/></svg></span>
+            Tips for Planning Your Final Grade
+          </h2>
+          <p>Revisit Current Grade mode after every new result — even one new assessment shifts your completed weight and changes what's still needed. Once you know where you stand, use Required Final to check a specific target, or Target Comparison to see several targets side by side without repeating the calculation manually.</p>
+          <p>If a target turns out to be out of reach, What-If Final lets you test more realistic final exam scores to see where you would actually land, and Best Possible tells you the absolute ceiling so you know the honest upper limit before setting your next goal.</p>
+        </section>
+
+        <!-- 9. FAQ -->
+        <section class="tool-seo-section" aria-labelledby="grmc-faq-heading">
+          <h2 class="tool-seo-section-title" id="grmc-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="grmc-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a1">
+                How is my current weighted grade calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a1" role="region">
+                Each assessment's score is multiplied by its weight to get a weighted contribution. All contributions are added together and divided by the total completed weight, giving your current grade as a percentage of the work finished so far.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a2">
+                What is the difference between Current Grade and Current Contribution?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a2" role="region">
+                Current Grade is your average across only the work you have completed so far. Current Contribution is how many percentage points that work has already added toward your full 100% course total. The two are equal only once 100% of the course weight is completed.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a3">
+                How do I calculate the score I need on my final exam?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a3" role="region">
+                Required Final Score = (Target Grade − Current Grade × (1 − Final Weight)) ÷ Final Weight, with the final weight expressed as a decimal. This tells you exactly what you must score on the remaining exam to reach your target course grade.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a4">
+                What does "Perfect Score Required" mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a4" role="region">
+                It means the required final score works out to exactly 100% — your target is mathematically reachable, but only with a flawless result on the final. There is no margin for a single dropped point.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a5">
+                What happens if the required final score is not achievable?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a5" role="region">
+                If the required score comes out above 100%, no score on the final can reach your target — even a perfect result would not be enough. The calculator flags this clearly instead of showing a misleading percentage, and shows the highest grade you could still reach.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a6">
+                How is my best possible grade calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a6" role="region">
+                Best Possible Grade = Current Grade × Completed Weight + 100 × Remaining Weight. This assumes a perfect 100% score across every assessment you have not completed yet, giving you the absolute ceiling for your final course grade.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a7">
+                What is Target Comparison mode for?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a7" role="region">
+                Instead of checking one target grade at a time, Target Comparison shows the final score required for five common targets — 70%, 75%, 80%, 85% and 90% — side by side, so you can see at a glance which are realistic and which are out of reach.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a8">
+                Can I use decimal scores and weights?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a8" role="region">
+                Yes. Every mode accepts decimal values for scores and weights, which is useful for assessments with partial-mark grading or precisely weighted components.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a9">
+                Why does Best Possible Grade equal my current grade when remaining weight is 0%?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a9" role="region">
+                If there is no remaining assessment weight, the course is already fully complete. With nothing left to score, your best possible grade and your current grade are the same number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="grmc-faq-a10">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="grmc-faq-a10" role="region">
+                Your inputs are saved to your browser's local storage so they persist between visits, separately for each calculation mode. Your data never leaves your device and is never sent to any server. Resetting a mode clears its saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="grade-required-marks.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

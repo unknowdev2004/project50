@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGPA Calculator — Free Cumulative GPA Calculator | Project 50</title>
+  <meta name="description" content="Calculate your CGPA instantly by entering GPA and credit hours for each semester. Free, accurate, private — no login required. Includes academic summary, performance analysis and insights.">
+  <meta name="keywords" content="cgpa calculator, cumulative gpa calculator, semester gpa, weighted gpa, grade point average, academic calculator, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/cgpa-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/cgpa-calculator/">
+  <meta property="og:title" content="CGPA Calculator — Free Cumulative GPA Calculator | Project 50">
+  <meta property="og:description" content="Calculate your Cumulative Grade Point Average across all semesters. Enter GPA and credit hours — get instant CGPA, academic summary and performance insights.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="CGPA Calculator — Free Cumulative GPA Calculator | Project 50">
+  <meta name="twitter:description" content="Calculate your CGPA instantly across multiple semesters. Free, private, no login required.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CGPA Calculator",
+    "url": "https://project50.tools/tools/cgpa-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your Cumulative Grade Point Average (CGPA) by entering GPA and credit hours for each semester. Includes academic summary, performance analysis and insights.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "CGPA Calculator", "item": "https://project50.tools/tools/cgpa-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CGPA stands for Cumulative Grade Point Average. It is the weighted average of your GPA scores across all completed semesters, where each semester is weighted by its credit hours. It is the primary academic performance metric used on university transcripts worldwide." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is CGPA calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CGPA is calculated using the formula: CGPA = Σ(GPA × Credits) ÷ Σ(Credits). You multiply each semester's GPA by its credit hours, sum all those products, then divide by the total credit hours across all semesters." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between GPA and CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GPA refers to a single semester's performance. CGPA is the cumulative weighted average across all semesters. CGPA is what appears on your official transcript and is used by employers and graduate schools to evaluate academic performance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is CGPA different from a simple average of semester GPAs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CGPA weights each semester by its credit hours. A semester with 20 credits contributes twice as much as one with 10 credits. A simple average ignores this difference and can give misleading results if your semesters had different credit loads." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "On a 4.0 scale, a CGPA of 3.5 or above is generally considered excellent. A CGPA of 3.0–3.5 is good, 2.5–3.0 is satisfactory, and below 2.0 may affect your academic standing at many institutions. Expectations vary by university and program." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a single bad semester ruin my CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the credit weight. A low-GPA semester with few credits has a smaller impact than one with many credits. Over multiple semesters, consistently improving your GPA can gradually raise your CGPA, though recovery takes time." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator work for 10-point GPA scales?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The CGPA formula works the same way regardless of scale — whether you use a 4.0, 5.0, 7.0 or 10.0 system. Simply enter your GPA in the scale your institution uses and this calculator applies the weighted average correctly." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many semesters can I add?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can add as many semesters as you need. There is no maximum limit. The calculator handles full degree programs across four, five or more years without any issues." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your semester data is saved to your browser's local storage so it persists between visits. Your data never leaves your device and is never sent to any server. Clicking Reset clears all saved data immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="cgpa.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">CGPA Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">CGPA Calculator</h1>
+            <p class="tool-subtitle">Enter GPA and credit hours for each semester to calculate your Cumulative Grade Point Average.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             FORM
+        ============================================== -->
+        <div class="tool-form cgpa-form" role="form" aria-label="CGPA Calculator">
+
+          <!-- Column headers — desktop only -->
+          <div class="cgpa-col-headers" aria-hidden="true">
+            <span>Semester Name</span>
+            <span>GPA</span>
+            <span>Credits</span>
+            <span></span>
+          </div>
+
+          <!-- Validation -->
+          <div class="cgpa-validation" id="cgpa-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Semester rows — populated by cgpa.js -->
+          <div class="cgpa-semesters" id="cgpa-semesters-list" role="list" aria-label="Semester list"></div>
+
+          <!-- Actions -->
+          <div class="cgpa-actions">
+            <button class="btn btn-secondary btn-lg" id="cgpa-add-btn" type="button" aria-label="Add another semester">
+              + Add Semester
+            </button>
+            <button class="btn btn-primary btn-lg" id="cgpa-calc-btn" type="button">
+              Calculate CGPA
+            </button>
+            <button class="btn btn-secondary btn-lg" id="cgpa-reset-btn" type="button" aria-label="Reset all semesters and results">
+              Reset
+            </button>
+          </div>
+
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+             Hierarchy:
+               1. Hero Result (CGPA)
+               2. Academic Summary
+               3. Performance Analysis
+               4. Insights
+        ============================================== -->
+        <div id="cgpa-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- ── 1. Hero Result ── -->
+          <div class="cgpa-section-card cgpa-hero-card">
+            <h2 class="cgpa-section-title">
+              <span class="cgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Your CGPA
+            </h2>
+            <div class="cgpa-big-number" id="cgpa-display">—</div>
+            <p class="cgpa-range-note" style="margin-top:var(--sp-2)">Cumulative Grade Point Average across all semesters, weighted by credit hours.</p>
+          </div>
+
+          <!-- ── 2. Academic Summary ── -->
+          <div class="cgpa-section-card">
+            <h2 class="cgpa-section-title">
+              <span class="cgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Academic Summary
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cgpa-total-semesters">—</div>
+                <div class="tool-stat-label">Total Semesters</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cgpa-total-credits">—</div>
+                <div class="tool-stat-label">Total Credits</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cgpa-weighted-points">—</div>
+                <div class="tool-stat-label">Weighted Grade Points</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 3. Performance Analysis ── -->
+          <div class="cgpa-section-card">
+            <h2 class="cgpa-section-title">
+              <span class="cgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+              </span>
+              Performance Analysis
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cgpa-avg-gpa">—</div>
+                <div class="tool-stat-label">Average GPA</div>
+              </div>
+              <div class="tool-stat cgpa-stat--high">
+                <div class="tool-stat-value" id="cgpa-highest-gpa">—</div>
+                <div class="tool-stat-label" id="cgpa-highest-label">Highest GPA</div>
+              </div>
+              <div class="tool-stat cgpa-stat--low">
+                <div class="tool-stat-value" id="cgpa-lowest-gpa">—</div>
+                <div class="tool-stat-label" id="cgpa-lowest-label">Lowest GPA</div>
+              </div>
+            </div>
+            <p class="tool-note">Your CGPA differs from the simple average GPA because it weights each semester by its credit hours. Heavier semesters have more influence on your final CGPA.</p>
+          </div>
+
+          <!-- ── 4. Insights ── -->
+          <div class="cgpa-section-card" id="cgpa-insights-card">
+            <h2 class="cgpa-section-title">
+              <span class="cgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+              </span>
+              Insights
+            </h2>
+            <ul class="cgpa-insights-list" id="cgpa-insights-list" aria-label="Academic insights"></ul>
+          </div>
+
+        </div><!-- /#cgpa-results -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="cgpa-related-wrap" aria-labelledby="cgpa-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="cgpa-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="cgpa-related-grid"
+               data-tool-id="cgpa-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS — 8 required sections
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is CGPA? -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            What Is CGPA?
+          </h2>
+          <p>CGPA stands for Cumulative Grade Point Average. It is the single number that represents your overall academic performance across every semester you have completed. Unlike a semester GPA — which reflects only one term — CGPA gives universities, employers and graduate schools a comprehensive view of your academic history from day one to your most recent results.</p>
+          <p>CGPA is calculated using a weighted average, where each semester's GPA is multiplied by its credit hours. This ensures that a semester carrying 24 credits counts more than a lighter semester with 12 credits, which accurately reflects the true academic load you carried at each stage of your degree.</p>
+          <p>Most universities around the world — including institutions in India, Pakistan, the US, UK, Canada and Australia — use CGPA as the primary academic metric on official transcripts. It is the number most employers ask for on job applications, and the figure used to determine scholarship eligibility, academic honours, and progression to postgraduate study.</p>
+        </section>
+
+        <!-- 2. How Does CGPA Work? -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-formula-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-formula-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            How Is CGPA Calculated?
+          </h2>
+          <p>The standard CGPA formula is straightforward:</p>
+          <p><strong>CGPA = Σ(GPA × Credits) ÷ Σ(Credits)</strong></p>
+          <p>Here is a practical example. Suppose you have completed four semesters:</p>
+          <ul>
+            <li>Semester 1: GPA 3.8, 18 credits → 68.4 weighted points</li>
+            <li>Semester 2: GPA 3.5, 20 credits → 70.0 weighted points</li>
+            <li>Semester 3: GPA 3.9, 18 credits → 70.2 weighted points</li>
+            <li>Semester 4: GPA 3.6, 20 credits → 72.0 weighted points</li>
+          </ul>
+          <p>Total weighted points: 280.6. Total credits: 76. CGPA = 280.6 ÷ 76 = <strong>3.69</strong>.</p>
+          <p>Notice that simply averaging the four GPAs (3.8 + 3.5 + 3.9 + 3.6 ÷ 4 = 3.70) gives a slightly different result. The weighted formula is always correct because it accounts for the different credit loads each semester carries.</p>
+          <p>This calculator applies the formula precisely using full floating-point precision internally, rounding only the final displayed value to two decimal places.</p>
+        </section>
+
+        <!-- 3. How To Use This Calculator -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-howto-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Enter the GPA for your first semester. Use the same scale your university uses — 4.0, 5.0, 7.0 or 10.0 all work correctly.</p></li>
+            <li><p>Enter the total credit hours for that semester. If you are unsure, check your transcript or course catalogue — typical semesters carry 15–24 credits.</p></li>
+            <li><p>Optionally, give the semester a name (e.g. "Year 1 Sem 1") to make results easier to read. This field is not required.</p></li>
+            <li><p>Click <strong>Add Semester</strong> to add a row for your next semester and repeat the process for each completed term.</p></li>
+            <li><p>Click <strong>Calculate CGPA</strong> to see your cumulative result, academic summary, performance analysis and insights.</p></li>
+            <li><p>Click <strong>Reset</strong> to clear all entries and start over. Your data is also erased from browser storage.</p></li>
+          </ol>
+          <p>Your inputs are automatically saved to your browser as you type, so you can close the page and return later without re-entering your data.</p>
+        </section>
+
+        <!-- 4. Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-results-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-results-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            Understanding Your Results
+          </h2>
+          <p>After calculating, this tool shows four result sections:</p>
+          <p><strong>Your CGPA</strong> — The primary result. Your weighted cumulative grade point average, followed by an academic classification such as Excellent, Very Good or Satisfactory based on your score.</p>
+          <p><strong>Academic Summary</strong> — Three key figures: total semesters entered, total credit hours across all semesters, and total weighted grade points (the numerator in the CGPA formula). These help verify that your inputs are correct before accepting the result.</p>
+          <p><strong>Performance Analysis</strong> — Your unweighted average GPA (simple arithmetic mean across semesters), your highest single-semester GPA, and your lowest. The semester name is shown alongside each to help you identify which term performed best and which dragged your average down.</p>
+          <p><strong>Insights</strong> — Contextual observations about your academic trajectory. For example, whether your performance is consistent or variable, whether your most recent semester improved or fell below your CGPA, and what a strong finish might mean for your final GPA.</p>
+        </section>
+
+        <!-- 5. GPA Scales & Grading Systems -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-scales-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-scales-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            GPA Scales and Grading Systems
+          </h2>
+          <p>This calculator is scale-neutral — it works correctly for any GPA system. The most common scales include:</p>
+          <ul>
+            <li><strong>4.0 Scale</strong> — Used widely in the US, Canada, and many Southeast Asian universities. An A typically equals 4.0.</li>
+            <li><strong>5.0 Scale</strong> — Used in some Australian and West African institutions. An A may equal 5.0 or 7.0 depending on the system.</li>
+            <li><strong>7.0 Scale</strong> — Common in Australian universities like the University of Melbourne. High Distinction is typically a 7.</li>
+            <li><strong>10.0 Scale</strong> — Standard in India, used across most Indian universities. An O (Outstanding) grade is 10.</li>
+          </ul>
+          <p>Simply enter your GPA using whatever scale your institution uses. Do not convert to a different scale — the CGPA formula works identically regardless of the maximum value, and mixed conversions introduce errors.</p>
+          <p>If your institution uses letter grades (A, B, C), convert them to numeric GPA using your institution's official conversion table first. Different universities assign different numeric values to the same letter grade.</p>
+        </section>
+
+        <!-- 6. Factors That Affect Your CGPA -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-factors-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-factors-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 0v10l4.5 4.5"/></svg></span>
+            Factors That Affect Your CGPA
+          </h2>
+          <p>Several variables determine how quickly your CGPA changes from semester to semester:</p>
+          <p><strong>Credit Weight.</strong> High-credit semesters have the biggest impact on your CGPA. A 3.0 GPA in a semester with 24 credits shifts your cumulative average more than a 3.0 GPA in a semester with 12 credits. This is why late semesters, which often carry the heaviest loads, can significantly influence your final CGPA.</p>
+          <p><strong>Starting Performance.</strong> Your earliest semesters become a baseline that is difficult to escape. A poor first year lowers your CGPA in a way that takes several strong subsequent semesters to correct — because each early semester permanently forms part of the weighted pool.</p>
+          <p><strong>Course Difficulty.</strong> Elective courses in your strongest subjects can lift your GPA above what core required courses achieve. Some students strategically balance heavier required modules with lighter electives to manage their overall GPA.</p>
+          <p><strong>Grade Replacement Policies.</strong> Some universities allow students to retake failed or low-grade subjects and replace the original grade in the CGPA calculation. If your institution offers this, it can be one of the most effective ways to improve a historically low CGPA.</p>
+          <p><strong>Pass/Fail and Audit Courses.</strong> Courses taken as Pass/Fail or audited are typically excluded from the GPA calculation. If you have such courses, do not include them in this calculator as they would distort your CGPA.</p>
+        </section>
+
+        <!-- 7. Common Mistakes and Tips -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-seo-tips-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Mistakes and Tips
+          </h2>
+          <p><strong>Mistake 1 — Mixing GPA scales.</strong> If your first two semesters were graded on a 4.0 scale but your next semesters use a 10.0 scale, never enter them together as-is. The calculator would weight them incorrectly. Convert all to one consistent scale first.</p>
+          <p><strong>Mistake 2 — Using subject credits instead of semester credits.</strong> Enter the total credit hours for the entire semester, not for any single subject. Mixing the two will inflate your total credits and produce an inaccurate result.</p>
+          <p><strong>Mistake 3 — Including incomplete or pending grades.</strong> Only include semesters where final grades have been officially awarded. Estimated or projected grades will reduce accuracy.</p>
+          <p><strong>Tip: Focus on high-credit semesters.</strong> Because credit hours drive the weighting, earning a strong GPA in your highest-credit semesters has a disproportionate positive effect on your CGPA. Prioritize effort in your most credit-heavy terms.</p>
+          <p><strong>Tip: Track your trajectory.</strong> Use this calculator each semester after results are released. Watching your CGPA move over time reveals patterns — consistent improvement, stagnation, or a specific semester that needs attention.</p>
+          <p><strong>Tip: Simulate future semesters.</strong> Add a hypothetical semester with an estimated GPA to see how it would move your CGPA. This helps you set realistic targets for the terms ahead.</p>
+        </section>
+
+        <!-- 8. FAQ -->
+        <section class="tool-seo-section" aria-labelledby="cgpa-faq-heading">
+          <h2 class="tool-seo-section-title" id="cgpa-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="cgpa-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a1">
+                What is CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a1" role="region">
+                CGPA stands for Cumulative Grade Point Average. It is the weighted average of your GPA scores across all completed semesters, where each semester is weighted by its credit hours. It is the primary academic performance metric used on university transcripts worldwide.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a2">
+                How is CGPA calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a2" role="region">
+                CGPA = Σ(GPA × Credits) ÷ Σ(Credits). Multiply each semester's GPA by its credit hours, sum all those products, then divide by the total credit hours. This is the standard formula used by universities worldwide.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a3">
+                What is the difference between GPA and CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a3" role="region">
+                GPA refers to a single semester's performance. CGPA is the cumulative weighted average across all semesters. CGPA is what appears on your official transcript and is used by employers and graduate schools to evaluate your overall academic record.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a4">
+                Why is CGPA different from a simple average of my semester GPAs?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a4" role="region">
+                CGPA weights each semester by its credit hours. A semester with 20 credits contributes twice as much as one with 10 credits. A simple average ignores this difference and can produce misleading results when semesters have different credit loads.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a5">
+                What is a good CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a5" role="region">
+                On a 4.0 scale, 3.5 and above is generally considered excellent. A 3.0–3.5 CGPA is good, 2.5–3.0 is satisfactory, and below 2.0 may affect your academic standing. On a 10.0 scale, 8.0 and above is excellent, 7.0–8.0 is very good, and 6.0–7.0 is good. Standards vary by institution and program.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a6">
+                Does this calculator work for 10-point GPA scales?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a6" role="region">
+                Yes. The CGPA formula is scale-neutral — it works identically whether you use a 4.0, 5.0, 7.0 or 10.0 system. Enter your GPA in whatever scale your institution uses without converting it.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a7">
+                Can a single bad semester ruin my CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a7" role="region">
+                It depends on the credit weight of that semester. A low-GPA semester with few credits has a smaller impact than a heavy one. Over multiple subsequent semesters of strong performance, your CGPA can recover — though early semesters remain permanently part of the weighted calculation.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a8">
+                How many semesters can I add?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a8" role="region">
+                There is no maximum. You can add as many semesters as your degree program requires. The calculator handles full four-year, five-year and extended programs without any issues.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cgpa-faq-a9">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cgpa-faq-a9" role="region">
+                Your semester data is saved to your browser's local storage so it persists between visits. Your data never leaves your device and is never sent to any server. Clicking Reset clears all saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="cgpa.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

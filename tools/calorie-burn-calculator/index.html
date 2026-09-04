@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Burn Calculator — Calories Burned Per Activity | Project 50</title>
+  <meta name="description" content="Calculate how many calories you burn during walking, running, cycling, gym workouts and sports based on MET values, your weight and duration. Includes weekly burn, food equivalents and activity comparisons.">
+  <meta name="keywords" content="calorie burn calculator, calories burned calculator, met calculator, exercise calories, calories burned walking, calories burned running, workout calorie calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/calorie-burn-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/calorie-burn-calculator/">
+  <meta property="og:title" content="Calorie Burn Calculator — Calories Burned Per Activity | Project 50">
+  <meta property="og:description" content="Find out how many calories you burn during exercise using MET-based calculations. Free, private, no signup needed.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Calorie Burn Calculator — Calories Burned Per Activity | Project 50">
+  <meta name="twitter:description" content="Calculate calories burned for walking, running, cycling, gym workouts and sports based on MET values, weight and duration.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Calorie Burn Calculator",
+    "url": "https://project50.tools/tools/calorie-burn-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate calories burned during exercise using MET-based calculations. Personalised for your body weight, activity and duration.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Calorie Burn Calculator", "item": "https://project50.tools/tools/calorie-burn-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many calories do I burn during exercise?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The number of calories you burn depends on the activity's intensity (MET value), your body weight and how long you exercise. This calculator multiplies the MET value of your chosen activity by your weight in kilograms and the duration in hours to estimate calories burned." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a MET value?",
+        "acceptedAnswer": { "@type": "Answer", "text": "MET stands for Metabolic Equivalent of Task. One MET represents the energy you use at rest. An activity with a MET of 8 burns roughly 8 times as much energy as resting. MET values let researchers compare the intensity of different activities on a common scale." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do heavier people burn more calories?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Moving a heavier body requires more energy. Since the calorie burn formula multiplies MET by body weight, a heavier person burns more calories than a lighter person doing the same activity for the same duration." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are calorie burn calculators accurate?",
+        "acceptedAnswer": { "@type": "Answer", "text": "MET-based calculators provide useful estimates based on population averages, but actual calorie burn varies with fitness level, technique, terrain, temperature and individual metabolism. Treat the results as a starting point rather than an exact figure." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which activity burns the most calories?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Generally, higher-intensity activities with higher MET values burn more calories per minute. Fast running, HIIT and CrossFit tend to burn the most, while slow walking burns the least, though duration also plays a major role in total calories burned." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I lose weight by exercising alone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Exercise increases the calories you burn, which can contribute to a calorie deficit, but weight loss ultimately depends on total calories consumed versus total calories burned. Combining regular exercise with mindful eating is more effective than exercise alone." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many calories equal 1 kilogram of fat?",
+        "acceptedAnswer": { "@type": "Answer", "text": "One kilogram of body fat is commonly estimated to be equivalent to about 7,700 kilocalories. This figure is used to estimate potential fat loss from a given calorie deficit, though actual results vary by individual." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does this calculator show food equivalents?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Food equivalents translate an abstract calorie number into something tangible, like a number of bananas or cups of rice. This can help put your calorie burn into everyday perspective, though it is for illustration only and not a meal plan." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="calorie-burn.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Calorie Burn Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#f97316" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Calorie Burn Calculator</h1>
+            <p class="tool-subtitle">Calculate how many calories you burn during exercise based on your weight, activity and duration.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Calorie burn calculator inputs">
+
+          <!-- Weight with unit selection -->
+          <div class="tool-field">
+            <div class="cb-unit-label-row">
+              <label class="tool-field-label" for="cb-weight" id="cb-weight-label">Weight (kg)</label>
+              <div class="cb-select-wrap cb-unit-select-wrap">
+                <select class="tool-select cb-unit-select" id="cb-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="cb-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="cb-weight" placeholder="e.g. 70" min="20" max="300" aria-describedby="cb-weight-hint">
+            <span class="tool-field-hint" id="cb-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Category + Activity -->
+          <div class="cb-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="cb-activity-category">Activity Category</label>
+              <div class="cb-select-wrap">
+                <select class="tool-select" id="cb-activity-category" aria-describedby="cb-category-hint">
+                  <option value="walking" selected>Walking</option>
+                  <option value="running">Running</option>
+                  <option value="cycling">Cycling</option>
+                  <option value="gym">Gym</option>
+                  <option value="sports">Sports</option>
+                </select>
+                <span class="cb-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+              <span class="tool-field-hint" id="cb-category-hint">Choose a category</span>
+            </div>
+
+            <div class="tool-field">
+              <label class="tool-field-label" for="cb-activity">Activity</label>
+              <div class="cb-select-wrap">
+                <select class="tool-select" id="cb-activity" aria-describedby="cb-activity-hint">
+                  <!-- Populated dynamically by JS based on category -->
+                </select>
+                <span class="cb-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+              <span class="tool-field-hint" id="cb-activity-hint">Pick the activity that best matches your session</span>
+            </div>
+          </div>
+
+          <!-- Duration -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="cb-duration">Duration (minutes)</label>
+            <input class="tool-input" type="number" id="cb-duration" placeholder="e.g. 30" min="15" max="300" aria-describedby="cb-duration-hint">
+            <span class="tool-field-hint" id="cb-duration-hint">15–300 minutes</span>
+          </div>
+
+          <!-- Validation -->
+          <div class="cb-validation" id="cb-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Buttons -->
+          <div class="cb-btn-row">
+            <button class="btn btn-primary btn-lg" id="cb-calc-btn">
+              Calculate Calories Burned
+            </button>
+            <button class="btn btn-secondary btn-lg" id="cb-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+
+        </div><!-- /.tool-form -->
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="cb-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Section 1: Calorie Burn Snapshot -->
+          <div class="cb-section-card cb-summary-card">
+            <h2 class="cb-section-title">
+              <span class="cb-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Calorie Burn Snapshot
+            </h2>
+            <div class="cb-summary-grid">
+              <div class="cb-summary-item">
+                <div class="cb-summary-val" id="snap-calories">—</div>
+                <div class="cb-summary-unit">kcal</div>
+                <div class="cb-summary-label">Calories Burned</div>
+              </div>
+              <div class="cb-summary-item cb-summary-item--highlight">
+                <div class="cb-summary-val" id="snap-fat">—</div>
+                <div class="cb-summary-unit">g</div>
+                <div class="cb-summary-label">Fat Equivalent</div>
+              </div>
+              <div class="cb-summary-item">
+                <div class="cb-summary-val" id="snap-per-hour">—</div>
+                <div class="cb-summary-unit">kcal</div>
+                <div class="cb-summary-label">Per Hour</div>
+              </div>
+              <div class="cb-summary-item">
+                <div class="cb-summary-val" id="snap-intensity">—</div>
+                <div class="cb-summary-unit">&nbsp;</div>
+                <div class="cb-summary-label">Intensity</div>
+              </div>
+            </div>
+            <p class="cb-range-note" style="margin-top:var(--sp-2)">Your estimated calorie burn for this session, based on MET, weight and duration.</p>
+          </div>
+
+          <!-- Section 2: Weight Loss Impact -->
+          <div class="cb-section-card">
+            <h2 class="cb-section-title">
+              <span class="cb-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Weight Loss Impact
+            </h2>
+            <div class="cb-proj-table">
+              <div class="cb-proj-row">
+                <div class="cb-proj-label">Weekly Burn (3 sessions/week)</div>
+                <div class="cb-proj-value" id="cb-weekly-burn">—</div>
+              </div>
+              <div class="cb-proj-row">
+                <div class="cb-proj-label">Monthly Burn (3x/week × 4 weeks)</div>
+                <div class="cb-proj-value" id="cb-monthly-burn">—</div>
+              </div>
+              <div class="cb-proj-row cb-proj-row--highlight">
+                <div class="cb-proj-label">Potential Monthly Fat Loss</div>
+                <div class="cb-proj-value" id="cb-fat-loss">—</div>
+              </div>
+            </div>
+            <p class="cb-range-note" style="margin-top:var(--sp-3)">Based on 7,700 kcal per kg of body fat. Assumes calorie intake remains unchanged. Actual results vary by individual metabolism, diet and training.</p>
+          </div>
+
+          <!-- Section 3: Food Equivalents -->
+          <div class="cb-section-card">
+            <h2 class="cb-section-title">
+              <span class="cb-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
+              </span>
+              Food Equivalents
+            </h2>
+            <div class="cb-food-grid" id="cb-food-grid">
+              <!-- Filled by JS -->
+            </div>
+            <p class="cb-range-note" style="margin-top:var(--sp-2)">Approximate number of items needed to match the calories burned in this session. Examples only — not a meal plan.</p>
+          </div>
+
+          <!-- Section 4: Compare Activities -->
+          <div class="cb-section-card">
+            <h2 class="cb-section-title">
+              <span class="cb-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+              </span>
+              Compare Activities
+            </h2>
+            <div class="cb-compare-grid" id="cb-compare-grid">
+              <!-- Filled by JS -->
+            </div>
+            <p class="cb-range-note" style="margin-top:var(--sp-2)">Estimated calories burned for your current weight and duration across common activities.</p>
+          </div>
+
+          <!-- Section 5: Activity Breakdown -->
+          <div class="cb-section-card">
+            <h2 class="cb-section-title">
+              <span class="cb-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              Activity Breakdown
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="breakdown-activity">—</div>
+                <div class="tool-stat-label">Activity</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="breakdown-met">—</div>
+                <div class="tool-stat-label">MET Value</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="breakdown-duration">—</div>
+                <div class="tool-stat-label">Duration</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="breakdown-intensity">—</div>
+                <div class="tool-stat-label">Intensity</div>
+              </div>
+            </div>
+            <div class="cb-breakdown-formula" id="breakdown-formula">—</div>
+            <p class="tool-note">Formula used: MET × Weight (kg) × Duration (hours). Results are estimates — individual calorie burn varies. Consult a healthcare provider before making significant exercise or dietary changes.</p>
+          </div>
+
+        </div><!-- /#cb-results -->
+
+                <!-- Related Tools — before calculation, below form -->
+        <div class="tool-related" " style="--tool-related-color:#f97316">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="cb-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections" id="cb-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="cb-about-heading">
+          <h2 class="tool-seo-section-title" id="cb-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </span>
+            About the Calorie Burn Calculator
+          </h2>
+          <p>A calorie burn calculator estimates how much energy — measured in kilocalories — your body uses during a specific activity. Every movement you make, from a gentle walk to an intense HIIT session, requires energy beyond what your body uses at rest. This tool helps you put a number on that extra energy expenditure.</p>
+          <p>Calorie expenditure during exercise depends on three main factors: the intensity of the activity, your body weight, and how long you do it for. Heavier bodies require more energy to move, more intense activities demand more energy per minute, and longer durations simply accumulate more total energy use.</p>
+          <p>Different activities burn calories at very different rates because they place different demands on your muscles and cardiovascular system. A slow walk keeps your body close to its resting energy use, while fast running, HIIT or CrossFit can push your energy expenditure many times higher than resting levels. This calculator uses standardised intensity values, known as MET values, to capture these differences across walking, running, cycling, gym workouts and sports.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="cb-howto-heading">
+          <h2 class="tool-seo-section-title" id="cb-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Calorie Burn Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Select your preferred <strong>weight unit</strong> (kg or lbs) and enter your current body weight. Values convert automatically when you switch units.</p>
+            </li>
+            <li>
+              <p>Choose an <strong>Activity Category</strong> — Walking, Running, Cycling, Gym or Sports.</p>
+            </li>
+            <li>
+              <p>Pick the specific <strong>Activity</strong> from the dependent dropdown that best matches what you did.</p>
+            </li>
+            <li>
+              <p>Enter the <strong>duration</strong> of your session in minutes (15–300 minutes).</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate Calories Burned</strong> to see your calorie burn snapshot, weight loss impact, food equivalents, activity comparisons and a full breakdown of the calculation.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- What Are Calories Burned -->
+        <section class="tool-seo-section" aria-labelledby="cb-what-heading">
+          <h2 class="tool-seo-section-title" id="cb-what-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </span>
+            What Are Calories Burned?
+          </h2>
+          <p>Calories are a unit of energy. Your body constantly uses energy to keep you alive — for breathing, circulation and cell repair — and uses additional energy whenever you move. The combination of these two is your total energy expenditure for the day.</p>
+          <p>When you exercise, your muscles demand extra energy on top of your resting needs. This additional usage is what we refer to as "calories burned" during exercise. The harder and longer you work, the more energy your body draws on to fuel that effort.</p>
+          <p>Different activities place different demands on the body. A slow walk uses muscles gently and for short bursts of effort, while running, cycling at speed, or high-intensity training recruit more muscle mass and push your heart rate higher, which increases the rate at which calories are burned.</p>
+        </section>
+
+        <!-- How Calorie Burn Is Calculated -->
+        <section class="tool-seo-section" aria-labelledby="cb-howcalc-heading">
+          <h2 class="tool-seo-section-title" id="cb-howcalc-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg>
+            </span>
+            How Calorie Burn Is Calculated
+          </h2>
+          <p>This calculator uses the MET-based formula, a widely used method in exercise science for estimating energy expenditure: <strong>Calories Burned = MET × Weight (kg) × Duration (hours)</strong>.</p>
+          <p><strong>MET (Metabolic Equivalent of Task)</strong> is a standardised measure of how intense an activity is compared to resting. A MET of 1 represents your resting energy use, while higher MET values represent progressively more demanding activities. Each activity in this calculator — from slow walking to HIIT — has its own established MET value.</p>
+          <p><strong>Weight</strong> is included because moving a heavier body requires more energy. The formula is expressed in kilograms, so if you select pounds, your weight is converted automatically.</p>
+          <p><strong>Duration</strong> is converted from minutes to hours before being applied, since MET values represent energy use per hour. Longer sessions accumulate proportionally more total calories burned.</p>
+        </section>
+
+        <!-- Factors That Affect Calories Burned -->
+        <section class="tool-seo-section" aria-labelledby="cb-factors-heading">
+          <h2 class="tool-seo-section-title" id="cb-factors-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            Factors That Affect Calories Burned
+          </h2>
+          <p><strong>Body Weight.</strong> Heavier bodies burn more calories doing the same activity for the same duration, because moving more mass requires more energy.</p>
+          <p><strong>Activity Intensity.</strong> Higher-MET activities, such as fast running, HIIT or CrossFit, burn calories at a much faster rate per minute than lower-intensity activities like slow walking.</p>
+          <p><strong>Duration.</strong> Total calories burned scale directly with how long you exercise. A longer session at a lower intensity can burn a similar total to a shorter session at a higher intensity.</p>
+          <p><strong>Exercise Efficiency.</strong> Fitness level, technique and movement efficiency can all influence real-world calorie burn. More experienced athletes may move more efficiently, which can slightly reduce energy use for the same activity compared to beginners.</p>
+        </section>
+
+        <!-- Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="cb-results-heading">
+          <h2 class="tool-seo-section-title" id="cb-results-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p><strong>Calories Burned</strong> is your total estimated energy expenditure for the session, based on MET, weight and duration.</p>
+          <p><strong>Fat Equivalent</strong> converts your calorie burn into grams of body fat, using the common estimate of 7,700 kcal per kilogram of fat.</p>
+          <p><strong>Calories Per Hour</strong> normalises your burn rate to an hourly figure, useful for comparing activities of different lengths.</p>
+          <p><strong>Weekly and Monthly Projections</strong> assume you repeat this session three times per week, showing the cumulative effect over a week and a month.</p>
+          <p><strong>Food Equivalents</strong> translate your calorie burn into everyday food items, helping you visualise the energy in practical terms.</p>
+          <p><strong>Compare Activities</strong> shows how your same weight and duration would translate into calories burned across walking, running, cycling and HIIT, helping you see the relative impact of activity choice.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="cb-faq-heading">
+          <h2 class="tool-seo-section-title" id="cb-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="cb-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a1">
+                How many calories do I burn during exercise?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a1" role="region">
+                The number of calories you burn depends on the activity's intensity (its MET value), your body weight and how long you exercise. This calculator multiplies the MET value of your chosen activity by your weight in kilograms and the duration in hours to estimate calories burned.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a2">
+                What is a MET value?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a2" role="region">
+                MET stands for Metabolic Equivalent of Task. One MET represents the energy you use at rest. An activity with a MET of 8 burns roughly eight times as much energy as resting. MET values let researchers and calculators compare the intensity of different activities on a common scale.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a3">
+                Why do heavier people burn more calories?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a3" role="region">
+                Moving a heavier body requires more energy. Since the calorie burn formula multiplies MET by body weight, a heavier person burns more calories than a lighter person doing the same activity for the same duration, even though the relative effort may feel similar.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a4">
+                Are calorie burn calculators accurate?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a4" role="region">
+                MET-based calculators provide useful estimates based on population averages, but actual calorie burn varies with fitness level, technique, terrain, temperature and individual metabolism. Treat the results as a strong starting point rather than an exact figure, and use them mainly to compare activities relative to each other.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a5">
+                Which activity burns the most calories?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a5" role="region">
+                Generally, higher-intensity activities with higher MET values burn more calories per minute. Fast running, HIIT and CrossFit tend to burn the most per minute, while slow walking burns the least. However, total calories also depend heavily on duration, so a longer lower-intensity session can match a shorter high-intensity one.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a6">
+                Can I lose weight by exercising alone?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a6" role="region">
+                Exercise increases the calories you burn, which can contribute to a calorie deficit, but weight loss ultimately depends on total calories consumed versus total calories burned. Combining regular exercise with mindful eating tends to be far more effective than relying on exercise alone.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a7">
+                How many calories equal 1 kilogram of fat?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a7" role="region">
+                One kilogram of body fat is commonly estimated to be equivalent to about 7,700 kilocalories. This figure is used in this calculator to estimate the potential monthly fat loss from a given calorie burn, assuming calorie intake stays unchanged. Actual results vary by individual.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cb-faq-a8">
+                Why does this calculator show food equivalents?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cb-faq-a8" role="region">
+                Food equivalents translate an abstract calorie number into something tangible, like a number of bananas, eggs, samosas or cups of rice. This can help put your calorie burn into everyday perspective. They are for illustration only and are not intended as a meal plan or dietary recommendation.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="calorie-burn.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

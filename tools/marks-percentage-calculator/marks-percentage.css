@@ -1,0 +1,610 @@
+/* ============================================
+   MARKS-PERCENTAGE.CSS — Project 50
+   Marks Percentage Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers:
+     - Mode selector (tab bar) — desktop + scrollable mobile
+     - Two-column field row (.mpc-row-2)
+     - Field groups (Target / Goal modes)
+     - Subject row component (shared: Multiple Subjects + Best Subjects)
+     - Best-of count row
+     - Validation message
+     - Action button rows (2-button and 3-button)
+     - Section cards (mirrors .cgpa-section-card exactly —
+       macro.css is not loaded on this page)
+     - Hero result (big number / classification / status badge)
+     - Stat colour variants (high/low)
+     - Breakdown + insights lists
+     - Responsive: 768px, 640px, 480px, 380px
+============================================ */
+
+/* ============================================
+   MODE SELECTOR — compact tab bar
+============================================ */
+
+.mpc-mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mpc-mode-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.mpc-mode-tab {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mpc-mode-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.mpc-mode-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.mpc-mode-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PANELS
+============================================ */
+
+.mpc-panel[hidden] {
+  display: none;
+}
+
+/* ============================================
+   TWO-COLUMN FIELD ROW
+============================================ */
+
+.mpc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* ============================================
+   FIELD GROUPS — Target / Goal modes
+============================================ */
+
+.mpc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.mpc-field-group-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.mpc-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+/* ============================================
+   SUBJECT ROW COMPONENT
+   Shared between Multiple Subjects + Best Subjects
+============================================ */
+
+.mpc-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 110px 110px 40px;
+  gap: 8px;
+  padding: 0 2px 2px;
+}
+
+.mpc-col-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.mpc-subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mpc-subject-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 110px 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.mpc-name-field,
+.mpc-obtained-field,
+.mpc-max-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mpc-field-mobile-label {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 5px;
+}
+
+.mpc-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.mpc-remove-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.mpc-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: scale(1.05);
+}
+
+.mpc-remove-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   BEST-OF COUNT ROW
+============================================ */
+
+.mpc-best-count-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.mpc-best-count-row .tool-field-label {
+  white-space: nowrap;
+}
+
+.mpc-best-count-row span[aria-hidden] {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.mpc-best-count-input {
+  max-width: 96px;
+}
+
+/* ============================================
+   ACTION BUTTON ROWS
+============================================ */
+
+.mpc-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mpc-actions .btn-primary {
+  flex: 1;
+}
+
+.mpc-actions--three .btn-secondary:first-child {
+  min-width: 152px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.mpc-actions--three .btn-secondary:last-child {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.mpc-actions:not(.mpc-actions--three) .btn-secondary {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .macro-section-card / .cgpa-section-card exactly.
+============================================ */
+
+.mpc-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.mpc-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.mpc-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HERO RESULT
+============================================ */
+
+.mpc-hero-card {
+  text-align: center;
+}
+
+.mpc-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+.mpc-hero-classification {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Status badge — Target / Goal modes */
+.mpc-status-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  margin: var(--sp-1) 0 var(--sp-2);
+}
+
+.mpc-status-badge--achieved,
+.mpc-status-badge--secured {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.mpc-status-badge--achievable {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+}
+
+.mpc-status-badge--perfect {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.mpc-status-badge--impossible {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.mpc-status-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   STAT COLOUR VARIANTS
+============================================ */
+
+.mpc-highlow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.mpc-stat--high .tool-stat-value {
+  color: #34d399;
+}
+
+.mpc-stat--low .tool-stat-value {
+  color: #f87171;
+}
+
+/* ============================================
+   BREAKDOWN LISTS — subject breakdown, selected/excluded
+============================================ */
+
+.mpc-breakdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mpc-breakdown-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--fs-sm);
+}
+
+.mpc-breakdown-name {
+  color: var(--color-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.mpc-breakdown-value {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+.mpc-breakdown-list--excluded li {
+  opacity: 0.7;
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.mpc-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.mpc-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.mpc-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.mpc-insight-icon--positive { color: #34d399; }
+.mpc-insight-icon--neutral  { color: #60a5fa; }
+.mpc-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .mpc-mode-selector {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+
+  .mpc-mode-tab {
+    padding: 9px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .mpc-section-card {
+    padding: var(--sp-3);
+  }
+
+  .mpc-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .mpc-col-headers {
+    display: none;
+  }
+
+  .mpc-subject-list {
+    gap: var(--sp-2);
+  }
+
+  .tool-form.mpc-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .mpc-subject-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "name    name"
+      "obtained max";
+    gap: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-2);
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .mpc-subject-row:focus-within {
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .mpc-subject-row .mpc-name-field     { grid-area: name; }
+  .mpc-subject-row .mpc-obtained-field { grid-area: obtained; }
+  .mpc-subject-row .mpc-max-field      { grid-area: max; }
+  .mpc-name-field {
+    margin-top: 10px;
+  }
+
+  .mpc-field-mobile-label { display: block; }
+
+  .mpc-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .mpc-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .mpc-actions .btn-secondary,
+  .mpc-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  .mpc-best-count-row {
+    flex-wrap: wrap;
+  }
+
+  .mpc-highlow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .mpc-hero-card {
+    text-align: left;
+  }
+
+  .mpc-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .mpc-breakdown-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+
+  .tool-form.mpc-form {
+    padding: var(--sp-1) 14px;
+    gap: 14px;
+  }
+
+  .mpc-subject-row {
+    padding: 14px;
+  }
+
+  .mpc-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+
+  .mpc-mode-tab {
+    padding: 8px 10px;
+  }
+}

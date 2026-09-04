@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Weight Calculator — Healthy Weight Range by Height &amp; Gender | Project 50</title>
+  <meta name="description" content="Calculate your ideal weight range based on height and gender. Uses four established formulas (Devine, Hamwi, Robinson, Miller) to give you a consensus healthy weight range.">
+  <meta name="keywords" content="ideal weight calculator, healthy weight calculator, ideal body weight, weight range calculator, Devine formula, Hamwi formula, Robinson formula, Miller formula">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/ideal-weight-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/ideal-weight-calculator/">
+  <meta property="og:title" content="Ideal Weight Calculator — Healthy Weight Range by Height &amp; Gender | Project 50">
+  <meta property="og:description" content="Find your healthy weight range using four established formulas. Private, instant, no signup needed.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Ideal Weight Calculator — Healthy Weight Range | Project 50">
+  <meta name="twitter:description" content="Calculate your ideal weight range using four established formulas. Free and private.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <!-- Schema: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ideal Weight Calculator",
+    "url": "https://project50.tools/tools/ideal-weight-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your ideal weight range based on height and gender using the Devine, Hamwi, Robinson and Miller formulas. Returns a consensus minimum, recommended and maximum weight.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Ideal Weight Calculator", "item": "https://project50.tools/tools/ideal-weight-calculator/" }
+    ]
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an ideal weight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ideal weight is not a single fixed number — it is a range of weights considered healthy for a person of a given height and gender. Different formulas produce slightly different values, which is why this calculator shows a minimum, recommended, and maximum weight derived from four established methods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is ideal weight calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator uses four established formulas: Devine (1974), Hamwi (1964), Robinson (1983), and Miller (1983). Each formula is based on height and gender. The results are combined to produce a consensus minimum, recommended (average), and maximum weight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does this calculator show a range instead of one number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because no single formula is universally accurate for all body types. Different formulas were developed from different populations and use different assumptions. Showing a range — derived from the lowest and highest formula results — gives a more realistic and flexible target than any single number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is BMI the same as ideal weight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. BMI measures the ratio of weight to height squared and classifies weight status into categories. Ideal weight formulas give a specific target weight (or range) for your height and gender. BMI and ideal weight often agree but can differ, especially for muscular individuals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can muscle affect ideal weight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Ideal weight formulas are based on population averages and do not account for body composition. A person with high muscle mass may weigh more than the calculated range while still being very healthy. These formulas are best used as a general guideline, not an absolute target."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does age affect ideal weight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four formulas used here (Devine, Hamwi, Robinson, Miller) do not factor in age. However, body composition naturally changes with age — older adults may carry slightly more fat relative to muscle at the same body weight. Use the results as a general reference, not a strict target."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I be healthy outside the recommended range?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The ideal weight range is a statistical guideline based on height and gender. Individual factors like muscle mass, bone density, genetics, and fitness level can all affect what is a healthy weight for a specific person. Always consult a healthcare provider for personalised guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ideal-weight formula is most accurate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No single formula is universally most accurate. Each was derived from different populations. The Devine formula is most widely used clinically; the Robinson and Miller formulas are refinements of it. Using a consensus of all four — as this calculator does — provides a more balanced and reliable result than relying on any one formula alone."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="ideal-weight.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Ideal Weight Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Ideal Weight Calculator</h1>
+            <p class="tool-subtitle">Find your healthy weight range based on height and gender using four established formulas.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             FORM
+        ============================================= -->
+        <div class="tool-form" role="form" aria-label="Ideal weight calculator inputs">
+
+          <!-- Gender -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="iw-gender">Gender</label>
+            <div class="iw-select-wrap">
+              <select class="tool-select" id="iw-gender" aria-label="Biological sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <span class="iw-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="iw-age">Age</label>
+            <input class="tool-input" type="number" id="iw-age" placeholder="e.g. 28" min="18" max="100" aria-describedby="iw-age-hint">
+            <span class="tool-field-hint" id="iw-age-hint">18 or older</span>
+          </div>
+
+          <!-- Height with unit selection -->
+          <div class="tool-field">
+            <div class="iw-unit-label-row">
+              <label class="tool-field-label" for="iw-height-cm" id="iw-height-label">Height (cm)</label>
+              <div class="iw-select-wrap iw-unit-select-wrap">
+                <select class="tool-select iw-unit-select" id="iw-height-unit" aria-label="Height unit">
+                  <option value="cm">cm</option>
+                  <option value="imperial">ft / in</option>
+                </select>
+                <span class="iw-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Metric height -->
+            <div id="iw-height-metric">
+              <input class="tool-input" type="number" id="iw-height-cm" placeholder="e.g. 175" min="100" max="250" aria-describedby="iw-height-hint">
+              <span class="tool-field-hint" id="iw-height-hint">100–250 cm</span>
+            </div>
+
+            <!-- Imperial height -->
+            <div id="iw-height-imperial" hidden>
+              <div class="iw-row iw-row--tight">
+                <div>
+                  <input class="tool-input" type="number" id="iw-height-ft" placeholder="5" min="3" max="8" aria-label="Height in feet">
+                  <span class="tool-field-hint">Feet</span>
+                </div>
+                <div>
+                  <input class="tool-input" type="number" id="iw-height-in" placeholder="9" min="0" max="11" aria-label="Height in inches">
+                  <span class="tool-field-hint">Inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Weight with unit selection -->
+          <div class="tool-field">
+            <div class="iw-unit-label-row">
+              <label class="tool-field-label" for="iw-weight" id="iw-weight-label">Current Weight (kg)</label>
+              <div class="iw-select-wrap iw-unit-select-wrap">
+                <select class="tool-select iw-unit-select" id="iw-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="iw-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="iw-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="iw-weight-hint">
+            <span class="tool-field-hint" id="iw-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Validation -->
+          <div class="iw-validation" id="iw-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Buttons -->
+          <div class="iw-btn-row">
+            <button class="btn btn-primary btn-lg" id="iw-calc-btn">
+              Calculate Ideal Weight
+            </button>
+            <button class="btn btn-secondary btn-lg" id="iw-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="iw-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Section 1: Healthy Weight Snapshot (4 cards) -->
+          <div class="iw-section-card iw-summary-card">
+            <h2 class="iw-section-title">
+              <span class="iw-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Healthy Weight Snapshot
+            </h2>
+            <div class="iw-snapshot-grid">
+              <div class="iw-snapshot-item">
+                <div class="iw-snapshot-val" id="iw-min-weight">—</div>
+                <div class="iw-snapshot-unit" id="iw-min-unit">kg</div>
+                <div class="iw-snapshot-label">Minimum Weight</div>
+              </div>
+              <div class="iw-snapshot-item iw-snapshot-item--highlight">
+                <div class="iw-snapshot-badge">Recommended</div>
+                <div class="iw-snapshot-val" id="iw-rec-weight">—</div>
+                <div class="iw-snapshot-unit" id="iw-rec-unit">kg</div>
+                <div class="iw-snapshot-label">Recommended</div>
+              </div>
+              <div class="iw-snapshot-item">
+                <div class="iw-snapshot-val" id="iw-max-weight">—</div>
+                <div class="iw-snapshot-unit" id="iw-max-unit">kg</div>
+                <div class="iw-snapshot-label">Maximum Weight</div>
+              </div>
+              <div class="iw-snapshot-item iw-snapshot-item--status" id="iw-status-card">
+                <div class="iw-snapshot-val iw-status-val" id="iw-status-text">—</div>
+                <div class="iw-snapshot-label">Current Status</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Healthy Weight Range -->
+          <div class="iw-section-card">
+            <h2 class="iw-section-title">
+              <span class="iw-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+              </span>
+              Healthy Weight Range
+            </h2>
+            <div class="iw-range-display">
+              <span class="iw-range-low" id="iw-range-low">—</span>
+              <span class="iw-range-sep">–</span>
+              <span class="iw-range-high" id="iw-range-high">—</span>
+              <span class="iw-range-unit" id="iw-range-unit">kg</span>
+            </div>
+            <p class="iw-range-note">Based on multiple established ideal-weight formulas.</p>
+          </div>
+
+          <!-- Section 3: Current Weight Analysis -->
+          <div class="iw-section-card">
+            <h2 class="iw-section-title">
+              <span class="iw-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Current Weight Analysis
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="iw-analysis-current">—</div>
+                <div class="tool-stat-label">Current Weight</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="iw-analysis-range">—</div>
+                <div class="tool-stat-label">Healthy Range</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value iw-diff-val" id="iw-analysis-diff">—</div>
+                <div class="tool-stat-label">Difference</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Weight Position Indicator -->
+          <div class="iw-section-card">
+            <h2 class="iw-section-title">
+              <span class="iw-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+              </span>
+              Weight Position Indicator
+            </h2>
+            <div class="iw-bar-wrap">
+              <div class="iw-bar" aria-label="Weight position scale">
+                <div class="iw-bar-segment iw-bar-under"  data-label="Underweight"></div>
+                <div class="iw-bar-segment iw-bar-healthy" data-label="Healthy"></div>
+                <div class="iw-bar-segment iw-bar-over"   data-label="Overweight"></div>
+              </div>
+              <div class="iw-bar-marker-wrap">
+                <div class="iw-bar-marker" id="iw-bar-marker" aria-hidden="true"></div>
+              </div>
+              <div class="iw-bar-labels" aria-hidden="true">
+                <span>Underweight</span>
+                <span>Healthy</span>
+                <span>Overweight</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Recommended Next Step -->
+          <div class="iw-section-card">
+            <h2 class="iw-section-title">
+              <span class="iw-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              </span>
+              Recommended Next Step
+            </h2>
+            <p class="iw-next-step" id="iw-next-step">—</p>
+          </div>
+
+        </div><!-- /#iw-results -->
+
+        <!-- Related Tools — rendered by ideal-weight.js from tools.json, health-fitness only -->
+        <div class="tool-related" id="iw-related-tools" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="iw-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About This Tool -->
+        <section class="tool-seo-section" aria-labelledby="iw-about-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+            </span>
+            About This Tool
+          </h2>
+          <p>The Ideal Weight Calculator helps you understand the weight range considered healthy for your height and gender. Rather than producing a single number, it computes four separate formula results and synthesises them into a minimum, recommended, and maximum weight — giving you a realistic, evidence-informed target range.</p>
+          <p>This tool uses four of the most widely cited ideal-weight formulas: <strong>Devine</strong> (1974), <strong>Hamwi</strong> (1964), <strong>Robinson</strong> (1983), and <strong>Miller</strong> (1983). Each formula was derived from clinical or population data and has been used in medical settings for decades. The consensus approach used here reduces the potential error of any single formula and gives a balanced result.</p>
+          <p>The results are most relevant for adults of average build. If you have a particularly high muscle mass or unusual body composition, the numbers may not fully represent your healthy weight. Use the range as a general guide and consult a healthcare provider for personalised advice.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="iw-howto-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Select your <strong>gender</strong> — the formulas adjust their base values depending on biological sex, so this affects the output significantly.</p>
+            </li>
+            <li>
+              <p>Enter your <strong>age</strong>. While the formulas themselves do not change with age, age helps contextualise your results and is stored for future use.</p>
+            </li>
+            <li>
+              <p>Select your preferred <strong>height unit</strong> (cm or ft/in) and enter your height. Values convert automatically when you switch units, so there is no need to recalculate.</p>
+            </li>
+            <li>
+              <p>Select your preferred <strong>weight unit</strong> (kg or lbs) and enter your current body weight. This is used to compute your current status relative to the healthy range.</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate Ideal Weight</strong> to see your minimum, recommended, and maximum weights, your position on the weight indicator bar, your current status, and a personalised next step.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- What Is An Ideal Weight -->
+        <section class="tool-seo-section" aria-labelledby="iw-what-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-what-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            What Is An Ideal Weight?
+          </h2>
+          <p>There is no single perfect weight. The concept of an "ideal" body weight emerged in the mid-20th century as a clinical shorthand for the weight associated with the lowest risk of disease or the best health outcomes for a given height and sex. Over time, several researchers published formulas based on large samples of patients or populations.</p>
+          <p>What these formulas all agree on is that <strong>healthy weight exists within a range</strong>, not at a precise point. Two people of the same height can be equally healthy at weights 5–10 kg apart, depending on their body composition, fitness level, age, and genetics. Thinking about weight as a range rather than a single number is both more accurate and less stressful.</p>
+        </section>
+
+        <!-- Healthy Weight Range vs Ideal Weight -->
+        <section class="tool-seo-section" aria-labelledby="iw-range-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-range-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </span>
+            Healthy Weight Range vs Ideal Weight
+          </h2>
+          <p>Many calculators present a single "ideal weight" number, which implies a level of precision that the underlying science does not support. When four established formulas give results of 68, 69, 70, and 71 kg for the same person, which one is correct? All of them — within their respective margins of error.</p>
+          <p>Project 50 shows a range rather than one number because this is more honest and more useful. The minimum weight is the lowest of the four formula results; the maximum is the highest; and the recommended weight is the average across all four. This approach acknowledges the variability between formulas and gives you a zone to aim for rather than a single, potentially misleading target.</p>
+        </section>
+
+        <!-- Factors Affecting Healthy Weight -->
+        <section class="tool-seo-section" aria-labelledby="iw-factors-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-factors-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            Factors Affecting Healthy Weight
+          </h2>
+          <p><strong>Height</strong> is the primary driver of all four formulas used here. Every formula starts from a base weight at a reference height and adjusts proportionally. Even small differences in height produce noticeably different healthy weight ranges.</p>
+          <p><strong>Gender</strong> significantly affects the result. Female bodies naturally carry more essential fat than male bodies (approximately 10–13% vs 2–5%), which means the formulas produce lower baseline weights for males. This is built into all four formulas.</p>
+          <p><strong>Muscle mass</strong> is not directly accounted for by any ideal-weight formula. A person who lifts weights regularly may have a body weight above the calculated range while carrying very little fat. For such individuals, the range is better understood as a minimum healthy weight rather than an upper limit.</p>
+          <p><strong>Body composition</strong> — the ratio of fat to lean tissue — matters more to health outcomes than total weight alone. Two people at the same weight can have very different health profiles depending on how much of that weight is muscle versus fat. The calculator gives a useful starting point, but body composition tools such as the Body Fat Calculator offer additional insight.</p>
+        </section>
+
+        <!-- Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="iw-results-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-results-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p><strong>Minimum Weight</strong> is the lowest result across the four formulas. Falling below this weight suggests you may be underweight for your height and could benefit from gradual, nutritionally adequate weight gain.</p>
+          <p><strong>Recommended Weight</strong> is the average of all four formula results. This is the centre of your healthy range and the most balanced target to aim for if you are working toward a healthier weight.</p>
+          <p><strong>Maximum Weight</strong> is the highest formula result. Weights above this level may indicate excess body fat relative to height, though muscle mass can legitimately push some individuals above this figure.</p>
+          <p><strong>Current Status</strong> tells you whether your current weight falls below the healthy range, within it, or above it. This is calculated by comparing your entered weight against the minimum and maximum formula results.</p>
+          <p><strong>Weight Difference</strong> shows how far your current weight is from the healthy range. If you are within the range, the difference is zero and the status reads "Already Within Healthy Range." Otherwise, the figure shows how much weight to gain or lose to enter the range.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="iw-faq-heading" style="--tool-color:#10b981">
+          <h2 class="tool-seo-section-title" id="iw-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="iw-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a1">
+                What is an ideal weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a1" role="region">
+                Ideal weight is not a single fixed number — it is a range of weights considered healthy for a person of a given height and gender. Different formulas produce slightly different values, which is why this calculator shows a minimum, recommended, and maximum weight derived from four established methods.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a2">
+                How is ideal weight calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a2" role="region">
+                This calculator uses four established formulas: Devine (1974), Hamwi (1964), Robinson (1983), and Miller (1983). Each formula is based on height and gender. The results are combined to produce a consensus minimum, recommended (average), and maximum weight.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a3">
+                Why does this calculator show a range instead of one number?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a3" role="region">
+                Because no single formula is universally accurate for all body types. Different formulas were developed from different populations and use different assumptions. Showing a range — derived from the lowest and highest formula results — gives a more realistic and flexible target than any single number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a4">
+                Is BMI the same as ideal weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a4" role="region">
+                No. BMI measures the ratio of weight to height squared and classifies weight status into categories. Ideal weight formulas give a specific target weight (or range) for your height and gender. BMI and ideal weight often agree but can differ, especially for muscular individuals.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a5">
+                Can muscle affect ideal weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a5" role="region">
+                Yes. Ideal weight formulas are based on population averages and do not account for body composition. A person with high muscle mass may weigh more than the calculated range while still being very healthy. These formulas are best used as a general guideline, not an absolute target.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a6">
+                Does age affect ideal weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a6" role="region">
+                The four formulas used here (Devine, Hamwi, Robinson, Miller) do not factor in age. However, body composition naturally changes with age — older adults may carry slightly more fat relative to muscle at the same body weight. Use the results as a general reference, not a strict target.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a7">
+                Can I be healthy outside the recommended range?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a7" role="region">
+                Yes. The ideal weight range is a statistical guideline based on height and gender. Individual factors like muscle mass, bone density, genetics, and fitness level can all affect what is a healthy weight for a specific person. Always consult a healthcare provider for personalised guidance.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="iw-faq-a8">
+                Which ideal-weight formula is most accurate?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="iw-faq-a8" role="region">
+                No single formula is universally most accurate. Each was derived from different populations. The Devine formula is most widely used clinically; the Robinson and Miller formulas are refinements of it. Using a consensus of all four — as this calculator does — provides a more balanced and reliable result than relying on any one formula alone.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="ideal-weight.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

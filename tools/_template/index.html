@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- =============================================
+       METADATA — replace ALL [BRACKETED] values
+  ============================================== -->
+  <title>[TOOL NAME] — Project 50</title>
+  <meta name="description" content="[SEO description. 1–2 sentences. Include tool name and primary benefit. 120–155 chars.]">
+  <meta name="keywords" content="[keyword1], [keyword2], [keyword3], free online tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/[tool-slug]/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/[tool-slug]/">
+  <meta property="og:title" content="[TOOL NAME] — Free Online Tool | Project 50">
+  <meta property="og:description" content="[OG description — max 160 chars, lead with the key benefit]">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="[TOOL NAME] — Free Online Tool | Project 50">
+  <meta name="twitter:description" content="[Twitter description — max 120 chars]">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <!-- =============================================
+       STRUCTURED DATA — SoftwareApplication
+       applicationCategory options:
+         HealthApplication | EducationApplication
+         FinanceApplication | UtilitiesApplication
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "[TOOL NAME]",
+    "url": "https://project50.tools/tools/[tool-slug]/",
+    "applicationCategory": "[HealthApplication | EducationApplication | FinanceApplication | UtilitiesApplication]",
+    "operatingSystem": "Web Browser",
+    "description": "[Short tool description for schema — 1 sentence]",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <!-- =============================================
+       STRUCTURED DATA — BreadcrumbList
+       Update: position 2 category name + href,
+               position 3 tool name + href
+  ============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",            "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "[CATEGORY NAME]", "item": "https://project50.tools/tools/[category-slug]/" },
+      { "@type": "ListItem", "position": 3, "name": "[TOOL NAME]",     "item": "https://project50.tools/tools/[tool-slug]/" }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       CSS LOAD ORDER — CANONICAL TOOL PAGE STACK
+       Copy this block exactly. Do NOT reorder.
+       1. reset.css        — browser normalisation
+       2. variables.css    — design tokens
+       3. style.css        — global layout + utilities
+       4. buttons.css      — shared button system
+       5. header.css       — site header
+       6. sidebar.css      — mobile drawer
+       7. footer.css       — site footer
+       8. tool.css         — shared tool infrastructure
+       9. [tool-slug].css  — tool-specific styles ONLY
+  ============================================== -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="[tool-slug].css">
+</head>
+<body>
+
+  <!-- Accessibility: skip nav — do not remove -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER PARTIAL — injected by partials.js -->
+  <div id="partial-header"></div>
+
+  <!-- SIDEBAR PARTIAL — injected by partials.js -->
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- =============================================
+           BREADCRUMB
+           Update hrefs and label text only.
+           aria-current="page" stays on the last span.
+      ============================================== -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/[category-slug]/">[Category Name]</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">[Tool Name]</span>
+      </nav>
+
+      <!-- =============================================
+           TOOL WRAPPER
+           Use tool-wrap--wide for tools needing more
+           horizontal space (e.g. multi-column grids).
+      ============================================== -->
+      <div class="tool-wrap">
+
+        <!-- =============================================
+             TOOL HEADER
+             --tool-color accent values by category:
+               Health   = #10b981
+               Student  = #3b82f6
+               Finance  = #8b5cf6
+               Utility  = #f59e0b
+               Creator  = #ec4899
+        ============================================== -->
+        <header class="tool-header">
+          <!-- tool-icon: replace ICON_KEY with a P50Icons key (e.g. "scale", "shield"). See scripts/icons/icons.js -->
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true" id="tool-hero-icon">
+            <!-- Inline SVG will be set by tool JS or hardcoded. Example:
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">[paths]</svg>
+            -->
+          </div>
+          <div>
+            <h1 class="tool-title">[Tool Name]</h1>
+            <p class="tool-subtitle">[One-line benefit. No signup. 100% private.]</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             FORM CARD
+             tool.css provides: .tool-field, .tool-field-label,
+             .tool-input, .tool-select, .tool-field-hint,
+             .tool-range, .tool-slider-group, .tool-slider-header
+
+             Accessibility rules:
+               • Every input MUST have a <label> with matching for/id.
+               • Use aria-describedby to link an input to hint text.
+               • Use aria-label on inputs without visible labels.
+               • Group related controls with role="group" + aria-label.
+
+             Mobile rules:
+               • Prefer full-width inputs (width:100% default).
+               • Use .bmi-row / flex grid only for 2-column pairs.
+               • Avoid fixed pixel widths — use %, ch, or rem.
+               • Test at 320px minimum viewport width.
+        ============================================== -->
+        <div class="tool-form">
+
+          <!-- Example single input field — duplicate as needed -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="[input-id]">[Label Text]</label>
+            <input
+              class="tool-input"
+              type="number"
+              id="[input-id]"
+              placeholder="e.g. [example value]"
+              min="[min]"
+              max="[max]"
+              aria-describedby="[input-id]-hint"
+            >
+            <!-- aria-describedby links this hint to the input above -->
+            <span class="tool-field-hint" id="[input-id]-hint">[Optional helper text]</span>
+          </div>
+
+          <!-- Example select field -->
+          <!--
+          <div class="tool-field">
+            <label class="tool-field-label" for="[select-id]">[Label]</label>
+            <select class="tool-select" id="[select-id]">
+              <option value="[val]">[Option label]</option>
+            </select>
+          </div>
+          -->
+
+          <!-- Primary action button -->
+          <button class="btn btn-primary btn-lg" id="[calc-btn-id]" style="width:100%">
+            [Calculate / Generate / Convert]
+          </button>
+        </div>
+
+        <!-- =============================================
+             RESULT CARD
+             • Start with hidden attribute — JS removes it.
+             • aria-live="polite" announces result to
+               screen readers after calculation.
+             • aria-atomic="true" reads the whole region,
+               not just the changed node.
+        ============================================== -->
+        <div class="tool-result" id="[result-id]" hidden aria-live="polite" aria-atomic="true">
+          <p class="tool-result-label">[Result Label, e.g. "Your BMI"]</p>
+          <div class="tool-result-number" id="[result-number-id]">—</div>
+          <p class="tool-result-status" id="[result-status-id]">—</p>
+
+          <!-- Optional: stat grid for multiple values
+          <div class="tool-stat-grid">
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="[stat1-id]">—</div>
+              <div class="tool-stat-label">[Stat 1 Label]</div>
+            </div>
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="[stat2-id]">—</div>
+              <div class="tool-stat-label">[Stat 2 Label]</div>
+            </div>
+            <div class="tool-stat">
+              <div class="tool-stat-value" id="[stat3-id]">—</div>
+              <div class="tool-stat-label">[Stat 3 Label]</div>
+            </div>
+          </div>
+          -->
+
+          <p class="tool-note">[Disclaimer — keep to 1 sentence. e.g. "Results are indicative only. Consult a professional for advice."]</p>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+           Required on every tool page.
+           Update: heading IDs, heading text, body copy.
+           Do NOT remove these sections.
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- About This Tool -->
+        <section class="tool-seo-section" aria-labelledby="[tool-slug]-about-heading">
+          <h2 class="tool-seo-section-title" id="[tool-slug]-about-heading">
+            <!-- seo-icon: replace with inline SVG matching the tool's icon -->
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            About the [Tool Name]
+          </h2>
+          <p>[What the tool does and why it's useful. 2–3 sentences. Include primary keywords naturally.]</p>
+          <p>[Optional: formula, methodology, or data source the tool uses.]</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="[tool-slug]-howto-heading">
+          <h2 class="tool-seo-section-title" id="[tool-slug]-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This [Tool Name]
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>[Step 1 — what to enter or select first.]</li>
+            <li>[Step 2 — second input or action.]</li>
+            <li><p>Click <strong>[Button Label]</strong> to see your result instantly.</p></li>
+            <li>[Step 4 — how to read or use the result.]</li>
+          </ol>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="[tool-slug]-faq-heading">
+          <h2 class="tool-seo-section-title" id="[tool-slug]-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <!-- FAQ accordion — powered by faq-accordion.js -->
+          <!-- Pattern: button[aria-controls=ID] + div[id=ID] -->
+          <div class="tool-faq-list" id="[tool-slug]-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="[tool-slug]-faq-a1">
+                [FAQ question 1 — use natural-language search phrasing]
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="[tool-slug]-faq-a1" role="region">
+                [Answer to FAQ 1. 2–4 sentences. Be specific and helpful.]
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="[tool-slug]-faq-a2">
+                [FAQ question 2]
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="[tool-slug]-faq-a2" role="region">
+                [Answer to FAQ 2.]
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="[tool-slug]-faq-a3">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="[tool-slug]-faq-a3" role="region">
+                No. Everything runs entirely in your browser. No data is sent to any server and nothing is stored after you close the page.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+
+      <!-- =============================================
+           RELATED TOOLS
+           Rendered automatically by P50ToolBase.
+           Update: data-tool-id and data-category-id
+           to match your tool's values in tools.json.
+      ============================================== -->
+      <section class="tool-related" aria-labelledby="[tool-slug]-related-heading">
+        <h2 class="tool-related-title" id="[tool-slug]-related-heading">Related Tools</h2>
+        <div
+          class="tool-related-grid"
+          id="tool-related-grid"
+          data-tool-id="[tool-slug]"
+          data-category-id="[category-id]"
+        ></div>
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- FOOTER PARTIAL — injected by partials.js -->
+  <div id="partial-footer"></div>
+
+  <!-- =============================================
+       SCRIPT LOAD ORDER — CANONICAL TOOL PAGE STACK
+       Copy this block exactly. Do NOT reorder.
+
+       SYNCHRONOUS (no defer) — must be available
+       before any deferred script executes:
+         utils.js, categories.js, storage.js,
+         renderers.js, partials.js, theme.js
+
+         Order: storage.js MUST precede theme.js.
+                partials.js MUST precede theme.js.
+
+       DEFERRED (dependency order):
+         tool-base.js  — shared tool infrastructure
+         header.js     — initialises header interactions
+         sidebar.js    — mobile drawer
+         animations.js — fade-in observer
+         search.js     — in-page search index
+         [tool-slug].js — YOUR TOOL LOGIC (last)
+         faq-accordion.js — FAQ expand/collapse (last)
+
+       YOUR TOOL LOGIC goes in [tool-slug].js.
+       Do NOT inline tool logic in this HTML file.
+  ============================================== -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="[tool-slug].js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+</body>
+</html>

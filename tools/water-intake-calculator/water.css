@@ -1,0 +1,514 @@
+/* ============================================
+   WATER.CSS — Project 50
+   Water Intake Calculator — tool-specific styles.
+
+   Refactored to match Macro Calculator design system.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-result, .tool-note, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers water-specific components:
+     - Unit label row (.water-unit-label-row)
+     - Custom select wrapper (.water-select-wrap)
+     - Compact unit select (.water-unit-select)
+     - Validation message
+     - Button row
+     - Section cards (.water-section-card)
+     - Summary card (.water-summary-card)
+     - Hydration range cards (.water-range-card)
+     - Breakdown card rows
+     - Compact drinking schedule
+     - Conversion grid
+     - Number input spinner removal
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+   (same solution as macro.css)
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+   Mirrors .macro-select-wrap pattern exactly.
+============================================ */
+.water-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.water-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.water-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.water-select-wrap .tool-select:focus + .water-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UNIT LABEL ROW
+   Mirrors .macro-unit-label-row pattern exactly.
+============================================ */
+.water-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.water-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+.water-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.water-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.water-unit-select-wrap .water-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.water-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* ============================================
+   BUTTON ROW
+   Mirrors .macro-btn-row pattern exactly.
+============================================ */
+.water-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .water-btn-row {
+    flex-direction: column;
+  }
+  .water-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+   Mirrors .macro-section-card exactly.
+============================================ */
+.water-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.water-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.water-section-icon {
+  display: flex;
+  align-items: center;
+  color: #0ea5e9;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RECOMMENDED DAILY HYDRATION — Summary card
+   Mirrors .macro-summary-card / .macro-summary-grid
+============================================ */
+.water-summary-card {
+  border-color: color-mix(in srgb, #0ea5e9 35%, transparent);
+  background: color-mix(in srgb, #0ea5e9 6%, var(--color-bg-card));
+}
+
+.water-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.water-summary-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+}
+
+.water-summary-item--recommended {
+  background: color-mix(in srgb, #0ea5e9 10%, transparent);
+  border-color: color-mix(in srgb, #0ea5e9 35%, transparent);
+}
+
+.water-summary-item--glasses {
+  background: color-mix(in srgb, #818cf8 10%, transparent);
+  border-color: color-mix(in srgb, #818cf8 25%, transparent);
+}
+
+.water-summary-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.water-summary-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.water-summary-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+}
+
+/* ============================================
+   HYDRATION TARGET RANGE CARDS
+   Mirrors .macro-range-grid / .macro-range-card pattern.
+============================================ */
+.water-range-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.water-range-card {
+  text-align: center;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3) var(--sp-2);
+  border: 1px solid;
+  position: relative;
+  background: color-mix(in srgb, #0ea5e9 10%, transparent);
+  border-color: color-mix(in srgb, #0ea5e9 25%, transparent);
+}
+
+.water-range-card--highlight {
+  border-width: 2px;
+  border-color: #0ea5e9;
+}
+
+.water-range-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  white-space: nowrap;
+  background: color-mix(in srgb, #0ea5e9 15%, transparent);
+  color: #0ea5e9;
+  border: 1px solid color-mix(in srgb, #0ea5e9 40%, transparent);
+}
+
+.water-range-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--sp-1);
+}
+
+.water-range-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.water-range-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.water-range-sublabel {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.water-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   WATER BREAKDOWN
+   Compact rows matching macro card density.
+============================================ */
+.water-breakdown-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.water-breakdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-3);
+  gap: var(--sp-2);
+}
+
+.water-breakdown-item--bonus {
+  border-color: color-mix(in srgb, #0ea5e9 20%, transparent);
+  background: color-mix(in srgb, #0ea5e9 6%, transparent);
+}
+
+.water-breakdown-item--total {
+  border-color: color-mix(in srgb, #0ea5e9 40%, transparent);
+  background: color-mix(in srgb, #0ea5e9 10%, transparent);
+}
+
+.water-breakdown-label {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.water-breakdown-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.water-breakdown-item--bonus .water-breakdown-value,
+.water-breakdown-item--total .water-breakdown-value {
+  color: #0ea5e9;
+}
+
+/* ============================================
+   DRINKING SCHEDULE — compact premium style
+============================================ */
+.water-schedule-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.water-schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: 10px var(--sp-3);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.water-schedule-time {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #0ea5e9;
+  min-width: 72px;
+  flex-shrink: 0;
+}
+
+.water-schedule-amount {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.water-schedule-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.water-schedule-bar-wrap {
+  width: 60px;
+  height: 5px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.water-schedule-bar {
+  height: 100%;
+  background: #0ea5e9;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ============================================
+   CONVERSIONS — 4-column grid
+============================================ */
+.water-conv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+}
+
+.water-conv-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+}
+
+.water-conv-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.water-conv-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
+============================================ */
+@media (max-width: 640px) {
+  .water-section-card {
+    padding: var(--sp-3);
+  }
+
+  .water-schedule-label {
+    display: none;
+  }
+
+  .water-schedule-bar-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .water-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .water-range-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+
+  .water-range-badge {
+    position: static;
+    transform: none;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .water-conv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  .water-unit-label-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .water-summary-val {
+    font-size: var(--fs-lg);
+  }
+
+  .water-schedule-time {
+    min-width: 58px;
+  }
+
+  .water-schedule-amount {
+    min-width: 50px;
+  }
+}

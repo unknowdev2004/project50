@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Calculator — Free Class Attendance % Calculator | Project 50</title>
+  <meta name="description" content="Calculate your current attendance percentage, check eligibility, see how many classes you can miss and get an attendance forecast. Free, private, no signup.">
+  <meta name="keywords" content="attendance calculator, class attendance percentage, attendance eligibility calculator, how many classes can i miss, student attendance tracker">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/attendance-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/attendance-calculator/">
+  <meta property="og:title" content="Attendance Calculator — Free Class Attendance % Calculator | Project 50">
+  <meta property="og:description" content="Check your current attendance, eligibility, how many classes you can miss and what happens if you attend or miss your next class. Free and private.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Attendance Calculator — Free Class Attendance % Calculator | Project 50">
+  <meta name="twitter:description" content="Calculate your attendance percentage, eligibility and forecast. Free, private, no signup needed.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Attendance Calculator",
+    "url": "https://project50.tools/tools/attendance-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your current class attendance percentage, check eligibility against a required threshold, and see how many classes you can miss or must attend.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "Attendance Calculator", "item": "https://project50.tools/tools/attendance-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is attendance percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Attendance percentage is the share of held classes you have actually attended, calculated as (Classes Attended ÷ Total Classes) × 100. Most institutions require students to stay at or above a minimum attendance percentage to remain eligible for exams." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many classes can I miss and stay eligible?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on your current attendance, total classes held so far, and your required percentage. This calculator works out the exact number of additional classes you can miss going forward while your attendance stays at or above the required threshold." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the number of classes I need to attend calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you are below the required percentage, the calculator determines how many consecutive classes you must attend without missing any so that your recalculated attendance percentage reaches your required threshold." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a typical minimum attendance requirement?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Requirements vary by institution, but 75% is one of the most common minimum thresholds worldwide, particularly across universities in India and similar systems. Some institutions require 80% or higher, while others use 65–70%. Always check your own institution's policy." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I ever reach 100% attendance again after missing a class?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Once you have missed at least one class, your attendance percentage can approach 100% by attending every future class, but it can never mathematically equal 100% again, because the missed class remains permanently part of the total." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "All calculations run entirely in your browser. Your inputs are saved locally to your browser so they are still there if you refresh the page, but this data never leaves your device and is never sent to any server." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="attendance.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Attendance Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Attendance Calculator</h1>
+            <p class="tool-subtitle">Check your current attendance, eligibility, and exactly how many classes you can miss or must attend.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             FORM
+        ============================================== -->
+        <div class="tool-form" role="form" aria-label="Attendance calculator inputs">
+
+          <!-- Row: Attended + Total -->
+          <div class="attendance-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="attendance-attended">Classes Attended</label>
+              <input class="tool-input" type="number" id="attendance-attended" placeholder="e.g. 34" min="0" step="1" inputmode="numeric" aria-describedby="attendance-attended-hint">
+              <span class="tool-field-hint" id="attendance-attended-hint">Total classes you have attended so far</span>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="attendance-total">Total Classes</label>
+              <input class="tool-input" type="number" id="attendance-total" placeholder="e.g. 40" min="1" step="1" inputmode="numeric" aria-describedby="attendance-total-hint">
+              <span class="tool-field-hint" id="attendance-total-hint">Total classes held so far</span>
+            </div>
+          </div>
+
+          <!-- Required Attendance % -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="attendance-required">Required Attendance %</label>
+            <input class="tool-input" type="number" id="attendance-required" placeholder="e.g. 75" min="1" max="100" step="1" inputmode="numeric" value="75" aria-describedby="attendance-required-hint">
+            <span class="tool-field-hint" id="attendance-required-hint">Minimum attendance percentage your institution requires (1–100)</span>
+          </div>
+
+          <!-- Validation message -->
+          <div class="attendance-validation" id="attendance-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="attendance-btn-row">
+            <button class="btn btn-primary btn-lg" id="attendance-calc-btn" type="button">
+              Calculate Attendance
+            </button>
+            <button class="btn btn-secondary btn-lg" id="attendance-reset-btn" type="button" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+             Hierarchy:
+               1. Hero Result
+               2. Eligibility
+               3. Attendance Analysis
+               4. Attendance Forecast
+               5. Academic Summary
+               6. Insights
+        ============================================== -->
+        <div id="attendance-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- ── 1. Hero Result ── -->
+          <div class="attendance-section-card attendance-hero-card" id="attendance-hero-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Your Current Attendance
+            </h2>
+            <div class="attendance-big-number" id="attendance-display">—</div>
+            <div class="attendance-hero-status" id="attendance-hero-status">—</div>
+            <p class="attendance-range-note" style="margin-top:var(--sp-2)">Calculated as (Classes Attended ÷ Total Classes) × 100, using full precision internally.</p>
+          </div>
+
+          <!-- ── 2. Eligibility ── -->
+          <div class="attendance-section-card" id="attendance-eligibility-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              </span>
+              Eligibility
+            </h2>
+            <div class="attendance-eligibility-row">
+              <span class="attendance-eligibility-badge" id="attendance-eligibility-badge">—</span>
+              <span class="attendance-eligibility-text" id="attendance-eligibility-text">—</span>
+            </div>
+            <div class="attendance-progress-track" aria-hidden="true">
+              <div class="attendance-progress-fill" id="attendance-progress-fill"></div>
+              <div class="attendance-progress-marker" id="attendance-progress-marker"></div>
+            </div>
+            <div class="attendance-progress-labels">
+              <span>0%</span>
+              <span id="attendance-progress-required-label">Required —%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <!-- ── 3. Attendance Analysis ── -->
+          <div class="attendance-section-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+              </span>
+              Attendance Analysis
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="attendance-stat-attended">—</div>
+                <div class="tool-stat-label">Classes Attended</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="attendance-stat-total">—</div>
+                <div class="tool-stat-label">Total Classes</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="attendance-stat-missed">—</div>
+                <div class="tool-stat-label">Classes Missed</div>
+              </div>
+            </div>
+            <p class="tool-note">These are the raw class counts you entered, used as the basis for every calculation below.</p>
+          </div>
+
+          <!-- ── 4. Attendance Forecast ── -->
+          <div class="attendance-section-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Attendance Forecast
+            </h2>
+            <div class="attendance-forecast-grid">
+              <div class="attendance-forecast-card attendance-forecast-card--up">
+                <span class="attendance-forecast-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                </span>
+                <div class="attendance-forecast-label">If you attend the next class</div>
+                <div class="attendance-forecast-value" id="attendance-forecast-attend">—</div>
+                <div class="attendance-forecast-delta" id="attendance-forecast-attend-delta">—</div>
+              </div>
+              <div class="attendance-forecast-card attendance-forecast-card--down">
+                <span class="attendance-forecast-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+                <div class="attendance-forecast-label">If you miss the next class</div>
+                <div class="attendance-forecast-value" id="attendance-forecast-miss">—</div>
+                <div class="attendance-forecast-delta" id="attendance-forecast-miss-delta">—</div>
+              </div>
+            </div>
+            <p class="tool-note">Forecast assumes one additional class is held next, either attended or missed, with all other classes unchanged.</p>
+          </div>
+
+          <!-- ── 5. Academic Summary ── -->
+          <div class="attendance-section-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+              </span>
+              Academic Summary
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat attendance-stat--good">
+                <div class="tool-stat-value" id="attendance-can-miss">—</div>
+                <div class="tool-stat-label">Classes You Can Still Miss</div>
+              </div>
+              <div class="tool-stat attendance-stat--warn">
+                <div class="tool-stat-value" id="attendance-need-attend">—</div>
+                <div class="tool-stat-label">Consecutive Classes Needed</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="attendance-required-display">—</div>
+                <div class="tool-stat-label">Required Attendance</div>
+              </div>
+            </div>
+            <p class="tool-note" id="attendance-summary-note">Based on your current attendance and required percentage.</p>
+          </div>
+
+          <!-- ── 6. Insights ── -->
+          <div class="attendance-section-card" id="attendance-insights-card">
+            <h2 class="attendance-section-title">
+              <span class="attendance-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+              </span>
+              Insights
+            </h2>
+            <ul class="attendance-insights-list" id="attendance-insights-list" aria-label="Attendance insights"></ul>
+          </div>
+
+        </div><!-- /#attendance-results -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="attendance-related-wrap" aria-labelledby="attendance-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="attendance-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="attendance-related-grid"
+               data-tool-id="attendance-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS — 8 required sections
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is Attendance Percentage? -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            What Is Attendance Percentage?
+          </h2>
+          <p>Attendance percentage is the proportion of held classes a student has actually attended, expressed out of 100. It is the single number most institutions use to decide whether a student is eligible to sit for exams, receive internal marks, or continue enrolment in good standing.</p>
+          <p>Unlike a raw class count, attendance percentage automatically adjusts as more classes are held, which means it can move even on days you do not attend anything — a class held while you are away lowers your percentage even though you took no new action. This is why tracking attendance proactively, rather than only checking it before exams, helps students stay ahead of eligibility problems.</p>
+          <p>Most universities, colleges and schools worldwide use attendance percentage as a hard eligibility gate, commonly set between 65% and 85% depending on the institution and course.</p>
+        </section>
+
+        <!-- 2. Formula -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-formula-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-formula-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            Attendance Formula
+          </h2>
+          <p>The core formula is straightforward:</p>
+          <p><strong>Attendance % = (Classes Attended ÷ Total Classes) × 100</strong></p>
+          <p>For example, if you have attended 34 out of 40 classes held so far: 34 ÷ 40 = 0.85, so your attendance is <strong>85%</strong>.</p>
+          <p>This calculator also determines two forward-looking figures using the same underlying logic:</p>
+          <ul>
+            <li><strong>Classes you can still miss</strong> — the largest number of additional classes you can skip, assuming your total keeps growing, while staying at or above your required percentage.</li>
+            <li><strong>Consecutive classes needed</strong> — if you are below the requirement, how many classes in a row you must attend without missing any to bring your percentage back up to the required threshold.</li>
+          </ul>
+          <p>All calculations are performed using full floating-point precision internally. Only the final displayed values are rounded.</p>
+        </section>
+
+        <!-- 3. How To Use -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-howto-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Enter the number of <strong>classes you have attended</strong> so far, as a whole number.</p></li>
+            <li><p>Enter the <strong>total number of classes</strong> held so far for that subject or course, as a whole number.</p></li>
+            <li><p>Enter your institution's <strong>required attendance percentage</strong> — this defaults to 75%, a common threshold, but you can change it to match your own institution's policy.</p></li>
+            <li><p>Click <strong>Calculate Attendance</strong> to see your current percentage, eligibility, forecast and how many classes you can miss or must attend.</p></li>
+            <li><p>Click <strong>Reset</strong> to clear all fields and start over. Your saved data is also cleared from browser storage.</p></li>
+          </ol>
+          <p>Your inputs are automatically saved to your browser as you type, so you can close the page and return later without re-entering your data.</p>
+        </section>
+
+        <!-- 4. Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-results-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-results-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            Understanding Your Results
+          </h2>
+          <p>After calculating, this tool shows six result sections:</p>
+          <p><strong>Your Current Attendance</strong> — the primary result. Your exact attendance percentage right now, along with an eligibility status.</p>
+          <p><strong>Eligibility</strong> — a clear eligible / not eligible badge, with a visual bar showing where your current attendance sits relative to your required threshold.</p>
+          <p><strong>Attendance Analysis</strong> — the raw counts behind every calculation: classes attended, total classes, and classes missed.</p>
+          <p><strong>Attendance Forecast</strong> — two projections showing exactly what your attendance percentage becomes if you attend the next class versus if you miss it, so you can see the real impact of a single class before it happens.</p>
+          <p><strong>Academic Summary</strong> — the two most actionable numbers: how many more classes you can afford to miss and stay eligible, and how many consecutive classes you must attend if you are currently below the requirement.</p>
+          <p><strong>Insights</strong> — contextual observations that translate the numbers above into plain-language guidance about your current standing and what to do next.</p>
+        </section>
+
+        <!-- 5. Attendance Rules -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-rules-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-rules-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 5 5-5 5"/><path d="M13 7h8"/><path d="M13 17h8"/><path d="M13 12h8"/></svg></span>
+            Attendance Rules and Common Requirements
+          </h2>
+          <p>Attendance policies vary widely, but a few patterns are common across most institutions:</p>
+          <ul>
+            <li><strong>75% is the most common threshold</strong> — widely used across universities in India and many other countries as the minimum to sit for final exams.</li>
+            <li><strong>Some institutions allow condonation</strong> — a small buffer (for example 65–75%) may still be accepted with a documented medical or personal reason, subject to approval.</li>
+            <li><strong>Attendance is usually tracked per subject</strong>, not as one overall number — you may be eligible in one course and short in another, so calculate each subject separately.</li>
+            <li><strong>Late arrivals may count as partial or zero attendance</strong> depending on the institution's specific rules — check your handbook for how lateness is treated.</li>
+            <li><strong>Attendance requirements typically cannot be waived retroactively</strong> — the only way to raise a low percentage is to attend future classes consistently, since missed classes cannot be un-missed.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Tips -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-tips-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            Tips For Staying Eligible
+          </h2>
+          <p><strong>Recalculate after every missed class.</strong> A single missed class can shift your "classes you can still miss" figure more than expected, especially early in a course when the total class count is still small.</p>
+          <p><strong>Build a buffer early.</strong> Attendance is easiest to protect when your total class count is low. Missing classes early in a course has a smaller mathematical impact than missing the same number later, so avoid using up your buffer too soon.</p>
+          <p><strong>Check the forecast before skipping.</strong> Use the Attendance Forecast section before deciding to miss a class — seeing the exact percentage drop in advance often changes the decision.</p>
+          <p><strong>Track each subject separately.</strong> If you take multiple courses with independent attendance requirements, run this calculator once per subject rather than combining totals.</p>
+        </section>
+
+        <!-- 7. Common Mistakes -->
+        <section class="tool-seo-section" aria-labelledby="attendance-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="attendance-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Mistakes
+          </h2>
+          <p><strong>Mistake 1 — Confusing total classes with classes scheduled for the term.</strong> Enter only the classes actually held so far, not the total planned for the whole semester. The percentage should reflect what has happened, not what is planned.</p>
+          <p><strong>Mistake 2 — Assuming missed classes can be "made up" mathematically.</strong> Once a class is missed, it permanently lowers the denominator's contribution. The only way forward is attending future classes — there is no way to retroactively remove a miss from the calculation.</p>
+          <p><strong>Mistake 3 — Waiting until the requirement is missed to check.</strong> Checking your "classes you can still miss" figure regularly, rather than only before exams, gives you time to correct course while it is still mathematically possible.</p>
+          <p><strong>Mistake 4 — Ignoring per-subject requirements.</strong> A student can be comfortably eligible overall while being short in one specific subject. Always check subject-level attendance, not just an overall average.</p>
+        </section>
+
+        <!-- 8. FAQ -->
+        <section class="tool-seo-section" aria-labelledby="attendance-faq-heading">
+          <h2 class="tool-seo-section-title" id="attendance-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="attendance-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a1">
+                What is attendance percentage?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a1" role="region">
+                Attendance percentage is the share of held classes you have actually attended, calculated as (Classes Attended ÷ Total Classes) × 100. Most institutions require students to stay at or above a minimum attendance percentage to remain eligible for exams.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a2">
+                How many classes can I miss and stay eligible?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a2" role="region">
+                It depends on your current attendance, total classes held so far, and your required percentage. This calculator works out the exact number of additional classes you can miss going forward while your attendance stays at or above the required threshold.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a3">
+                How is the number of classes I need to attend calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a3" role="region">
+                If you are below the required percentage, the calculator determines how many consecutive classes you must attend without missing any so that your recalculated attendance percentage reaches your required threshold.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a4">
+                What is a typical minimum attendance requirement?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a4" role="region">
+                Requirements vary by institution, but 75% is one of the most common minimum thresholds worldwide, particularly across universities in India and similar systems. Some institutions require 80% or higher, while others use 65–70%. Always check your own institution's policy.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a5">
+                Can I ever reach 100% attendance again after missing a class?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a5" role="region">
+                No. Once you have missed at least one class, your attendance percentage can approach 100% by attending every future class, but it can never mathematically equal 100% again, because the missed class remains permanently part of the total.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="attendance-faq-a6">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="attendance-faq-a6" role="region">
+                All calculations run entirely in your browser. Your inputs are saved locally to your browser so they are still there if you refresh the page, but this data never leaves your device and is never sent to any server.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="attendance.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

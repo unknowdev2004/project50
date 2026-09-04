@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block internal/non-content paths
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /assets/fonts/
+Disallow: /data/
+Disallow: /partials/
+Disallow: /tools/_template/
+
+# Search results pages should not be indexed
+Disallow: /search/
+
+Sitemap: https://project50.tools/sitemap.xml

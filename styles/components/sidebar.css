@@ -1,0 +1,141 @@
+/* ============================================
+   SIDEBAR.CSS — Project 50
+   ============================================ */
+
+/* ---- Overlay ---- */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: calc(var(--z-sidebar) - 1);
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(2px);
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+  }
+  
+  .sidebar-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* ---- Sidebar Panel ---- */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: 300px;
+    max-width: 88vw;
+    background: var(--color-bg-secondary);
+    border-left: 1px solid var(--color-border);
+    z-index: var(--z-sidebar);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  /* ---- Sidebar Header ---- */
+  .sidebar-header {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--sp-3);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+  
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--color-text);
+  }
+  
+  /* ---- Sidebar Body ---- */
+  .sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--sp-2) var(--sp-2);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+  
+  /* ---- Sidebar Nav Groups ---- */
+  .sidebar-group {
+    margin-bottom: var(--sp-3);
+  }
+  
+  .sidebar-group-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    padding: 0 10px;
+    margin-bottom: 6px;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 10px;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  
+  .sidebar-link:hover {
+    color: var(--color-text);
+    background: var(--color-bg-card-hover);
+  }
+  
+  .sidebar-link-icon {
+    width: 24px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+
+  .sidebar-link-icon svg {
+    display: block;
+    flex-shrink: 0;
+  }
+  
+  /* ---- Sidebar Footer ---- */
+  .sidebar-footer {
+    padding: var(--sp-2) var(--sp-3);
+    border-top: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+  
+  .sidebar-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  
+  .sidebar-footer-links a {
+    font-size: var(--fs-xs);
+    color: var(--color-text-faint);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .sidebar-footer-links a:hover {
+    color: var(--color-text-muted);
+  }

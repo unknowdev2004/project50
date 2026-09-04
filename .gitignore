@@ -1,0 +1,21 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build / test output
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/

@@ -1,0 +1,722 @@
+/* ============================================
+   TOOL.CSS — Project 50
+   Shared layout infrastructure for all tool pages.
+
+   LOAD ORDER: After variables.css and style.css,
+   before any tool-specific CSS.
+
+   WHAT THIS COVERS
+   ─────────────────
+   Shared patterns extracted from bmi.css and cgpa.css
+   that every tool page needs:
+     - breadcrumb
+     - tool header (icon + title + subtitle)
+     - form card container
+     - input + field patterns
+     - result card
+     - note/disclaimer text
+     - responsive behaviour
+
+   WHAT STAYS IN TOOL-SPECIFIC CSS
+   ─────────────────────────────────
+   - Tool-specific grid layouts (cgpa-row columns)
+   - Tool-specific colour accents (bmi scale bar)
+   - Tool-specific result visualisations
+   - Any element that only exists in one tool
+
+   NAMING CONVENTION
+   ──────────────────
+   All shared classes prefixed .tool-
+   Tool-specific classes keep their own prefix.
+============================================ */
+
+/* ============================================
+   BREADCRUMB
+   Shared navigation trail above the tool.
+   Used by: all tool pages
+   HTML: <nav class="tool-breadcrumb">
+============================================ */
+
+.tool-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  padding: var(--sp-3) 0 var(--sp-3);
+}
+
+.tool-breadcrumb a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.tool-breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+.tool-breadcrumb span[aria-current] {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.tool-breadcrumb .sep {
+  color: var(--color-text-faint);
+  font-size: var(--fs-xs);
+}
+
+/* ============================================
+   PAGE WRAPPER
+   Centres content, controls max-width and
+   vertical breathing room.
+   HTML: <div class="tool-wrap">
+============================================ */
+
+.tool-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--sp-4) 0 var(--sp-6);
+  min-width: 0;        /* prevent flex/grid blowout in parent */
+  overflow-x: hidden;  /* global overflow guard for all tool pages */
+}
+
+/* Wide variant for tools that need more horizontal space
+   (e.g. CGPA with multi-column row layout)
+   HTML: <div class="tool-wrap tool-wrap--wide"> */
+.tool-wrap--wide {
+  max-width: 680px;
+}
+
+/* ============================================
+   TOOL HEADER
+   Icon + title + subtitle row at top of tool.
+   HTML:
+     <header class="tool-header">
+       <div class="tool-icon" style="--tool-color:#10b981"><!-- SVG from P50Icons --></div>
+       <div>
+         <h1 class="tool-title">BMI Calculator</h1>
+         <p class="tool-subtitle">…</p>
+       </div>
+     </header>
+============================================ */
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+.tool-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--tool-color, var(--color-primary)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tool-color, var(--color-primary)) 18%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: flex-start;
+  color: var(--tool-color, var(--color-primary));
+}
+
+.tool-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.tool-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.tool-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  line-height: 1.55;
+  max-width: 420px;
+}
+
+/* ============================================
+   FORM CARD
+   The main interactive card containing inputs.
+   HTML: <div class="tool-form">
+============================================ */
+
+.tool-form {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+/* ============================================
+   FIELD — label + input pair
+   HTML:
+     <div class="tool-field">
+       <label class="tool-field-label" for="id">Label</label>
+       <input class="tool-input" id="id" …>
+       <span class="tool-field-hint">Optional hint</span>
+     </div>
+============================================ */
+
+.tool-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tool-field-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.tool-input,
+.tool-select {
+  height: var(--input-height);
+  border-radius: var(--input-radius);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  padding: 0 16px;
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  width: 100%;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    background var(--transition-base);
+}
+
+.tool-input:focus,
+.tool-select:focus {
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: var(--color-bg-card-hover);
+  outline: none;
+}
+
+optgroup {
+  background-color: #111827fa;
+}
+
+/* ============================================
+   SELECT OPTION THEMING
+   Force readable colours in both themes.
+   Targets the dropdown list items.
+============================================ */
+.tool-select option {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  font-size: var(--fs-base);
+  padding: 8px 16px;
+}
+
+/* Light theme override — bg-secondary is near-white */
+[data-theme="light"] .tool-select option {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.tool-input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.tool-field-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   RESULT CARD
+   Displays calculation output.
+   HTML: <div class="tool-result" hidden>…</div>
+============================================ */
+
+.tool-result {
+  margin-top: var(--sp-3);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-3);
+  text-align: center;
+  overflow: visible; /* stat cards must never be clipped */
+  min-width: 0;
+}
+
+/* Large primary result number */
+.tool-result-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Label above the number */
+.tool-result-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--sp-1);
+}
+
+/* Secondary status text below number */
+.tool-result-status {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: var(--sp-1);
+  margin-bottom: var(--sp-3);
+}
+
+/* Stat grid — horizontal stats inside result card
+   HTML: <div class="tool-stat-grid">
+           <div class="tool-stat">…</div>
+         </div> */
+.tool-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.tool-stat {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) 12px;
+  min-width: 0; /* prevent grid blowout */
+}
+
+.tool-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-base), 3.5vw, var(--fs-xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.2;
+  /* Prevent long currency strings from overflowing stat card */
+  overflow-wrap: break-word;
+  word-break: break-all;
+  hyphens: auto;
+}
+
+.tool-stat-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 4px;
+}
+
+/* Disclaimer / note text at bottom of result card */
+.tool-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.5;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+
+/* ============================================
+   SLIDER CONTROL
+   Range input with header row (label + live value).
+   HTML:
+     <div class="tool-slider-group">
+       <div class="tool-slider-header">
+         <label class="tool-slider-label">Loan Amount</label>
+         <span class="tool-slider-value" id="…">₹5,00,000</span>
+       </div>
+       <input type="range" …>
+     </div>
+============================================ */
+
+.tool-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tool-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-slider-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.tool-slider-value {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+}
+
+input[type="range"].tool-range {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .tool-wrap {
+    padding: var(--sp-3) 0 var(--sp-5);
+  }
+
+  .tool-wrap--wide {
+    max-width: 100%;
+  }
+  /* tool-stat-grid stays 3-col until 480px — see below */
+}
+
+@media (max-width: 480px) {
+  .tool-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+  .tool-wrap {
+    padding: var(--sp-2) 0 var(--sp-5);
+  }
+
+  .tool-header {
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-3);
+    align-items: center;
+  }
+
+  .tool-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+    border-radius: var(--radius-md);
+  }
+
+  .tool-title {
+    font-size: var(--fs-xl);
+    letter-spacing: -0.01em;
+  }
+
+  .tool-subtitle {
+    font-size: var(--fs-xs);
+    max-width: 100%;
+  }
+
+  .tool-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+    border-radius: var(--radius-lg);
+  }
+
+  .tool-result {
+    padding: var(--sp-2);
+    border-radius: var(--radius-lg);
+  }
+
+  .tool-result-number {
+    font-size: clamp(2rem, 14vw, 3rem);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+  .tool-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-title {
+    font-size: var(--fs-lg);
+  }
+
+  .tool-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   TOOL SEO CONTENT SECTIONS — Phase 3.4
+   Sections: About, How To Use, FAQ
+   These appear below the tool widget.
+   Reusable across all tool pages.
+============================================ */
+
+.tool-seo-sections {
+  margin-top: var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.tool-seo-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-5);
+}
+
+.tool-seo-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.tool-seo-section-title .seo-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--tool-color, var(--color-primary));
+}
+
+.tool-seo-section-title .seo-icon svg {
+  display: block;
+}
+
+.tool-seo-section p {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: var(--sp-2);
+}
+
+.tool-seo-section p:last-child {
+  margin-bottom: 0;
+}
+
+.tool-seo-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  counter-reset: step-counter;
+}
+
+.tool-seo-steps li {
+  counter-increment: step-counter;
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.tool-seo-steps li::before {
+  content: counter(step-counter);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* FAQ within tool pages */
+.tool-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tool-faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tool-faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: var(--sp-3) var(--sp-4);
+  text-align: left;
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  transition: background 0.15s;
+}
+
+.tool-faq-question:hover {
+  background: var(--color-surface-raised);
+}
+
+.tool-faq-question[aria-expanded="true"] {
+  background: var(--color-surface-raised);
+}
+
+.tool-faq-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  color: var(--color-text-faint);
+}
+
+.tool-faq-question[aria-expanded="true"] .tool-faq-chevron {
+  transform: rotate(180deg);
+}
+
+.tool-faq-answer {
+  padding: 0 var(--sp-4) var(--sp-3);
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  display: none;
+}
+
+.tool-faq-answer.is-open {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .tool-seo-section {
+    padding: var(--sp-4);
+  }
+}
+
+/* ============================================
+   RELATED TOOLS — Shared Pattern
+   Used by all tool pages.
+   Loaded from tools.json via JS (same category,
+   excludes self, max 4 tools).
+   HTML:
+     <div class="tool-related" id="tool-related-wrap">
+       <h2 class="tool-related-title">Related Tools</h2>
+       <div class="tool-related-grid" id="tool-related-grid"></div>
+     </div>
+============================================ */
+
+.tool-related {
+  margin-top: var(--sp-4);
+}
+
+.tool-related-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+}
+
+.tool-related-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+}
+
+.tool-related-card {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+.tool-related-card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-bg-card-hover);
+  transform: translateY(-1px);
+}
+
+/* Category-accent hover — set via --tool-color on .tool-related */
+.tool-related[style] .tool-related-card:hover {
+  border-color: color-mix(in srgb, var(--tool-related-color, var(--color-primary)) 35%, transparent);
+}
+
+.tool-related-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--tool-related-color, #10b981) 12%, transparent);
+  color: var(--tool-related-color, #10b981);
+  flex-shrink: 0;
+}
+
+.tool-related-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.tool-related-desc {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .tool-related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tool-related-empty {
+    text-align: center;
+    color: var(--color-text-faint);
+    font-size: var(--fs-sm);
+    padding: var(--sp-3) 0;
+    grid-column: 1/-1;
+}

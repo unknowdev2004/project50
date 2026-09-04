@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Hours &amp; Exam Planner — Plan Study Time, Syllabus Pace &amp; Catch-Up | Project 50</title>
+  <meta name="description" content="Work out how many hours to study each day, build a day-by-day exam plan across subjects, pace your syllabus, catch up when you're behind, and see what needs attention most.">
+  <meta name="keywords" content="study planner, exam planner, study hours calculator, syllabus planner, catch up study plan, revision planner, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/study-hours-exam-planner/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/study-hours-exam-planner/">
+  <meta property="og:title" content="Study Hours & Exam Planner — Free Online Tool | Project 50">
+  <meta property="og:description" content="Calculate required study hours, build a day-by-day exam plan, pace your syllabus, and catch up when you're behind — all in one free planner.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Study Hours & Exam Planner — Free Online Tool | Project 50">
+  <meta name="twitter:description" content="Calculate required study hours, build a day-by-day exam plan, and see what to study first.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Study Hours & Exam Planner",
+    "url": "https://project50.tools/tools/study-hours-exam-planner/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate required daily study hours, generate a day-by-day exam study plan, pace a syllabus, build a catch-up plan, and rank subjects by study priority.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "Study Hours & Exam Planner", "item": "https://project50.tools/tools/study-hours-exam-planner/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can this tool predict my exam marks or rank?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This planner only calculates required study time, pace, and priority based on the numbers you enter. It never predicts exam marks, rank, or success — it estimates how much study time your goals realistically require." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the required study time per day calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Required hours per day is your total workload divided by the number of study days you have available. In Exam Planner, weekday selection and buffer/revision settings adjust how that time is distributed." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does difficulty do if it doesn't change my workload?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Difficulty and priority only change the order subjects are scheduled in, not the number of hours you estimated. A 10-hour subject stays 10 hours regardless of difficulty — difficulty just means it gets prioritised earlier in the plan." }
+      },
+      {
+        "@type": "Question",
+        "name": "What do buffer and revision time mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Buffer reserves a slice of your available time (10% by default) for the unexpected — illness, slower topics, or life getting in the way. Revision time is a redistribution of your remaining study time toward reviewing what you've already studied, not extra hours on top." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does \"Not Realistic\" mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means your entered workload exceeds the time you have available, even before buffer or revision. The planner shows the exact shortfall instead of generating a plan that looks complete but isn't achievable." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Study Priority different from a success prediction?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Study Priority in the Readiness mode only ranks which subjects need attention first, based on completion, confidence, difficulty, and importance. It is not an estimate of your exam score or chance of success." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I select only specific days of the week to study?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, in Exam Planner you can deselect days you won't study on (for example, if you keep Sundays off). The planner then counts only the actual selected dates between your start date and exam date." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I'm already behind schedule?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Catch-Up mode. Enter your remaining workload, remaining days, and available hours per day, and the tool shows your new required pace plus alternatives — more daily time, more days, or reducing workload." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your inputs — subjects, dates, hours, and preferences — are saved to your browser's local storage so they persist between visits. Calculations happen entirely in your browser; nothing is sent to any server." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="study-hours-exam-planner.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Study Hours &amp; Exam Planner</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 11.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4.5"/><path d="M3 10h18"/><circle cx="17" cy="17" r="4"/><path d="M17 15.5v1.5l1 .75"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Study Hours &amp; Exam Planner</h1>
+            <p class="tool-subtitle">Work out how many hours to study each day, build a day-by-day exam plan, pace your syllabus, catch up when behind, and see what to study first.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             MODE SELECTOR — 5-tab bar
+        ============================================== -->
+        <div class="shep-mode-selector" role="tablist" aria-label="Planning mode">
+          <button type="button" role="tab" class="shep-mode-tab" id="shep-tab-study-hours" aria-selected="true" aria-controls="shep-panel-study-hours" tabindex="0" data-mode="study-hours">Study Hours</button>
+          <button type="button" role="tab" class="shep-mode-tab" id="shep-tab-exam-planner" aria-selected="false" aria-controls="shep-panel-exam-planner" tabindex="-1" data-mode="exam-planner">Exam Planner</button>
+          <button type="button" role="tab" class="shep-mode-tab" id="shep-tab-syllabus" aria-selected="false" aria-controls="shep-panel-syllabus" tabindex="-1" data-mode="syllabus">Syllabus Planner</button>
+          <button type="button" role="tab" class="shep-mode-tab" id="shep-tab-catchup" aria-selected="false" aria-controls="shep-panel-catchup" tabindex="-1" data-mode="catchup">Catch-Up</button>
+          <button type="button" role="tab" class="shep-mode-tab" id="shep-tab-readiness" aria-selected="false" aria-controls="shep-panel-readiness" tabindex="-1" data-mode="readiness">Readiness</button>
+        </div>
+
+        <div class="shep-panels">
+
+          <!-- =========================================
+               MODE 1 — STUDY HOURS
+          ========================================== -->
+          <div class="shep-panel" id="shep-panel-study-hours" role="tabpanel" aria-labelledby="shep-tab-study-hours" tabindex="0">
+
+            <div class="tool-form shep-form" role="form" aria-label="Study Hours">
+
+              <div class="shep-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-sh-total-hours">Total Study Hours</label>
+                  <input class="tool-input" type="number" id="shep-sh-total-hours" placeholder="e.g. 60" min="0" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Total hours of workload remaining</span>
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-sh-days">Number of Study Days</label>
+                  <input class="tool-input" type="number" id="shep-sh-days" placeholder="e.g. 15" min="1" step="1" inputmode="numeric">
+                  <span class="tool-field-hint">Days you'll actually study</span>
+                </div>
+              </div>
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="shep-sh-max-per-day">Maximum Study Hours / Day <span style="font-weight:400;color:var(--color-text-faint)">(optional)</span></label>
+                <input class="tool-input" type="number" id="shep-sh-max-per-day" placeholder="e.g. 5" min="0" step="any" inputmode="decimal" aria-describedby="shep-sh-max-hint">
+                <span class="tool-field-hint" id="shep-sh-max-hint">Add this to see if your daily capacity is enough</span>
+              </div>
+
+              <div class="shep-validation" id="shep-sh-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="shep-actions" id="shep-sh-actions">
+                <button class="btn btn-primary btn-lg" id="shep-sh-calc-btn" type="button">Calculate Required Hours</button>
+                <button class="btn btn-secondary btn-lg" id="shep-sh-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="shep-sh-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="shep-section-card shep-hero-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                  Required Study Time
+                </h2>
+                <div class="shep-big-number" id="shep-sh-hero">—</div>
+                <p class="shep-hero-sub" id="shep-sh-hero-sub">per day</p>
+                <div id="shep-sh-status-wrap">
+                  <span class="shep-status-badge" id="shep-sh-status-badge">—</span>
+                  <p class="shep-status-text" id="shep-sh-status-text"></p>
+                </div>
+              </div>
+
+              <div class="shep-section-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Workload Summary
+                </h2>
+                <div class="tool-stat-grid" id="shep-sh-stat-grid">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-sh-stat-total">—</div><div class="tool-stat-label">Total Workload</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-sh-stat-days">—</div><div class="tool-stat-label">Study Days</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-sh-stat-weekly">—</div><div class="tool-stat-label">Weekly Equivalent</div></div>
+                </div>
+                <div class="tool-stat-grid" id="shep-sh-capacity-grid" hidden>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-sh-stat-capacity">—</div><div class="tool-stat-label">Daily Capacity</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-sh-stat-diff">—</div><div class="tool-stat-label" id="shep-sh-stat-diff-label">Surplus / Shortfall</div></div>
+                </div>
+              </div>
+
+              <div class="shep-section-card" id="shep-sh-insights-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="shep-insights-list" id="shep-sh-insights-list" aria-label="Study hours insights"></ul>
+              </div>
+
+              <p class="tool-note">Estimated using your entered workload and study days only. This tool does not predict exam outcomes.</p>
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 2 — EXAM PLANNER (flagship mode)
+          ========================================== -->
+          <div class="shep-panel" id="shep-panel-exam-planner" role="tabpanel" aria-labelledby="shep-tab-exam-planner" tabindex="0" hidden>
+
+            <div class="tool-form shep-form" role="form" aria-label="Exam Planner">
+
+              <div class="shep-field-group">
+                <span class="shep-field-group-title">Exam Information</span>
+                <div class="shep-row-2">
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="shep-ep-start-date">Start Date</label>
+                    <input class="tool-input" type="date" id="shep-ep-start-date">
+                  </div>
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="shep-ep-exam-date">Exam Date</label>
+                    <input class="tool-input" type="date" id="shep-ep-exam-date">
+                  </div>
+                </div>
+              </div>
+
+              <div class="shep-weekday-group">
+                <span class="shep-weekday-group-label" id="shep-ep-weekday-label">Study Days of the Week</span>
+                <div class="shep-weekday-selector" role="group" aria-labelledby="shep-ep-weekday-label">
+                  <button type="button" class="shep-weekday-btn" data-day="1" aria-pressed="true">Mon</button>
+                  <button type="button" class="shep-weekday-btn" data-day="2" aria-pressed="true">Tue</button>
+                  <button type="button" class="shep-weekday-btn" data-day="3" aria-pressed="true">Wed</button>
+                  <button type="button" class="shep-weekday-btn" data-day="4" aria-pressed="true">Thu</button>
+                  <button type="button" class="shep-weekday-btn" data-day="5" aria-pressed="true">Fri</button>
+                  <button type="button" class="shep-weekday-btn" data-day="6" aria-pressed="true">Sat</button>
+                  <button type="button" class="shep-weekday-btn" data-day="0" aria-pressed="true">Sun</button>
+                </div>
+                <span class="tool-field-hint">Deselect any day you won't study on</span>
+              </div>
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="shep-ep-hours-per-day">Available Study Hours / Day</label>
+                <input class="tool-input" type="number" id="shep-ep-hours-per-day" placeholder="e.g. 4" min="0" step="any" inputmode="decimal">
+              </div>
+
+              <div class="shep-field-group">
+                <span class="shep-field-group-title">Subjects</span>
+
+                <div class="shep-col-headers" id="shep-ep-col-headers">
+                  <span>Subject</span>
+                  <span>Hours</span>
+                  <span class="shep-col-extra" hidden>Difficulty</span>
+                  <span class="shep-col-extra" hidden>Priority</span>
+                  <span></span>
+                </div>
+
+                <div class="shep-subject-list" id="shep-ep-subject-list"></div>
+
+                <div class="shep-subject-btn-row">
+                  <button class="btn btn-secondary" id="shep-ep-add-subject-btn" type="button">+ Add Subject</button>
+                  <button class="btn btn-ghost" id="shep-ep-toggle-details-btn" type="button" aria-pressed="false">+ Difficulty &amp; Priority</button>
+                </div>
+              </div>
+
+              <button class="shep-collapse-toggle" id="shep-ep-advanced-toggle" type="button" aria-expanded="false" aria-controls="shep-ep-advanced-body">
+                Advanced Planning Options
+                <svg class="shep-collapse-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="shep-collapse-body" id="shep-ep-advanced-body" hidden>
+                <div class="shep-row-2">
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="shep-ep-revision-mode">Revision Allocation</label>
+                    <div class="shep-select-wrap">
+                      <select class="tool-select" id="shep-ep-revision-mode">
+                        <option value="auto" selected>Auto (recommended)</option>
+                        <option value="custom">Custom %</option>
+                      </select>
+                      <span class="shep-select-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                    </div>
+                    <span class="tool-field-hint">Auto scales with days left: more days → more new study</span>
+                  </div>
+                  <div class="tool-field" id="shep-ep-revision-custom-field" hidden>
+                    <label class="tool-field-label" for="shep-ep-revision-custom">Custom Revision %</label>
+                    <input class="tool-input" type="number" id="shep-ep-revision-custom" placeholder="e.g. 30" min="0" max="100" step="1" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-ep-buffer-pct">Buffer %</label>
+                  <input class="tool-input" type="number" id="shep-ep-buffer-pct" value="10" min="0" max="40" step="1" inputmode="numeric">
+                  <span class="tool-field-hint">Reserved from your available capacity for the unexpected</span>
+                </div>
+              </div>
+
+              <div class="shep-validation" id="shep-ep-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="shep-actions" id="shep-ep-actions">
+                <button class="btn btn-primary btn-lg" id="shep-ep-generate-btn" type="button">Generate Plan</button>
+                <button class="btn btn-secondary btn-lg" id="shep-ep-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="shep-ep-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="shep-section-card shep-hero-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
+                  Your Study Plan
+                </h2>
+                <div class="shep-big-number" id="shep-ep-hero">—</div>
+                <p class="shep-hero-sub" id="shep-ep-hero-sub">per study day</p>
+                <span class="shep-status-badge" id="shep-ep-status-badge">—</span>
+                <p class="shep-status-text" id="shep-ep-status-text"></p>
+              </div>
+
+              <div class="shep-section-card" id="shep-ep-not-realistic" hidden>
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+                  This Plan Isn't Realistic Yet
+                </h2>
+                <p class="shep-status-text" id="shep-ep-shortfall-text"></p>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-ep-stat-total-shortfall">—</div><div class="tool-stat-label">Total Shortfall</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-ep-stat-extra-per-day">—</div><div class="tool-stat-label">Extra Hours / Day Needed</div></div>
+                </div>
+                <p class="tool-field-hint">Try the Catch-Up tab to see alternative ways to close this gap.</p>
+              </div>
+
+              <div class="shep-section-card" id="shep-ep-summary-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Plan Summary
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-ep-stat-required">—</div><div class="tool-stat-label">Required / Day</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-ep-stat-available">—</div><div class="tool-stat-label">Usable for New Study</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-ep-stat-remaining">—</div><div class="tool-stat-label">Remaining Workload</div></div>
+                </div>
+                <p class="shep-field-group-title" style="margin:var(--sp-2) 0 var(--sp-1)">Average Daily Allocation</p>
+                <div class="shep-chip-row">
+                  <div class="shep-chip shep-chip--new"><div class="shep-chip-value" id="shep-ep-chip-new">—</div><div class="shep-chip-label">New Study</div></div>
+                  <div class="shep-chip shep-chip--revision"><div class="shep-chip-value" id="shep-ep-chip-revision">—</div><div class="shep-chip-label">Revision</div></div>
+                  <div class="shep-chip shep-chip--buffer"><div class="shep-chip-value" id="shep-ep-chip-buffer">—</div><div class="shep-chip-label">Buffer</div></div>
+                  <div class="shep-chip shep-chip--free" id="shep-ep-chip-free-wrap" style="display:none;"><div class="shep-chip-value" id="shep-ep-chip-free">—</div><div class="shep-chip-label">Free Time</div></div>
+                </div>
+              </div>
+
+              <div class="shep-section-card" id="shep-ep-insights-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="shep-insights-list" id="shep-ep-insights-list" aria-label="Exam planner insights"></ul>
+              </div>
+
+              <div class="shep-section-card" id="shep-ep-plan-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+                  <span id="shep-ep-plan-card-title">Your Day-by-Day Plan</span>
+                </h2>
+                <p class="tool-field-hint" id="shep-ep-plan-card-note" style="margin-bottom: var(--sp-2); margin-top: -0.5rem;" hidden>
+                  This schedule uses your available study time. Some workload will remain unfinished unless you add study days, increase hours per day, or reduce the workload.
+                </p>
+                <div class="shep-plan-table-wrap">
+                  <table class="shep-plan-table">
+                    <thead><tr><th>Date</th><th>Focus</th><th>Study Time</th></tr></thead>
+                    <tbody id="shep-ep-plan-tbody"></tbody>
+                  </table>
+                </div>
+                <div class="shep-plan-cards" id="shep-ep-plan-cards"></div>
+              </div>
+
+              <p class="tool-note">Estimated using the workload, dates and hours you entered. This tool does not predict exam marks, rank, or success.</p>
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 3 — SYLLABUS PLANNER
+          ========================================== -->
+          <div class="shep-panel" id="shep-panel-syllabus" role="tabpanel" aria-labelledby="shep-tab-syllabus" tabindex="0" hidden>
+
+            <div class="tool-form shep-form" role="form" aria-label="Syllabus Planner">
+
+              <div class="shep-field-group">
+                <span class="shep-field-group-title">Subjects</span>
+                <div class="shep-col-headers shep-col-headers--syllabus">
+                  <span>Subject</span>
+                  <span>Rem. Topics</span>
+                  <span>Hrs / Topic</span>
+                  <span></span>
+                </div>
+                <div class="shep-subject-list" id="shep-syl-subject-list"></div>
+                <button class="btn btn-secondary" id="shep-syl-add-subject-btn" type="button">+ Add Subject</button>
+              </div>
+
+              <div class="shep-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-syl-days">Available Study Days</label>
+                  <input class="tool-input" type="number" id="shep-syl-days" placeholder="e.g. 10" min="1" step="1" inputmode="numeric">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-syl-hours-per-day">Available Hours / Day</label>
+                  <input class="tool-input" type="number" id="shep-syl-hours-per-day" placeholder="e.g. 6" min="0" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="shep-validation" id="shep-syl-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="shep-actions" id="shep-syl-actions">
+                <button class="btn btn-primary btn-lg" id="shep-syl-calc-btn" type="button">Calculate Pace</button>
+                <button class="btn btn-secondary btn-lg" id="shep-syl-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="shep-syl-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="shep-section-card shep-hero-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                  Required Pace
+                </h2>
+                <div class="shep-big-number" id="shep-syl-hero">—</div>
+                <p class="shep-hero-sub" id="shep-syl-hero-sub">per study day</p>
+                <span class="shep-status-badge" id="shep-syl-status-badge">—</span>
+                <p class="shep-status-text" id="shep-syl-status-text"></p>
+              </div>
+
+              <div class="shep-section-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Pace Breakdown
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-syl-stat-topics">—</div><div class="tool-stat-label">Remaining Topics</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-syl-stat-hours">—</div><div class="tool-stat-label">Remaining Hours</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-syl-stat-days">—</div><div class="tool-stat-label">Study Days</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-syl-stat-topics-per-day">—</div><div class="tool-stat-label">Topics / Day</div></div>
+                </div>
+              </div>
+
+              <div class="shep-section-card" id="shep-syl-insights-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="shep-insights-list" id="shep-syl-insights-list" aria-label="Syllabus planner insights"></ul>
+              </div>
+
+              <p class="tool-note">Estimated using the topics, per-topic hours and days you entered. This tool does not predict exam outcomes.</p>
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 4 — CATCH-UP
+          ========================================== -->
+          <div class="shep-panel" id="shep-panel-catchup" role="tabpanel" aria-labelledby="shep-tab-catchup" tabindex="0" hidden>
+
+            <div class="tool-form shep-form" role="form" aria-label="Catch-Up Plan">
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="shep-cu-remaining-workload">Remaining Workload (hours)</label>
+                <input class="tool-input" type="number" id="shep-cu-remaining-workload" placeholder="e.g. 45" min="0" step="any" inputmode="decimal">
+              </div>
+
+              <div class="shep-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-cu-remaining-days">Remaining Study Days</label>
+                  <input class="tool-input" type="number" id="shep-cu-remaining-days" placeholder="e.g. 10" min="1" step="1" inputmode="numeric">
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="shep-cu-hours-per-day">Available Hours / Day</label>
+                  <input class="tool-input" type="number" id="shep-cu-hours-per-day" placeholder="e.g. 3" min="0" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="shep-validation" id="shep-cu-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="shep-actions" id="shep-cu-actions">
+                <button class="btn btn-primary btn-lg" id="shep-cu-calc-btn" type="button">Calculate Catch-Up Plan</button>
+                <button class="btn btn-secondary btn-lg" id="shep-cu-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="shep-cu-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="shep-section-card shep-hero-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg></span>
+                  Your Catch-Up Pace
+                </h2>
+                <div class="shep-big-number" id="shep-cu-hero">—</div>
+                <p class="shep-hero-sub" id="shep-cu-hero-sub">per day needed</p>
+                <span class="shep-status-badge" id="shep-cu-status-badge">—</span>
+                <p class="shep-status-text" id="shep-cu-status-text"></p>
+              </div>
+
+              <div class="shep-section-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Comparison
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-cu-stat-required">—</div><div class="tool-stat-label">Required / Day</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-cu-stat-available">—</div><div class="tool-stat-label">Available / Day</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-cu-stat-shortfall">—</div><div class="tool-stat-label">Daily Shortfall</div></div>
+                </div>
+              </div>
+
+              <div class="shep-section-card" id="shep-cu-alt-card" hidden>
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+                  Alternatives
+                </h2>
+                <p class="tool-field-hint" style="margin-bottom:var(--sp-2)">Pick the option that fits your situation — the tool doesn't choose for you.</p>
+                <div class="shep-alt-list" id="shep-cu-alt-list"></div>
+              </div>
+
+              <div class="shep-section-card" id="shep-cu-insights-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="shep-insights-list" id="shep-cu-insights-list" aria-label="Catch-up insights"></ul>
+              </div>
+
+              <p class="tool-note">Estimated using the workload, days and hours you entered. This tool does not predict exam outcomes.</p>
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 5 — READINESS
+          ========================================== -->
+          <div class="shep-panel" id="shep-panel-readiness" role="tabpanel" aria-labelledby="shep-tab-readiness" tabindex="0" hidden>
+
+            <div class="tool-form shep-form" role="form" aria-label="Readiness">
+
+              <div class="shep-field-group">
+                <span class="shep-field-group-title">Subjects</span>
+                <div class="shep-col-headers shep-col-headers--readiness">
+                  <span>Subject</span>
+                  <span>Completion %</span>
+                  <span>Confidence</span>
+                  <span>Difficulty</span>
+                  <span>Importance</span>
+                  <span></span>
+                </div>
+                <div class="shep-subject-list" id="shep-rd-subject-list"></div>
+                <button class="btn btn-secondary" id="shep-rd-add-subject-btn" type="button">+ Add Subject</button>
+              </div>
+
+              <div class="shep-validation" id="shep-rd-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="shep-actions" id="shep-rd-actions">
+                <button class="btn btn-primary btn-lg" id="shep-rd-calc-btn" type="button">Calculate Study Priority</button>
+                <button class="btn btn-secondary btn-lg" id="shep-rd-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="shep-rd-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="shep-section-card shep-readiness-top">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 9.1 8.6 2 9.3l5.5 4.6L5.8 21 12 17.3 18.2 21l-1.7-7.1L22 9.3l-7.1-.7Z"/></svg></span>
+                  Top Study Priority
+                </h2>
+                <p class="shep-readiness-top-label">Focus on this subject first</p>
+                <div class="shep-readiness-top-name" id="shep-rd-top-name">—</div>
+                <div class="shep-readiness-detail-grid shep-readiness-detail-grid--5">
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-rd-top-completion">—</div><div class="tool-stat-label">Completion</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-rd-top-confidence">—</div><div class="tool-stat-label">Confidence</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-rd-top-difficulty">—</div><div class="tool-stat-label">Difficulty</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-rd-top-importance">—</div><div class="tool-stat-label">Importance</div></div>
+                  <div class="tool-stat"><div class="tool-stat-value" id="shep-rd-top-score">—</div><div class="tool-stat-label">Study Priority</div></div>
+                </div>
+                <p class="shep-status-text" id="shep-rd-top-reason" style="margin-top:var(--sp-2)"></p>
+              </div>
+
+              <div class="shep-section-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  All Subjects, Ranked
+                </h2>
+                <div class="shep-readiness-priority-list" id="shep-rd-priority-list"></div>
+              </div>
+
+              <div class="shep-section-card" id="shep-rd-insights-card">
+                <h2 class="shep-section-title">
+                  <span class="shep-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="shep-insights-list" id="shep-rd-insights-list" aria-label="Readiness insights"></ul>
+              </div>
+
+              <p class="tool-note">Study Priority is a planning estimate based on completion, confidence, difficulty and importance — not an exam success prediction.</p>
+            </div>
+          </div>
+
+        </div><!-- /.shep-panels -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="shep-related-wrap" aria-labelledby="shep-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="shep-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="shep-related-grid"
+               data-tool-id="study-hours-exam-planner"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. How to Calculate Study Hours -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-hours-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-hours-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            How to Calculate Study Hours
+          </h2>
+          <p>The simplest planning question is also the most useful one: how many hours do I need to study each day? Required hours per day is your total remaining workload divided by the number of days you actually intend to study. If you have 60 hours of material and 15 study days, that's 4 hours a day — no more, no less.</p>
+          <p>Once you add a maximum daily capacity, the calculator compares your required pace against what you can realistically fit in, and tells you whether you're on track, cutting it close, or facing a workload that doesn't fit your available time.</p>
+        </section>
+
+        <!-- 2. How to Make a Study Plan -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-plan-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-plan-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
+            How to Make a Study Plan Before an Exam
+          </h2>
+          <p>Exam Planner turns a start date, an exam date, your subjects, and the hours you have each day into an actual day-by-day schedule. It only ever schedules the study days you select, never exceeds the hours you have available, and never schedules past your exam date.</p>
+          <p>Each day's time is split into new study, revision, and a small buffer, and the highest-priority incomplete subject is scheduled first — but the planner rotates between subjects with similar priority so you're not stuck on one subject for a week straight.</p>
+        </section>
+
+        <!-- 3. How to Plan Your Syllabus Before Exams -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-syllabus-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-syllabus-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+            How to Plan Your Syllabus Before Exams
+          </h2>
+          <p>Syllabus Planner works in topics rather than hours. For each subject, enter how many topics remain and how long each one typically takes you — the tool multiplies these to find your total remaining workload, then divides by your available study days to find both an hours-per-day and a topics-per-day pace.</p>
+          <p>This view is useful earlier in a term, when you're thinking in "chapters left" rather than "hours left", and want a simple pace target you can track week to week.</p>
+        </section>
+
+        <!-- 4. How to Create a Catch-Up Study Plan -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-catchup-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-catchup-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+            How to Create a Catch-Up Study Plan
+          </h2>
+          <p>Falling behind doesn't need a new formula — it needs the same one, recalculated with today's numbers. Catch-Up mode takes your remaining workload, remaining days, and available hours per day, and shows you the new required pace and exactly how far short your current availability falls.</p>
+          <p>Where the gap is real, the tool lays out three concrete alternatives — more hours per day, more study days, or less workload — and the shortfall each one would need to close, so you can choose what actually fits your situation.</p>
+        </section>
+
+        <!-- 5. How to Allocate Revision Time -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-revision-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-revision-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.99 6.57 2.6"/><path d="M21 3v6h-6"/></svg></span>
+            How to Allocate Revision Time
+          </h2>
+          <p>Revision competes with new study for the same hours, so Exam Planner treats it as a split of your available time rather than extra time added on top. With more than seven days left, the default is 70% new study and 30% revision; with three to seven days, it's an even 50/50; with one or two days left, revision takes over at 80%, since there's little value in starting brand-new material the night before an exam.</p>
+          <p>These are sensible starting defaults, not fixed rules — you can override the percentage directly in Advanced Planning Options if your subjects need a different balance.</p>
+        </section>
+
+        <!-- 6. Why Buffer Time Helps -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-buffer-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-buffer-heading">
+            Why Buffer Time Helps
+          </h2>
+          <p>A study plan built around 100% of your available hours has no room for a bad day, a slower topic, or an unplanned interruption — one missed session and the whole schedule falls apart. Buffer time solves this by reserving a slice of your available capacity, 10% by default, before anything else is allocated.</p>
+          <p>If you have 4 available hours and a 10% buffer, 24 minutes are set aside and the remaining 3 hours 36 minutes are split between new study and revision. It's a small sacrifice that makes the rest of the plan much more resilient to real life.</p>
+        </section>
+
+        <!-- 7. How to Prioritize Difficult Subjects -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-priority-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-priority-heading">
+            How to Prioritize Difficult Subjects
+          </h2>
+          <p>Difficulty and priority never change how many hours a subject needs — they only change the order subjects get scheduled in. A 10-hour subject stays a 10-hour subject whether it's marked Easy or Hard; marking it Hard simply moves it earlier in the queue so it isn't left until the last few days.</p>
+          <p>Behind the scenes, each subject gets a planning score based on its share of your total workload, multiplied by its difficulty weight and priority weight. It's used only to decide scheduling order — it's never shown as a mysterious "AI score", and it never inflates the hours you originally estimated.</p>
+        </section>
+
+        <!-- 8. Common Study Planning Mistakes -->
+        <section class="tool-seo-section" aria-labelledby="shep-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="shep-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Study Planning Mistakes
+          </h2>
+          <p><strong>Mistake 1 — Planning against calendar days instead of real study days.</strong> If you only study on weekdays, using every calendar day between now and your exam overstates your capacity. Select your actual study days in Exam Planner so the pace reflects reality.</p>
+          <p><strong>Mistake 2 — Treating estimated hours as flexible.</strong> Underestimating a subject's remaining hours to make a plan "fit" doesn't change the real workload — it just means the plan quietly fails later.</p>
+          <p><strong>Mistake 3 — Skipping revision entirely.</strong> A plan built only around new material leaves nothing to reinforce it. Even a 70/30 split protects some time for review from day one.</p>
+          <p><strong>Mistake 4 — Ignoring a "Not Realistic" result.</strong> If the required pace exceeds your available time, adding motivation won't close that gap — only more days, more hours, or less workload will. Use Catch-Up mode to see the real options.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="shep-faq-heading">
+          <h2 class="tool-seo-section-title" id="shep-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+
+          <div class="tool-faq-list" id="shep-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a1">
+                Can this tool predict my exam marks or rank?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a1" role="region">
+                No. This planner only calculates required study time, pace, and priority based on the numbers you enter. It never predicts exam marks, rank, or success — it estimates how much study time your goals realistically require.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a2">
+                How is the required study time per day calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a2" role="region">
+                Required hours per day is your total workload divided by the number of study days you have available. In Exam Planner, weekday selection and buffer/revision settings adjust how that time is distributed across days.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a3">
+                What does difficulty do if it doesn't change my workload?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a3" role="region">
+                Difficulty and priority only change the order subjects are scheduled in, not the number of hours you estimated. A 10-hour subject stays 10 hours regardless of difficulty — difficulty just means it gets prioritised earlier in the plan.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a4">
+                What do buffer and revision time mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a4" role="region">
+                Buffer reserves a slice of your available time (10% by default) for the unexpected — illness, slower topics, or life getting in the way. Revision time is a redistribution of your remaining study time toward reviewing what you've already studied, not extra hours on top.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a5">
+                What does "Not Realistic" mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a5" role="region">
+                It means your entered workload exceeds the time you have available, even before buffer or revision. The planner shows the exact shortfall instead of generating a plan that looks complete but isn't achievable.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a6">
+                How is Study Priority different from a success prediction?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a6" role="region">
+                Study Priority in the Readiness mode only ranks which subjects need attention first, based on completion, confidence, difficulty, and importance. It is not an estimate of your exam score or chance of success.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a7">
+                Can I select only specific days of the week to study?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a7" role="region">
+                Yes, in Exam Planner you can deselect days you won't study on (for example, if you keep Sundays off). The planner then counts only the actual selected dates between your start date and exam date.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a8">
+                What happens if I'm already behind schedule?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a8" role="region">
+                Use Catch-Up mode. Enter your remaining workload, remaining days, and available hours per day, and the tool shows your new required pace plus alternatives — more daily time, more days, or reducing workload.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a9">
+                Is a zero workload or zero remaining topics a valid input?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a9" role="region">
+                Yes. If there's no remaining workload or no remaining topics, the tool tells you there's nothing left to plan rather than showing a divide-by-zero error or a misleading number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="shep-faq-a10">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="shep-faq-a10" role="region">
+                Your inputs — subjects, dates, hours, and preferences — are saved to your browser's local storage so they persist between visits. Calculations happen entirely in your browser; nothing is sent to any server.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="study-hours-exam-planner.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>
+

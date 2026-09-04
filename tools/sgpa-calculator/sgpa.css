@@ -1,0 +1,587 @@
+/* ============================================
+   SGPA.CSS — Project 50
+   SGPA Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-input, .tool-select, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-note, .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers:
+     - Grade scale selector (compact segmented control)
+     - Subject rows (.sgpa-row, .sgpa-subjects)
+     - Custom grade select + auto-derived grade point display
+     - Remove button (.sgpa-remove-btn)
+     - Action row (.sgpa-actions)
+     - Validation message
+     - Section cards (mirrors .cgpa-section-card exactly —
+       macro.css is not loaded on this page)
+     - Hero SGPA display
+     - Subject breakdown table (desktop grid / mobile cards)
+     - Insights list
+     - Responsive: 640px, 480px, 380px
+============================================ */
+
+/* ============================================
+   GRADE SCALE SELECTOR — compact segmented control
+============================================ */
+
+.sgpa-scale-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+}
+
+.sgpa-scale-btn {
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sgpa-scale-btn:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.sgpa-scale-btn[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.sgpa-scale-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   COLUMN HEADERS — desktop only
+============================================ */
+
+.sgpa-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 90px 100px 90px 40px;
+  gap: 8px;
+  padding: 0 2px 2px;
+}
+
+.sgpa-col-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.sgpa-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+/* ============================================
+   SUBJECTS LIST
+============================================ */
+
+.sgpa-subjects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ============================================
+   SUBJECT ROW — desktop
+============================================ */
+
+.sgpa-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 100px 90px 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.sgpa-name-field,
+.sgpa-credits-field,
+.sgpa-grade-field,
+.sgpa-gp-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Mobile field labels — hidden on desktop */
+.sgpa-field-label {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 5px;
+}
+
+/* ============================================
+   CUSTOM GRADE SELECT
+============================================ */
+
+.sgpa-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.sgpa-select-wrap .sgpa-grade-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sgpa-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.sgpa-select-wrap .sgpa-grade-input:focus + .sgpa-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   GRADE POINT DISPLAY — read-only, auto-derived
+============================================ */
+
+.sgpa-gp-display {
+  height: var(--input-height);
+  border-radius: var(--input-radius);
+  background: var(--color-bg-secondary);
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Input error state */
+.sgpa-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+/* ============================================
+   REMOVE BUTTON
+============================================ */
+
+.sgpa-remove-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.sgpa-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: scale(1.05);
+}
+
+.sgpa-remove-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   ACTION BUTTONS ROW
+============================================ */
+
+.sgpa-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Add Subject: fixed width so it doesn't collapse */
+.sgpa-actions .btn-secondary:first-child {
+  min-width: 152px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* Calculate: grows to fill remaining space */
+.sgpa-actions .btn-primary {
+  flex: 1;
+}
+
+/* Reset: compact fixed width */
+.sgpa-actions .btn-secondary:last-child {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.sgpa-actions .btn-secondary:first-child:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .cgpa-section-card exactly.
+   Required because macro.css is not loaded on this page.
+============================================ */
+
+.sgpa-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.sgpa-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.sgpa-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.sgpa-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   HERO RESULT — big SGPA number
+============================================ */
+
+.sgpa-hero-card {
+  text-align: center;
+}
+
+.sgpa-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+/* ============================================
+   PERFORMANCE ANALYSIS STAT COLOUR VARIANTS
+============================================ */
+
+.sgpa-stat--high .tool-stat-value {
+  color: #34d399;
+}
+
+.sgpa-stat--low .tool-stat-value {
+  color: #f87171;
+}
+
+/* ============================================
+   SUBJECT BREAKDOWN — desktop grid / mobile cards
+============================================ */
+
+.sgpa-breakdown-headers {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.7fr 0.9fr 1fr;
+  gap: 8px;
+  padding: 0 12px 8px;
+}
+
+.sgpa-breakdown-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.sgpa-breakdown-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sgpa-breakdown-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.7fr 0.9fr 1fr;
+  gap: 8px;
+  align-items: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.sgpa-breakdown-row > div {
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.sgpa-bd-name {
+  font-weight: 600;
+}
+
+.sgpa-bd-weighted {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.sgpa-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.sgpa-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.sgpa-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.sgpa-insight-icon--positive { color: #34d399; }
+.sgpa-insight-icon--neutral  { color: #60a5fa; }
+.sgpa-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   MOBILE (≤ 640px) — stacked card layout
+============================================ */
+
+@media (max-width: 640px) {
+
+  .sgpa-section-card {
+    padding: var(--sp-3);
+  }
+
+  .sgpa-col-headers {
+    display: none;
+  }
+
+  .sgpa-subjects {
+    gap: var(--sp-2);
+  }
+
+  .tool-form.sgpa-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .sgpa-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "name    name"
+      "credits grade"
+      "gp      gp";
+    gap: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-2);
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .sgpa-row:focus-within {
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .sgpa-row .sgpa-name-field    { grid-area: name; }
+  .sgpa-row .sgpa-credits-field { grid-area: credits; }
+  .sgpa-row .sgpa-grade-field   { grid-area: grade; }
+  .sgpa-row .sgpa-gp-field      { grid-area: gp; }
+
+  .sgpa-name-field {
+    margin-top: 10px;
+  }
+
+  .sgpa-gp-field .sgpa-gp-display {
+    height: 40px;
+    justify-content: flex-start;
+    padding: 0 14px;
+  }
+
+  .sgpa-field-label { display: block; }
+
+  .sgpa-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    grid-area: unset;
+  }
+
+  .sgpa-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .sgpa-actions .btn-secondary,
+  .sgpa-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  /* Subject breakdown — stacked cards */
+  .sgpa-breakdown-headers {
+    display: none;
+  }
+
+  .sgpa-breakdown-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name    name"
+      "credits grade"
+      "gp      weighted";
+  }
+
+  .sgpa-bd-name     { grid-area: name; }
+  .sgpa-bd-credits  { grid-area: credits; }
+  .sgpa-bd-grade    { grid-area: grade; }
+  .sgpa-bd-gp       { grid-area: gp; }
+  .sgpa-bd-weighted { grid-area: weighted; }
+
+  .sgpa-breakdown-row > div[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    margin-bottom: 3px;
+  }
+
+}
+
+/* ============================================
+   TABLET (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .sgpa-hero-card {
+    text-align: left;
+  }
+
+  .sgpa-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+}
+
+/* ============================================
+   VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+
+  .tool-form.sgpa-form {
+    padding: var(--sp-1) 14px;
+    gap: 14px;
+  }
+
+  .sgpa-row {
+    padding: 14px;
+  }
+
+  .sgpa-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+
+  .sgpa-scale-btn {
+    font-size: var(--fs-xs);
+    padding: 10px 8px;
+  }
+
+}

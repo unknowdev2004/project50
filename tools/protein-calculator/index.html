@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protein Calculator — Daily Protein Target for Fat Loss &amp; Muscle Gain | Project 50</title>
+  <meta name="description" content="Calculate exactly how much protein you need per day. Get personalised targets for fat loss, maintenance or muscle gain based on your weight and activity level.">
+  <meta name="keywords" content="protein calculator, daily protein intake, protein for fat loss, protein for muscle gain, how much protein per day, protein requirements, high protein diet">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/protein-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/protein-calculator/">
+  <meta property="og:title" content="Protein Calculator — Daily Protein Target | Project 50">
+  <meta property="og:description" content="Find out how much protein you should eat per day. Get personalised targets for fat loss, maintenance and muscle gain.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Protein Calculator — Daily Protein Target | Project 50">
+  <meta name="twitter:description" content="Calculate your daily protein target for fat loss, maintenance or muscle gain based on your weight and activity level.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Protein Calculator",
+    "url": "https://project50.tools/tools/protein-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your daily protein requirements based on your weight, goal and activity level. Shows minimum, recommended and optimal targets with food equivalents.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Protein Calculator", "item": "https://project50.tools/tools/protein-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much protein do I need per day?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Protein needs depend on your weight, goal and activity level. For maintenance, 1.2–1.6g per kg of bodyweight is adequate. Fat loss requires 1.6–2.2g/kg to preserve muscle, and muscle gain targets 1.8–2.4g/kg to support growth." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does fat loss require more protein than maintenance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "During a calorie deficit, the body is more likely to break down muscle for energy. Higher protein intake — around 1.6–2.2g/kg — acts as a protective signal that preserves lean mass while fat is being lost." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does activity level affect how much protein I need?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. More active individuals have higher protein turnover and greater muscle repair demands. This calculator adds an activity bonus of up to +0.4g/kg for athletes on top of the goal-based factor." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I eat too much protein?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For healthy adults, intakes up to 2.5g/kg are generally safe. Very high intakes beyond 3g/kg provide diminishing returns for muscle growth and add unnecessary calories. This calculator caps displayed results at 350g/day as a practical upper bound." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I spread protein across multiple meals?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Research suggests muscle protein synthesis is maximised at around 0.4g/kg per meal. Spreading your daily target across 3–5 meals helps your body absorb and utilise protein more efficiently than consuming it all at once." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the best food sources of protein?",
+        "acceptedAnswer": { "@type": "Answer", "text": "High-quality animal sources include chicken breast (~31g/100g), eggs (~6g each), Greek yoghurt (~10g/100g), and milk (~3.4g/100ml). Plant sources include lentils (~9g/100g cooked), tofu (~8g/100g), and edamame. Whey protein supplements provide ~24g per scoop." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Recommended or Optimal target better for muscle gain?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Recommended target (middle value) represents the scientific consensus for your goal and activity level. The Optimal target provides additional headroom for those who want to maximise results and are comfortable eating more protein-rich foods." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my personal data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All calculations run entirely in your browser. Your inputs are saved locally so they persist after a page refresh, but no data is ever sent to a server or stored outside your device." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="protein.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Protein Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 11h1a2 2 0 0 1 0 4h-1"/>
+              <path d="M9 11h5a2 2 0 0 1 0 4H9"/>
+              <path d="M9 7h1"/>
+              <path d="M9 17h1"/>
+              <path d="M5 11v4"/>
+              <path d="M19 11v4"/>
+              <path d="M4 7c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Protein Calculator</h1>
+            <p class="tool-subtitle">Daily Protein Target Calculator — find out exactly how much protein you should eat.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Protein calculator inputs">
+
+          <!-- Weight with unit selection -->
+          <div class="tool-field">
+            <div class="protein-unit-label-row">
+              <label class="tool-field-label" for="protein-weight" id="protein-weight-label">Weight (kg)</label>
+              <div class="protein-select-wrap protein-unit-select-wrap">
+                <select class="tool-select protein-unit-select" id="protein-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="protein-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="protein-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="protein-weight-hint">
+            <span class="tool-field-hint" id="protein-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Goal -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="protein-goal">Goal</label>
+            <div class="protein-select-wrap">
+              <select class="tool-select" id="protein-goal" aria-describedby="protein-goal-hint">
+                <option value="maintain">Maintain Weight — sustain current muscle mass</option>
+                <option value="lose" selected>Lose Fat — preserve muscle while cutting</option>
+                <option value="build">Build Muscle — build lean mass</option>
+              </select>
+              <span class="protein-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="protein-goal-hint">Your primary dietary objective</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="protein-activity">Activity Level</label>
+            <div class="protein-select-wrap">
+              <select class="tool-select" id="protein-activity" aria-describedby="protein-activity-hint">
+                <option value="sedentary">Sedentary — desk job, little or no exercise</option>
+                <option value="lightly-active">Lightly Active — 1–3 days/week</option>
+                <option value="moderately-active" selected>Moderately Active — 3–5 days/week</option>
+                <option value="very-active">Very Active — 6–7 days/week</option>
+                <option value="athlete">Athlete — twice-daily or intense daily training</option>
+              </select>
+              <span class="protein-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="protein-activity-hint">Choose the level that best matches your typical week</span>
+          </div>
+
+          <!-- Validation -->
+          <div class="protein-validation" id="protein-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="protein-btn-row">
+            <button class="btn btn-primary btn-lg" id="protein-calc-btn">
+              Calculate Protein
+            </button>
+            <button class="btn btn-secondary btn-lg" id="protein-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="protein-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Card 1: Daily Protein Targets (hero card) -->
+          <div class="protein-section-card protein-summary-card">
+            <h2 class="protein-section-title">
+              <span class="protein-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Daily Protein Targets
+            </h2>
+            <div class="protein-range-grid">
+              <div class="protein-range-card">
+                <div class="protein-range-label">Minimum</div>
+                <div class="protein-range-value" id="protein-min">—</div>
+                <div class="protein-range-sub">g / day</div>
+              </div>
+              <div class="protein-range-card protein-range-card--highlight">
+                <div class="protein-range-badge">Recommended</div>
+                <div class="protein-range-value" id="protein-rec">—</div>
+                <div class="protein-range-sub">g / day</div>
+              </div>
+              <div class="protein-range-card">
+                <div class="protein-range-label">Optimal</div>
+                <div class="protein-range-value" id="protein-opt">—</div>
+                <div class="protein-range-sub">g / day</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Protein Per Meal -->
+          <div class="protein-section-card">
+            <h2 class="protein-section-title">
+              <span class="protein-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+              </span>
+              Protein Per Meal
+            </h2>
+            <p class="protein-range-note">Based on your recommended daily target.</p>
+            <div class="protein-meal-grid" id="protein-meal-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 3: Food Equivalents -->
+          <div class="protein-section-card">
+            <h2 class="protein-section-title">
+              <span class="protein-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-1.723-7.62l-.387.021A4 4 0 0 0 13 2H7a2 2 0 0 0-2 2v16a1 1 0 0 0 1 1z"/><path d="M6 2v20"/></svg>
+              </span>
+              Food Equivalents
+            </h2>
+            <p class="protein-range-note">How to hit your recommended protein (<span id="protein-rec-inline">—</span>g) with common foods.</p>
+            <div class="protein-food-grid" id="protein-food-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 4: Activity Comparison -->
+          <div class="protein-section-card">
+            <h2 class="protein-section-title">
+              <span class="protein-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </span>
+              Activity Comparison
+            </h2>
+            <p class="protein-range-note">Recommended protein across all activity levels for your current goal.</p>
+            <div class="protein-activity-grid" id="protein-activity-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 5: Protein Snapshot -->
+          <div class="protein-section-card protein-snapshot-card">
+            <h2 class="protein-section-title">
+              <span class="protein-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </span>
+              Protein Snapshot
+            </h2>
+            <div class="tool-stat-grid" id="protein-snapshot-grid">
+              <!-- Filled by JS -->
+            </div>
+            <p class="tool-note">Protein needs are estimates. Individual results vary based on body composition, training intensity, and diet adherence. Consult a registered dietitian for personalised guidance.</p>
+          </div>
+
+        </div><!-- /#protein-results -->
+
+        <!-- Related Tools -->
+        <div class="tool-related" id="protein-related-tools" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="protein-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="protein-about-heading">
+          <h2 class="tool-seo-section-title" id="protein-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            About This Tool
+          </h2>
+          <p>The Protein Calculator estimates your ideal daily protein intake based on your bodyweight, dietary goal and activity level. It uses evidence-based multipliers from sports nutrition research to give you three targets: a minimum floor to preserve muscle, a recommended sweet spot supported by the scientific consensus, and an optimal ceiling for those seeking maximum results.</p>
+          <p>Unlike calculators that output a single number, this tool shows how your protein needs shift across goals and activity levels — so you understand the reasoning, not just the result.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="protein-howto-heading">
+          <h2 class="tool-seo-section-title" id="protein-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            How To Use
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>Enter your bodyweight in kg or lbs. Switch units using the toggle beside the label.</li>
+            <li>Choose your primary goal: Maintenance, Fat Loss, or Muscle Gain.</li>
+            <li>Select your activity level — honest assessment gives more useful results.</li>
+            <li>Tap Calculate Protein. Your minimum, recommended and optimal targets appear instantly.</li>
+            <li>Use the Protein Per Meal card to distribute intake across 3–6 meals.</li>
+            <li>Use the Food Equivalents card to plan meals around real food sources.</li>
+          </ol>
+        </section>
+
+        <!-- Why Protein Matters -->
+        <section class="tool-seo-section" aria-labelledby="protein-why-heading">
+          <h2 class="tool-seo-section-title" id="protein-why-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </span>
+            Why Protein Matters
+          </h2>
+          <p>Protein is the primary building block of muscle, enzymes, hormones and immune cells. It is also the most satiating macronutrient — higher protein diets consistently reduce hunger and improve dietary adherence. Unlike carbohydrates and fat, protein cannot be stored by the body, making daily intake targets meaningful rather than optional guidelines.</p>
+          <p>Protein also has the highest thermic effect of food (TEF) — approximately 20–30% of calories from protein are used in digestion and absorption, compared to 5–10% for carbohydrates and 0–3% for fat. This makes protein the single most impactful macronutrient for body composition.</p>
+        </section>
+
+        <!-- Protein For Fat Loss -->
+        <section class="tool-seo-section" aria-labelledby="protein-fatloss-heading">
+          <h2 class="tool-seo-section-title" id="protein-fatloss-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </span>
+            Protein For Fat Loss
+          </h2>
+          <p>During a calorie deficit, the body turns to muscle protein for energy. Research shows that consuming 1.6–2.2g of protein per kg of bodyweight during a cut significantly reduces muscle breakdown compared to lower intakes. Higher protein also keeps hunger lower, making adherence to a calorie deficit far more sustainable.</p>
+          <p>A 2020 meta-analysis in the British Journal of Sports Medicine found that dietary protein supplementation during caloric restriction produced significantly greater fat-free mass retention than lower-protein approaches. Fat loss targets in this calculator start at 1.6g/kg minimum for this reason.</p>
+        </section>
+
+        <!-- Protein For Muscle Gain -->
+        <section class="tool-seo-section" aria-labelledby="protein-muscle-heading">
+          <h2 class="tool-seo-section-title" id="protein-muscle-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            </span>
+            Protein For Muscle Gain
+          </h2>
+          <p>For muscle hypertrophy, the research consensus is 1.6–2.4g/kg/day. The lower end (1.6g/kg) is adequate for most trained individuals in a modest calorie surplus. The higher end (2.2–2.4g/kg) is appropriate for experienced athletes, those on aggressive training programmes, or individuals seeking to maximise anabolic stimulus.</p>
+          <p>Protein timing also matters for muscle gain: spreading intake across 4–6 meals of approximately 0.4g/kg each appears to saturate muscle protein synthesis more effectively than eating the same total protein in fewer, larger meals.</p>
+        </section>
+
+        <!-- Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="protein-results-heading">
+          <h2 class="tool-seo-section-title" id="protein-results-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p>The three targets represent different levels of evidence-based commitment. The Minimum is the floor below which muscle preservation or growth becomes significantly compromised. The Recommended target reflects the scientific consensus for your goal and activity level — aim here by default. The Optimal target provides additional headroom for those with very high training volumes or who want to push beyond the consensus.</p>
+          <p>Activity bonuses add to the base goal factor: athletes receive up to +0.4g/kg above the goal baseline, reflecting the greater protein turnover from high training volumes. All values are capped at 350g/day, a practical limit beyond which additional protein provides minimal additional benefit for most people.</p>
+        </section>
+
+        <!-- Common Protein Sources -->
+        <section class="tool-seo-section" aria-labelledby="protein-sources-heading">
+          <h2 class="tool-seo-section-title" id="protein-sources-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-1.723-7.62l-.387.021A4 4 0 0 0 13 2H7a2 2 0 0 0-2 2v16a1 1 0 0 0 1 1z"/><path d="M6 2v20"/></svg>
+            </span>
+            Common Protein Sources
+          </h2>
+          <p>Chicken breast provides around 31g of protein per 100g — one of the highest protein-to-calorie ratios of any whole food. Eggs deliver 6g each with a complete amino acid profile. Greek yoghurt provides 10g/100g and is convenient for breakfast or snacks. Milk offers 3.4g per 100ml. Lentils and chickpeas deliver 7–9g per 100g cooked and are excellent plant-based options. Whey protein supplements provide ~24g per standard scoop and are useful for hitting targets when whole food intake is insufficient.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="protein-faq-heading">
+          <h2 class="tool-seo-section-title" id="protein-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a1">How much protein do I need per day?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a1" role="region">
+                <p>Protein needs depend on your weight, goal and activity level. For maintenance, 1.2–1.6g per kg of bodyweight is adequate. Fat loss requires 1.6–2.2g/kg to preserve muscle, and muscle gain targets 1.8–2.4g/kg to support growth.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a2">Why does fat loss require more protein than maintenance?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a2" role="region">
+                <p>During a calorie deficit, the body is more likely to break down muscle for energy. Higher protein intake — around 1.6–2.2g/kg — acts as a protective signal that preserves lean mass while fat is being lost.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a3">Does activity level affect how much protein I need?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a3" role="region">
+                <p>Yes. More active individuals have higher protein turnover and greater muscle repair demands. This calculator adds an activity bonus of up to +0.4g/kg for athletes on top of the goal-based factor.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a4">Can I eat too much protein?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a4" role="region">
+                <p>For healthy adults, intakes up to 2.5g/kg are generally safe. Very high intakes beyond 3g/kg provide diminishing returns for muscle growth and add unnecessary calories. This calculator caps displayed results at 350g/day as a practical upper bound.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a5">Should I spread protein across multiple meals?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a5" role="region">
+                <p>Research suggests muscle protein synthesis is maximised at around 0.4g/kg per meal. Spreading your daily target across 3–5 meals helps your body absorb and utilise protein more efficiently than consuming it all at once.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a6">What are the best food sources of protein?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a6" role="region">
+                <p>High-quality animal sources include chicken breast (~31g/100g), eggs (~6g each), Greek yoghurt (~10g/100g), and milk (~3.4g/100ml). Plant sources include lentils (~9g/100g cooked), tofu (~8g/100g), and edamame. Whey protein supplements provide ~24g per scoop.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a7">Is the Recommended or Optimal target better for muscle gain?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a7" role="region">
+                <p>The Recommended target represents the scientific consensus for your goal and activity level. The Optimal target provides additional headroom for those who want to maximise results and are comfortable eating more protein-rich foods.</p>
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="protein-faq-a8">Does this tool store my personal data?<svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="tool-faq-answer" id="protein-faq-a8" role="region">
+                <p>No. All calculations run entirely in your browser. Your inputs are saved locally so they persist after a page refresh, but no data is ever sent to a server or stored outside your device.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="protein.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

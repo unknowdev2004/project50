@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Intake Calculator — Daily Hydration Target | Project 50</title>
+  <meta name="description" content="Calculate your personalised daily water intake based on body weight, activity level and climate. Get a drinking schedule, glass breakdowns and hydration tips.">
+  <meta name="keywords" content="water intake calculator, daily water intake, hydration calculator, how much water to drink, water calculator, daily hydration, water per day">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/water-intake-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/water-intake-calculator/">
+  <meta property="og:title" content="Water Intake Calculator — Daily Hydration Target | Project 50">
+  <meta property="og:description" content="Find out exactly how much water you should drink each day. Personalised for your weight, activity level and climate. Free, private, no signup needed.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Water Intake Calculator — Daily Hydration Target | Project 50">
+  <meta name="twitter:description" content="Calculate your daily water intake based on weight, activity and climate. Includes drinking schedule, glass conversion and hydration tips.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Water Intake Calculator",
+    "url": "https://project50.tools/tools/water-intake-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your personalised daily water intake using body weight, activity level and climate. Generates a realistic drinking schedule and glass breakdown.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Water Intake Calculator", "item": "https://project50.tools/tools/water-intake-calculator/" }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="water.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Water Intake Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#0ea5e9" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Water Intake Calculator</h1>
+            <p class="tool-subtitle">Calculate your personalised daily hydration target based on weight, activity and climate.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Water intake calculator inputs">
+
+          <!-- Weight with unit selection -->
+          <div class="tool-field">
+            <div class="water-unit-label-row">
+              <label class="tool-field-label" for="water-weight" id="water-weight-label">Weight (kg)</label>
+              <div class="water-select-wrap water-unit-select-wrap">
+                <select class="tool-select water-unit-select" id="water-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="water-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="water-weight" placeholder="e.g. 70" min="20" max="300" aria-describedby="water-weight-hint">
+            <span class="tool-field-hint" id="water-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="water-activity">Activity Level</label>
+            <div class="water-select-wrap">
+              <select class="tool-select" id="water-activity" aria-describedby="water-activity-hint">
+                <option value="sedentary">Sedentary — desk work, little movement</option>
+                <option value="light" selected>Lightly Active — light walks, casual exercise</option>
+                <option value="moderate">Moderately Active — exercise 3–5 days/week</option>
+                <option value="very">Very Active — intense daily exercise</option>
+                <option value="athlete">Athlete — training twice daily or more</option>
+              </select>
+              <span class="water-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="water-activity-hint">Higher activity levels increase sweat loss and hydration needs</span>
+          </div>
+
+          <!-- Climate -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="water-climate">Climate</label>
+            <div class="water-select-wrap">
+              <select class="tool-select" id="water-climate" aria-describedby="water-climate-hint">
+                <option value="cool">Cool Climate — below 15°C / 59°F</option>
+                <option value="moderate" selected>Moderate Climate — 15–25°C / 59–77°F</option>
+                <option value="hot">Hot Climate — 25–35°C / 77–95°F</option>
+                <option value="very-hot">Very Hot Climate — above 35°C / 95°F</option>
+              </select>
+              <span class="water-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="water-climate-hint">Hot and humid environments significantly increase fluid loss through sweat</span>
+          </div>
+
+          <!-- Validation -->
+          <div class="water-validation" id="water-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Buttons -->
+          <div class="water-btn-row">
+            <button class="btn btn-primary btn-lg" id="water-calc-btn">
+              Calculate Water Intake
+            </button>
+            <button class="btn btn-secondary btn-lg" id="water-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+
+        </div><!-- /.tool-form -->
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="water-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Card 1: Recommended Daily Hydration (quick-answer) -->
+          <div class="water-section-card water-summary-card">
+            <h2 class="water-section-title">
+              <span class="water-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Recommended Daily Hydration
+            </h2>
+            <div class="water-summary-grid">
+              <div class="water-summary-item">
+                <div class="water-summary-val" id="summary-min">—</div>
+                <div class="water-summary-unit">L</div>
+                <div class="water-summary-label">Minimum Water</div>
+              </div>
+              <div class="water-summary-item water-summary-item--recommended">
+                <div class="water-summary-val" id="summary-rec">—</div>
+                <div class="water-summary-unit">L</div>
+                <div class="water-summary-label">Recommended</div>
+              </div>
+              <div class="water-summary-item">
+                <div class="water-summary-val" id="summary-opt">—</div>
+                <div class="water-summary-unit">L</div>
+                <div class="water-summary-label">Optimal Water</div>
+              </div>
+              <div class="water-summary-item water-summary-item--glasses">
+                <div class="water-summary-val" id="summary-glasses">—</div>
+                <div class="water-summary-unit">glasses</div>
+                <div class="water-summary-label">Daily Glasses</div>
+              </div>
+            </div>
+            <p class="water-range-note" style="margin-top:var(--sp-2)">Your personalised daily hydration targets based on your weight, activity level and climate. Use the Recommended figure as your daily goal.</p>
+          </div>
+
+          <!-- Card 2: Hydration Range Explained (educational) -->
+          <div class="water-section-card">
+            <h2 class="water-section-title">
+              <span class="water-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              </span>
+              Hydration Range Explained
+            </h2>
+            <div class="water-breakdown-grid">
+              <div class="water-breakdown-item">
+                <span class="water-breakdown-label">Minimum Water</span>
+                <span class="water-breakdown-value">80% of target</span>
+              </div>
+              <div class="water-breakdown-item">
+                <span class="water-breakdown-label">Recommended Water</span>
+                <span class="water-breakdown-value">Your daily goal</span>
+              </div>
+              <div class="water-breakdown-item">
+                <span class="water-breakdown-label">Optimal Water</span>
+                <span class="water-breakdown-value">110% of target</span>
+              </div>
+            </div>
+            <p class="water-range-note" style="margin-top:var(--sp-3)"><strong>Minimum</strong> is the floor — stay above it every day, including rest days. Dropping below this regularly raises the risk of dehydration symptoms such as fatigue and headaches. <strong>Recommended</strong> is your personalised daily goal, calculated from your weight, activity and climate — aim here consistently. <strong>Optimal</strong> is a useful ceiling for hot days, intense exercise sessions or when you feel unwell, but it is not necessary to reach it every day.</p>
+          </div>
+
+          <!-- Card 3: Water Breakdown -->
+          <div class="water-section-card">
+            <h2 class="water-section-title">
+              <span class="water-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Water Breakdown
+            </h2>
+            <div class="water-breakdown-grid">
+              <div class="water-breakdown-item">
+                <span class="water-breakdown-label">Base Need</span>
+                <span class="water-breakdown-value" id="wb-base">—</span>
+              </div>
+              <div class="water-breakdown-item water-breakdown-item--bonus">
+                <span class="water-breakdown-label">Activity Bonus</span>
+                <span class="water-breakdown-value" id="wb-activity">—</span>
+              </div>
+              <div class="water-breakdown-item water-breakdown-item--bonus">
+                <span class="water-breakdown-label">Climate Bonus</span>
+                <span class="water-breakdown-value" id="wb-climate">—</span>
+              </div>
+              <div class="water-breakdown-item water-breakdown-item--total">
+                <span class="water-breakdown-label">Final Target</span>
+                <span class="water-breakdown-value" id="wb-total">—</span>
+              </div>
+            </div>
+            <p class="tool-note" style="margin-top:var(--sp-3)">Calculated using the 35 ml/kg baseline formula with evidence-based activity and climate adjustments. Results are estimates — individual needs vary.</p>
+          </div>
+
+          <!-- Card 4: Drinking Schedule -->
+          <div class="water-section-card">
+            <h2 class="water-section-title">
+              <span class="water-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              Drinking Schedule
+            </h2>
+            <p class="water-range-note" style="margin-bottom:var(--sp-3)">A practical schedule spread across your day. Adjust timing to suit your routine — consistency matters more than exact times.</p>
+            <div class="water-schedule-grid" id="water-schedule-list"></div>
+          </div>
+
+          <!-- Card 5: Conversions -->
+          <div class="water-section-card">
+            <h2 class="water-section-title">
+              <span class="water-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </span>
+              Bottle &amp; Glass Conversions
+            </h2>
+            <div class="water-conv-grid">
+              <div class="water-conv-item">
+                <div class="water-conv-val" id="conv-glasses">—</div>
+                <div class="water-conv-label">Glasses (250ml)</div>
+              </div>
+              <div class="water-conv-item">
+                <div class="water-conv-val" id="conv-500ml">—</div>
+                <div class="water-conv-label">500ml Bottles</div>
+              </div>
+              <div class="water-conv-item">
+                <div class="water-conv-val" id="conv-1l">—</div>
+                <div class="water-conv-label">1L Bottles</div>
+              </div>
+              <div class="water-conv-item">
+                <div class="water-conv-val" id="conv-2l">—</div>
+                <div class="water-conv-label">2L Bottles</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /#water-results -->
+
+        <!-- Related Tools — rendered by water.js from tools.json -->
+        <div class="tool-related" id="water-related-tools" style="--tool-related-color:#0ea5e9">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="water-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="water-about-heading">
+          <h2 class="tool-seo-section-title" id="water-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+            </span>
+            About the Water Intake Calculator
+          </h2>
+          <p>The Water Intake Calculator is a free, browser-based tool that calculates your personalised daily hydration target. Unlike the generic "drink 8 glasses a day" rule, this calculator factors in your actual body weight, physical activity level and the climate you live in — three variables that significantly affect how much water your body genuinely needs.</p>
+          <p>Proper hydration is one of the most impactful, yet overlooked, components of overall health. Water makes up about 60% of the adult human body and is involved in almost every biological process — from regulating temperature to flushing waste products and delivering nutrients to cells.</p>
+          <p>This tool uses the widely cited 35ml-per-kilogram baseline formula, adjusted with evidence-based increments for activity and climate. Results include a full breakdown, a realistic daily drinking schedule, glass and bottle equivalents, and educational content to help you understand your numbers.</p>
+        </section>
+
+        <!-- How to Use -->
+        <section class="tool-seo-section" aria-labelledby="water-howto-heading">
+          <h2 class="tool-seo-section-title" id="water-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p><strong>Enter your weight.</strong> Use the unit selector to choose kg or lbs — the calculator converts automatically. Enter your current body weight in the field provided.</p>
+            </li>
+            <li>
+              <p><strong>Select your activity level.</strong> Choose the option that best describes your typical week — from sedentary desk work through to twice-daily athlete training. Higher activity increases sweat loss and raises your hydration target.</p>
+            </li>
+            <li>
+              <p><strong>Choose your climate.</strong> Where you live and work matters. Hot and humid environments cause significantly more fluid loss through sweating, even at rest.</p>
+            </li>
+            <li>
+              <p><strong>Click "Calculate Water Intake".</strong> Your personalised results appear immediately, including your recommended daily target in litres and glasses, a full calculation breakdown, a drinking schedule and glass equivalents.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Hydration Benefits -->
+        <section class="tool-seo-section" aria-labelledby="water-benefits-heading">
+          <h2 class="tool-seo-section-title" id="water-benefits-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </span>
+            Why Water Matters
+          </h2>
+          <p><strong>Energy.</strong> Even mild dehydration — as little as 1–2% of body weight — can cause noticeable fatigue, reduced motivation and feelings of lethargy. Water is essential for the cellular processes that produce energy.</p>
+          <p><strong>Physical Performance.</strong> Dehydration impairs strength, power output and endurance. Athletes and active individuals can see performance drops of 10–20% when inadequately hydrated. Fluid replacement during and after exercise is critical for recovery.</p>
+          <p><strong>Brain Function.</strong> The brain is about 75% water. Adequate hydration supports concentration, short-term memory, mood and reaction time. Studies consistently show cognitive decline under even mild dehydration.</p>
+          <p><strong>Temperature Regulation.</strong> Sweating and respiration are the body's primary cooling mechanisms, both of which rely on adequate water. In hot weather or during intense exercise, this demand rises sharply.</p>
+          <p><strong>Digestion.</strong> Water is central to digestion — it helps break down food, absorb nutrients and move waste through the intestines. Dehydration is one of the leading causes of constipation.</p>
+        </section>
+
+        <!-- Dehydration Warning Signs -->
+        <section class="tool-seo-section" aria-labelledby="water-warning-heading">
+          <h2 class="tool-seo-section-title" id="water-warning-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+            </span>
+            Dehydration Warning Signs
+          </h2>
+          <p>Recognising early signs of dehydration helps you act before symptoms worsen. Watch for dark or yellow urine (pale yellow to clear indicates good hydration), persistent headaches, dry mouth and lips, unexplained fatigue or low energy, dizziness or light-headedness, and reduced urine output. Thirst itself is a lagging signal — by the time you feel thirsty, you may already be mildly dehydrated. The drinking schedule in your results is designed to stay ahead of this by distributing intake proactively throughout the day.</p>
+        </section>
+
+        <!-- Hydration Tips -->
+        <section class="tool-seo-section" aria-labelledby="water-tips-heading">
+          <h2 class="tool-seo-section-title" id="water-tips-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            Quick Hydration Tips
+          </h2>
+          <p>Drink a glass of water immediately after waking up to rehydrate after sleep. Carry a reusable water bottle so hydration is always within reach. Increase intake during and after workouts — aim for 200–300ml extra per 30 minutes of exercise. Monitor your urine colour — pale yellow indicates good hydration; dark yellow means drink more. Eat water-rich foods like cucumber, watermelon and leafy greens to supplement fluid intake. Set regular reminders if you often forget to drink — consistency matters more than single large amounts.</p>
+        </section>
+
+        <!-- Understanding Results -->
+        <section class="tool-seo-section" aria-labelledby="water-results-heading">
+          <h2 class="tool-seo-section-title" id="water-results-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p><strong>Minimum Water</strong> is 80% of your recommended target — the floor below which you are at real risk of dehydration-related symptoms. Aim to exceed this on all days, including rest days in mild climates.</p>
+          <p><strong>Recommended Water</strong> is your personalised daily target, calculated from your weight, activity and climate. This is the amount to aim for consistently. It accounts for all fluids consumed, not just plain water — coffee, tea and water-rich foods all contribute to your daily total.</p>
+          <p><strong>Optimal Water</strong> is 110% of your recommended target — a useful ceiling for hot days, intense workouts or when you feel unwell. Drinking significantly beyond this without medical reason is not necessary.</p>
+        </section>
+
+        <!-- Factors -->
+        <section class="tool-seo-section" aria-labelledby="water-factors-heading">
+          <h2 class="tool-seo-section-title" id="water-factors-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+            </span>
+            Factors That Affect Water Needs
+          </h2>
+          <p><strong>Body Weight.</strong> Larger bodies contain more cells and a higher volume of blood and tissue — all requiring fluid to function. The base formula scales directly with body weight at 35ml per kilogram.</p>
+          <p><strong>Activity Level.</strong> Exercise dramatically increases fluid loss through sweat. A sedentary person and an athlete of the same weight may need anywhere from 250ml to 1,000ml more water daily — purely from the difference in physical output.</p>
+          <p><strong>Climate.</strong> Environmental temperature and humidity drive passive sweating even without exercise. Living in a hot or very hot climate adds 250–750ml to your daily target to compensate for increased baseline fluid loss.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="water-faq-heading">
+          <h2 class="tool-seo-section-title" id="water-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="water-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a1">
+                How much water should I drink per day?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a1" role="region">
+                It depends on your weight, activity and environment. A common baseline is 35ml per kg of body weight — so a 70kg person needs around 2,450ml before accounting for exercise and climate. This calculator gives you a personalised answer based on all three factors.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a2">
+                Does coffee count toward my daily water intake?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a2" role="region">
+                Yes, in moderate amounts. Despite caffeine's mild diuretic effect, research shows that coffee and tea do contribute to overall fluid intake. However, plain water remains the best source since it contains no calories, sugar or stimulants. Limit caffeinated drinks to 3–4 cups per day and supplement with plain water for the remainder.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a3">
+                Can I drink too much water?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a3" role="region">
+                Overhydration (hyponatremia) is rare but possible, typically occurring when someone drinks very large volumes — several litres — in a short period without sufficient sodium intake. For most healthy adults drinking throughout the day to match their activity and climate, overhydration is not a practical concern. The optimal figure in your results is a sensible daily upper guide.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a4">
+                How many glasses are in a litre of water?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a4" role="region">
+                This calculator uses the standard serving size of 250ml per glass, which gives exactly 4 glasses per litre. A standard 500ml bottle is 2 glasses, a 1L bottle is 4 glasses and a 2L bottle is 8 glasses. Your results show all of these conversions for your specific daily target.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a5">
+                Does exercise increase water needs?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a5" role="region">
+                Significantly. During moderate exercise, you can lose 0.5–1 litre of sweat per hour. This calculator adds between 250ml and 1,000ml to your baseline depending on your activity level. If your workouts are particularly intense or long, drink an extra 200–300ml per 30 minutes of exercise on top of your calculated daily target.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a6">
+                Why does climate affect hydration needs?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a6" role="region">
+                Your body sweats to regulate its core temperature. In hot or humid environments, your body sweats more — even at rest. High humidity also reduces the efficiency of evaporative cooling, causing even greater sweat production. A person in a very hot climate can lose 1–2 extra litres of fluid per day compared to someone in a cool environment.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a7">
+                Is 8 glasses a day enough for everyone?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a7" role="region">
+                Not necessarily. 8 glasses (2 litres) is a reasonable starting point for an average-weight sedentary adult in a mild climate, but it is not a universal prescription. A 90kg athlete training daily in a hot climate may need 4–5 litres. This calculator gives you a personalised target that accounts for the key variables the "8 glasses" rule ignores.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a8">
+                Should I drink water even if I am not thirsty?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a8" role="region">
+                Yes, particularly for older adults and during exercise. Thirst is a lagging signal — by the time you feel thirsty, you may already be mildly dehydrated. The drinking schedule in your results is designed to distribute intake proactively throughout the day so you stay consistently hydrated rather than reacting after the fact.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="water-faq-a9">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="water-faq-a9" role="region">
+                All calculations run entirely in your browser. No personal data — weight, activity level or climate — is ever sent to a server or stored anywhere outside your own device. Your inputs are saved locally to your browser so they are still there if you refresh the page, but this data never leaves your device.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Scripts — canonical tool page load order -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="water.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

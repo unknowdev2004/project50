@@ -1,0 +1,50 @@
+/* ============================================
+   EMI.CSS — Project 50
+   EMI Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-result, .tool-result-label,
+     .tool-note, .tool-stat-grid, .tool-stat,
+     .tool-stat-value, .tool-stat-label,
+     .tool-slider-group, .tool-slider-header,
+     .tool-slider-label, .tool-slider-value,
+     .tool-range — and all responsive breakpoints.
+
+   THIS FILE ONLY covers:
+     - EMI result value (the large ₹ number)
+============================================ */
+
+/* ---- EMI result value (large monthly amount) ---- */
+.emi-result-value {
+  font-family: var(--font-display);
+  /* Fluid: 2rem minimum @ 320px, 3rem max @ 580px+ */
+  font-size: clamp(1.75rem, 7vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+  margin-bottom: var(--sp-3);
+  /* Prevent very long rupee strings from overflowing */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+/* ============================================
+   BUTTON ROW — Calculate + Reset side by side
+============================================ */
+.emi-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .emi-btn-row {
+    flex-direction: column;
+  }
+  .emi-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}

@@ -1,0 +1,585 @@
+/* ============================================
+   TDEE.CSS — Project 50
+   TDEE Calculator — tool-specific styles.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-result, .tool-note, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers tdee-specific components:
+     - Two-column form row (.tdee-row)
+     - Unit label row (.tdee-unit-label-row)
+     - Custom select wrapper (.tdee-select-wrap)
+     - Compact unit select (.tdee-unit-select)
+     - Validation message
+     - Button row
+     - Section cards
+     - Goal list (5-item calorie targets)
+     - Monthly change grid
+     - Comparison table
+     - Meal breakdown grid
+     - Activity impact grid
+     - Warnings
+     - Number input spinner removal
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+============================================ */
+.tdee-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.tdee-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tdee-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.tdee-select-wrap .tool-select:focus + .tdee-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UNIT LABEL ROW
+============================================ */
+.tdee-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.tdee-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+.tdee-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.tdee-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.tdee-unit-select-wrap .tdee-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   TWO-COLUMN FORM ROW
+============================================ */
+.tdee-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.tdee-row--tight {
+  gap: var(--sp-1);
+  margin-top: 0;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.tdee-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* ============================================
+   BUTTON ROW — Calculate + Reset side by side
+============================================ */
+.tdee-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .tdee-btn-row {
+    flex-direction: column;
+  }
+  .tdee-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+============================================ */
+.tdee-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.tdee-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.tdee-section-icon {
+  display: flex;
+  align-items: center;
+  color: #f97316;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SUMMARY CARD — highlighted
+============================================ */
+.tdee-summary-card {
+  border-color: color-mix(in srgb, #f97316 35%, transparent);
+  background: color-mix(in srgb, #f97316 6%, var(--color-bg-card));
+}
+
+/* ============================================
+   GOAL LIST — 5-item calorie targets
+============================================ */
+.tdee-goal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--sp-2);
+}
+
+.tdee-goal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 12px var(--sp-3);
+}
+
+.tdee-goal-item--highlight {
+  background: color-mix(in srgb, #f97316 10%, transparent);
+  border-color: #f97316;
+  border-width: 2px;
+}
+
+.tdee-goal-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.tdee-goal-item--highlight .tdee-goal-name {
+  color: var(--color-text);
+}
+
+.tdee-goal-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, #f97316 15%, transparent);
+  color: #f97316;
+  border: 1px solid color-mix(in srgb, #f97316 40%, transparent);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+}
+
+.tdee-goal-calories {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tdee-goal-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+/* ============================================
+   MONTHLY CHANGE GRID
+============================================ */
+.tdee-monthly-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+}
+
+.tdee-monthly-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+}
+
+.tdee-monthly-name {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.tdee-monthly-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-base), 3vw, var(--fs-xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.tdee-monthly-val--loss { color: #60a5fa; }
+.tdee-monthly-val--gain { color: #34d399; }
+.tdee-monthly-val--neutral { color: var(--color-text-muted); }
+
+.tdee-monthly-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 3px;
+}
+
+/* ============================================
+   COMPARISON TABLE
+============================================ */
+.tdee-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tdee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.tdee-table thead th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  padding: 0 var(--sp-3) var(--sp-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tdee-table thead th:nth-child(2),
+.tdee-table thead th:nth-child(3) {
+  text-align: right;
+}
+
+.tdee-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tdee-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tdee-table tbody td {
+  padding: 12px var(--sp-3);
+  color: var(--color-text-muted);
+  vertical-align: middle;
+}
+
+.tdee-table tbody td:nth-child(2),
+.tdee-table tbody td:nth-child(3) {
+  text-align: right;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.tdee-table tbody td:nth-child(3) {
+  font-size: var(--fs-xs);
+  font-family: var(--font-base);
+  font-weight: 600;
+}
+
+.tdee-table-row--highlight td {
+  color: var(--color-text);
+  font-weight: 600;
+  background: color-mix(in srgb, #f97316 6%, transparent);
+}
+
+.tdee-table-row--highlight td:nth-child(2) {
+  color: #f97316;
+}
+
+.tdee-change--loss { color: #60a5fa !important; }
+.tdee-change--gain { color: #34d399 !important; }
+
+/* ============================================
+   MEAL BREAKDOWN GRID
+============================================ */
+.tdee-meal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+}
+
+.tdee-meal-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3);
+}
+
+.tdee-meal-name {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f97316;
+  margin-bottom: 4px;
+}
+
+.tdee-meal-pct {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-bottom: var(--sp-1);
+}
+
+.tdee-meal-cal {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.tdee-meal-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+/* ============================================
+   ACTIVITY IMPACT GRID
+============================================ */
+.tdee-activity-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tdee-activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-3);
+}
+
+.tdee-activity-item--current {
+  border-color: color-mix(in srgb, #f97316 50%, transparent);
+  background: color-mix(in srgb, #f97316 8%, transparent);
+}
+
+.tdee-activity-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.tdee-activity-item--current .tdee-activity-name {
+  color: var(--color-text);
+}
+
+.tdee-activity-current-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, #f97316 15%, transparent);
+  color: #f97316;
+  border: 1px solid color-mix(in srgb, #f97316 35%, transparent);
+  border-radius: var(--radius-full);
+  padding: 2px 7px;
+  margin-left: 6px;
+}
+
+.tdee-activity-cal {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.tdee-activity-cal-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  font-family: var(--font-base);
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+/* ============================================
+   FORMULA NOTE
+============================================ */
+.tdee-formula-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  margin: var(--sp-3) 0;
+  font-family: var(--font-mono, monospace);
+  line-height: 1.7;
+}
+
+/* ============================================
+   RANGE NOTE
+============================================ */
+.tdee-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   WARNINGS
+============================================ */
+.tdee-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  color: #fbbf24;
+  line-height: 1.55;
+  margin-top: var(--sp-2);
+}
+
+.tdee-warning svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tdee-warning-card {
+  border-color: color-mix(in srgb, #fbbf24 30%, transparent);
+  background: color-mix(in srgb, #fbbf24 6%, var(--color-bg-card));
+}
+
+.tdee-warning-card .tdee-warning {
+  margin-top: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 640px) {
+  .tdee-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tdee-section-card {
+    padding: var(--sp-3);
+  }
+
+  .tdee-monthly-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tdee-monthly-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tdee-meal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tdee-goal-calories {
+    font-size: var(--fs-lg);
+  }
+}
+
+@media (max-width: 380px) {
+  .tdee-unit-label-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tdee-goal-item {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}

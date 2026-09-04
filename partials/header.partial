@@ -1,0 +1,70 @@
+<header class="header" id="site-header" role="banner">
+  <div class="header-inner">
+
+    <a href="/" class="header-logo" aria-label="Project 50 Home">
+      <div class="logo-mark" aria-hidden="true">50</div>
+      <span class="logo-text">Project<span>50</span></span>
+    </a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/#categories" class="nav-link">Categories</a>
+      <a href="/#popular-tools" class="nav-link">Tools</a>
+      <a href="/pages/about/" class="nav-link">About</a>
+    </nav>
+
+    <div class="header-search" id="header-search-wrap" role="search">
+      <svg class="header-search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input
+        type="search"
+        class="header-search-input"
+        id="header-search"
+        placeholder="Search tools…"
+        autocomplete="off"
+        aria-label="Search tools"
+        aria-autocomplete="list"
+        aria-controls="header-suggestions"
+      >
+      <span class="header-search-kbd" aria-hidden="true">/</span>
+      <button type="button" class="header-search-clear" aria-label="Clear search" style="display:none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="search-suggestions" id="header-suggestions" role="listbox" aria-label="Search suggestions"></div>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn" id="sidebar-toggle" aria-label="Open menu"
+        aria-expanded="false" aria-controls="sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="16" y1="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</header>

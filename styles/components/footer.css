@@ -1,0 +1,134 @@
+/* ============================================
+   FOOTER.CSS — Project 50
+   ============================================ */
+
+   .footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--sp-5) 0 var(--sp-3);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-4);
+  }
+  
+  /* ---- Brand Column ---- */
+  .footer-brand {}
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: var(--sp-2);
+    text-decoration: none;
+  }
+  
+  .footer-brand-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 260px;
+  }
+  
+  /* ---- Footer Column ---- */
+  .footer-col {}
+  
+  .footer-col-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--sp-2);
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-link {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .footer-link:hover {
+    color: var(--color-primary);
+  }
+  
+  /* ---- Footer Bottom ---- */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--color-border);
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+  }
+  
+  .footer-copy {
+    font-size: var(--fs-xs);
+    color: var(--color-text-faint);
+  }
+  
+  .footer-copy a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  .footer-copy a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom-links {
+    display: flex;
+    gap: var(--sp-2);
+  }
+  
+  .footer-bottom-links a {
+    font-size: var(--fs-xs);
+    color: var(--color-text-faint);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-bottom-links a:hover {
+    color: var(--color-text-muted);
+  }
+  
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+  
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

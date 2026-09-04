@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marks Percentage Calculator — Quick, Subjects, Target & Goal | Project 50</title>
+  <meta name="description" content="Calculate marks percentage instantly — single subject, multiple subjects, best-of-N, target percentage needed, and goal planning. Free, accurate, private.">
+  <meta name="keywords" content="marks percentage calculator, percentage calculator, exam percentage, target percentage calculator, best of subjects percentage, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/marks-percentage-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/marks-percentage-calculator/">
+  <meta property="og:title" content="Marks Percentage Calculator — Quick, Subjects, Target & Goal | Project 50">
+  <meta property="og:description" content="One calculator, five modes: quick percentage, multiple subjects, best-of-N, marks needed for a target, and goal planning. Free and private — no login.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Marks Percentage Calculator — Quick, Subjects, Target & Goal | Project 50">
+  <meta name="twitter:description" content="Calculate marks percentage, plan targets and track multiple subjects in one adaptive calculator. Free, private, no login required.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marks Percentage Calculator",
+    "url": "https://project50.tools/tools/marks-percentage-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate marks percentage across five modes: quick calculate, multiple subjects, reach a target, best-of-N subjects, and goal planning.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "Marks Percentage Calculator", "item": "https://project50.tools/tools/marks-percentage-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate marks percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Divide the marks you obtained by the maximum possible marks, then multiply by 100. For example, 425 obtained out of 500 maximum gives (425 ÷ 500) × 100 = 85%." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is overall percentage calculated across multiple subjects?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Add up the marks obtained across every subject, add up the maximum marks across every subject, then divide the two totals and multiply by 100. This is different from averaging each subject's individual percentage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why shouldn't I just average the percentages of each subject?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Averaging individual percentages treats every subject as equally weighted, even if the subjects have different maximum marks. Summing obtained and maximum marks first gives a mathematically accurate overall percentage." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate marks needed to reach a target percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiply your target percentage by the total marks available (current plus remaining), then subtract the marks you have already obtained. The result is the marks you still need from the remaining assessments." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'best of N subjects' mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Some grading systems only count your top-performing subjects toward the final percentage. This mode ranks subjects by their individual percentage and calculates the combined percentage using only the highest-scoring ones you choose to count." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my target percentage is impossible to reach?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If the marks needed from the remaining assessments exceed the remaining maximum marks, the target cannot be reached even with a perfect score. This calculator detects that case and tells you clearly rather than showing a misleading number." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these performance classifications official grading standards?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The classifications shown, such as Excellent or Good, are general guidance only. They do not represent any specific university's or exam board's official grading policy — always check your institution's own grading scale." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use decimal marks in this calculator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All five modes accept decimal values for obtained and maximum marks, which is useful for assessments with partial-mark grading or weighted components." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many subjects can I add?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can add between 1 and 20 subjects in Multiple Subjects mode, and the same range applies to Best Subjects mode. This comfortably covers most school and university subject loads." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your inputs are saved to your browser's local storage so they persist between visits, separately for each calculation mode. Your data never leaves your device and is never sent to any server. Resetting a mode clears its saved data immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="marks-percentage.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Marks Percentage Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Marks Percentage Calculator</h1>
+            <p class="tool-subtitle">One calculator, five modes — quick percentage, multiple subjects, targets, best-of-N and goal planning.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             MODE SELECTOR — compact tab-style
+        ============================================== -->
+        <div class="mpc-mode-selector" role="tablist" aria-label="Calculation mode">
+          <button type="button" role="tab" class="mpc-mode-tab" id="mpc-tab-quick" aria-selected="true" aria-controls="mpc-panel-quick" tabindex="0" data-mode="quick">
+            Quick Calculate
+          </button>
+          <button type="button" role="tab" class="mpc-mode-tab" id="mpc-tab-subjects" aria-selected="false" aria-controls="mpc-panel-subjects" tabindex="-1" data-mode="subjects">
+            Multiple Subjects
+          </button>
+          <button type="button" role="tab" class="mpc-mode-tab" id="mpc-tab-target" aria-selected="false" aria-controls="mpc-panel-target" tabindex="-1" data-mode="target">
+            Reach a Target
+          </button>
+          <button type="button" role="tab" class="mpc-mode-tab" id="mpc-tab-best" aria-selected="false" aria-controls="mpc-panel-best" tabindex="-1" data-mode="best">
+            Best Subjects
+          </button>
+          <button type="button" role="tab" class="mpc-mode-tab" id="mpc-tab-goal" aria-selected="false" aria-controls="mpc-panel-goal" tabindex="-1" data-mode="goal">
+            Plan My Goal
+          </button>
+        </div>
+
+        <!-- =============================================
+             MODE PANELS
+        ============================================== -->
+        <div class="mpc-panels">
+
+          <!-- =========================================
+               MODE 1 — QUICK CALCULATE
+          ========================================== -->
+          <div class="mpc-panel" id="mpc-panel-quick" role="tabpanel" aria-labelledby="mpc-tab-quick" tabindex="0">
+
+            <div class="tool-form mpc-form" role="form" aria-label="Quick Calculate">
+              <div class="mpc-row-2">
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-quick-obtained">Marks Obtained</label>
+                  <input class="tool-input" type="number" id="mpc-quick-obtained" placeholder="e.g. 425" min="0" step="any" inputmode="decimal" aria-describedby="mpc-quick-obtained-hint">
+                  <span class="tool-field-hint" id="mpc-quick-obtained-hint">Marks you scored</span>
+                </div>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-quick-max">Maximum Marks</label>
+                  <input class="tool-input" type="number" id="mpc-quick-max" placeholder="e.g. 500" min="0" step="any" inputmode="decimal" aria-describedby="mpc-quick-max-hint">
+                  <span class="tool-field-hint" id="mpc-quick-max-hint">Total marks available</span>
+                </div>
+              </div>
+
+              <div class="mpc-validation" id="mpc-quick-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="mpc-actions">
+                <button class="btn btn-primary btn-lg" id="mpc-quick-calc-btn" type="button">Calculate Percentage</button>
+                <button class="btn btn-secondary btn-lg" id="mpc-quick-reset-btn" type="button" aria-label="Reset quick calculate fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="mpc-quick-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="mpc-section-card mpc-hero-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Your Percentage
+                </h2>
+                <div class="mpc-big-number" id="mpc-quick-display">—</div>
+                <p class="mpc-hero-classification" id="mpc-quick-classification">—</p>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Marks Summary
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-quick-obtained-stat">—</div>
+                    <div class="tool-stat-label">Obtained</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-quick-max-stat">—</div>
+                    <div class="tool-stat-label">Maximum</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-quick-lost-stat">—</div>
+                    <div class="tool-stat-label">Marks Lost</div>
+                  </div>
+                </div>
+                <p class="tool-note" id="mpc-quick-insight">—</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 2 — MULTIPLE SUBJECTS
+          ========================================== -->
+          <div class="mpc-panel" id="mpc-panel-subjects" role="tabpanel" aria-labelledby="mpc-tab-subjects" tabindex="0" hidden>
+
+            <div class="tool-form mpc-form" role="form" aria-label="Multiple Subjects">
+
+              <div class="mpc-col-headers" aria-hidden="true">
+                <span>Subject Name</span>
+                <span>Obtained</span>
+                <span>Maximum</span>
+                <span></span>
+              </div>
+
+              <div class="mpc-validation" id="mpc-subjects-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="mpc-subject-list" id="mpc-subjects-list" role="list" aria-label="Subject list"></div>
+
+              <div class="mpc-actions mpc-actions--three">
+                <button class="btn btn-secondary btn-lg" id="mpc-subjects-add-btn" type="button" aria-label="Add another subject">+ Add Subject</button>
+                <button class="btn btn-primary btn-lg" id="mpc-subjects-calc-btn" type="button">Calculate Overall</button>
+                <button class="btn btn-secondary btn-lg" id="mpc-subjects-reset-btn" type="button" aria-label="Reset all subjects and results">Reset</button>
+              </div>
+            </div>
+
+            <div id="mpc-subjects-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="mpc-section-card mpc-hero-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Overall Percentage
+                </h2>
+                <div class="mpc-big-number" id="mpc-subjects-display">—</div>
+                <p class="mpc-hero-classification" id="mpc-subjects-classification">—</p>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Academic Summary
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-subjects-count">—</div>
+                    <div class="tool-stat-label">Subjects</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-subjects-total-obtained">—</div>
+                    <div class="tool-stat-label">Total Obtained</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-subjects-total-max">—</div>
+                    <div class="tool-stat-label">Total Maximum</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
+                  Subject Performance
+                </h2>
+                <div class="mpc-highlow-grid">
+                  <div class="tool-stat mpc-stat--high">
+                    <div class="tool-stat-value" id="mpc-subjects-best-pct">—</div>
+                    <div class="tool-stat-label" id="mpc-subjects-best-label">Best Subject</div>
+                  </div>
+                  <div class="tool-stat mpc-stat--low">
+                    <div class="tool-stat-value" id="mpc-subjects-worst-pct">—</div>
+                    <div class="tool-stat-label" id="mpc-subjects-worst-label">Lowest Subject</div>
+                  </div>
+                </div>
+                <ul class="mpc-breakdown-list" id="mpc-subjects-breakdown" aria-label="Subject breakdown"></ul>
+              </div>
+
+              <div class="mpc-section-card" id="mpc-subjects-insights-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="mpc-insights-list" id="mpc-subjects-insights-list" aria-label="Subject insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 3 — REACH A TARGET
+          ========================================== -->
+          <div class="mpc-panel" id="mpc-panel-target" role="tabpanel" aria-labelledby="mpc-tab-target" tabindex="0" hidden>
+
+            <div class="tool-form mpc-form" role="form" aria-label="Reach a Target">
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Current Performance</h3>
+                <div class="mpc-row-2">
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="mpc-target-current-obtained">Current Obtained Marks</label>
+                    <input class="tool-input" type="number" id="mpc-target-current-obtained" placeholder="e.g. 340" min="0" step="any" inputmode="decimal">
+                  </div>
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="mpc-target-current-max">Current Maximum Completed</label>
+                    <input class="tool-input" type="number" id="mpc-target-current-max" placeholder="e.g. 400" min="0" step="any" inputmode="decimal">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Remaining Assessment</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-target-remaining-max">Remaining Maximum Marks</label>
+                  <input class="tool-input" type="number" id="mpc-target-remaining-max" placeholder="e.g. 100" min="0" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Total marks still available in upcoming assessments</span>
+                </div>
+              </div>
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Your Goal</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-target-percentage">Target Percentage</label>
+                  <input class="tool-input" type="number" id="mpc-target-percentage" placeholder="e.g. 85" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="mpc-validation" id="mpc-target-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="mpc-actions">
+                <button class="btn btn-primary btn-lg" id="mpc-target-calc-btn" type="button">Calculate What's Needed</button>
+                <button class="btn btn-secondary btn-lg" id="mpc-target-reset-btn" type="button" aria-label="Reset target fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="mpc-target-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="mpc-section-card mpc-hero-card" id="mpc-target-hero-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                  Target Status
+                </h2>
+                <div class="mpc-status-badge" id="mpc-target-status-badge">—</div>
+                <p class="mpc-status-text" id="mpc-target-status-text">—</p>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  The Numbers
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-target-current-pct">—</div>
+                    <div class="tool-stat-label">Current %</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-target-marks-needed">—</div>
+                    <div class="tool-stat-label">Marks Needed</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-target-required-remaining-pct">—</div>
+                    <div class="tool-stat-label">Required in Remaining</div>
+                  </div>
+                </div>
+                <p class="tool-note" id="mpc-target-note">—</p>
+              </div>
+
+              <div class="mpc-section-card" id="mpc-target-insights-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="mpc-insights-list" id="mpc-target-insights-list" aria-label="Target insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 4 — BEST SUBJECTS
+          ========================================== -->
+          <div class="mpc-panel" id="mpc-panel-best" role="tabpanel" aria-labelledby="mpc-tab-best" tabindex="0" hidden>
+
+            <div class="tool-form mpc-form" role="form" aria-label="Best Subjects">
+
+              <div class="mpc-col-headers" aria-hidden="true">
+                <span>Subject Name</span>
+                <span>Obtained</span>
+                <span>Maximum</span>
+                <span></span>
+              </div>
+
+              <div class="mpc-validation" id="mpc-best-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="mpc-subject-list" id="mpc-best-list" role="list" aria-label="Subject list"></div>
+
+              <div class="mpc-best-count-row">
+                <label class="tool-field-label" for="mpc-best-count">Use Best</label>
+                <input class="tool-input mpc-best-count-input" type="number" id="mpc-best-count" min="1" step="1" inputmode="numeric" aria-describedby="mpc-best-count-hint">
+                <span aria-hidden="true">Subjects</span>
+              </div>
+              <p class="tool-field-hint" id="mpc-best-count-hint">Subjects are ranked by percentage before the final result is calculated.</p>
+
+              <div class="mpc-actions mpc-actions--three">
+                <button class="btn btn-secondary btn-lg" id="mpc-best-add-btn" type="button" aria-label="Add another subject">+ Add Subject</button>
+                <button class="btn btn-primary btn-lg" id="mpc-best-calc-btn" type="button">Calculate Best-Of</button>
+                <button class="btn btn-secondary btn-lg" id="mpc-best-reset-btn" type="button" aria-label="Reset all subjects and results">Reset</button>
+              </div>
+            </div>
+
+            <div id="mpc-best-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="mpc-section-card mpc-hero-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Best-Of Percentage
+                </h2>
+                <div class="mpc-big-number" id="mpc-best-display">—</div>
+                <p class="mpc-hero-classification" id="mpc-best-classification">—</p>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Selection Summary
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-best-selected-obtained">—</div>
+                    <div class="tool-stat-label">Selected Obtained</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-best-selected-max">—</div>
+                    <div class="tool-stat-label">Selected Maximum</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-best-performer">—</div>
+                    <div class="tool-stat-label">Best Performer</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  Selected Subjects
+                </h2>
+                <ul class="mpc-breakdown-list" id="mpc-best-selected-list" aria-label="Selected subjects"></ul>
+              </div>
+
+              <div class="mpc-section-card" id="mpc-best-excluded-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+                  Excluded Subjects
+                </h2>
+                <ul class="mpc-breakdown-list mpc-breakdown-list--excluded" id="mpc-best-excluded-list" aria-label="Excluded subjects"></ul>
+              </div>
+
+              <div class="mpc-section-card" id="mpc-best-insights-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="mpc-insights-list" id="mpc-best-insights-list" aria-label="Best subjects insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 5 — PLAN MY GOAL
+          ========================================== -->
+          <div class="mpc-panel" id="mpc-panel-goal" role="tabpanel" aria-labelledby="mpc-tab-goal" tabindex="0" hidden>
+
+            <div class="tool-form mpc-form" role="form" aria-label="Plan My Goal">
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Current Position</h3>
+                <div class="mpc-row-2">
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="mpc-goal-current-obtained">Current Obtained Marks</label>
+                    <input class="tool-input" type="number" id="mpc-goal-current-obtained" placeholder="e.g. 260" min="0" step="any" inputmode="decimal">
+                  </div>
+                  <div class="tool-field">
+                    <label class="tool-field-label" for="mpc-goal-current-max">Current Maximum Marks</label>
+                    <input class="tool-input" type="number" id="mpc-goal-current-max" placeholder="e.g. 300" min="0" step="any" inputmode="decimal">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Future Assessment</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-goal-future-max">Future Maximum Marks</label>
+                  <input class="tool-input" type="number" id="mpc-goal-future-max" placeholder="e.g. 200" min="0" step="any" inputmode="decimal">
+                  <span class="tool-field-hint">Total marks available in assessments still to come</span>
+                </div>
+              </div>
+
+              <div class="mpc-field-group">
+                <h3 class="mpc-field-group-title">Your Goal</h3>
+                <div class="tool-field">
+                  <label class="tool-field-label" for="mpc-goal-desired-pct">Desired Final Percentage</label>
+                  <input class="tool-input" type="number" id="mpc-goal-desired-pct" placeholder="e.g. 90" min="0" max="100" step="any" inputmode="decimal">
+                </div>
+              </div>
+
+              <div class="mpc-validation" id="mpc-goal-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="mpc-actions">
+                <button class="btn btn-primary btn-lg" id="mpc-goal-calc-btn" type="button">Plan My Goal</button>
+                <button class="btn btn-secondary btn-lg" id="mpc-goal-reset-btn" type="button" aria-label="Reset goal fields">Reset</button>
+              </div>
+            </div>
+
+            <div id="mpc-goal-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="mpc-section-card mpc-hero-card" id="mpc-goal-hero-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+                  Your Goal Status
+                </h2>
+                <div class="mpc-status-badge" id="mpc-goal-status-badge">—</div>
+                <p class="mpc-status-text" id="mpc-goal-status-text">—</p>
+              </div>
+
+              <div class="mpc-section-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Your Path Forward
+                </h2>
+                <div class="tool-stat-grid">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-goal-current-pct">—</div>
+                    <div class="tool-stat-label">Current Position</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-goal-required-marks">—</div>
+                    <div class="tool-stat-label">Required Future Marks</div>
+                  </div>
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="mpc-goal-required-pct">—</div>
+                    <div class="tool-stat-label">Required Future %</div>
+                  </div>
+                </div>
+                <p class="tool-note" id="mpc-goal-note">—</p>
+              </div>
+
+              <div class="mpc-section-card" id="mpc-goal-insights-card">
+                <h2 class="mpc-section-title">
+                  <span class="mpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="mpc-insights-list" id="mpc-goal-insights-list" aria-label="Goal insights"></ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /.mpc-panels -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="mpc-related-wrap" aria-labelledby="mpc-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="mpc-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="mpc-related-grid"
+               data-tool-id="marks-percentage-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is a Percentage Calculator? -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            What Is a Percentage Calculator?
+          </h2>
+          <p>A marks percentage calculator converts raw exam or assignment scores into a percentage — the single number teachers, universities and employers use to compare performance across different tests, subjects and grading scales. Instead of manually working through the arithmetic every time a result comes in, this tool handles the calculation instantly and accurately.</p>
+          <p>This calculator goes further than a basic percentage tool. It adapts to five common academic situations: a single quick result, a full subject list with different maximum marks, a target you are trying to reach, a best-of-N grading scheme, and a forward-looking goal plan — all inside one clean, connected calculator.</p>
+        </section>
+
+        <!-- 2. How Is Percentage Calculated? -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-formula-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-formula-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            How Is Percentage Calculated?
+          </h2>
+          <p>The standard formula is straightforward:</p>
+          <p><strong>Percentage = (Marks Obtained ÷ Maximum Marks) × 100</strong></p>
+          <p>For example, a student who scores 425 marks out of a possible 500 has a percentage of (425 ÷ 500) × 100 = <strong>85%</strong>. This calculator applies the formula using full floating-point precision internally, rounding only the final displayed value.</p>
+        </section>
+
+        <!-- 3. How to Calculate Marks Percentage -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-howto-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How to Calculate Marks Percentage
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Choose the mode that matches what you need — <strong>Quick Calculate</strong> for a single result, or one of the other four modes for more detail.</p></li>
+            <li><p>Enter your marks obtained and the maximum marks available. Decimal values are accepted for partial-mark grading.</p></li>
+            <li><p>Click <strong>Calculate</strong> to see your percentage, a performance classification, and any relevant summary figures.</p></li>
+            <li><p>Switch modes at any time using the tabs at the top — your entries in each mode are kept separately.</p></li>
+            <li><p>Click <strong>Reset</strong> to clear the current mode only. Your data in the other modes is left untouched.</p></li>
+          </ol>
+          <p>Your inputs are automatically saved to your browser as you type, separately for each mode, so you can close the page and return later without re-entering your data.</p>
+        </section>
+
+        <!-- 4. How to Calculate Percentage for Multiple Subjects -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-multi-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-multi-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            How to Calculate Percentage for Multiple Subjects
+          </h2>
+          <p>When you have several subjects, each with its own obtained and maximum marks, the correct overall percentage is calculated by summing all obtained marks and all maximum marks first, then dividing:</p>
+          <p><strong>Overall % = (Σ Obtained Marks ÷ Σ Maximum Marks) × 100</strong></p>
+          <p>This is deliberately different from averaging each subject's individual percentage. Averaging treats every subject as equally weighted regardless of how many marks it was out of, which can distort the result when subjects have different maximum marks. Summing totals first always produces the mathematically accurate overall percentage, which is why the Multiple Subjects mode uses this method.</p>
+        </section>
+
+        <!-- 5. How to Calculate Marks Needed for a Target -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-target-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-target-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+            How to Calculate Marks Needed for a Target
+          </h2>
+          <p>The Reach a Target mode works backward from a goal percentage to tell you exactly what you still need to score:</p>
+          <p><strong>Required Total Marks = (Target % ÷ 100) × (Current Maximum + Remaining Maximum)</strong></p>
+          <p><strong>Marks Needed = Required Total Marks − Current Obtained Marks</strong></p>
+          <p>Dividing the marks needed by the remaining maximum marks gives the percentage you must score in everything that is left. If that required percentage exceeds 100%, the target cannot be reached — this calculator flags that clearly instead of showing a misleading figure.</p>
+        </section>
+
+        <!-- 6. Best-of-Subjects Percentage Explained -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-best-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-best-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.53 2.573a.5.5 0 0 1 .94 0l2.31 6.482a.5.5 0 0 0 .465.325h6.804a.5.5 0 0 1 .3.9l-5.61 4.156a.5.5 0 0 0-.176.556l2.31 6.481a.5.5 0 0 1-.767.559l-5.61-4.155a.5.5 0 0 0-.592 0l-5.61 4.155a.5.5 0 0 1-.767-.559l2.31-6.48a.5.5 0 0 0-.176-.557L2.152 10.28a.5.5 0 0 1 .3-.9h6.803a.5.5 0 0 0 .465-.326z"/></svg></span>
+            Best-of-Subjects Percentage Explained
+          </h2>
+          <p>Some grading systems — particularly in schools that count only your top-performing electives or optional subjects — calculate a final percentage using only the best N subjects out of a larger list. This calculator ranks every subject by its own percentage, from highest to lowest, and includes the top N in the final calculation.</p>
+          <p>Ranking uses individual subject percentage, not raw marks, since a subject worth 50 marks is not directly comparable to one worth 100 marks by raw score alone. When two subjects tie exactly on percentage, the one with the higher maximum marks is ranked first; if that is also equal, the subject entered earliest is ranked first.</p>
+        </section>
+
+        <!-- 7. How to Plan Your Exam Percentage -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-plan-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-plan-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+            How to Plan Your Exam Percentage
+          </h2>
+          <p>Plan My Goal uses the same underlying mathematics as Reach a Target, but is framed around forward planning rather than an in-progress target. Enter your current obtained and maximum marks, the maximum marks still to come, and the final percentage you want to end up with. The calculator tells you whether that goal is already secured, still achievable, requires a perfect score, or is mathematically impossible from your current position — with plain-language guidance on what to do next.</p>
+          <p>Revisit this mode after every new result to see how your required future percentage shifts. A strong early result lowers the bar for what is still needed; a weaker one raises it.</p>
+        </section>
+
+        <!-- 8. Common Percentage Calculation Mistakes -->
+        <section class="tool-seo-section" aria-labelledby="mpc-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="mpc-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Percentage Calculation Mistakes
+          </h2>
+          <p><strong>Mistake 1 — Averaging subject percentages instead of totals.</strong> When subjects have different maximum marks, averaging their individual percentages gives an incorrect overall figure. Always sum obtained and maximum marks first.</p>
+          <p><strong>Mistake 2 — Mixing subject credits with subject marks.</strong> In multi-subject mode, enter the maximum marks for the subject's assessment, not a credit-hour weighting from a separate grading system.</p>
+          <p><strong>Mistake 3 — Assuming a target is always achievable.</strong> If the required remaining percentage exceeds 100%, no score can close the gap. Check the status shown in Reach a Target or Plan My Goal before assuming a target is realistic.</p>
+          <p><strong>Mistake 4 — Ranking best subjects by raw marks.</strong> A subject scored out of 50 cannot be fairly compared to one scored out of 100 using raw marks alone — always rank by percentage.</p>
+          <p><strong>Tip: Recheck your maximum marks.</strong> A common source of error is entering the wrong maximum marks for an assessment — double-check the paper or syllabus before calculating.</p>
+        </section>
+
+        <!-- 9. FAQ -->
+        <section class="tool-seo-section" aria-labelledby="mpc-faq-heading">
+          <h2 class="tool-seo-section-title" id="mpc-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="mpc-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a1">
+                How do I calculate marks percentage?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a1" role="region">
+                Divide the marks you obtained by the maximum possible marks, then multiply by 100. For example, 425 obtained out of 500 maximum gives (425 ÷ 500) × 100 = 85%.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a2">
+                How is overall percentage calculated across multiple subjects?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a2" role="region">
+                Add up the marks obtained across every subject, add up the maximum marks across every subject, then divide the two totals and multiply by 100. This is different from averaging each subject's individual percentage.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a3">
+                Why shouldn't I just average the percentages of each subject?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a3" role="region">
+                Averaging individual percentages treats every subject as equally weighted, even if the subjects have different maximum marks. Summing obtained and maximum marks first gives a mathematically accurate overall percentage.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a4">
+                How do I calculate marks needed to reach a target percentage?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a4" role="region">
+                Multiply your target percentage by the total marks available (current plus remaining), then subtract the marks you have already obtained. The result is the marks you still need from the remaining assessments.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a5">
+                What does "best of N subjects" mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a5" role="region">
+                Some grading systems only count your top-performing subjects toward the final percentage. This mode ranks subjects by their individual percentage and calculates the combined percentage using only the highest-scoring ones you choose to count.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a6">
+                What happens if my target percentage is impossible to reach?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a6" role="region">
+                If the marks needed from the remaining assessments exceed the remaining maximum marks, the target cannot be reached even with a perfect score. This calculator detects that case and tells you clearly rather than showing a misleading number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a7">
+                Are these performance classifications official grading standards?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a7" role="region">
+                No. The classifications shown, such as Excellent or Good, are general guidance only. They do not represent any specific university's or exam board's official grading policy — always check your institution's own grading scale.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a8">
+                Can I use decimal marks in this calculator?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a8" role="region">
+                Yes. All five modes accept decimal values for obtained and maximum marks, which is useful for assessments with partial-mark grading or weighted components.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a9">
+                How many subjects can I add?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a9" role="region">
+                You can add between 1 and 20 subjects in Multiple Subjects mode, and the same range applies to Best Subjects mode. This comfortably covers most school and university subject loads.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="mpc-faq-a10">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="mpc-faq-a10" role="region">
+                Your inputs are saved to your browser's local storage so they persist between visits, separately for each calculation mode. Your data never leaves your device and is never sent to any server. Resetting a mode clears its saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="marks-percentage.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

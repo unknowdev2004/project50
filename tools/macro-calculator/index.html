@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macro Calculator — Free Protein, Fat &amp; Carb Targets | Project 50</title>
+  <meta name="description" content="Calculate your daily protein, fat and carbohydrate targets based on your body weight, activity level and goal. Uses Mifflin-St Jeor TDEE with goal-specific macro ranges.">
+  <meta name="keywords" content="macro calculator, protein calculator, macronutrient calculator, tdee macros, protein fat carbs, daily macros, weight loss macros, muscle building macros">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/macro-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/macro-calculator/">
+  <meta property="og:title" content="Macro Calculator — Free Protein, Fat &amp; Carb Targets | Project 50">
+  <meta property="og:description" content="Get personalised daily protein, fat and carb targets based on your TDEE and goal. Free, private, no signup needed.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Macro Calculator — Free Protein, Fat &amp; Carb Targets | Project 50">
+  <meta name="twitter:description" content="Calculate daily protein, fat and carbohydrate targets for fat loss, maintenance or muscle building. Free and private.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Macro Calculator",
+    "url": "https://project50.tools/tools/macro-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate daily protein, fat and carbohydrate targets using the Mifflin-St Jeor equation. Personalised for your body weight, activity level and goal.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Macro Calculator", "item": "https://project50.tools/tools/macro-calculator/" }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="macro.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Macro Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12.5" cy="8.5" r="2.5"/>
+              <path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z"/>
+              <path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Macro Calculator</h1>
+            <p class="tool-subtitle">Calculate your daily protein, fat and carb targets based on your TDEE and goal.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Macro calculator inputs">
+
+          <!-- Row 1: Age + Gender -->
+          <div class="macro-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="macro-age">Age</label>
+              <input class="tool-input" type="number" id="macro-age" placeholder="e.g. 28" min="15" max="100" aria-describedby="macro-age-hint">
+              <span class="tool-field-hint" id="macro-age-hint">Years (15–100)</span>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="macro-gender">Gender</label>
+              <div class="macro-select-wrap">
+                <select class="tool-select" id="macro-gender" aria-label="Biological sex for BMR calculation">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <span class="macro-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Height with unit selection -->
+          <div class="tool-field">
+            <div class="macro-unit-label-row">
+              <label class="tool-field-label" for="macro-height-cm" id="macro-height-label">Height (cm)</label>
+              <div class="macro-select-wrap macro-unit-select-wrap">
+                <select class="tool-select macro-unit-select" id="macro-height-unit" aria-label="Height unit">
+                  <option value="cm">cm</option>
+                  <option value="imperial">ft / in</option>
+                </select>
+                <span class="macro-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Metric height -->
+            <div id="macro-height-metric">
+              <input class="tool-input" type="number" id="macro-height-cm" placeholder="e.g. 175" min="100" max="250" aria-describedby="macro-height-hint">
+              <span class="tool-field-hint" id="macro-height-hint">100–250 cm</span>
+            </div>
+
+            <!-- Imperial height -->
+            <div id="macro-height-imperial" hidden>
+              <div class="macro-row macro-row--tight">
+                <div>
+                  <input class="tool-input" type="number" id="macro-height-ft" placeholder="5" min="3" max="8" aria-label="Height in feet">
+                  <span class="tool-field-hint">Feet</span>
+                </div>
+                <div>
+                  <input class="tool-input" type="number" id="macro-height-in" placeholder="9" min="0" max="11" aria-label="Height in inches">
+                  <span class="tool-field-hint">Inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weight with unit selection -->
+          <div class="tool-field">
+            <div class="macro-unit-label-row">
+              <label class="tool-field-label" for="macro-weight" id="macro-weight-label">Weight (kg)</label>
+              <div class="macro-select-wrap macro-unit-select-wrap">
+                <select class="tool-select macro-unit-select" id="macro-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="macro-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="macro-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="macro-weight-hint">
+            <span class="tool-field-hint" id="macro-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="macro-activity">Activity Level</label>
+            <div class="macro-select-wrap">
+              <select class="tool-select" id="macro-activity" aria-describedby="macro-activity-hint">
+                <option value="1.2">Sedentary — little or no exercise</option>
+                <option value="1.375">Lightly Active — 1–3 days/week</option>
+                <option value="1.55" selected>Moderately Active — 3–5 days/week</option>
+                <option value="1.725">Very Active — 6–7 days/week</option>
+                <option value="1.9">Athlete — twice-daily or intense daily training</option>
+              </select>
+              <span class="macro-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="macro-activity-hint">Choose the level that best describes your weekly routine</span>
+          </div>
+
+          <!-- Goal -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="macro-goal">Goal</label>
+            <div class="macro-select-wrap">
+              <select class="tool-select" id="macro-goal" aria-describedby="macro-goal-hint">
+                <option value="lose">Lose Fat</option>
+                <option value="maintain" selected>Maintain Weight</option>
+                <option value="build">Build Muscle</option>
+              </select>
+              <span class="macro-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="macro-goal-hint">Your macro targets are adjusted to support this goal</span>
+          </div>
+
+          <!-- Body Fat % (optional) -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="macro-bf-known">Do you know your body fat percentage?</label>
+            <div class="macro-select-wrap">
+              <select class="tool-select" id="macro-bf-known" aria-describedby="macro-bf-known-hint">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+              <span class="macro-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="macro-bf-known-hint">If yes, macros are based on lean body mass for more precision</span>
+          </div>
+
+          <!-- Body Fat % input (shown only when Yes selected) -->
+          <div class="tool-field" id="macro-bf-field" hidden>
+            <label class="tool-field-label" for="macro-bf-pct">
+              Body Fat %
+              <span class="macro-optional-badge" aria-label="optional">Optional</span>
+            </label>
+            <input class="tool-input" type="number" id="macro-bf-pct" placeholder="e.g. 18" min="3" max="60" aria-describedby="macro-bf-hint">
+            <span class="tool-field-hint" id="macro-bf-hint">3–60% body fat</span>
+          </div>
+
+          <!-- Validation message -->
+          <div class="macro-validation" id="macro-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="macro-btn-row">
+            <button class="btn btn-primary btn-lg" id="macro-calc-btn">
+              Calculate Macros
+            </button>
+            <button class="btn btn-secondary btn-lg" id="macro-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="macro-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Card 0: Recommended Daily Targets (quick-answer) -->
+          <div class="macro-section-card macro-summary-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Recommended Daily Targets
+            </h2>
+            <div class="macro-summary-grid">
+              <div class="macro-summary-item">
+                <div class="macro-summary-val" id="summary-cal">—</div>
+                <div class="macro-summary-unit">kcal</div>
+                <div class="macro-summary-label">Calories</div>
+              </div>
+              <div class="macro-summary-item macro-summary-item--protein">
+                <div class="macro-summary-val" id="summary-protein">—</div>
+                <div class="macro-summary-unit">g</div>
+                <div class="macro-summary-label">Protein</div>
+              </div>
+              <div class="macro-summary-item macro-summary-item--fat">
+                <div class="macro-summary-val" id="summary-fat">—</div>
+                <div class="macro-summary-unit">g</div>
+                <div class="macro-summary-label">Fat</div>
+              </div>
+              <div class="macro-summary-item macro-summary-item--carbs">
+                <div class="macro-summary-val" id="summary-carbs">—</div>
+                <div class="macro-summary-unit">g</div>
+                <div class="macro-summary-label">Carbs</div>
+              </div>
+            </div>
+            <p class="macro-range-note" style="margin-top:var(--sp-2)">These are your recommended daily targets based on your inputs. Use this as your quick reference.</p>
+          </div>
+
+          <!-- Card 1: Target Calories -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg>
+              </span>
+              Target Calories
+            </h2>
+            <div class="macro-calories-display">
+              <div class="macro-calories-value" id="macro-target-calories">—</div>
+              <div class="macro-calories-unit">kcal / day</div>
+            </div>
+            <div class="macro-calories-meta" id="macro-calories-meta"></div>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="macro-bmr-val">—</div>
+                <div class="tool-stat-label">BMR</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="macro-tdee-val">—</div>
+                <div class="tool-stat-label">TDEE</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="macro-adj-val">—</div>
+                <div class="tool-stat-label" id="macro-adj-label">Adjustment</div>
+              </div>
+            </div>
+            <p class="tool-note">Calculated using the Mifflin-St Jeor equation. Results are estimates — individual metabolism varies. Consult a healthcare provider before making significant dietary changes.</p>
+            <div id="macro-floor-warning" class="tool-floor-warning" hidden role="alert" aria-live="polite">
+              ⚠️ Your calculated target fell below the safe calorie minimum for your gender and has been raised to the floor (male: 1,500 kcal · female: 1,200 kcal). Consider a less aggressive deficit or consult a dietitian.
+            </div>
+          </div>
+
+          <!-- Card 2: Protein Targets -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12.5" cy="8.5" r="2.5"/><path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z"/><path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"/></svg>
+              </span>
+              Protein Targets
+            </h2>
+            <div class="macro-range-grid">
+              <div class="macro-range-card macro-protein">
+                <div class="macro-range-value" id="protein-min">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Minimum</div>
+              </div>
+              <div class="macro-range-card macro-protein macro-range-card--highlight">
+                <div class="macro-range-badge">Recommended</div>
+                <div class="macro-range-value" id="protein-rec">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Recommended</div>
+              </div>
+              <div class="macro-range-card macro-protein">
+                <div class="macro-range-value" id="protein-opt">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Optimal</div>
+              </div>
+            </div>
+            <p class="macro-range-note" id="protein-basis-note"></p>
+          </div>
+
+          <!-- Card 3: Fat Targets -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+              </span>
+              Fat Targets
+            </h2>
+            <div class="macro-range-grid">
+              <div class="macro-range-card macro-fat">
+                <div class="macro-range-value" id="fat-min">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Minimum</div>
+              </div>
+              <div class="macro-range-card macro-fat macro-range-card--highlight">
+                <div class="macro-range-badge">Recommended</div>
+                <div class="macro-range-value" id="fat-rec">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Recommended</div>
+              </div>
+              <div class="macro-range-card macro-fat">
+                <div class="macro-range-value" id="fat-upper">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Upper</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Carbohydrate Targets — 3-card layout matching Protein/Fat -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+              </span>
+              Carbohydrate Targets
+            </h2>
+            <div class="macro-range-grid">
+              <div class="macro-range-card macro-carbs">
+                <div class="macro-range-value" id="carb-min">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Minimum Carbs</div>
+              </div>
+              <div class="macro-range-card macro-carbs macro-range-card--highlight">
+                <div class="macro-range-badge">Recommended</div>
+                <div class="macro-range-value" id="carb-rec">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Recommended Carbs</div>
+              </div>
+              <div class="macro-range-card macro-carbs">
+                <div class="macro-range-value" id="carb-max">—</div>
+                <div class="macro-range-unit">g / day</div>
+                <div class="macro-range-label">Maximum Carbs</div>
+              </div>
+            </div>
+            <p class="macro-range-note" style="margin-top:var(--sp-1)">Carbohydrates fill your remaining calorie budget after protein and fat. Minimum reflects max protein + fat use; maximum reflects minimum protein + fat use. Adjust within this range based on hunger and training schedule.</p>
+          </div>
+
+          <!-- Card 5: Body Composition (only shown when BF% entered) -->
+          <div class="macro-section-card" id="macro-bf-comp-card" hidden>
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              Body Composition Used
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="bf-comp-weight">—</div>
+                <div class="tool-stat-label">Total Weight</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="bf-comp-pct">—</div>
+                <div class="tool-stat-label">Body Fat</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="bf-comp-lean">—</div>
+                <div class="tool-stat-label">Lean Mass</div>
+              </div>
+            </div>
+            <p class="tool-note">Macro targets — protein and fat — were calculated from your lean body mass, not total weight. This gives more precise targets by excluding fat mass, which requires little protein to maintain.</p>
+          </div>
+
+          <!-- Card 6: Daily Meal Split -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+              </span>
+              Daily Meal Split
+            </h2>
+            <p class="macro-range-note" style="margin-bottom:var(--sp-3)">Recommended targets divided evenly across your daily meals. Based on your recommended protein, fat, carbs and target calories.</p>
+            <div class="macro-meal-grid" id="macro-meal-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 7: Expected Progress -->
+          <div class="macro-section-card" id="macro-progress-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Expected Progress
+            </h2>
+            <div class="macro-progress-header">
+              <div class="macro-progress-change" id="progress-monthly-change">—</div>
+              <div class="macro-progress-context" id="progress-monthly-context"></div>
+            </div>
+            <p class="macro-range-note" style="margin-bottom:var(--sp-3)">Based on 7,700 kcal per kg of body fat. Actual results vary by individual metabolism, diet adherence and training.</p>
+            <div class="macro-proj-table" id="progress-projection">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 8: What Should You Focus On? -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              </span>
+              What Should You Focus On?
+            </h2>
+            <ul class="macro-focus-list">
+              <li><p><strong>Hit your protein target first.</strong> Protein prevents muscle loss, keeps you full and is the hardest macro to overeat. Aim for your recommended amount on most days.</p></li>
+              <li><p><strong>Reach your calorie target second.</strong> Total calories determine whether you lose, maintain or gain weight. Once protein is set, use fat and carbs to fill the remaining calorie budget.</p></li>
+              <li><p><strong>Use carbs and fats flexibly.</strong> Both macros serve important roles but can be adjusted based on preference, hunger and training schedule. Keep fat above its minimum; let carbs flex within their range.</p></li>
+            </ul>
+          </div>
+
+          <!-- Card 9: Budget-Friendly Protein Sources -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
+              </span>
+              Budget-Friendly Protein Sources
+            </h2>
+            <div class="macro-sources-grid">
+              <div class="macro-source-item">
+                <div class="macro-source-name">Eggs</div>
+                <div class="macro-source-amount">~6g per egg</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Milk (full fat)</div>
+                <div class="macro-source-amount">~8g per 240ml</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Curd / Dahi</div>
+                <div class="macro-source-amount">~4g per 100g</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Paneer</div>
+                <div class="macro-source-amount">~18g per 100g</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Soy Chunks</div>
+                <div class="macro-source-amount">~52g per 100g dry</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Dal (cooked)</div>
+                <div class="macro-source-amount">~9g per 100g</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Peanuts</div>
+                <div class="macro-source-amount">~26g per 100g</div>
+              </div>
+              <div class="macro-source-item">
+                <div class="macro-source-name">Chickpeas (cooked)</div>
+                <div class="macro-source-amount">~9g per 100g</div>
+              </div>
+            </div>
+            <p class="macro-range-note" style="margin-top:var(--sp-2)">Examples only — not a meal plan. Protein values are approximate and vary by brand and preparation.</p>
+          </div>
+
+          <!-- Card 10: Why These Numbers? -->
+          <div class="macro-section-card">
+            <h2 class="macro-section-title">
+              <span class="macro-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+              </span>
+              Why These Numbers?
+            </h2>
+            <div class="macro-why-grid">
+              <div class="macro-why-item">
+                <div class="macro-why-label macro-why-protein">Protein</div>
+                <p class="macro-why-text">Supports muscle recovery, prevents muscle loss during a calorie deficit, and keeps you feeling full. Higher intakes are especially important when losing fat or building muscle.</p>
+              </div>
+              <div class="macro-why-item">
+                <div class="macro-why-label macro-why-fat">Fat</div>
+                <p class="macro-why-text">Essential for hormone production, fat-soluble vitamin absorption (A, D, E, K), and brain function. Going too low on fat disrupts hormonal health. Never drop below your minimum.</p>
+              </div>
+              <div class="macro-why-item">
+                <div class="macro-why-label macro-why-carbs">Carbohydrates</div>
+                <p class="macro-why-text">Your body's primary energy source. Carbs fuel workouts, support recovery, and regulate mood. Because protein and fat targets are fixed, carbs fill the remaining calorie budget and are the most flexible macro to adjust.</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /#macro-results -->
+
+        <!-- Related Tools — rendered by macro.js from tools.json, health-fitness only -->
+        <div class="tool-related" id="macro-related-tools" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="macro-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="macro-about-heading">
+          <h2 class="tool-seo-section-title" id="macro-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12.5" cy="8.5" r="2.5"/><path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3A6.5 6.5 0 0 0 12.5 2Z"/><path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1 .31 2 6.49 6.49 0 0 1-2.6 5.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"/></svg>
+            </span>
+            About the Macro Calculator
+          </h2>
+          <p>Macronutrients — commonly called "macros" — are the three categories of nutrients that provide calories: protein, fat and carbohydrates. Every food you eat is made up of some combination of these three. Understanding how much of each you need is the foundation of precise nutrition, whether you are trying to lose body fat, maintain your current weight, or build muscle.</p>
+          <p><strong>Protein</strong> is the building block of muscle tissue. It supports repair after exercise, prevents muscle loss during a calorie deficit, and helps keep you full throughout the day. Protein provides 4 kcal per gram.</p>
+          <p><strong>Fat</strong> is essential for hormone production, brain function, and the absorption of fat-soluble vitamins (A, D, E and K). Fat provides 9 kcal per gram — more than twice the density of protein or carbohydrates — so a small amount goes a long way toward your daily calorie target.</p>
+          <p><strong>Carbohydrates</strong> are your body's preferred energy source, particularly during high-intensity exercise. They fuel workouts, support recovery and help regulate mood. Carbohydrates provide 4 kcal per gram. Because protein and fat targets are relatively fixed for a given body weight and goal, carbohydrates fill the remaining calorie budget and are the most flexible macro to adjust day to day.</p>
+          <p>This calculator uses the Mifflin-St Jeor equation to determine your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE), then applies evidence-based macro ratios tailored to your goal. If you know your body fat percentage, the tool calculates macros relative to your lean body mass for greater precision.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="macro-howto-heading">
+          <h2 class="tool-seo-section-title" id="macro-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Macro Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Enter your <strong>age</strong> and select your <strong>biological sex</strong> — both are required for the Mifflin-St Jeor BMR formula.</p>
+            </li>
+            <li>
+              <p>Select your preferred <strong>height unit</strong> (cm or ft/in) and enter your height. Values convert automatically when you switch units.</p>
+            </li>
+            <li>
+              <p>Select your preferred <strong>weight unit</strong> (kg or lbs) and enter your current body weight. Values convert automatically when you switch units.</p>
+            </li>
+            <li>
+              <p>Select your <strong>activity level</strong> from the dropdown. Choose the option that most honestly reflects your average week — most people overestimate activity.</p>
+            </li>
+            <li>
+              <p>Choose your <strong>goal</strong>: Lose Fat, Maintain Weight, or Build Muscle. Macro targets are adjusted to match your goal.</p>
+            </li>
+            <li>
+              <p>Optionally, indicate whether you know your <strong>body fat percentage</strong>. If yes, enter it so macros can be calculated relative to your lean body mass.</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate Macros</strong> to see your calorie target, protein range, fat range, carbohydrate range, meal split, expected progress and food source examples.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="macro-faq-heading">
+          <h2 class="tool-seo-section-title" id="macro-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="macro-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a1">
+                What are macros?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a1" role="region">
+                Macros is short for macronutrients — the three major nutrients your body needs in large amounts: protein, fat and carbohydrates. Unlike micronutrients (vitamins and minerals), macros are the sources of calories in your diet. Protein and carbohydrates each provide 4 kcal per gram; fat provides 9 kcal per gram. Tracking macros means paying attention to the ratio of these three nutrients rather than just total calories, which gives you more control over body composition changes.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a2">
+                How much protein do I need?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a2" role="region">
+                Protein needs depend on your body weight, goal and training intensity. Research generally supports 1.2–1.6 g/kg of body weight for active individuals maintaining weight, rising to 1.6–2.2 g/kg during fat loss or muscle building phases to preserve or build lean muscle tissue. This calculator shows you a minimum, recommended and optimal range so you can choose the level that fits your preference and appetite.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a3">
+                Do I need to hit macros exactly every day?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a3" role="region">
+                No. Weekly averages matter far more than daily precision. On training days you may naturally eat more carbohydrates; on rest days you might eat slightly less. Protein is the macro most worth being consistent about day to day, because your body cannot store amino acids the way it stores glycogen or fat. Aim to hit your protein target most days, keep fat above the minimum, and let carbohydrates flex within the given range.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a4">
+                Can I build muscle without supplements?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a4" role="region">
+                Yes, absolutely. Supplements are not required to build muscle. Whole foods like eggs, curd, paneer, soy chunks, dal and peanuts can fully meet your protein targets without any powders or pills. Protein supplements are simply a convenient way to hit targets when whole food options are not available. If you can meet your recommended protein target through food alone, you do not need supplements.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a5">
+                Is this macro calculator accurate?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a5" role="region">
+                This calculator uses the Mifflin-St Jeor equation, which is widely regarded as the most accurate BMR formula for most adults. Macro ranges are based on evidence-based guidelines from sports nutrition research. That said, all calculators are estimates — individual metabolism varies by up to 10% due to genetics, hormones and other factors. Treat the results as a strong starting point, then adjust over 2–4 weeks based on real-world outcomes.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="macro-faq-a6">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="macro-faq-a6" role="region">
+                All calculations run entirely in your browser. No personal data — age, weight, height, body fat percentage or goal — is ever sent to a server or stored anywhere outside your own device. Your inputs are saved locally to your browser so they are still there if you refresh the page, but this data never leaves your device.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="macro.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

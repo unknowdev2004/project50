@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+
+  <!--
+    Title and description are set dynamically by search-page.js
+    based on the query string. The defaults below are overridden.
+  -->
+  <title>Search Tools — Project 50</title>
+  <meta name="description" content="Search across 50 free online tools on Project 50. Find calculators, generators and utilities by name, category or tag.">
+  <meta name="robots" content="noindex, follow">
+  <!--
+    noindex: search result pages should not be indexed by crawlers.
+    follow: crawlers can still follow links on this page.
+  -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Search — Project 50">
+  <meta property="og:description" content="Search 50 free tools by name, category or tag.">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Global styles — one level up from /search/ -->
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/variables.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/components/buttons.css">
+  <link rel="stylesheet" href="../styles/components/header.css">
+  <link rel="stylesheet" href="../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../styles/components/cards.css">
+  <link rel="stylesheet" href="../styles/components/footer.css">
+
+  <!-- Search-page specific styles -->
+  <link rel="stylesheet" href="../styles/search.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Search Bar Area -->
+      <div class="search-bar-area">
+        <div class="search-bar-wrap">
+          <svg class="search-bar-icon" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input
+            type="search"
+            class="search-bar-input"
+            id="search-bar-input"
+            placeholder="Search tools by name, category or tag…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search all 50 tools"
+            aria-autocomplete="list"
+          >
+          <button class="search-bar-clear" id="search-bar-clear" aria-label="Clear search">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Section — aria-live so screen readers announce updates -->
+      <section aria-label="Search results" aria-live="polite" aria-atomic="false">
+
+        <!-- Results Header — always visible, updated by JS -->
+        <div class="search-results-header" id="search-results-header">
+          <!-- Populated by search-page.js -->
+        </div>
+
+        <!-- Results Grid — initial state / results / empty state -->
+        <div class="search-results-grid" id="search-results-grid" role="list" aria-label="Search results">
+          <!-- Populated by search-page.js -->
+        </div>
+
+      </section>
+
+      <!-- Related Categories — shown always -->
+      <div class="search-related" id="search-related">
+        <h2 class="search-related-heading">Browse by Category</h2>
+        <div class="search-related-grid" id="search-related-grid" role="list" aria-label="Tool categories">
+          <!-- Populated by search-page.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="partial-footer"></div>
+
+
+  <!--
+    Script load order:
+    storage.js    — must be first (theme.js depends on Storage)
+    renderers.js  — must load before search-page.js (exposes P50Renderers)
+    theme.js      — reads localStorage, sets data-theme before paint
+    sidebar.js    — wires sidebar open/close
+    search.js     — header dropdown autocomplete only
+    animations.js — IntersectionObserver fade-in
+    header.js     — scroll class + footer year
+    search-page.js — main page logic (reads URL, renders results)
+  -->
+  <script src="../scripts/utils.js"></script>
+  <script src="../scripts/icons/icons.js"></script>
+  <script src="../scripts/icons/icon-map.js"></script>
+  <script src="../scripts/config/categories.js"></script>
+  <script src="../scripts/storage.js"></script>
+  <script src="../scripts/renderers.js"></script>
+  <script src="../scripts/partials.js"></script>
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/sidebar.js" defer></script>
+  <script src="../scripts/search.js" defer></script>
+  <script src="../scripts/animations.js" defer></script>
+  <script src="../scripts/header.js" defer></script>
+  <script src="../scripts/search-page.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+{
+  "categories": [
+    {
+      "id": "health-fitness",
+      "name": "Health & Fitness",
+      "icon": "activity",
+      "description": "Track BMI, calories, hydration and more.",
+      "longDescription": "10 smart tools to help you monitor your health, track fitness goals, and build better habits — all in your browser, no signup needed.",
+      "toolCount": 10,
+      "color": "#10b981",
+      "slug": "health",
+      "link": "/tools/health/",
+      "benefits": [
+        "Track health metrics instantly",
+        "Private — runs in your browser",
+        "No account or subscription"
+      ],
+      "keywords": "bmi calculator, daily calorie planner, water intake tracker, body fat calculator, fitness tools"
+    },
+    {
+      "id": "student-tools",
+      "name": "Student Tools",
+      "icon": "graduation-cap",
+      "description": "CGPA, GPA, grade and study planners.",
+      "longDescription": "10 tools built for students — calculate grades, plan study sessions, generate citations and more. Designed to save time, not waste it.",
+      "toolCount": 10,
+      "color": "#3b82f6",
+      "slug": "student",
+      "link": "/tools/student/",
+      "benefits": [
+        "Save time on academic calculations",
+        "Built for every grading system",
+        "Free forever — no limits"
+      ],
+      "keywords": "cgpa calculator, gpa calculator, grade calculator, pomodoro timer, word counter, student tools"
+    },
+    {
+      "id": "utility-tools",
+      "name": "Utility Tools",
+      "icon": "wrench",
+      "description": "Passwords, converters and everyday tools.",
+      "longDescription": "10 everyday utility tools — from generating secure passwords to converting units and formatting JSON. Fast, focused, and always available.",
+      "toolCount": 10,
+      "color": "#f59e0b",
+      "slug": "utility",
+      "link": "/tools/utility/",
+      "benefits": [
+        "Instant results with no setup",
+        "Secure — nothing sent to servers",
+        "Works offline after first load"
+      ],
+      "keywords": "password generator, unit converter, age calculator, qr code generator, json formatter, utility tools"
+    },
+    {
+      "id": "finance-tools",
+      "name": "Finance Tools",
+      "icon": "wallet",
+      "description": "EMI, SIP, tax and budget calculators.",
+      "longDescription": "10 financial calculators to help you plan loans, investments, taxes and budgets. Make smarter money decisions in seconds.",
+      "toolCount": 10,
+      "color": "#8b5cf6",
+      "slug": "finance",
+      "link": "/tools/finance/",
+      "benefits": [
+        "Plan finances with confidence",
+        "Accurate, formula-based results",
+        "No financial data stored ever"
+      ],
+      "keywords": "emi calculator, sip calculator, income tax calculator, compound interest, budget planner, finance tools"
+    },
+    {
+      "id": "creator-tools",
+      "name": "Creator Tools",
+      "icon": "palette",
+      "description": "Color palettes, fonts and design helpers.",
+      "longDescription": "10 design and content tools for creators, developers and designers — from color palette generators to meta tag builders.",
+      "toolCount": 10,
+      "color": "#ec4899",
+      "slug": "creator",
+      "link": "/tools/creator/",
+      "benefits": [
+        "Ship designs faster",
+        "Browser-native — no installs",
+        "Export-ready outputs"
+      ],
+      "keywords": "color palette generator, gradient maker, meta tag generator, lorem ipsum, contrast checker, creator tools"
+    }
+  ],
+  "popularTools": [
+    {
+      "id": "bmi-calculator",
+      "name": "Check Your BMI Instantly",
+      "shortName": "BMI Calculator",
+      "description": "Know your health status in seconds — no signup needed.",
+      "icon": "scale",
+      "category": "Health & Fitness",
+      "categoryId": "health-fitness",
+      "tags": [
+        "health",
+        "bmi",
+        "weight"
+      ],
+      "link": "/tools/bmi-calculator/"
+    },
+    {
+      "id": "cgpa-calculator",
+      "name": "Calculate CGPA in Seconds",
+      "shortName": "CGPA Calculator",
+      "description": "Convert grades to CGPA effortlessly — just enter and go.",
+      "icon": "graduation-cap",
+      "category": "Student Tools",
+      "categoryId": "student-tools",
+      "tags": [
+        "grades",
+        "cgpa",
+        "student"
+      ],
+      "link": "/tools/cgpa-calculator/"
+    },
+    {
+      "id": "emi-calculator",
+      "name": "Plan Your Loan Repayments",
+      "shortName": "EMI Calculator",
+      "description": "See monthly EMI, total interest and full breakdown.",
+      "icon": "landmark",
+      "category": "Finance Tools",
+      "categoryId": "finance-tools",
+      "tags": [
+        "emi",
+        "loan",
+        "finance"
+      ],
+      "link": "/tools/emi-calculator/"
+    }
+  ],
+  "allTools": [
+    {
+      "id": "bmi-calculator",
+      "name": "BMI Calculator",
+      "description": "Calculate your Body Mass Index instantly. Know if you're underweight, normal, overweight or obese.",
+      "icon": "scale",
+      "category": "health-fitness",
+      "tags": [
+        "health",
+        "bmi",
+        "weight"
+      ],
+      "popular": true,
+      "link": "/tools/bmi-calculator/"
+    },
+    {
+      "id": "daily-calorie-planner",
+      "name": "Daily Calorie Planner",
+      "description": "Calculate your BMR, TDEE and daily calorie target for weight loss, maintenance or gain. Includes macro breakdown and goal timeline.",
+      "icon": "salad",
+      "category": "health-fitness",
+      "tags": [
+        "calories",
+        "tdee",
+        "bmr",
+        "nutrition",
+        "weight loss",
+        "macros",
+        "diet"
+      ],
+      "popular": false,
+      "link": "/tools/daily-calorie-planner/"
+    },
+    {
+      "id": "body-fat-calculator",
+      "name": "Body Fat Calculator",
+      "description": "Calculate your body fat percentage, fat mass and lean body mass using the U.S. Navy formula. Includes healthy range and target body fat projection.",
+      "icon": "ruler",
+      "category": "health-fitness",
+      "tags": [
+        "body fat",
+        "body composition",
+        "fat mass",
+        "lean mass",
+        "navy formula",
+        "health",
+        "fitness"
+      ],
+      "popular": false,
+      "link": "/tools/body-fat-calculator/"
+    },
+    {
+      "id": "macro-calculator",
+      "name": "Macro Calculator",
+      "description": "Calculate your daily protein, fat and carbohydrate targets based on your TDEE and goal. Includes meal split, protein sources and calorie breakdown.",
+      "icon": "beef",
+      "category": "health-fitness",
+      "tags": [
+        "macros",
+        "protein",
+        "fat",
+        "carbohydrates",
+        "tdee",
+        "nutrition",
+        "diet",
+        "muscle",
+        "weight loss"
+      ],
+      "popular": false,
+      "link": "/tools/macro-calculator/"
+    },
+    {
+      "id": "water-intake-calculator",
+      "name": "Water Intake Calculator",
+      "description": "Calculate your personalised daily water intake based on body weight, activity level and climate. Includes a daily drinking schedule and glass breakdown.",
+      "icon": "droplets",
+      "category": "health-fitness",
+      "tags": [
+        "water",
+        "hydration",
+        "intake",
+        "daily water",
+        "drinking",
+        "health",
+        "fitness"
+      ],
+      "popular": false,
+      "link": "/tools/water-intake-calculator/"
+    },
+    {
+      "id": "calorie-burn-calculator",
+      "name": "Calorie Burn Calculator",
+      "description": "Calculate how many calories you burn during walking, running, cycling, gym workouts and sports using MET-based calculations. Includes weight loss impact, food equivalents and activity comparisons.",
+      "icon": "activity",
+      "category": "health-fitness",
+      "tags": [
+        "calories burned",
+        "met calculator",
+        "exercise calories",
+        "workout",
+        "fitness",
+        "weight loss"
+      ],
+      "popular": false,
+      "link": "/tools/calorie-burn-calculator/"
+    },
+    {
+      "id": "ideal-weight-calculator",
+      "name": "Ideal Weight Calculator",
+      "description": "Calculate your ideal weight range based on height and gender using four established formulas (Devine, Hamwi, Robinson, Miller). Shows minimum, recommended and maximum healthy weight.",
+      "icon": "target",
+      "category": "health-fitness",
+      "tags": [
+        "ideal weight",
+        "healthy weight",
+        "weight range",
+        "height weight",
+        "health",
+        "fitness"
+      ],
+      "popular": false,
+      "link": "/tools/ideal-weight-calculator/"
+    },
+    {
+      "id": "sgpa-calculator",
+      "name": "SGPA Calculator",
+      "description": "Calculate your Semester Grade Point Average (SGPA) from subject credits and grades on a 10-point or 4-point scale. Includes academic summary, performance analysis and subject breakdown.",
+      "icon": "bar-chart-2",
+      "category": "student-tools",
+      "tags": [
+        "sgpa",
+        "grades",
+        "gpa",
+        "semester",
+        "credits",
+        "academic",
+        "student"
+      ],
+      "popular": false,
+      "link": "/tools/sgpa-calculator/"
+    },
+    {
+      "id": "cgpa-calculator",
+      "name": "CGPA Calculator",
+      "description": "Calculate your Cumulative Grade Point Average (CGPA) from semester GPA and credit hours. Includes academic summary, performance analysis and insights.",
+      "icon": "graduation-cap",
+      "category": "student-tools",
+      "tags": [
+        "cgpa",
+        "grades",
+        "gpa",
+        "semester",
+        "credits",
+        "academic",
+        "student"
+      ],
+      "popular": true,
+      "link": "/tools/cgpa-calculator/"
+    },
+    {
+      "id": "attendance-calculator",
+      "name": "Attendance Calculator",
+      "description": "Calculate your current class attendance percentage, check eligibility, and see how many classes you can miss or must attend to stay eligible.",
+      "icon": "calendar-check",
+      "category": "student-tools",
+      "tags": [
+        "attendance",
+        "eligibility",
+        "classes",
+        "percentage",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/attendance-calculator/"
+    },
+    {
+      "id": "password-generator",
+      "name": "Password Generator",
+      "description": "Generate strong, random passwords with custom length and complexity.",
+      "icon": "shield",
+      "category": "utility-tools",
+      "tags": [
+        "security",
+        "password",
+        "random"
+      ],
+      "popular": true,
+      "link": "/tools/password-generator/"
+    },
+    {
+      "id": "emi-calculator",
+      "name": "EMI Calculator",
+      "description": "Calculate monthly EMI, total interest and full loan repayment breakdown.",
+      "icon": "landmark",
+      "category": "finance-tools",
+      "tags": [
+        "emi",
+        "loan",
+        "monthly"
+      ],
+      "popular": true,
+      "link": "/tools/emi-calculator/"
+    },
+    {
+      "id": "color-palette",
+      "name": "Color Palette Generator",
+      "description": "Generate beautiful, harmonious color schemes for any design project.",
+      "icon": "pipette",
+      "category": "creator-tools",
+      "tags": [
+        "color",
+        "palette",
+        "design"
+      ],
+      "popular": true,
+      "link": "/tools/color-palette/"
+    },
+    {
+      "id": "tdee-calculator",
+      "name": "TDEE Calculator",
+      "description": "Calculate your Total Daily Energy Expenditure and personalised calorie targets for fat loss, maintenance or muscle gain. Includes daily meal breakdown and activity comparison.",
+      "icon": "trending-up",
+      "category": "health-fitness",
+      "tags": [
+        "tdee",
+        "calories",
+        "bmr",
+        "calorie target",
+        "fat loss",
+        "weight loss",
+        "maintenance",
+        "muscle gain",
+        "activity level",
+        "diet"
+      ],
+      "popular": false,
+      "link": "/tools/tdee-calculator/"
+    },
+    {
+      "id": "protein-calculator",
+      "name": "Protein Calculator",
+      "description": "Calculate your daily protein intake for fat loss, maintenance or muscle gain. Shows minimum, recommended and optimal targets with food equivalents and meal breakdown.",
+      "icon": "beef",
+      "category": "health-fitness",
+      "tags": [
+        "protein",
+        "protein intake",
+        "daily protein",
+        "muscle gain",
+        "fat loss",
+        "protein target",
+        "high protein",
+        "macros",
+        "diet",
+        "nutrition"
+      ],
+      "popular": false,
+      "link": "/tools/protein-calculator/"
+    },
+    {
+      "id": "target-weight-timeline-calculator",
+      "name": "Target Weight Timeline Calculator",
+      "description": "Calculate how long it will take to reach your target weight. Get personalised fat loss or weight gain timelines with monthly milestones, calorie targets and weekly progress breakdown.",
+      "icon": "trending-up",
+      "category": "health-fitness",
+      "tags": [
+        "weight loss",
+        "timeline",
+        "fat loss",
+        "goal weight",
+        "calorie deficit",
+        "weight gain",
+        "tdee",
+        "bmr",
+        "health",
+        "fitness"
+      ],
+      "popular": false,
+      "link": "/tools/target-weight-timeline-calculator/"
+    },
+    {
+      "id": "marks-percentage-calculator",
+      "name": "Marks Percentage Calculator",
+      "description": "Calculate marks percentage instantly — quick calculate, multiple subjects, best-of-N, target percentage needed, and goal planning, all in one adaptive calculator.",
+      "icon": "percent",
+      "category": "student-tools",
+      "tags": [
+        "percentage",
+        "marks",
+        "exam",
+        "target percentage",
+        "best of subjects",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/marks-percentage-calculator/"
+    },
+    {
+      "id": "grade-required-marks-calculator",
+      "name": "Grade & Required Marks Calculator",
+      "description": "Calculate your current weighted course grade, the score you need on your final, what-if scenarios, your best possible grade, and compare multiple target grades — all in one calculator.",
+      "icon": "calculator",
+      "category": "student-tools",
+      "tags": [
+        "grade",
+        "required marks",
+        "weighted grade",
+        "final exam",
+        "what if",
+        "best possible grade",
+        "target grade",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/grade-required-marks-calculator/"
+    },
+    {
+      "id": "cgpa-percentage-converter",
+      "name": "CGPA & Percentage Converter",
+      "description": "Convert CGPA to percentage or percentage to CGPA using verified institution formulas, general formulas, or a safe custom formula builder — with comparison and a reference table.",
+      "icon": "arrow-left-right",
+      "category": "student-tools",
+      "tags": [
+        "cgpa to percentage",
+        "percentage to cgpa",
+        "cgpa converter",
+        "cbse cgpa",
+        "anna university cgpa",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/cgpa-percentage-converter/"
+    },
+    {
+      "id": "study-hours-exam-planner",
+      "name": "Study Hours & Exam Planner",
+      "description": "Work out how many hours you need to study each day, build a day-by-day exam study plan across your subjects, plan your syllabus pace, catch up when you're behind, and see which subjects need attention most.",
+      "icon": "calendar-clock",
+      "category": "student-tools",
+      "tags": [
+        "study planner",
+        "exam planner",
+        "study hours",
+        "syllabus planner",
+        "catch up plan",
+        "revision planner",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/study-hours-exam-planner/"
+    }
+  ]
+}

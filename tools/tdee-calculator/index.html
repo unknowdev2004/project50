@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDEE Calculator — Daily Calorie Target for Fat Loss &amp; Muscle Gain | Project 50</title>
+  <meta name="description" content="Calculate your Total Daily Energy Expenditure (TDEE) and personalised calorie targets for fat loss, maintenance or muscle gain. Uses Mifflin-St Jeor with safety floors.">
+  <meta name="keywords" content="tdee calculator, total daily energy expenditure, calorie calculator, bmr calculator, calorie target, fat loss calories, maintenance calories, muscle gain calories, daily calories">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/tdee-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/tdee-calculator/">
+  <meta property="og:title" content="TDEE Calculator — Daily Calorie Target for Fat Loss &amp; Muscle Gain | Project 50">
+  <meta property="og:description" content="Find out how many calories you should eat. Get personalised targets for fat loss, maintenance and muscle gain based on your TDEE.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="TDEE Calculator — Daily Calorie Target for Fat Loss &amp; Muscle Gain | Project 50">
+  <meta name="twitter:description" content="Calculate your TDEE and see calorie targets for every goal — fat loss, aggressive cut, maintenance, lean bulk and weight gain.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "TDEE Calculator",
+    "url": "https://project50.tools/tools/tdee-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your Total Daily Energy Expenditure and personalised daily calorie targets for fat loss, maintenance or muscle gain using the Mifflin-St Jeor equation.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "TDEE Calculator", "item": "https://project50.tools/tools/tdee-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is TDEE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "TDEE stands for Total Daily Energy Expenditure — the total number of calories your body burns in a day, including exercise and all daily activity. It is your BMR multiplied by an activity factor." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many calories should I eat to lose weight?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A 500 kcal daily deficit from your TDEE results in approximately 1.95 kg of fat loss per month. For faster fat loss, a 750 kcal deficit produces around 2.92 kg/month, though this is more demanding to sustain." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is BMR?",
+        "acceptedAnswer": { "@type": "Answer", "text": "BMR stands for Basal Metabolic Rate — the number of calories your body burns at complete rest to maintain basic functions like breathing, circulation and cell repair. TDEE is your BMR scaled up by your activity level." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which BMR formula does this calculator use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "This calculator uses the Mifflin-St Jeor equation, widely regarded as the most accurate BMR formula for most adults. Male BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5. Female BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161." }
+      },
+      {
+        "@type": "Question",
+        "name": "What activity level should I choose?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most people overestimate their activity. Sedentary means a desk job with little movement. Lightly Active covers 1–3 casual exercise sessions per week. Moderately Active is 3–5 days of structured training. Very Active is 6–7 days of intense training. Athlete is for twice-daily training or a physically demanding job plus daily training." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a minimum number of calories I should eat?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. This calculator enforces a minimum of 1,500 kcal/day for men and 1,200 kcal/day for women, regardless of goal. Going below these floors risks nutrient deficiencies, muscle loss and metabolic adaptation. Always consult a healthcare provider for very low calorie intakes." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much weight can I expect to lose?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A 500 kcal daily deficit burns approximately 1.95 kg of fat per month (based on 7,700 kcal per kg of fat). A 750 kcal deficit produces around 2.92 kg/month. These are estimates — actual results vary by individual metabolism, adherence and water retention." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my personal data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All calculations run entirely in your browser. Your inputs are saved locally so they persist after a page refresh, but no data is ever sent to a server or stored outside your device." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="tdee.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">TDEE Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#f97316" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="m19 9-5 5-4-4-3 3"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">TDEE Calculator</h1>
+            <p class="tool-subtitle">TDEE &amp; Daily Calorie Target Calculator — find out exactly how many calories you should eat.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="TDEE calculator inputs">
+
+          <!-- Gender + Age -->
+          <div class="tdee-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="tdee-gender">Gender</label>
+              <div class="tdee-select-wrap">
+                <select class="tool-select" id="tdee-gender" aria-label="Biological sex for BMR calculation">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <span class="tdee-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="tdee-age">Age</label>
+              <input class="tool-input" type="number" id="tdee-age" placeholder="e.g. 30" min="15" max="100" aria-describedby="tdee-age-hint">
+              <span class="tool-field-hint" id="tdee-age-hint">15–100 years</span>
+            </div>
+          </div>
+
+          <!-- Height with unit selection -->
+          <div class="tool-field">
+            <div class="tdee-unit-label-row">
+              <label class="tool-field-label" for="tdee-height-cm" id="tdee-height-label">Height (cm)</label>
+              <div class="tdee-select-wrap tdee-unit-select-wrap">
+                <select class="tool-select tdee-unit-select" id="tdee-height-unit" aria-label="Height unit">
+                  <option value="cm">cm</option>
+                  <option value="imperial">ft / in</option>
+                </select>
+                <span class="tdee-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Metric height -->
+            <div id="tdee-height-metric">
+              <input class="tool-input" type="number" id="tdee-height-cm" placeholder="e.g. 175" min="100" max="250" aria-describedby="tdee-height-hint">
+              <span class="tool-field-hint" id="tdee-height-hint">100–250 cm</span>
+            </div>
+
+            <!-- Imperial height -->
+            <div id="tdee-height-imperial" hidden>
+              <div class="tdee-row tdee-row--tight">
+                <div>
+                  <input class="tool-input" type="number" id="tdee-height-ft" placeholder="5" min="3" max="8" aria-label="Height in feet">
+                  <span class="tool-field-hint">Feet</span>
+                </div>
+                <div>
+                  <input class="tool-input" type="number" id="tdee-height-in" placeholder="9" min="0" max="11" aria-label="Height in inches">
+                  <span class="tool-field-hint">Inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weight with unit selection -->
+          <div class="tool-field">
+            <div class="tdee-unit-label-row">
+              <label class="tool-field-label" for="tdee-weight" id="tdee-weight-label">Weight (kg)</label>
+              <div class="tdee-select-wrap tdee-unit-select-wrap">
+                <select class="tool-select tdee-unit-select" id="tdee-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="tdee-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="tdee-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="tdee-weight-hint">
+            <span class="tool-field-hint" id="tdee-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="tdee-activity">Activity Level</label>
+            <div class="tdee-select-wrap">
+              <select class="tool-select" id="tdee-activity" aria-describedby="tdee-activity-hint">
+                <option value="1.2">Sedentary — desk job, little or no exercise</option>
+                <option value="1.375">Lightly Active — 1–3 days/week</option>
+                <option value="1.55" selected>Moderately Active — 3–5 days/week</option>
+                <option value="1.725">Very Active — 6–7 days/week</option>
+                <option value="1.9">Athlete — twice-daily or intense daily training</option>
+              </select>
+              <span class="tdee-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="tdee-activity-hint">Choose the level that best matches your typical week</span>
+          </div>
+
+          <!-- Validation -->
+          <div class="tdee-validation" id="tdee-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="tdee-btn-row">
+            <button class="btn btn-primary btn-lg" id="tdee-calc-btn">
+              Calculate TDEE
+            </button>
+            <button class="btn btn-secondary btn-lg" id="tdee-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="tdee-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Card 1: Recommended Daily Calorie Targets (highlighted summary) -->
+          <div class="tdee-section-card tdee-summary-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Recommended Daily Calorie Targets
+            </h2>
+            <div class="tdee-goal-list" id="tdee-goal-list">
+              <!-- Filled by JS -->
+            </div>
+            <div id="tdee-floor-warning" class="tdee-warning" hidden>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              Minimum recommended intake reached.
+            </div>
+          </div>
+
+          <!-- Card 2: Monthly Weight Change -->
+          <div class="tdee-section-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Monthly Weight Change
+            </h2>
+            <div class="tdee-monthly-grid" id="tdee-monthly-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 3: Goal Comparison Table -->
+          <div class="tdee-section-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </span>
+              Goal Comparison
+            </h2>
+            <div class="tdee-table-wrap">
+              <table class="tdee-table" aria-label="Goal comparison table">
+                <thead>
+                  <tr>
+                    <th>Goal</th>
+                    <th>Calories</th>
+                    <th>Monthly Change</th>
+                  </tr>
+                </thead>
+                <tbody id="tdee-comparison-body">
+                  <!-- Filled by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Card 4: Daily Calorie Breakdown (Lose Fat target) -->
+          <div class="tdee-section-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+              </span>
+              Daily Calorie Breakdown
+            </h2>
+            <p class="tdee-range-note" style="margin-bottom:var(--sp-3)">Based on your <strong>Lose Fat</strong> calorie target, split across daily meals.</p>
+            <div class="tdee-meal-grid" id="tdee-meal-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 5: Activity Impact -->
+          <div class="tdee-section-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </span>
+              Activity Impact
+            </h2>
+            <p class="tdee-range-note" style="margin-bottom:var(--sp-3)">Maintenance calories across all activity levels, based on your body stats.</p>
+            <div class="tdee-activity-grid" id="tdee-activity-grid">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 6: BMR & TDEE Breakdown -->
+          <div class="tdee-section-card">
+            <h2 class="tdee-section-title">
+              <span class="tdee-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              </span>
+              BMR &amp; TDEE Breakdown
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="tdee-bmr-val">—</div>
+                <div class="tool-stat-label">BMR</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="tdee-multiplier-val">—</div>
+                <div class="tool-stat-label">Activity Multiplier</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="tdee-tdee-val">—</div>
+                <div class="tool-stat-label">TDEE</div>
+              </div>
+            </div>
+            <p class="tdee-formula-note" id="tdee-formula-note"></p>
+            <p class="tool-note">Calculated using the Mifflin-St Jeor equation. Results are estimates — individual metabolism varies. Consult a healthcare provider before making significant dietary changes.</p>
+          </div>
+
+          <!-- Aggressive deficit warning (shown conditionally) -->
+          <div id="tdee-aggressive-warning" class="tdee-section-card tdee-warning-card" hidden>
+            <div class="tdee-warning">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              Aggressive calorie deficits may be difficult to sustain long term.
+            </div>
+          </div>
+
+        </div><!-- /#tdee-results -->
+
+        <!-- Related Tools -->
+        <div class="tool-related" id="tdee-related-tools" style="--tool-related-color:#f97316">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="tdee-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="tdee-about-heading">
+          <h2 class="tool-seo-section-title" id="tdee-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </span>
+            About This Tool
+          </h2>
+          <p>This TDEE Calculator answers the most fundamental question in nutrition: <em>how many calories should I eat?</em> It calculates your Total Daily Energy Expenditure — the total calories your body burns each day — and generates personalised calorie targets for every goal, from aggressive fat loss to muscle gain.</p>
+          <p>Unlike tools that only show your maintenance number, this calculator shows a complete picture: five goal targets, expected monthly weight change, a daily meal breakdown, and how your maintenance calories shift across activity levels. Everything you need to make an informed decision about your calorie intake in one place.</p>
+          <p>All calculations use the Mifflin-St Jeor equation, which is widely regarded as the most accurate BMR formula for most adults. Safety floors are enforced — 1,500 kcal for men and 1,200 kcal for women — to prevent dangerously low targets. No data is ever sent to a server. Your inputs are saved locally in your browser.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="tdee-howto-heading">
+          <h2 class="tool-seo-section-title" id="tdee-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Select your <strong>gender</strong> — this affects the BMR constant in the Mifflin-St Jeor equation.</p></li>
+            <li><p>Enter your <strong>age</strong> in years (18 or older).</p></li>
+            <li><p>Select your preferred <strong>height unit</strong> and enter your height. Values convert automatically when you switch units.</p></li>
+            <li><p>Select your preferred <strong>weight unit</strong> and enter your current body weight. Values convert automatically.</p></li>
+            <li><p>Choose your <strong>activity level</strong> — this is the biggest variable in the calculation. Most people should choose Sedentary or Lightly Active. Be honest.</p></li>
+            <li><p>Click <strong>Calculate TDEE</strong> to see your calorie targets, monthly projections, meal breakdown and more.</p></li>
+          </ol>
+        </section>
+
+        <!-- What Is TDEE -->
+        <section class="tool-seo-section" aria-labelledby="tdee-whatis-heading">
+          <h2 class="tool-seo-section-title" id="tdee-whatis-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            What Is TDEE?
+          </h2>
+          <p>TDEE stands for <strong>Total Daily Energy Expenditure</strong> — the total number of calories your body burns in a single day. It accounts for everything: the energy needed to keep you alive at rest (BMR), the energy used to digest food (TEF), and the energy burned through all movement — from structured exercise to simply walking around your home.</p>
+          <p>TDEE is the number that determines your body weight. Eat at TDEE and you maintain. Eat below and you lose. Eat above and you gain. Knowing your TDEE is therefore the starting point for any rational approach to changing your body composition.</p>
+        </section>
+
+        <!-- How TDEE Is Calculated -->
+        <section class="tool-seo-section" aria-labelledby="tdee-calc-heading">
+          <h2 class="tool-seo-section-title" id="tdee-calc-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 10h8M8 14h4"/></svg>
+            </span>
+            How TDEE Is Calculated
+          </h2>
+          <p>TDEE = BMR × Activity Multiplier. First, your <strong>Basal Metabolic Rate (BMR)</strong> is calculated using the Mifflin-St Jeor equation:</p>
+          <ul>
+            <li><strong>Male BMR:</strong> (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5</li>
+            <li><strong>Female BMR:</strong> (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161</li>
+          </ul>
+          <p>BMR is then multiplied by an activity factor: Sedentary (1.2), Lightly Active (1.375), Moderately Active (1.55), Very Active (1.725), Athlete (1.9). The result is your TDEE — your estimated maintenance calories.</p>
+        </section>
+
+        <!-- Calories for Different Goals -->
+        <section class="tool-seo-section" aria-labelledby="tdee-goals-heading">
+          <h2 class="tool-seo-section-title" id="tdee-goals-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </span>
+            Calories for Different Goals
+          </h2>
+          <p>Once your TDEE is known, goal calorie targets are simple adjustments:</p>
+          <ul>
+            <li><strong>Maintain Weight:</strong> Eat at TDEE.</li>
+            <li><strong>Lose Fat:</strong> TDEE − 500 kcal/day → approximately 1.95 kg/month fat loss.</li>
+            <li><strong>Aggressive Fat Loss:</strong> TDEE − 750 kcal/day → approximately 2.92 kg/month. More demanding to sustain.</li>
+            <li><strong>Lean Muscle Gain:</strong> TDEE + 300 kcal/day → approximately 1.17 kg/month lean gain (mostly muscle with minimal fat).</li>
+            <li><strong>Weight Gain:</strong> TDEE + 500 kcal/day → approximately 1.95 kg/month (faster mass gain with some fat).</li>
+          </ul>
+          <p>Monthly change is estimated using 7,700 kcal per kg of body tissue. Individual results vary.</p>
+        </section>
+
+        <!-- Factors That Affect Daily Calorie Needs -->
+        <section class="tool-seo-section" aria-labelledby="tdee-factors-heading">
+          <h2 class="tool-seo-section-title" id="tdee-factors-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+            </span>
+            Factors That Affect Daily Calorie Needs
+          </h2>
+          <p>Several factors influence how many calories you need each day beyond what any formula can capture:</p>
+          <ul>
+            <li><strong>Muscle mass:</strong> Muscle is metabolically active — more muscle means a higher BMR even at rest.</li>
+            <li><strong>Non-exercise activity (NEAT):</strong> Fidgeting, walking, standing and incidental movement can vary by up to 800 kcal/day between individuals at the same activity level.</li>
+            <li><strong>Age:</strong> Metabolic rate tends to decline slightly with age, partly due to loss of muscle mass.</li>
+            <li><strong>Sleep quality:</strong> Poor sleep raises ghrelin (hunger hormone) and lowers leptin (satiety hormone), leading to higher effective calorie needs to feel satisfied.</li>
+            <li><strong>Hormonal status:</strong> Thyroid hormones, cortisol and sex hormones all influence how efficiently your body uses energy.</li>
+            <li><strong>Diet history:</strong> Long-term calorie restriction can lower metabolic rate through adaptive thermogenesis — the body's response to perceived famine.</li>
+          </ul>
+        </section>
+
+        <!-- Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="tdee-results-heading">
+          <h2 class="tool-seo-section-title" id="tdee-results-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p>The <strong>Recommended Daily Calorie Targets</strong> card shows five goal options in one place, with the Lose Fat target highlighted as the most common goal. Use this as your quick reference number.</p>
+          <p>The <strong>Monthly Weight Change</strong> card converts your daily calorie adjustment into expected monthly weight change — a more intuitive way to set expectations than daily numbers.</p>
+          <p>The <strong>Daily Calorie Breakdown</strong> splits your Lose Fat target across four meal windows (Breakfast 25%, Lunch 35%, Dinner 30%, Snacks 10%) to help you plan meals concretely.</p>
+          <p>The <strong>Activity Impact</strong> card shows what your maintenance calories would be at every activity level given your body stats. This is useful if you're considering a training schedule change.</p>
+          <p>These are estimates. Use them as a starting point, then adjust based on real-world results over 2–4 weeks.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="tdee-faq-heading">
+          <h2 class="tool-seo-section-title" id="tdee-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="tdee-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a1">
+                What is TDEE?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a1" role="region">
+                TDEE stands for Total Daily Energy Expenditure — the total number of calories your body burns in a day, including all activity, exercise and digestion. It is your BMR multiplied by an activity factor that reflects how active you are. Eating at your TDEE maintains your current weight.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a2">
+                How many calories should I eat to lose weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a2" role="region">
+                A 500 kcal daily deficit from your TDEE results in approximately 1.95 kg of fat loss per month (based on 7,700 kcal per kg of fat). For faster fat loss, a 750 kcal deficit produces around 2.92 kg/month, though this is more demanding to sustain long term and may increase muscle loss risk.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a3">
+                What is BMR?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a3" role="region">
+                BMR stands for Basal Metabolic Rate — the calories your body burns at complete rest to sustain basic functions like breathing, circulation and cell repair. It is the foundation of your TDEE before any activity is factored in. A higher muscle mass generally means a higher BMR.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a4">
+                Which BMR formula does this use?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a4" role="region">
+                This calculator uses the <strong>Mifflin-St Jeor equation</strong>, which is widely regarded as the most accurate BMR formula for most adults. Male: BMR = (10 × kg) + (6.25 × cm) − (5 × age) + 5. Female: BMR = (10 × kg) + (6.25 × cm) − (5 × age) − 161.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a5">
+                What activity level should I choose?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a5" role="region">
+                Most people overestimate. Sedentary means a desk job with very little movement outside it. Lightly Active is 1–3 casual workouts per week. Moderately Active is 3–5 structured sessions. Very Active is hard training 6–7 days/week. Athlete is twice-daily training or a demanding physical job plus daily training. When in doubt, choose one level lower than you think.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a6">
+                Is there a minimum calorie intake?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a6" role="region">
+                Yes. This calculator enforces a minimum of 1,500 kcal/day for men and 1,200 kcal/day for women, regardless of goal. Going below these thresholds risks nutrient deficiencies, significant muscle loss and metabolic adaptation. Always consult a healthcare provider before pursuing very low calorie intakes.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a7">
+                How much weight can I expect to lose?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a7" role="region">
+                This calculator uses 7,700 kcal per kg of fat as the baseline. A 500 kcal/day deficit burns approximately 1.95 kg/month; a 750 kcal/day deficit burns around 2.92 kg/month. These are estimates — actual results vary by water retention, diet adherence, sleep, stress and individual metabolism.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tdee-faq-a8">
+                Does this tool store my personal data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tdee-faq-a8" role="region">
+                No. All calculations run in your browser. Your inputs are saved locally so they persist after a page refresh, but no personal data — age, weight, height or gender — is ever sent to a server or stored outside your own device.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="tdee.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

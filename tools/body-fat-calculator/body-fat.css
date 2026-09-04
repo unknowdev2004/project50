@@ -1,0 +1,528 @@
+/* ============================================
+   BODY-FAT.CSS — Project 50
+   Body Fat Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+
+   v2 changes:
+     - Added unit label row (.bf-unit-label-row) matching Daily Calorie Planner
+     - Added compact unit select styles (.bf-unit-select, .bf-select-wrap)
+     - Button row: both buttons use btn-lg; Reset has fixed width, not flex:1
+     - Category bar marker: uses transform translateX(-50%) for true centring
+     - Related tools: moved above results (always visible)
+     - Mobile: bf-btn-row stays row; only stacks at ≤360px
+     - Sub-field styles for ft/in imperial panel
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   GENDER TOGGLE
+============================================ */
+.bf-gender-toggle {
+  display: flex;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+}
+
+.bf-gender-btn {
+  flex: 1;
+  height: 40px;
+  border-radius: 10px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: all var(--transition-base);
+  font-family: var(--font-body);
+}
+
+.bf-gender-btn.active {
+  background: var(--color-bg-card-hover);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   UNIT LABEL ROW
+   Matches Daily Calorie Planner pattern exactly.
+   Label left, unit select right on same line.
+============================================ */
+.bf-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.bf-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+   Wraps the <select> and the custom arrow icon.
+============================================ */
+.bf-select-wrap {
+  position: relative;
+  display: block;
+}
+
+.bf-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bf-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.bf-select-wrap .tool-select:focus + .bf-select-arrow {
+  color: var(--color-primary);
+}
+
+/* Compact pill-style unit switcher */
+.bf-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.bf-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.bf-unit-select-wrap .bf-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   FIELD LAYOUT
+============================================ */
+.bf-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.bf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.bf-row--tight {
+  gap: var(--sp-1);
+  margin-top: 0;
+}
+
+/* ft/in sub-field: label below input */
+.bf-sub-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ============================================
+   OPTIONAL BADGE
+============================================ */
+.bf-optional-badge {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--color-text-faint);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 1px 8px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.bf-validation {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+/* ============================================
+   BUTTON ROW
+   Both buttons use btn-lg for identical height/padding.
+   Calculate gets flex:1 (fills available space).
+   Reset has fixed min-width — never oversized.
+============================================ */
+.bf-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: stretch;
+}
+
+.bf-btn-row .btn-primary {
+  flex: 1;
+}
+
+.bf-btn-row .btn-secondary {
+  flex-shrink: 0;
+  min-width: 90px;
+}
+
+/* ============================================
+   PRIMARY RESULT CARD
+============================================ */
+.bf-primary-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4) var(--sp-3);
+  text-align: center;
+  margin-bottom: var(--sp-2);
+}
+
+.bf-primary-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.bf-primary-value span:first-child {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+}
+
+.bf-primary-unit {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.bf-primary-label {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   CATEGORY BADGE
+============================================ */
+.bf-category-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.bf-category-badge.cat-essential { background: rgba(99,102,241,0.15); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+.bf-category-badge.cat-athlete   { background: rgba(16,185,129,0.15); color: #6ee7b7; border-color: rgba(16,185,129,0.3); }
+.bf-category-badge.cat-fitness   { background: rgba(59,130,246,0.15); color: #93c5fd; border-color: rgba(59,130,246,0.3); }
+.bf-category-badge.cat-average   { background: rgba(245,158,11,0.15); color: #fcd34d; border-color: rgba(245,158,11,0.3); }
+.bf-category-badge.cat-obese     { background: rgba(239,68,68,0.15);  color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+/* ============================================
+   SECTION CARDS — shared card style for results
+============================================ */
+.bf-category-card,
+.bf-composition-card,
+.bf-range-card,
+.bf-target-card,
+.bf-summary-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+
+.bf-section-title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--sp-2);
+}
+
+/* ============================================
+   CATEGORY BAR
+   Fix: marker uses transform: translateX(-50%)
+   so the centre of the dot lands on the value,
+   not the left edge.
+   Fix: bf-cat-marker-wrap has overflow:visible
+   so clipping does not hide the dot at edges.
+============================================ */
+.bf-cat-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bf-cat-bar {
+  display: flex;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 12px;
+}
+
+.bf-cat-segment {
+  flex: 1;
+}
+
+.bf-cat-essential { background: #6366f1; }
+.bf-cat-athlete   { background: #10b981; }
+.bf-cat-fitness   { background: #3b82f6; }
+.bf-cat-average   { background: #f59e0b; }
+.bf-cat-obese     { background: #ef4444; }
+
+.bf-cat-marker-wrap {
+  position: relative;
+  height: 16px;         /* tall enough for the dot */
+  overflow: visible;    /* never clip the marker dot */
+}
+
+.bf-cat-marker {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--color-text);
+  border: 2px solid var(--color-bg);
+  border-radius: 50%;
+  top: -82%;
+  /* translateX(-50%) centres the dot on the left% position */
+  transform: translate(-50%, -50%);
+  transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+  left: 10%; /* updated by JS */
+}
+
+.bf-cat-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  padding: 0 2px;
+}
+
+.bf-cat-labels span {
+  flex: 1;
+  text-align: center;
+}
+
+.bf-cat-labels span:first-child { text-align: left; }
+.bf-cat-labels span:last-child  { text-align: right; }
+
+/* ============================================
+   HEALTHY RANGE GRID
+============================================ */
+.bf-range-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.bf-range-item {
+  text-align: center;
+}
+
+.bf-range-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.bf-range-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.bf-range-healthy {
+  color: #10b981;
+}
+
+.bf-range-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-border);
+  border-radius: 2px;
+  justify-self: center;
+}
+
+.bf-range-note {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   TARGET PLANNER NOTE
+============================================ */
+.bf-target-note {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: var(--sp-2) 0 0;
+}
+
+/* ============================================
+   SUMMARY TEXT
+============================================ */
+.bf-summary-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   RELATED TOOLS
+   Styles moved to /styles/tool.css → .tool-related-*
+   Body fat uses shared tool-related-* classes.
+   The --tool-related-color CSS variable on the
+   wrapper drives the health-green accent (#10b981).
+============================================ */
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+============================================ */
+[data-theme="light"] .bf-gender-btn.active {
+  background: #fff;
+  color: var(--color-text);
+}
+
+[data-theme="light"] .bf-cat-marker {
+  background: var(--color-text);
+  border-color: var(--color-bg);
+}
+
+/* Custom */
+.tool-custom-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 680px)
+============================================ */
+@media (max-width: 680px) {
+  /* tool-related-grid responsive handled in tool.css */
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 480px)
+============================================ */
+@media (max-width: 480px) {
+  .bf-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bf-primary-value span:first-child {
+    font-size: var(--fs-3xl);
+  }
+
+  .bf-range-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+  }
+
+  .bf-range-divider {
+    display: none;
+  }
+
+  .bf-cat-labels {
+    font-size: 10px;
+  }
+
+  .bf-unit-label-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Custom */
+  .tool-custom-grid {
+    grid-template-columns: repeat(1, 1fr);
+}
+  
+}
+
+/* ============================================
+   RESPONSIVE — NARROW MOBILE (≤ 360px)
+   Only at very narrow widths do buttons stack.
+============================================ */
+@media (max-width: 360px) {
+  .bf-btn-row {
+    flex-direction: column;
+  }
+
+  .bf-btn-row .btn-secondary {
+    min-width: unset;
+  }
+
+  .bf-btn-row .btn-primary {
+    flex: unset;
+  }
+}

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Calorie Planner — Project 50</title>
+  <meta name="description" content="Calculate your daily calorie needs using the Mifflin-St Jeor equation. Find your BMR, TDEE, and personalised calorie targets for weight loss, maintenance, or weight gain.">
+  <meta name="keywords" content="daily calorie planner, calorie calculator, bmr calculator, tdee calculator, weight loss calories, calorie deficit, macro calculator, mifflin st jeor">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/daily-calorie-planner/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/daily-calorie-planner/">
+  <meta property="og:title" content="Daily Calorie Planner — Free BMR &amp; TDEE Calculator | Project 50">
+  <meta property="og:description" content="Find your daily calorie target for weight loss, maintenance, or gain. Includes BMR, TDEE, macros and a goal timeline. Free and private.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Daily Calorie Planner — Free BMR &amp; TDEE Calculator | Project 50">
+  <meta name="twitter:description" content="Calculate your daily calories for weight loss, maintenance, or gain. Includes macro breakdown and goal timeline.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Daily Calorie Planner",
+    "url": "https://project50.tools/tools/daily-calorie-planner/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate daily calorie needs using the Mifflin-St Jeor equation. Get BMR, TDEE, macros, and a personalised goal timeline for weight loss, maintenance, or gain.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Daily Calorie Planner", "item": "https://project50.tools/tools/daily-calorie-planner/" }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="calorie.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Daily Calorie Planner</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 21h10"/>
+              <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/>
+              <path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/>
+              <path d="m13 12 4-4"/>
+              <path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Daily Calorie Planner</h1>
+            <p class="tool-subtitle">Find your BMR, TDEE and daily calorie target. Plan weight loss, maintenance or gain.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Calorie planner inputs">
+
+          <!-- Row 1: Age + Gender -->
+          <div class="cal-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="cal-age">Age</label>
+              <input class="tool-input" type="number" id="cal-age" placeholder="e.g. 28" min="15" max="100" aria-describedby="cal-age-hint">
+              <span class="tool-field-hint" id="cal-age-hint">Years (15–100)</span>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="cal-gender">Gender</label>
+              <div class="cal-select-wrap">
+                <select class="tool-select" id="cal-gender" aria-label="Biological sex for BMR calculation">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <span class="cal-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Height with unit selection -->
+          <div class="tool-field">
+            <div class="cal-unit-label-row">
+              <label class="tool-field-label" for="cal-height-cm" id="cal-height-label">Height (cm)</label>
+              <div class="cal-select-wrap cal-unit-select-wrap">
+                <select class="tool-select cal-unit-select" id="cal-height-unit" aria-label="Height unit">
+                  <option value="cm">cm</option>
+                  <option value="imperial">ft / in</option>
+                </select>
+                <span class="cal-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Metric height -->
+            <div id="cal-height-metric">
+              <input class="tool-input" type="number" id="cal-height-cm" placeholder="e.g. 175" min="100" max="250" aria-describedby="cal-height-hint">
+              <span class="tool-field-hint" id="cal-height-hint">100–250 cm</span>
+            </div>
+
+            <!-- Imperial height -->
+            <div id="cal-height-imperial" hidden>
+              <div class="cal-row cal-row--tight">
+                <div>
+                  <input class="tool-input" type="number" id="cal-height-ft" placeholder="5" min="3" max="8" aria-label="Height in feet">
+                  <span class="tool-field-hint">Feet</span>
+                </div>
+                <div>
+                  <input class="tool-input" type="number" id="cal-height-in" placeholder="9" min="0" max="11" aria-label="Height in inches">
+                  <span class="tool-field-hint">Inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Weight with unit selection -->
+          <div class="tool-field">
+            <div class="cal-unit-label-row">
+              <label class="tool-field-label" for="cal-weight" id="cal-weight-label">Weight (kg)</label>
+              <div class="cal-select-wrap cal-unit-select-wrap">
+                <select class="tool-select cal-unit-select" id="cal-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="cal-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="cal-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="cal-weight-hint">
+            <span class="tool-field-hint" id="cal-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="cal-activity">Activity Level</label>
+            <div class="cal-select-wrap">
+              <select class="tool-select" id="cal-activity" aria-describedby="cal-activity-hint">
+                <option value="1.2">Sedentary — little or no exercise</option>
+                <option value="1.375">Lightly active — 1–3 days/week</option>
+                <option value="1.55" selected>Moderately active — 3–5 days/week</option>
+                <option value="1.725">Very active — 6–7 days/week</option>
+                <option value="1.9">Extra active — intense daily training</option>
+              </select>
+              <span class="cal-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="cal-activity-hint">Choose the level that best describes your weekly routine</span>
+          </div>
+
+          <!-- Goal -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="cal-goal">Goal</label>
+            <div class="cal-select-wrap">
+              <select class="tool-select" id="cal-goal" aria-describedby="cal-goal-hint">
+                <option value="lose">Lose Fat</option>
+                <option value="maintain" selected>Maintain Weight</option>
+                <option value="build">Build Muscle</option>
+              </select>
+              <span class="cal-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="cal-goal-hint">Your primary calorie target will be adjusted to match this goal</span>
+          </div>
+
+          <!-- Goal Weight (optional) -->
+          <div class="tool-field" id="goal-weight-field">
+            <label class="tool-field-label" for="cal-goal-weight">
+              Goal Weight <span id="cal-gw-label-unit">(kg)</span>
+              <span class="cal-optional-badge" aria-label="optional">Optional</span>
+            </label>
+            <input class="tool-input" type="number" id="cal-goal-weight" placeholder="e.g. 68" min="20" max="300" aria-describedby="cal-gw-hint">
+            <span class="tool-field-hint" id="cal-gw-hint">Enter your target weight to see an estimated timeline</span>
+          </div>
+
+          <!-- Validation message -->
+          <div class="cal-validation" id="cal-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="cal-btn-row">
+            <button class="btn btn-primary btn-lg" id="cal-calc-btn">
+              Calculate My Calories
+            </button>
+            <button class="btn btn-secondary btn-lg" id="cal-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="cal-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Result Section 1: Primary card -->
+          <div class="tool-result cal-primary-result">
+            <p class="tool-result-label">Target Daily Calories</p>
+            <div class="cal-primary-value" id="cal-target-calories">—</div>
+            <div class="cal-strategy-badge" id="cal-strategy-badge" aria-label="Strategy classification"></div>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cal-bmr-val">—</div>
+                <div class="tool-stat-label">BMR</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cal-tdee-val">—</div>
+                <div class="tool-stat-label">Maintenance (TDEE)</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="cal-rec-val">—</div>
+                <div class="tool-stat-label">Recommended</div>
+              </div>
+            </div>
+            <!-- Result explanation -->
+            <p class="cal-result-explanation" id="cal-result-explanation"></p>
+            <p class="tool-note">Calculations use the Mifflin-St Jeor equation. Results are estimates — individual metabolism varies. Consult a healthcare provider before making significant dietary changes.</p>
+            <div id="cal-floor-warning" class="tool-floor-warning" hidden role="alert" aria-live="polite">
+              ⚠️ Your calculated target fell below the safe calorie minimum for your gender and has been raised to the floor (male: 1,500 kcal · female: 1,200 kcal). Consider a less aggressive deficit or consult a dietitian.
+            </div>
+          </div>
+
+          <!-- Result Section 2: Daily Recommendation Summary -->
+          <div class="cal-section-card" id="cal-summary-card" hidden>
+            <h2 class="cal-section-title">
+              <span class="cal-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </span>
+              Daily Recommendation
+            </h2>
+            <ul class="cal-summary-list" id="cal-summary-list" aria-label="Daily recommendations"></ul>
+          </div>
+
+          <!-- Result Section 3: Goal Forecast (only if goal weight entered) -->
+          <div class="cal-section-card" id="cal-forecast-card" hidden>
+            <h2 class="cal-section-title">
+              <span class="cal-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              Goal Forecast
+            </h2>
+            <div class="cal-forecast-grid">
+              <div class="cal-forecast-item">
+                <div class="cal-forecast-value" id="fc-current-weight">—</div>
+                <div class="cal-forecast-label">Current Weight</div>
+              </div>
+              <div class="cal-forecast-arrow" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+              <div class="cal-forecast-item">
+                <div class="cal-forecast-value cal-forecast-goal" id="fc-goal-weight">—</div>
+                <div class="cal-forecast-label">Goal Weight</div>
+              </div>
+            </div>
+            <div class="cal-timeline-row">
+              <div class="cal-timeline-item">
+                <div class="cal-timeline-value" id="fc-weeks">—</div>
+                <div class="cal-timeline-label">Estimated Weeks</div>
+              </div>
+              <div class="cal-timeline-item">
+                <div class="cal-timeline-value" id="fc-months">—</div>
+                <div class="cal-timeline-label">Estimated Months</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Section 4: Monthly Projection -->
+          <div class="cal-section-card" id="cal-projection-card" hidden>
+            <h2 class="cal-section-title">
+              <span class="cal-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </span>
+              Monthly Projection
+            </h2>
+            <div class="cal-projection-grid" id="cal-projection-grid" aria-label="Monthly weight projection">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Result Section 5: Macros -->
+          <div class="cal-section-card">
+            <h2 class="cal-section-title">
+              <span class="cal-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg>
+              </span>
+              Daily Macro Recommendations
+            </h2>
+            <div class="cal-macro-grid">
+              <div class="cal-macro-card cal-macro-protein">
+                <div class="cal-macro-value" id="macro-protein">—</div>
+                <div class="cal-macro-unit">g / day</div>
+                <div class="cal-macro-name">Protein</div>
+              </div>
+              <div class="cal-macro-card cal-macro-fat">
+                <div class="cal-macro-value" id="macro-fat">—</div>
+                <div class="cal-macro-unit">g / day</div>
+                <div class="cal-macro-name">Fat</div>
+              </div>
+              <div class="cal-macro-card cal-macro-carbs">
+                <div class="cal-macro-value" id="macro-carbs">—</div>
+                <div class="cal-macro-unit">g / day</div>
+                <div class="cal-macro-name">Carbs</div>
+              </div>
+            </div>
+            <p class="cal-macro-note">Protein and fat targets are calculated from your body weight and goal. Remaining calories fill carbohydrates.</p>
+          </div>
+
+        </div><!-- /#cal-results -->
+
+        <!-- Related Tools — rendered by calorie.js from tools.json, health-fitness only -->
+        <div class="tool-related" id="cal-related-tools" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="cal-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="cal-about-heading">
+          <h2 class="tool-seo-section-title" id="cal-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg>
+            </span>
+            About the Daily Calorie Planner
+          </h2>
+          <p>A calorie is a unit of energy. Your body burns calories constantly — to keep your heart beating, your lungs breathing, and your cells functioning. Understanding how many calories you need each day is the foundation of any successful nutrition plan, whether your goal is to lose weight, maintain your current weight, or build muscle.</p>
+          <p><strong>BMR (Basal Metabolic Rate)</strong> is the number of calories your body burns at complete rest over 24 hours — the energy cost of simply being alive. This planner calculates your BMR using the Mifflin-St Jeor equation, which is considered the most accurate formula for the general population by sports medicine researchers.</p>
+          <p><strong>TDEE (Total Daily Energy Expenditure)</strong> is your BMR multiplied by an activity factor. It represents your total calorie burn across an average day, including exercise, walking, and general movement. Eating at your TDEE maintains your current weight.</p>
+          <p>To lose fat, you eat less than your TDEE (a calorie deficit). To build muscle, you eat more than your TDEE (a calorie surplus). This planner applies evidence-based deficit and surplus values: a moderate 500 kcal/day deficit for fat loss (approximately 0.45 kg/week) and a moderate 300 kcal/day surplus for muscle gain — ranges that support results without being extreme.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="cal-howto-heading">
+          <h2 class="tool-seo-section-title" id="cal-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Daily Calorie Planner
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Enter your <strong>age</strong> and select your <strong>biological sex</strong> — these are used in the Mifflin-St Jeor BMR formula.</p>
+            </li>
+            <li>
+              <p>Select your preferred <strong>height unit</strong> (cm or ft/in), then enter your height. Select your preferred <strong>weight unit</strong> (kg or lbs) and enter your current weight.</p>
+            </li>
+            <li>
+              <p>Select your <strong>activity level</strong> from the dropdown. Choose the option that best reflects your average week — be honest, most people overestimate activity.</p>
+            </li>
+            <li>
+              <p>Choose your <strong>goal</strong>: Lose Fat, Maintain Weight, or Build Muscle. The tool will adjust your calorie recommendation accordingly.</p>
+            </li>
+            <li>
+              <p>Optionally, enter a <strong>goal weight</strong> to see an estimated timeline for reaching it based on your calorie plan.</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate My Calories</strong> to see your BMR, TDEE, recommended daily calories, macro breakdown, and monthly projection.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="cal-faq-heading">
+          <h2 class="tool-seo-section-title" id="cal-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="cal-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cal-faq-a1">
+                How accurate is this calorie planner?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cal-faq-a1" role="region">
+                The Mifflin-St Jeor equation is validated by peer-reviewed research and is consistently rated as the most accurate BMR formula for most adults. That said, all calorie formulas are estimates — individual metabolism can vary by ±10% due to genetics, hormones, muscle mass, and other factors. Use this as a strong starting point, then adjust based on real-world results over 2–4 weeks.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cal-faq-a2">
+                What is TDEE?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cal-faq-a2" role="region">
+                TDEE stands for Total Daily Energy Expenditure. It is your BMR multiplied by an activity factor that accounts for how much you move throughout the day. A sedentary person multiplies their BMR by 1.2; an athlete doing intense daily training multiplies by 1.9. Eating at your exact TDEE keeps your weight stable. Eating below it creates a deficit; above it creates a surplus.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cal-faq-a3">
+                How much calorie deficit is safe for weight loss?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cal-faq-a3" role="region">
+                A deficit of 300–500 kcal per day is widely considered safe and sustainable. This typically produces 0.3–0.5 kg of weight loss per week. Deficits larger than 700 kcal/day increase the risk of muscle loss, nutrient deficiencies, fatigue, and rebound weight gain. This planner uses a moderate 500 kcal deficit, which sits in the proven sweet spot for most people.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cal-faq-a4">
+                Can I use this tool for weight gain?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cal-faq-a4" role="region">
+                Yes. Select "Build Muscle" as your goal. The planner applies a moderate 300 kcal surplus above your TDEE, which supports lean muscle gain when combined with resistance training. The macro recommendations also increase protein and carbohydrate targets to support muscle growth. For best results, pair this with a structured strength training programme.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cal-faq-a5">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cal-faq-a5" role="region">
+                No. All calculations run entirely in your browser using JavaScript. No personal data — age, weight, height, or goal — is ever sent to a server or stored anywhere. The page has no tracking cookies related to the calculator. Your information is completely private.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="calorie.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

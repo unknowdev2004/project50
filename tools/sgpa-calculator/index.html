@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGPA Calculator — Free Semester Grade Point Average Calculator | Project 50</title>
+  <meta name="description" content="Calculate your SGPA instantly by entering subject credits and grades. Supports 10-point and 4-point grade scales. Free, accurate, private — no login required. Includes academic summary, performance analysis and subject breakdown.">
+  <meta name="keywords" content="sgpa calculator, semester gpa calculator, grade point average, credits and grades, 10 point scale, 4 point scale, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/sgpa-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/sgpa-calculator/">
+  <meta property="og:title" content="SGPA Calculator — Free Semester Grade Point Average Calculator | Project 50">
+  <meta property="og:description" content="Calculate your Semester Grade Point Average from subject credits and grades. Supports 10-point and 4-point scales — get instant SGPA, academic summary and performance insights.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="SGPA Calculator — Free Semester Grade Point Average Calculator | Project 50">
+  <meta name="twitter:description" content="Calculate your SGPA instantly across all your subjects. Free, private, no login required.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SGPA Calculator",
+    "url": "https://project50.tools/tools/sgpa-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your Semester Grade Point Average (SGPA) by entering subject credits and grades on a 10-point or 4-point scale. Includes academic summary, performance analysis, subject breakdown and insights.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "SGPA Calculator", "item": "https://project50.tools/tools/sgpa-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is SGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SGPA stands for Semester Grade Point Average. It measures your academic performance for a single semester by weighting each subject's grade point by its credit value, then dividing by the total credits for that semester." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is SGPA calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SGPA = Σ(Credits × Grade Point) ÷ Σ(Credits). Multiply each subject's credits by its grade point, sum all those weighted values, then divide by the total credits for the semester." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SGPA and CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SGPA measures performance for one semester only. CGPA is the cumulative weighted average of your SGPA across every semester you have completed. CGPA is what typically appears on your final transcript." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the 10-point and 4-point grade scales used by every university?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The grade scales in this calculator are common general references, not universal standards. Universities set their own grading systems and grade-to-point mappings, so always verify your institution's official scale before relying on the result." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this calculator if my university uses a different grading scale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The formula works for any scale, but the grade options shown are fixed to the two supported scales. If your institution's letter grades or point values differ, convert your grades to the closest equivalent grade point or treat the grade point column as a general guide only." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a failed subject still count towards my SGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. An F grade contributes 0 grade points, but the subject's credits are still included in both the subject count and the total credit total. Excluding a failed subject would produce an inaccurate, inflated SGPA." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does credit weight matter more than the number of subjects?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SGPA is a weighted average, not a simple average. A subject with more credits — such as a major core course — has a larger effect on your SGPA than a lighter elective, regardless of how many subjects you take in total." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many subjects can I add?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can add between 1 and 20 subjects, which comfortably covers a typical semester course load, including students carrying extra or backlog subjects." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your subject data is saved to your browser's local storage so it persists between visits. Your data never leaves your device and is never sent to any server. Clicking Reset clears all saved data immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="sgpa.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">SGPA Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">SGPA Calculator</h1>
+            <p class="tool-subtitle">Enter subject credits and grades to calculate your Semester Grade Point Average.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             GRADE SCALE SELECTOR — compact segmented control
+        ============================================== -->
+        <div class="sgpa-scale-selector" id="sgpa-scale-selector" role="group" aria-label="Grading scale">
+          <button type="button" class="sgpa-scale-btn" data-scale="10" aria-pressed="true">10-Point Scale</button>
+          <button type="button" class="sgpa-scale-btn" data-scale="4" aria-pressed="false">4-Point Scale</button>
+        </div>
+
+        <!-- =============================================
+             FORM
+        ============================================== -->
+        <div class="tool-form sgpa-form" role="form" aria-label="SGPA Calculator">
+
+          <!-- Column headers — desktop only -->
+          <div class="sgpa-col-headers" aria-hidden="true">
+            <span>Subject Name</span>
+            <span>Credits</span>
+            <span>Grade</span>
+            <span>Grade Point</span>
+            <span></span>
+          </div>
+
+          <!-- Validation -->
+          <div class="sgpa-validation" id="sgpa-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Subject rows — populated by sgpa.js -->
+          <div class="sgpa-subjects" id="sgpa-subjects-list" role="list" aria-label="Subject list"></div>
+
+          <!-- Actions -->
+          <div class="sgpa-actions">
+            <button class="btn btn-secondary btn-lg" id="sgpa-add-btn" type="button" aria-label="Add another subject">
+              + Add Subject
+            </button>
+            <button class="btn btn-primary btn-lg" id="sgpa-calc-btn" type="button">
+              Calculate SGPA
+            </button>
+            <button class="btn btn-secondary btn-lg" id="sgpa-reset-btn" type="button" aria-label="Reset all subjects and results">
+              Reset
+            </button>
+          </div>
+
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+             Hierarchy:
+               1. Hero Result (SGPA)
+               2. Academic Summary
+               3. Performance Analysis
+               4. Subject Breakdown
+               5. Insights
+        ============================================== -->
+        <div id="sgpa-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- ── 1. Hero Result ── -->
+          <div class="sgpa-section-card sgpa-hero-card">
+            <h2 class="sgpa-section-title">
+              <span class="sgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Your SGPA
+            </h2>
+            <div class="sgpa-big-number" id="sgpa-display">—</div>
+            <p class="sgpa-range-note" id="sgpa-scale-note" style="margin-top:var(--sp-2)">Semester Grade Point Average, weighted by subject credits.</p>
+          </div>
+
+          <!-- ── 2. Academic Summary ── -->
+          <div class="sgpa-section-card">
+            <h2 class="sgpa-section-title">
+              <span class="sgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Academic Summary
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="sgpa-total-subjects">—</div>
+                <div class="tool-stat-label">Total Subjects</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="sgpa-total-credits">—</div>
+                <div class="tool-stat-label">Total Credits</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="sgpa-weighted-points">—</div>
+                <div class="tool-stat-label">Weighted Points</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 3. Performance Analysis ── -->
+          <div class="sgpa-section-card">
+            <h2 class="sgpa-section-title">
+              <span class="sgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+              </span>
+              Performance Analysis
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="sgpa-avg-gp">—</div>
+                <div class="tool-stat-label">Average Grade Point</div>
+              </div>
+              <div class="tool-stat sgpa-stat--high">
+                <div class="tool-stat-value" id="sgpa-highest-gp">—</div>
+                <div class="tool-stat-label" id="sgpa-highest-label">Highest</div>
+              </div>
+              <div class="tool-stat sgpa-stat--low">
+                <div class="tool-stat-value" id="sgpa-lowest-gp">—</div>
+                <div class="tool-stat-label" id="sgpa-lowest-label">Lowest</div>
+              </div>
+            </div>
+            <p class="tool-note">Subjects are compared by grade point. Ties are broken by higher credit value, then by the order entered.</p>
+          </div>
+
+          <!-- ── 4. Subject Breakdown ── -->
+          <div class="sgpa-section-card">
+            <h2 class="sgpa-section-title">
+              <span class="sgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg>
+              </span>
+              Subject Breakdown
+            </h2>
+            <div class="sgpa-breakdown-headers" aria-hidden="true">
+              <span>Subject</span>
+              <span>Credits</span>
+              <span>Grade</span>
+              <span>Grade Point</span>
+              <span>Weighted Points</span>
+            </div>
+            <div class="sgpa-breakdown-body" id="sgpa-breakdown-body"></div>
+          </div>
+
+          <!-- ── 5. Insights ── -->
+          <div class="sgpa-section-card" id="sgpa-insights-card">
+            <h2 class="sgpa-section-title">
+              <span class="sgpa-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
+              </span>
+              Insights
+            </h2>
+            <ul class="sgpa-insights-list" id="sgpa-insights-list" aria-label="Academic insights"></ul>
+          </div>
+
+        </div><!-- /#sgpa-results -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="sgpa-related-wrap" aria-labelledby="sgpa-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="sgpa-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="sgpa-related-grid"
+               data-tool-id="sgpa-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS — 8 required sections
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is SGPA? -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            What Is SGPA?
+          </h2>
+          <p>SGPA stands for Semester Grade Point Average. It is a single number that summarizes how you performed across all the subjects you took in one semester, weighted by how many credits each subject carries. A subject worth 4 credits influences your SGPA more than a subject worth 2 credits, because it represents a heavier share of your academic workload.</p>
+          <p>SGPA is calculated fresh for every semester. Unlike CGPA, which accumulates across your entire degree, SGPA resets each term and reflects only that semester's performance — useful for tracking how you're trending from one term to the next.</p>
+          <p>Many universities, especially those using 10-point grading systems common across India and similar systems elsewhere, report SGPA on semester mark sheets before combining every semester's SGPA into a final CGPA at graduation.</p>
+        </section>
+
+        <!-- 2. How Is SGPA Calculated? -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-formula-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-formula-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            How Is SGPA Calculated?
+          </h2>
+          <p>The standard SGPA formula is straightforward:</p>
+          <p><strong>SGPA = Σ(Credits × Grade Point) ÷ Σ(Credits)</strong></p>
+          <p>Here is a practical example with four subjects on the 10-point scale:</p>
+          <ul>
+            <li>Mathematics: 4 credits, grade A+ (9 points) → 36 weighted points</li>
+            <li>Physics: 3 credits, grade A (8 points) → 24 weighted points</li>
+            <li>Programming: 3 credits, grade O (10 points) → 30 weighted points</li>
+            <li>English: 2 credits, grade B+ (7 points) → 14 weighted points</li>
+          </ul>
+          <p>Total weighted points: 104. Total credits: 12. SGPA = 104 ÷ 12 = <strong>8.67</strong>.</p>
+          <p>Notice this differs from a simple average of the four grade points (9 + 8 + 10 + 7 ÷ 4 = 8.50). The weighted formula is correct because it accounts for each subject's credit load — heavier subjects should influence the result more than lighter ones.</p>
+          <p>This calculator applies the formula using full floating-point precision internally, rounding only the final displayed SGPA to two decimal places.</p>
+        </section>
+
+        <!-- 3. How To Use This Calculator -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-howto-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Choose your grading scale — 10-Point or 4-Point — using the selector at the top. Pick whichever matches your institution's grade sheet.</p></li>
+            <li><p>Enter the name of your first subject, such as "Mathematics" or "Data Structures".</p></li>
+            <li><p>Enter the credit value for that subject, exactly as listed on your syllabus or transcript.</p></li>
+            <li><p>Select the grade you received. The grade point is calculated automatically — it is not editable directly.</p></li>
+            <li><p>Click <strong>Add Subject</strong> to add a row for your next subject and repeat for every subject in the semester.</p></li>
+            <li><p>Click <strong>Calculate SGPA</strong> to see your result, academic summary, performance analysis, subject breakdown and insights.</p></li>
+            <li><p>Click <strong>Reset</strong> to clear all entries and start over. Your data is also erased from browser storage.</p></li>
+          </ol>
+          <p>Your inputs are automatically saved to your browser as you type, so you can close the page and return later without re-entering your data.</p>
+        </section>
+
+        <!-- 4. Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-results-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-results-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            Understanding Your Results
+          </h2>
+          <p>After calculating, this tool shows five result sections:</p>
+          <p><strong>Your SGPA</strong> — The primary result. Your weighted Semester Grade Point Average on the scale you selected.</p>
+          <p><strong>Academic Summary</strong> — Three key figures: total subjects entered, total credits across the semester, and total weighted grade points (the numerator in the SGPA formula). Use these to verify your inputs before accepting the result.</p>
+          <p><strong>Performance Analysis</strong> — Your unweighted average grade point (simple mean across subjects), your highest-scoring subject, and your lowest-scoring subject, so you can see which subjects lifted or lowered your SGPA.</p>
+          <p><strong>Subject Breakdown</strong> — A row-by-row table showing exactly how each subject's credits and grade point combined to produce its weighted points, so you can trace the full calculation.</p>
+          <p><strong>Insights</strong> — Contextual observations, such as whether your highest-credit subject is helping or hurting your SGPA, and whether your grades are consistent or vary significantly across subjects.</p>
+        </section>
+
+        <!-- 5. Grade Scales and Grading Systems -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-scales-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-scales-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            Grade Scales and Grading Systems
+          </h2>
+          <p>This calculator supports two commonly used grade scales as a convenience — they are general references, not universal standards:</p>
+          <ul>
+            <li><strong>10-Point Scale</strong> — O (10), A+ (9), A (8), B+ (7), B (6), C (5), P (4), F (0). Widely used across many Indian universities and similar systems.</li>
+            <li><strong>4-Point Scale</strong> — A+ (4.0), A (3.7), B+ (3.3), B (3.0), B- (2.7), C+ (2.3), C (2.0), D (1.0), F (0). A common pattern in US-style grading, though exact point values vary by institution.</li>
+          </ul>
+          <p>Universities set their own official grading policies, and grade-to-point mappings can differ even between institutions that both call themselves "10-point" or "4-point" systems. Always check your institution's official grading table before treating this calculator's result as final.</p>
+          <p>If your institution's scale doesn't match either option exactly, use the closest equivalent grade point, or treat the result as an approximation rather than an official figure.</p>
+        </section>
+
+        <!-- 6. How Credits Affect Your SGPA -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-credits-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-credits-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 0v10l4.5 4.5"/></svg></span>
+            How Credits Affect Your SGPA
+          </h2>
+          <p>Credits represent the weight or workload of a subject, and they directly determine how much influence that subject has on your SGPA. A 4-credit core subject moves your SGPA twice as much as a 2-credit elective, even if both subjects received the same grade.</p>
+          <p><strong>High-credit subjects matter most.</strong> If your heaviest subjects — typically core or major courses — earn strong grades, your SGPA benefits disproportionately. Conversely, a weak grade in a high-credit subject drags your SGPA down more than the same grade in a lighter subject.</p>
+          <p><strong>Total credits form the denominator.</strong> Adding more subjects doesn't automatically raise or lower your SGPA — what matters is the grade point each subject contributes relative to its share of your total credit load.</p>
+          <p>Because of this, many students prioritize consistent performance in high-credit core subjects over squeezing out a marginally better grade in a low-credit elective.</p>
+        </section>
+
+        <!-- 7. Difference Between SGPA and CGPA -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-cgpa-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-cgpa-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+            Difference Between SGPA and CGPA
+          </h2>
+          <p><strong>SGPA</strong> measures a single semester. It is calculated from that semester's subjects, weighted by each subject's credits, and it resets every term.</p>
+          <p><strong>CGPA</strong> is the cumulative weighted average of your SGPA across every semester you've completed, weighted by each semester's total credits. It is CGPA — not any single semester's SGPA — that typically appears on your final degree transcript.</p>
+          <p>A strong SGPA in one semester doesn't guarantee a strong CGPA if earlier semesters were weaker, because CGPA accounts for your entire academic history. If you want to track your cumulative standing across multiple semesters, use the <a href="/tools/cgpa-calculator/">CGPA Calculator</a> alongside this tool.</p>
+        </section>
+
+        <!-- 8. Common Mistakes and Tips to Improve Your SGPA -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-seo-tips-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Mistakes and Tips to Improve Your SGPA
+          </h2>
+          <p><strong>Mistake 1 — Mixing up scales.</strong> Entering grades on the wrong scale — for example selecting 4-point grades when your institution actually uses a 10-point system — produces a meaningless result. Always confirm your scale first.</p>
+          <p><strong>Mistake 2 — Leaving out a failed subject.</strong> Some students skip entering a subject they failed, hoping to see a higher SGPA. This is inaccurate — official transcripts always include failed subjects in the calculation, and this calculator does the same.</p>
+          <p><strong>Mistake 3 — Entering the wrong credit value.</strong> Double-check each subject's credit value against your syllabus. A single incorrect credit value can meaningfully shift your SGPA, especially for high-credit subjects.</p>
+          <p><strong>Tip: Focus effort on high-credit subjects.</strong> Because credits determine weighting, improving your grade in a high-credit core subject raises your SGPA more than the same improvement in a low-credit elective.</p>
+          <p><strong>Tip: Recalculate as grades are released.</strong> Update this calculator as individual subject grades come in during the semester to track your projected SGPA before final results are official.</p>
+          <p><strong>Tip: Watch your lowest-performing subject.</strong> The Performance Analysis section highlights your lowest grade point — if that subject also carries high credits, it's the single best place to focus improvement next semester.</p>
+        </section>
+
+        <!-- 9. FAQ -->
+        <section class="tool-seo-section" aria-labelledby="sgpa-faq-heading">
+          <h2 class="tool-seo-section-title" id="sgpa-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="sgpa-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a1">
+                What is SGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a1" role="region">
+                SGPA stands for Semester Grade Point Average. It measures your academic performance for a single semester by weighting each subject's grade point by its credit value, then dividing by the total credits for that semester.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a2">
+                How is SGPA calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a2" role="region">
+                SGPA = Σ(Credits × Grade Point) ÷ Σ(Credits). Multiply each subject's credits by its grade point, sum all those weighted values, then divide by the total credits for the semester.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a3">
+                What is the difference between SGPA and CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a3" role="region">
+                SGPA measures performance for one semester only. CGPA is the cumulative weighted average of your SGPA across every semester you have completed. CGPA is what typically appears on your final transcript.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a4">
+                Are the 10-point and 4-point grade scales used by every university?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a4" role="region">
+                No. The grade scales in this calculator are common general references, not universal standards. Universities set their own grading systems and grade-to-point mappings, so always verify your institution's official scale before relying on the result.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a5">
+                Can I use this calculator if my university uses a different grading scale?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a5" role="region">
+                The formula works for any scale, but the grade options shown are fixed to the two supported scales. If your institution's letter grades or point values differ, convert your grades to the closest equivalent grade point or treat the grade point column as a general guide only.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a6">
+                Does a failed subject still count towards my SGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a6" role="region">
+                Yes. An F grade contributes 0 grade points, but the subject's credits are still included in both the subject count and the total credit total. Excluding a failed subject would produce an inaccurate, inflated SGPA.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a7">
+                Why does credit weight matter more than the number of subjects?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a7" role="region">
+                SGPA is a weighted average, not a simple average. A subject with more credits — such as a major core course — has a larger effect on your SGPA than a lighter elective, regardless of how many subjects you take in total.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a8">
+                How many subjects can I add?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a8" role="region">
+                You can add between 1 and 20 subjects, which comfortably covers a typical semester course load, including students carrying extra or backlog subjects.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="sgpa-faq-a9">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="sgpa-faq-a9" role="region">
+                Your subject data is saved to your browser's local storage so it persists between visits. Your data never leaves your device and is never sent to any server. Clicking Reset clears all saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="sgpa.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

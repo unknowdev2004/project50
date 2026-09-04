@@ -1,0 +1,380 @@
+/* ============================================
+   CGPA.CSS — Project 50
+   CGPA Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+
+   THIS FILE covers:
+     - Column headers (.cgpa-col-headers)
+     - Semester rows (.cgpa-row, .cgpa-semesters)
+     - Per-field wrappers and mobile labels
+     - Remove button (.cgpa-remove-btn)
+     - Action row (.cgpa-actions)
+     - Validation message (.cgpa-validation)
+     - Hero CGPA display (.cgpa-big-number)
+     - Insights list (.cgpa-insights-list)
+     - Stat colour variants
+     - Responsive: 640px, 480px, 380px
+============================================ */
+
+/* ============================================
+   COLUMN HEADERS — desktop only
+============================================ */
+
+.cgpa-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 40px;
+  gap: 8px;
+  padding: 0 2px 2px;
+}
+
+.cgpa-col-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.cgpa-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+/* ============================================
+   SEMESTERS LIST
+============================================ */
+
+.cgpa-semesters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ============================================
+   SEMESTER ROW — desktop
+============================================ */
+
+.cgpa-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.cgpa-name-field,
+.cgpa-gpa-field,
+.cgpa-credits-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+
+/* Mobile field labels — hidden on desktop */
+.cgpa-field-label {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 5px;
+}
+
+/* Input error state */
+.cgpa-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+/* ============================================
+   REMOVE BUTTON
+============================================ */
+
+.cgpa-remove-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.cgpa-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: scale(1.05);
+}
+
+.cgpa-remove-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   ACTION BUTTONS ROW
+============================================ */
+
+.cgpa-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Add Semester: fixed width so it doesn't collapse */
+.cgpa-actions .btn-secondary:first-child {
+  min-width: 152px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* Calculate: grows to fill remaining space */
+.cgpa-actions .btn-primary {
+  flex: 1;
+}
+
+/* Reset: compact fixed width */
+.cgpa-actions .btn-secondary:last-child {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .macro-section-card / .macro-section-title /
+   .macro-section-icon / .macro-range-note exactly.
+   Required because macro.css is not loaded on this page.
+============================================ */
+
+.cgpa-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.cgpa-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cgpa-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.cgpa-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   HERO RESULT — big CGPA number
+============================================ */
+
+.cgpa-hero-card {
+  text-align: center;
+}
+
+.cgpa-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+/* ============================================
+   GPA ANALYSIS STAT COLOUR VARIANTS
+============================================ */
+
+.cgpa-stat--high .tool-stat-value {
+  color: #34d399;
+}
+
+.cgpa-stat--low .tool-stat-value {
+  color: #f87171;
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.cgpa-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.cgpa-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.cgpa-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.cgpa-insight-icon--positive { color: #34d399; }
+.cgpa-insight-icon--neutral  { color: #60a5fa; }
+.cgpa-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   MOBILE (≤ 640px) — stacked card layout
+============================================ */
+
+@media (max-width: 640px) {
+
+  .cgpa-section-card {
+    padding: var(--sp-3);
+  }
+
+  .cgpa-col-headers {
+    display: none;
+  }
+
+  .cgpa-semesters {
+    gap: var(--sp-2);
+  }
+
+  .tool-form.cgpa-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .cgpa-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "name    name"
+      "gpa     credits";
+    gap: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-2);
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .cgpa-row:focus-within {
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .cgpa-row .cgpa-name-field    { grid-area: name; }
+  .cgpa-row .cgpa-gpa-field     { grid-area: gpa; }
+  .cgpa-row .cgpa-credits-field { grid-area: credits; }
+  .cgpa-name-field {
+    margin-top: 10px;
+  }
+
+  .cgpa-field-label { display: block; }
+
+  .cgpa-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 8px;
+    grid-area: unset;
+  }
+
+  .cgpa-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .cgpa-actions .btn-secondary,
+  .cgpa-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+}
+
+/* ============================================
+   TABLET (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .cgpa-hero-card {
+    text-align: left;
+  }
+
+  .cgpa-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+}
+
+/* ============================================
+   VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+
+  .tool-form.cgpa-form {
+    padding: var(--sp-1) 14px;
+    gap: 14px;
+  }
+
+  .cgpa-row {
+    padding: 14px;
+  }
+
+  .cgpa-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+
+}

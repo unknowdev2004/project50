@@ -1,0 +1,406 @@
+/* ============================================
+   HEADER.CSS — Project 50
+   ============================================ */
+
+   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: var(--z-header);
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background var(--transition-base), border-color var(--transition-base);
+  }
+  
+  [data-theme="light"] .header {
+    background: rgba(248, 250, 252, 0.85);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  
+  .header.scrolled {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  
+  [data-theme="light"] .header.scrolled {
+    background: rgba(248, 250, 252, 0.97);
+  }
+  
+  /* ---- Header Inner ---- */
+  .header-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--sp-3);
+  }
+  
+  /* ---- Logo ---- */
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--fs-sm);
+    color: #fff;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  
+  .logo-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--color-text);
+    letter-spacing: -0.3px;
+  }
+  
+  .logo-text span {
+    color: var(--color-primary);
+  }
+  
+  /* ---- Desktop Nav ---- */
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: var(--sp-3);
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-text);
+    background: var(--color-bg-card-hover);
+  }
+  
+  /* ---- Search (header center) ---- */
+  .header-search {
+    flex: 1;
+    max-width: 440px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .header-search-input {
+    width: 100%;
+    height: 44px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0 16px 0 40px;
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    transition: all var(--transition-base);
+    font-family: var(--font-body);
+  }
+  
+  .header-search-input::placeholder {
+    color: var(--color-text-faint);
+  }
+  
+  .header-search-input:focus {
+    border-color: rgba(59,130,246,0.4);
+    background: var(--color-bg-card-hover);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  }
+
+  /* Suppress native browser clear button on type=search — we use our own */
+  .header-search-input::-webkit-search-cancel-button,
+  .header-search-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* When header search is in focus, nudge input right-padding to accommodate clear btn */
+  .header-search-input:not(:placeholder-shown) {
+    padding-right: 44px;
+  }
+  
+  .header-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-faint);
+    pointer-events: none;
+  }
+  
+  .header-search-kbd {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--color-text-faint);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 2px 6px;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  /* ---- Search clear (×) button ---- */
+  /* Shown by search.js when input has a value; hidden by default via inline style */
+  .header-search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    /* flex display is toggled by JS; default hidden via inline style */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .header-search-clear:hover {
+    background: var(--color-bg-card-hover);
+    border-color: var(--color-border-hover);
+    color: var(--color-text);
+  }
+
+  .header-search-clear:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+  }
+  
+  /* ---- Search Suggestions ---- */
+  .search-suggestions {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-dropdown);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all var(--transition-base);
+  }
+  
+  .search-suggestions.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .suggestion-section {
+    padding: var(--sp-1);
+  }
+  
+  .suggestion-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px 4px;
+  }
+
+  .suggestion-section-head .suggestion-label {
+    padding: 0;
+  }
+
+  .suggestion-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    padding: 8px 12px 4px;
+  }
+
+  .suggestion-clear-btn {
+    flex-shrink: 0;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    padding: 4px 6px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color var(--transition-fast), background var(--transition-fast);
+  }
+
+  .suggestion-clear-btn:hover {
+    color: var(--color-text);
+    background: var(--color-bg-card-hover);
+  }
+
+  .suggestion-clear-btn:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+  }
+  
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+  }
+  
+  .suggestion-item:hover,
+  .suggestion-item.active {
+    background: var(--color-bg-card-hover);
+  }
+  
+  .suggestion-item-icon {
+    width: 24px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+
+  .suggestion-item-icon svg {
+    display: block;
+    flex-shrink: 0;
+  }
+  
+  .suggestion-item-name {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  
+  .suggestion-item-cat {
+    font-size: var(--fs-xs);
+    color: var(--color-text-faint);
+    margin-left: auto;
+  }
+  
+  .suggestion-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 var(--sp-1);
+  }
+  
+  .search-no-results {
+    padding: var(--sp-3);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+  }
+  
+  /* ---- Header Actions ---- */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* ---- Theme Toggle ---- */
+  #theme-toggle {
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* ---- Mobile: hide nav, show hamburger ---- */
+  @media (max-width: 900px) {
+    .header-nav {
+      display: none;
+    }
+  
+    .header-search {
+      max-width: 260px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .header-search {
+      max-width: none;
+      width: 0;
+      max-width: 0;
+      padding: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+  
+    .header-search.mobile-open {
+      width: auto;
+      max-width: 100%;
+      visibility: visible;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      padding: var(--sp-2);
+      background: var(--color-bg-secondary);
+      border-bottom: 1px solid var(--color-border);
+      z-index: var(--z-header);
+    }
+  
+    .header-search-kbd {
+      display: none;
+    }
+
+    /* Also hide clear btn when search is collapsed on mobile */
+    .header-search-clear {
+      display: none !important;
+    }
+
+    .header-search.mobile-open .header-search-clear {
+      /* JS controls display:flex inline — allow it when search is open */
+      display: revert !important;
+    }
+  
+    .logo-text {
+      display: none;
+    }
+  }

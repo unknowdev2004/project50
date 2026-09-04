@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Fat Calculator — Project 50</title>
+  <meta name="description" content="Calculate your body fat percentage using the U.S. Navy method. Get fat mass, lean body mass, healthy ranges and a personalised target projection. Free, private, no signup.">
+  <meta name="keywords" content="body fat calculator, body fat percentage, navy body fat formula, fat mass, lean body mass, body composition calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/body-fat-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/body-fat-calculator/">
+  <meta property="og:title" content="Body Fat Calculator — Free Body Composition Tool | Project 50">
+  <meta property="og:description" content="Calculate body fat %, fat mass, lean body mass and your healthy target range using the U.S. Navy formula. Free and private.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Body Fat Calculator — Free Body Composition Tool | Project 50">
+  <meta name="twitter:description" content="Know your body fat %, fat mass and lean mass in seconds. Free, private, no signup needed.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Body Fat Calculator",
+    "url": "https://project50.tools/tools/body-fat-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate body fat percentage, fat mass and lean body mass using the U.S. Navy formula. Free and private.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health & Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Body Fat Calculator", "item": "https://project50.tools/tools/body-fat-calculator/" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="body-fat.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Body Fat Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Body Fat Calculator</h1>
+            <p class="tool-subtitle">Know your body composition — fat mass, lean mass and healthy target range. No signup. 100% private.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form">
+
+          <!-- Gender toggle -->
+          <div class="bf-gender-toggle" role="group" aria-label="Gender">
+            <button class="bf-gender-btn active" id="bf-btn-male" data-gender="male" aria-pressed="true">Male</button>
+            <button class="bf-gender-btn" id="bf-btn-female" data-gender="female" aria-pressed="false">Female</button>
+          </div>
+
+          <!-- Measurements -->
+          <div class="bf-fields">
+
+            <!-- Height with unit toggle -->
+            <div class="tool-field">
+              <div class="bf-unit-label-row">
+                <label class="tool-field-label" for="bf-height-cm" id="bf-height-label">Height (cm)</label>
+                <div class="bf-select-wrap bf-unit-select-wrap">
+                  <select class="tool-select bf-unit-select" id="bf-height-unit" aria-label="Height unit">
+                    <option value="cm">cm</option>
+                    <option value="ft">ft / in</option>
+                  </select>
+                  <span class="bf-select-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </div>
+              <!-- Metric height -->
+              <div id="bf-height-metric">
+                <input class="tool-input" type="number" id="bf-height-cm" placeholder="e.g. 175" min="100" max="250" autocomplete="off">
+                <small class="tool-field-hint" id="bf-height-hint">Measured without shoes — 100–250 cm</small>
+              </div>
+              <!-- Imperial height -->
+              <div id="bf-height-imperial" hidden>
+                <div class="bf-row bf-row--tight">
+                  <div class="bf-sub-field">
+                    <input class="tool-input" type="number" id="bf-height-ft" placeholder="5" min="3" max="8" autocomplete="off" aria-label="Height in feet">
+                    <small class="tool-field-hint">ft</small>
+                  </div>
+                  <div class="bf-sub-field">
+                    <input class="tool-input" type="number" id="bf-height-in" placeholder="9" min="0" max="11" autocomplete="off" aria-label="Height in inches">
+                    <small class="tool-field-hint">in</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bf-row">
+              <div class="tool-field">
+                <label class="tool-field-label" for="bf-neck">Neck (cm)</label>
+                <input class="tool-input" type="number" id="bf-neck" placeholder="e.g. 38" min="20" max="80" autocomplete="off">
+                <small class="tool-field-hint">Below the larynx</small>
+              </div>
+              <div class="tool-field">
+                <label class="tool-field-label" for="bf-waist">Waist (cm)</label>
+                <input class="tool-input" type="number" id="bf-waist" placeholder="e.g. 82" min="40" max="200" autocomplete="off">
+                <small class="tool-field-hint">Narrowest point</small>
+              </div>
+            </div>
+
+            <!-- Hip field — female only -->
+            <div class="tool-field" id="bf-hip-wrap" hidden>
+              <label class="tool-field-label" for="bf-hip">Hip (cm)</label>
+              <input class="tool-input" type="number" id="bf-hip" placeholder="e.g. 96" min="50" max="200" autocomplete="off">
+              <small class="tool-field-hint">At the widest point</small>
+            </div>
+
+            <!-- Weight with unit toggle -->
+            <div class="tool-field">
+              <div class="bf-unit-label-row">
+                <label class="tool-field-label" for="bf-weight" id="bf-weight-label">Current Weight (kg) <span class="bf-optional-badge">for composition</span></label>
+                <div class="bf-select-wrap bf-unit-select-wrap">
+                  <select class="tool-select bf-unit-select" id="bf-weight-unit" aria-label="Weight unit">
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                  </select>
+                  <span class="bf-select-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </div>
+              <input class="tool-input" type="number" id="bf-weight" placeholder="e.g. 75" min="30" max="300" autocomplete="off">
+              <small class="tool-field-hint" id="bf-weight-hint">Required for fat mass and lean mass breakdown</small>
+            </div>
+
+            <div class="tool-field">
+              <label class="tool-field-label" for="bf-target">Target Body Fat % <span class="bf-optional-badge">optional</span></label>
+              <input class="tool-input" type="number" id="bf-target" placeholder="e.g. 15" min="3" max="50" autocomplete="off">
+              <small class="tool-field-hint">Enter a goal to see your estimated target weight</small>
+            </div>
+
+          </div>
+
+          <!-- Validation message -->
+          <div class="bf-validation" id="bf-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <!-- Action buttons -->
+          <div class="bf-btn-row">
+            <button class="btn btn-primary btn-lg" id="bf-calc-btn">
+              Calculate Body Fat
+            </button>
+            <button class="btn btn-secondary btn-lg" id="bf-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+
+        </div><!-- /.tool-form -->
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="bf-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Section 1: Primary result -->
+          <div class="bf-primary-card fade-in">
+            <div class="bf-primary-value">
+              <span id="bf-pct-number">—</span>
+              <span class="bf-primary-unit">%</span>
+            </div>
+            <div class="bf-primary-label">Body Fat</div>
+            <div class="bf-category-badge" id="bf-category-badge">—</div>
+          </div>
+
+          <!-- Section 2: Category bar -->
+          <div class="bf-category-card fade-in">
+            <h2 class="bf-section-title">Body Fat Category</h2>
+            <div class="bf-cat-bar-wrap">
+              <div class="bf-cat-bar" id="bf-cat-bar" aria-label="Body fat category scale">
+                <div class="bf-cat-segment bf-cat-essential" data-label="Essential"></div>
+                <div class="bf-cat-segment bf-cat-athlete"   data-label="Athlete"></div>
+                <div class="bf-cat-segment bf-cat-fitness"   data-label="Fitness"></div>
+                <div class="bf-cat-segment bf-cat-average"   data-label="Average"></div>
+                <div class="bf-cat-segment bf-cat-obese"     data-label="Obese"></div>
+              </div>
+              <div class="bf-cat-marker-wrap">
+                <div class="bf-cat-marker" id="bf-cat-marker" aria-hidden="true"></div>
+              </div>
+              <div class="bf-cat-labels" aria-hidden="true">
+                <span>Essential</span>
+                <span>Athlete</span>
+                <span>Fitness</span>
+                <span>Average</span>
+                <span>Obese</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Body composition (weight required) -->
+          <div class="bf-composition-card fade-in" id="bf-composition-card" hidden>
+            <h2 class="bf-section-title">Body Composition</h2>
+            <div class="tool-stat-grid tool-custom-grid">
+              <div class="tool-stat fade-in">
+                <div class="tool-stat-value" id="bf-fat-mass">—</div>
+                <div class="tool-stat-label">Fat Mass</div>
+              </div>
+              <div class="tool-stat fade-in">
+                <div class="tool-stat-value" id="bf-lean-mass">—</div>
+                <div class="tool-stat-label">Lean Body Mass</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Healthy range -->
+          <div class="bf-range-card fade-in">
+            <h2 class="bf-section-title">Healthy Range</h2>
+            <div class="bf-range-grid">
+              <div class="bf-range-item">
+                <div class="bf-range-label">Your Body Fat</div>
+                <div class="bf-range-value" id="bf-range-current">—</div>
+              </div>
+              <div class="bf-range-divider" aria-hidden="true"></div>
+              <div class="bf-range-item">
+                <div class="bf-range-label">Recommended Range</div>
+                <div class="bf-range-value bf-range-healthy" id="bf-range-target">—</div>
+              </div>
+            </div>
+            <p class="bf-range-note" id="bf-range-note"></p>
+          </div>
+
+          <!-- Section 5: Target planner -->
+          <div class="bf-target-card fade-in" id="bf-target-card" hidden>
+            <h2 class="bf-section-title">Target Body Fat Planner</h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat fade-in">
+                <div class="tool-stat-value" id="bf-target-current">—</div>
+                <div class="tool-stat-label">Current Body Fat</div>
+              </div>
+              <div class="tool-stat fade-in">
+                <div class="tool-stat-value" id="bf-target-goal">—</div>
+                <div class="tool-stat-label">Target Body Fat</div>
+              </div>
+              <div class="tool-stat fade-in">
+                <div class="tool-stat-value" id="bf-target-weight">—</div>
+                <div class="tool-stat-label">Estimated Goal Weight</div>
+              </div>
+            </div>
+            <p class="bf-target-note" id="bf-target-note"></p>
+          </div>
+
+          <!-- Section 6: Summary -->
+          <div class="bf-summary-card fade-in" id="bf-summary-card">
+            <h2 class="bf-section-title">Body Composition Summary</h2>
+            <p class="bf-summary-text" id="bf-summary-text"></p>
+          </div>
+
+          <!-- Method note -->
+          <p class="tool-note">Calculated using the U.S. Navy body fat formula. Results are estimates — individual anatomy varies. Consult a healthcare professional for a clinical assessment.</p>
+
+        </div><!-- /#bf-results -->
+
+        <!-- Related Tools — rendered by body-fat.js from tools.json, health-fitness only -->
+        <div class="tool-related" id="bf-related-wrap" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="bf-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- ==========================================
+           SEO CONTENT SECTIONS
+      =========================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="bf-about-heading">
+          <h2 class="tool-seo-section-title" id="bf-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/></svg>
+            </span>
+            About the Body Fat Calculator
+          </h2>
+          <p>Body fat percentage is one of the most meaningful indicators of health and fitness. Unlike BMI, which only considers height and weight, body fat percentage tells you exactly how much of your body is fat tissue versus lean tissue — muscle, bone, organs and water. This distinction matters enormously: two people can share the same BMI yet have entirely different body compositions.</p>
+          <p>This calculator uses the <strong>U.S. Navy body fat formula</strong>, developed by Hodgdon and Beckett and widely used by military and fitness professionals. The method uses simple circumference measurements — neck, waist, and (for females) hip — to estimate body fat percentage. It avoids the need for expensive equipment like DEXA scans or hydrostatic weighing while providing a reliable estimate for the general population.</p>
+          <p>Beyond a single number, this tool calculates your <strong>fat mass</strong> (the weight of stored fat), <strong>lean body mass</strong> (everything else), your position within established healthy ranges, and — if you set a target — an estimated weight projection based on preserving lean mass.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="bf-howto-heading">
+          <h2 class="tool-seo-section-title" id="bf-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use This Body Fat Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>
+              <p>Select your <strong>gender</strong> — the formula differs for males and females (females include a hip measurement).</p>
+            </li>
+            <li>
+              <p>Enter your <strong>height</strong>. Use the unit toggle to switch between cm and ft/in. Stand straight without shoes.</p>
+            </li>
+            <li>
+              <p>Measure your <strong>neck</strong> circumference just below the larynx (Adam's apple), sloping slightly downward. Enter in cm.</p>
+            </li>
+            <li>
+              <p>Measure your <strong>waist</strong> at the narrowest point — typically just above the navel. Keep the tape parallel to the floor. Enter in cm.</p>
+            </li>
+            <li>
+              <p>If you are female, measure your <strong>hip</strong> circumference at the widest point. Enter in cm.</p>
+            </li>
+            <li>
+              <p>Optionally enter your <strong>current weight</strong> (kg or lbs) to unlock the fat mass and lean body mass breakdown.</p>
+            </li>
+            <li>
+              <p>Optionally enter a <strong>target body fat %</strong> to see your estimated goal weight.</p>
+            </li>
+            <li>
+              <p>Click <strong>Calculate Body Fat</strong> to see your full body composition report.</p>
+            </li>
+          </ol>
+          <p>For the most accurate results, take measurements first thing in the morning before eating or drinking, and use a non-elastic tape measure held snugly but not compressing the skin.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="bf-faq-heading">
+          <h2 class="tool-seo-section-title" id="bf-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="bf-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bf-faq-a1">
+                How accurate is the U.S. Navy body fat formula?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bf-faq-a1" role="region">
+                The Navy method has a margin of error of approximately 3–4% compared to gold-standard DEXA scanning. For most people it is a reliable and practical estimate — especially when measurements are taken correctly and consistently. It is less accurate for people with unusual fat distribution patterns (e.g. very high abdominal fat with low limb fat). Consistency matters more than absolute accuracy: tracking your measurements over time tells you whether you are trending in the right direction.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bf-faq-a2">
+                What is a healthy body fat percentage?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bf-faq-a2" role="region">
+                Healthy ranges differ by gender because women carry more essential fat for hormonal and reproductive function. For men, the fitness range is roughly 14–17% and the average healthy range is 18–24%. For women, the fitness range is approximately 21–24% and the healthy average range is 25–31%. Going below essential fat levels (below 5% for men, below 10–13% for women) can impair vital organ function. These are guidelines — your ideal range also depends on age, activity level and health history.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bf-faq-a3">
+                Why is a hip measurement needed for females?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bf-faq-a3" role="region">
+                Women typically store more fat in the hip and thigh region (gynoid distribution), whereas men tend to store more fat in the abdominal region (android distribution). The Navy formula accounts for this biological difference by including hip circumference in the female calculation. Without it, the formula would underestimate female body fat in women with a lower waist-to-hip ratio.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bf-faq-a4">
+                How is the estimated goal weight calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bf-faq-a4" role="region">
+                The target weight projection uses lean body mass as a fixed anchor. The formula is: Goal Weight = Lean Body Mass ÷ (1 − Target Body Fat % ÷ 100). This assumes all weight loss comes from fat, with zero loss of lean mass — the ideal scenario. In practice, some lean mass loss occurs, so the real target weight may be slightly higher. The projection is best used as a directional goal, not an exact endpoint.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bf-faq-a5">
+                Does this tool store my measurements?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bf-faq-a5" role="region">
+                Your measurements are saved automatically in your browser using localStorage so they are still there when you return to the page. Nothing is sent to any server. No account is needed. You can clear your saved data at any time by clicking Reset.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="body-fat.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

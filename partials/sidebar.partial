@@ -1,0 +1,107 @@
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<nav class="sidebar" id="sidebar" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Menu</span>
+    <button class="icon-btn" id="sidebar-close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="sidebar-body">
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Navigation</p>
+      <a href="/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span> Home
+      </a>
+      <a href="/search/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </span> Search Tools
+      </a>
+      <a href="/pages/about/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </span> About
+      </a>
+      <a href="/pages/contact/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </span> Contact
+      </a>
+    </div>
+
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Categories</p>
+      <a href="/tools/health/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </span> Health &amp; Fitness
+      </a>
+      <a href="/tools/student/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </span> Student Tools
+      </a>
+      <a href="/tools/utility/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </span> Utility Tools
+      </a>
+      <a href="/tools/finance/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+        </span> Finance Tools
+      </a>
+      <a href="/tools/creator/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </span> Creator Tools
+      </a>
+    </div>
+
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Popular Tools</p>
+      <a href="/tools/bmi-calculator/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v1"/><path d="M3 9h18"/><path d="M5.5 9 4 21h16l-1.5-12"/><path d="m7 9 1.5-6M17 9l-1.5-6"/></svg>
+        </span> BMI Calculator
+      </a>
+      <a href="/tools/cgpa-calculator/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </span> CGPA Calculator
+      </a>
+      <a href="/tools/emi-calculator/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+        </span> EMI Calculator
+      </a>
+      <a href="/tools/password-generator/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </span> Password Generator
+      </a>
+      <a href="/tools/pomodoro-timer/" class="sidebar-link">
+        <span class="sidebar-link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4"/><path d="M12 14v-4"/><path d="M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6"/><path d="M9 17H4v5"/></svg>
+        </span> Pomodoro Timer
+      </a>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-links">
+      <a href="/pages/privacy-policy/">Privacy</a>
+      <a href="/pages/terms/">Terms</a>
+      <a href="/pages/disclaimer/">Disclaimer</a>
+      <a href="/pages/contact/">Contact</a>
+    </div>
+  </div>
+</nav>

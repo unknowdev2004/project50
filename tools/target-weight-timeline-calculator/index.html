@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target Weight Timeline Calculator — How Long to Reach Your Goal Weight | Project 50</title>
+  <meta name="description" content="Calculate exactly how long it will take to reach your target weight. Get personalised fat loss or weight gain timelines with monthly milestones, calorie targets and weekly progress tracking.">
+  <meta name="keywords" content="target weight timeline calculator, how long to lose weight, weight loss timeline, weight loss calculator, how long to reach goal weight, fat loss timeline, weight gain timeline, calorie deficit calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/target-weight-timeline-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/target-weight-timeline-calculator/">
+  <meta property="og:title" content="Target Weight Timeline Calculator — How Long to Reach Your Goal Weight | Project 50">
+  <meta property="og:description" content="Find out exactly how long it will take to lose or gain weight. Get realistic timelines, monthly milestones and daily calorie targets based on your TDEE.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Target Weight Timeline Calculator — How Long to Reach Your Goal Weight | Project 50">
+  <meta name="twitter:description" content="Calculate how long it will take to reach your target weight. Fat loss and weight gain timelines with monthly milestones and calorie targets.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Target Weight Timeline Calculator",
+    "url": "https://project50.tools/tools/target-weight-timeline-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate how long it will take to reach your target weight. Generates personalised fat loss or weight gain timelines using your TDEE, with monthly milestones, calorie targets and weekly progress breakdown.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health &amp; Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "Target Weight Timeline Calculator", "item": "https://project50.tools/tools/target-weight-timeline-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take to lose weight?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on how much you need to lose and your calorie deficit. A 500 kcal/day deficit produces approximately 1.95 kg of fat loss per month. For example, losing 10 kg at this pace takes roughly 5 months. An aggressive 750 kcal/day deficit accelerates that to around 3.4 months." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the weight loss timeline calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The calculator uses your BMR (Mifflin-St Jeor equation) multiplied by your activity level to find your TDEE. It then applies your chosen calorie deficit or surplus and divides your weight difference by the resulting monthly change rate (using 7,700 kcal = 1 kg). The result is your estimated timeline in months or weeks." }
+      },
+      {
+        "@type": "Question",
+        "name": "What calorie deficit should I use to lose weight?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A 500 kcal/day deficit is the standard recommendation — sustainable, effective and unlikely to cause significant muscle loss. An aggressive 750 kcal/day deficit produces faster results but is harder to sustain. Both options are shown in your results." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a realistic weight loss per month?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At a 500 kcal/day deficit: approximately 1.95 kg/month (0.45 kg/week). At a 750 kcal/day deficit: approximately 2.92 kg/month (0.67 kg/week). Faster rates risk muscle loss and are harder to maintain. These estimates use 7,700 kcal per kg of body tissue." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to gain weight or build muscle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At a lean 300 kcal/day surplus: approximately 1.17 kg/month (0.27 kg/week) — slower but mostly muscle. At a 500 kcal/day surplus: approximately 1.95 kg/month (0.45 kg/week), with more fat alongside muscle." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the calculator show 'unavailable at safe calorie levels'?",
+        "acceptedAnswer": { "@type": "Answer", "text": "This happens when your maintenance calories (TDEE) are already at or below the safe minimum floor — 1,500 kcal for men and 1,200 kcal for women. In this case, no further deficit can be safely applied. This typically occurs with low body weight, advanced age, very short stature or a sedentary lifestyle combined. A healthcare provider can advise on appropriate next steps." }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate is this timeline?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The timeline is an estimate based on caloric math using 7,700 kcal per kg of tissue change and the Mifflin-St Jeor BMR formula. Real results vary with water retention, diet adherence, sleep quality, hormones and metabolic adaptation. Use the timeline as a planning tool, not a guarantee, and recalibrate every 4–6 weeks." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my personal data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All calculations run entirely in your browser. Your inputs are saved locally so they persist after a page refresh, but no data — weight, height, age or gender — is ever sent to a server or stored outside your own device." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="timeline.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Target Weight Timeline Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <!-- Tool header -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="m19 9-5 5-4-4-3 3"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Target Weight Timeline Calculator</h1>
+            <p class="tool-subtitle">How long will it take to reach your target weight? Get a personalised timeline with monthly milestones and daily calorie targets.</p>
+          </div>
+        </header>
+
+        <!-- Form -->
+        <div class="tool-form" role="form" aria-label="Target weight timeline calculator inputs">
+
+          <!-- Gender + Age -->
+          <div class="twtl-row">
+            <div class="tool-field">
+              <label class="tool-field-label" for="twtl-gender">Gender</label>
+              <div class="twtl-select-wrap">
+                <select class="tool-select" id="twtl-gender" aria-label="Biological sex for BMR calculation">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <span class="twtl-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="twtl-age">Age</label>
+              <input class="tool-input" type="number" id="twtl-age" placeholder="e.g. 30" min="15" max="100" aria-describedby="twtl-age-hint">
+              <span class="tool-field-hint" id="twtl-age-hint">15–100 years</span>
+            </div>
+          </div>
+
+          <!-- Height with unit selection -->
+          <div class="tool-field">
+            <div class="twtl-unit-label-row">
+              <label class="tool-field-label" for="twtl-height-cm" id="twtl-height-label">Height (cm)</label>
+              <div class="twtl-select-wrap twtl-unit-select-wrap">
+                <select class="tool-select twtl-unit-select" id="twtl-height-unit" aria-label="Height unit">
+                  <option value="cm">cm</option>
+                  <option value="imperial">ft / in</option>
+                </select>
+                <span class="twtl-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Metric height -->
+            <div id="twtl-height-metric">
+              <input class="tool-input" type="number" id="twtl-height-cm" placeholder="e.g. 175" min="100" max="250" aria-describedby="twtl-height-hint">
+              <span class="tool-field-hint" id="twtl-height-hint">100–250 cm</span>
+            </div>
+
+            <!-- Imperial height -->
+            <div id="twtl-height-imperial" hidden>
+              <div class="twtl-row twtl-row--tight">
+                <div>
+                  <input class="tool-input" type="number" id="twtl-height-ft" placeholder="5" min="3" max="8" aria-label="Height in feet">
+                  <span class="tool-field-hint">Feet</span>
+                </div>
+                <div>
+                  <input class="tool-input" type="number" id="twtl-height-in" placeholder="9" min="0" max="11" aria-label="Height in inches">
+                  <span class="tool-field-hint">Inches</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Weight + unit toggle -->
+          <div class="tool-field">
+            <div class="twtl-unit-label-row">
+              <label class="tool-field-label" for="twtl-current-weight" id="twtl-current-weight-label">Current Weight (kg)</label>
+              <div class="twtl-select-wrap twtl-unit-select-wrap">
+                <select class="tool-select twtl-unit-select" id="twtl-weight-unit" aria-label="Weight unit">
+                  <option value="kg">kg</option>
+                  <option value="lbs">lbs</option>
+                </select>
+                <span class="twtl-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <input class="tool-input" type="number" id="twtl-current-weight" placeholder="e.g. 86" min="20" max="300" aria-describedby="twtl-current-weight-hint">
+            <span class="tool-field-hint" id="twtl-current-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Target Weight -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="twtl-target-weight" id="twtl-target-weight-label">Target Weight (kg)</label>
+            <input class="tool-input" type="number" id="twtl-target-weight" placeholder="e.g. 75" min="20" max="300" aria-describedby="twtl-target-weight-hint">
+            <span class="tool-field-hint" id="twtl-target-weight-hint">20–300 kg</span>
+          </div>
+
+          <!-- Activity Level -->
+          <div class="tool-field">
+            <label class="tool-field-label" for="twtl-activity">Activity Level</label>
+            <div class="twtl-select-wrap">
+              <select class="tool-select" id="twtl-activity" aria-describedby="twtl-activity-hint">
+                <option value="1.2">Sedentary — desk job, little or no exercise</option>
+                <option value="1.375">Lightly Active — 1–3 days/week</option>
+                <option value="1.55" selected>Moderately Active — 3–5 days/week</option>
+                <option value="1.725">Very Active — 6–7 days/week</option>
+                <option value="1.9">Athlete — twice-daily or intense daily training</option>
+              </select>
+              <span class="twtl-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <span class="tool-field-hint" id="twtl-activity-hint">Choose the level that best matches your typical week</span>
+          </div>
+
+          <!-- Advanced Options -->
+          <details class="twtl-advanced" id="twtl-advanced">
+            <summary class="twtl-advanced-summary">Advanced Options</summary>
+            <div class="twtl-advanced-body">
+              <div class="tool-field">
+                <label class="tool-field-label" for="twtl-custom-deficit">Custom Daily Deficit</label>
+                <input
+                  class="tool-input"
+                  type="number"
+                  id="twtl-custom-deficit"
+                  min="250"
+                  max="1000"
+                  step="50"
+                  value="500"
+                  aria-describedby="twtl-custom-deficit-hint"
+                />
+                <span class="tool-field-hint" id="twtl-custom-deficit-hint">Optional. Customize the recommended weight-loss pace. (250–1000 kcal)</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Validation -->
+          <div class="twtl-validation" id="twtl-validation" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="twtl-btn-row">
+            <button class="btn btn-primary btn-lg" id="twtl-calc-btn">
+              Calculate Timeline
+            </button>
+            <button class="btn btn-secondary btn-lg" id="twtl-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
+             RESULTS — hidden until calculated
+        ============================================= -->
+        <div id="twtl-results" aria-live="polite" aria-atomic="true" hidden>
+
+          <!-- Card 1: Timeline Summary (Hero) -->
+          <div class="twtl-section-card twtl-hero-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+              </span>
+              Timeline Summary
+            </h2>
+            <!-- Weight stats injected by JS -->
+            <div id="twtl-hero-summary"></div>
+            <!-- Scenario timelines injected by JS -->
+            <div id="twtl-hero-scenarios"></div>
+
+            <!-- Floor warning -->
+            <div id="twtl-floor-warning" class="twtl-floor-warning" role="alert" hidden>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              Weight-loss target unavailable at safe calorie levels. Your maintenance calories are at or below the safety floor (1,500 kcal for men / 1,200 kcal for women). Consult a healthcare provider.
+            </div>
+          </div>
+
+          <!-- Card 2: Monthly Milestones -->
+          <div class="twtl-section-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              </span>
+              Monthly Milestones
+            </h2>
+            <p class="twtl-summary-line" style="margin-bottom:var(--sp-3)">Based on the <strong>recommended</strong> pace. Timeline shows your projected weight at each milestone.</p>
+            <div class="twtl-table-wrap">
+              <table class="twtl-table" aria-label="Monthly weight milestones">
+                <thead>
+                  <tr>
+                    <th>Milestone</th>
+                    <th style="text-align:right">Weight</th>
+                    <th style="text-align:right">Change</th>
+                  </tr>
+                </thead>
+                <tbody id="twtl-milestones-body">
+                  <!-- Filled by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Card 3: Weekly Progress -->
+          <div class="twtl-section-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              Weekly Progress
+            </h2>
+            <div class="twtl-table-wrap">
+              <table class="twtl-table" aria-label="Weekly progress breakdown">
+                <tbody id="twtl-weekly-body">
+                  <!-- Filled by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Card 4: Calorie Targets -->
+          <div class="twtl-section-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              </span>
+              Calorie Targets
+            </h2>
+            <div class="twtl-calorie-list" id="twtl-calorie-body">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Card 5: Strategy Comparison -->
+          <div class="twtl-section-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </span>
+              Strategy Comparison
+            </h2>
+            <div class="twtl-table-wrap">
+              <table class="twtl-table" aria-label="Strategy comparison table">
+                <thead>
+                  <tr>
+                    <th>Strategy</th>
+                    <th style="text-align:right">Timeline</th>
+                    <th style="text-align:right">Monthly</th>
+                    <th style="text-align:right">Weekly</th>
+                  </tr>
+                </thead>
+                <tbody id="twtl-strategy-body">
+                  <!-- Filled by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Card 6: BMR & TDEE -->
+          <div class="twtl-section-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              </span>
+              BMR &amp; TDEE
+            </h2>
+            <div class="tool-stat-grid">
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="twtl-bmr-val">—</div>
+                <div class="tool-stat-label">BMR</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="twtl-multiplier-val">—</div>
+                <div class="tool-stat-label">Activity Multiplier</div>
+              </div>
+              <div class="tool-stat">
+                <div class="tool-stat-value" id="twtl-tdee-val">—</div>
+                <div class="tool-stat-label">TDEE</div>
+              </div>
+            </div>
+            <p class="twtl-formula-note" id="twtl-formula-note"></p>
+            <p class="tool-note">Calculated using the Mifflin-St Jeor equation. Results are estimates — individual metabolism varies. Consult a healthcare provider before making significant dietary changes.</p>
+          </div>
+
+          <!-- Card 7: Quick Summary -->
+          <div class="twtl-section-card twtl-summary-card">
+            <h2 class="twtl-section-title">
+              <span class="twtl-section-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+              </span>
+              Quick Summary
+            </h2>
+            <div id="twtl-quick-summary">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+        </div><!-- /#twtl-results -->
+
+        <!-- Related Tools -->
+        <div class="tool-related" id="twtl-related-tools" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="twtl-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO CONTENT SECTIONS
+      ============================================= -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="twtl-about-heading">
+          <h2 class="tool-seo-section-title" id="twtl-about-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            About This Tool
+          </h2>
+          <p>The Target Weight Timeline Calculator answers the question that every person with a weight goal eventually asks: <em>how long is this actually going to take?</em> Rather than giving you a single optimistic number, it generates a realistic timeline based on your personal physiology — your BMR, TDEE and activity level — not population averages.</p>
+          <p>The tool automatically detects your direction. If your target is below your current weight, it generates fat loss timelines. If your target is higher, it generates weight gain timelines. Both scenarios offer two strategies: a recommended sustainable pace and an accelerated option, so you can choose the approach that fits your lifestyle.</p>
+          <p>Results include a month-by-month milestone table so you always know where you should be — not just when you'll arrive. All calculations use the Mifflin-St Jeor BMR equation, 7,700 kcal per kg of body tissue, and enforce safety calorie floors of 1,500 kcal for men and 1,200 kcal for women. No data is ever sent to a server.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="twtl-howto-heading">
+          <h2 class="tool-seo-section-title" id="twtl-howto-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+            </span>
+            How To Use
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Select your <strong>gender</strong> — this affects the BMR constant in the Mifflin-St Jeor equation.</p></li>
+            <li><p>Enter your <strong>age</strong> in years (15–100).</p></li>
+            <li><p>Select your preferred <strong>height unit</strong> and enter your height. Values convert automatically when you switch units.</p></li>
+            <li><p>Enter your <strong>current weight</strong> and then your <strong>target weight</strong> — in your preferred unit. The calculator automatically detects whether you're aiming to lose or gain weight.</p></li>
+            <li><p>Choose your <strong>activity level</strong>. Be honest — most people overestimate. Sedentary is a desk job with little movement. Lightly Active is 1–3 casual workouts per week.</p></li>
+            <li><p>Click <strong>Calculate Timeline</strong> to see your personalised timeline, monthly milestones, calorie targets and strategy comparison.</p></li>
+          </ol>
+        </section>
+
+        <!-- How the Timeline is Calculated -->
+        <section class="tool-seo-section" aria-labelledby="twtl-formula-heading">
+          <h2 class="tool-seo-section-title" id="twtl-formula-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 10h8M8 14h4"/></svg>
+            </span>
+            How the Timeline Is Calculated
+          </h2>
+          <p>The calculator uses a three-step process:</p>
+          <ol class="tool-seo-steps">
+            <li><p><strong>BMR (Mifflin-St Jeor):</strong> Male = (10 × kg) + (6.25 × cm) − (5 × age) + 5. Female = (10 × kg) + (6.25 × cm) − (5 × age) − 161.</p></li>
+            <li><p><strong>TDEE:</strong> BMR × activity multiplier (Sedentary 1.2, Lightly Active 1.375, Moderately Active 1.55, Very Active 1.725, Athlete 1.9).</p></li>
+            <li><p><strong>Timeline:</strong> The chosen daily calorie adjustment (e.g. −500 kcal) is converted to a monthly weight-change rate using 7,700 kcal = 1 kg. The weight difference is divided by that monthly rate: Timeline (months) = weight difference ÷ monthly change rate.</p></li>
+          </ol>
+          <p>For the example of 86 kg → 75 kg on a Lose Fat plan (−500 kcal/day, 1.95 kg/month): 11 kg ÷ 1.95 = 5.6 months, displayed as 6 months.</p>
+        </section>
+
+        <!-- Fat Loss vs Weight Gain -->
+        <section class="tool-seo-section" aria-labelledby="twtl-scenarios-heading">
+          <h2 class="tool-seo-section-title" id="twtl-scenarios-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </span>
+            Fat Loss vs Weight Gain Strategies
+          </h2>
+          <p>The tool offers two strategies for each direction:</p>
+          <ul>
+            <li><strong>Lose Fat (−500 kcal/day):</strong> The standard recommendation — approximately 1.95 kg/month. Sustainable, minimises muscle loss.</li>
+            <li><strong>Aggressive Fat Loss (−750 kcal/day):</strong> Approximately 2.92 kg/month. Faster results but harder to sustain and may increase muscle loss risk. Not recommended as a long-term strategy.</li>
+            <li><strong>Lean Gain (+300 kcal/day):</strong> Approximately 1.17 kg/month — a slow, clean bulk with minimal fat accumulation. Recommended for most people building muscle.</li>
+            <li><strong>Weight Gain (+500 kcal/day):</strong> Approximately 1.95 kg/month — faster mass gain but with proportionally more fat gain alongside muscle.</li>
+          </ul>
+        </section>
+
+        <!-- Realistic Expectations -->
+        <section class="tool-seo-section" aria-labelledby="twtl-expectations-heading">
+          <h2 class="tool-seo-section-title" id="twtl-expectations-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+            </span>
+            Setting Realistic Expectations
+          </h2>
+          <p>The timeline shown is based on consistent daily adherence to your calorie target. In practice, several factors cause real-world results to differ from the calculation:</p>
+          <ul>
+            <li><strong>Water retention:</strong> Scale weight fluctuates daily by 1–3 kg due to water, glycogen and sodium — unrelated to fat or muscle change.</li>
+            <li><strong>Metabolic adaptation:</strong> Prolonged calorie restriction slightly lowers your TDEE over time. Recalculate every 4–6 weeks using your updated current weight.</li>
+            <li><strong>Diet adherence:</strong> A single 1,000 kcal over-eating day undoes two days of a 500 kcal deficit. Consistency matters more than perfection.</li>
+            <li><strong>Training:</strong> Resistance training during a fat loss phase helps preserve muscle mass and keeps your BMR higher — giving you a better body composition even at the same scale weight.</li>
+          </ul>
+          <p>Use the milestones card to track your progress. If you're consistently below a milestone after 4 weeks, your actual TDEE may be lower than estimated — reduce by a further 100–200 kcal and recalculate.</p>
+        </section>
+
+        <!-- Safety Floors -->
+        <section class="tool-seo-section" aria-labelledby="twtl-floors-heading">
+          <h2 class="tool-seo-section-title" id="twtl-floors-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            </span>
+            Calorie Safety Floors
+          </h2>
+          <p>This calculator enforces minimum daily calorie intakes: 1,500 kcal for men and 1,200 kcal for women. These floors exist because eating below these levels risks nutrient deficiencies, significant muscle loss, immune suppression and metabolic slowdown.</p>
+          <p>In some edge cases — very low body weight, advanced age, very short stature or a sedentary lifestyle — your maintenance calories (TDEE) may already be at or below the floor. When this happens, the tool shows the "unavailable at safe calorie levels" message rather than displaying a misleading timeline. This is intentional. If you see this message, consult a healthcare provider or dietitian before attempting a calorie deficit.</p>
+        </section>
+
+        <!-- Understanding Results -->
+        <section class="tool-seo-section" aria-labelledby="twtl-reading-heading">
+          <h2 class="tool-seo-section-title" id="twtl-reading-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            </span>
+            Understanding Your Results
+          </h2>
+          <p>The <strong>Timeline Summary</strong> card shows your weight difference and the time to goal at each strategy. The recommended strategy is highlighted. Use this as your headline number.</p>
+          <p>The <strong>Monthly Milestones</strong> table shows where your weight should be at each month. For long journeys (over 8 months), only the first 6 milestones and the final goal are shown. Use this to check whether you're on track.</p>
+          <p>The <strong>Weekly Progress</strong> card gives the weekly rate and total weeks — more actionable for weekly weigh-ins than months.</p>
+          <p>The <strong>Calorie Targets</strong> card shows your maintenance calories and each strategy's daily target. These are the numbers to enter into your food tracking app.</p>
+          <p>The <strong>Strategy Comparison</strong> table lets you see side-by-side how the two strategies differ in timeline, monthly rate and weekly rate — useful for deciding which pace to commit to.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="twtl-faq-heading">
+          <h2 class="tool-seo-section-title" id="twtl-faq-heading">
+            <span class="seo-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="twtl-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a1">
+                How long does it take to lose weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a1" role="region">
+                It depends on how much you need to lose and your calorie deficit. A 500 kcal/day deficit produces approximately 1.95 kg of fat loss per month. Losing 10 kg at this pace takes roughly 5 months. An aggressive 750 kcal/day deficit would take around 3.4 months for the same 10 kg. Enter your numbers to get a personalised estimate.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a2">
+                How is the timeline calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a2" role="region">
+                Your BMR is calculated using the Mifflin-St Jeor equation, then multiplied by your activity level to get your TDEE. The chosen calorie adjustment (e.g. −500 kcal) is divided by 7,700 kcal/kg to find the monthly change rate. Your weight difference is divided by that monthly rate to get the timeline: months = weight difference ÷ monthly rate.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a3">
+                What calorie deficit should I use to lose weight?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a3" role="region">
+                A 500 kcal/day deficit is the standard recommendation — sustainable, effective and unlikely to cause significant muscle loss. An aggressive 750 kcal/day deficit produces faster results but is harder to sustain. The tool shows both options so you can compare the timeline difference and decide.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a4">
+                What is a realistic weight loss per month?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a4" role="region">
+                At a 500 kcal/day deficit: approximately 1.95 kg/month (0.45 kg/week). At a 750 kcal/day deficit: approximately 2.92 kg/month (0.67 kg/week). Faster rates risk muscle loss and are harder to maintain. These estimates use 7,700 kcal per kg of body tissue.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a5">
+                How long does it take to gain weight or build muscle?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a5" role="region">
+                At a lean 300 kcal/day surplus: approximately 1.17 kg/month (0.27 kg/week) — slower but mostly muscle with minimal fat gain. At a 500 kcal/day surplus: approximately 1.95 kg/month (0.45 kg/week), with more fat gain alongside muscle. If you're prioritising muscle composition, the Lean Gain strategy is recommended.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a6">
+                Why does it say "unavailable at safe calorie levels"?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a6" role="region">
+                This appears when your maintenance calories (TDEE) are already at or below the safe calorie floor — 1,500 kcal for men and 1,200 kcal for women. Applying a deficit would take you below safe minimums, so the tool cannot generate a timeline. This typically occurs with very low body weight, advanced age, very short stature or extreme sedentary lifestyle. A healthcare provider or dietitian can advise on appropriate steps.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a7">
+                How accurate is this timeline?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a7" role="region">
+                The timeline is an estimate based on caloric math and the Mifflin-St Jeor BMR formula. Real results vary due to water retention, diet adherence, metabolic adaptation, sleep and individual variation. Use it as a planning guide — not a guarantee. Recalculate every 4–6 weeks using your updated current weight for best accuracy.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="twtl-faq-a8">
+                Does this tool store my personal data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="twtl-faq-a8" role="region">
+                No. All calculations run entirely in your browser. Your inputs are saved locally so they persist after a page refresh, but no data — weight, height, age or gender — is ever sent to a server or stored outside your own device.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Script load order — canonical tool page stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="timeline.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+/* ============================================
+   CALORIE-BURN.CSS — Project 50
+   Calorie Burn Calculator — tool-specific styles.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-result, .tool-note, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE mirrors macro.css component patterns,
+   renamed with the cb- prefix:
+     - Custom select wrapper (.cb-select-wrap)
+     - Two-column form row (.cb-row)
+     - Validation message
+     - Button row
+     - Section cards
+     - Snapshot summary grid (4 cards)
+     - Range/result cards
+     - Weight-loss projection rows
+     - Food equivalents grid
+     - Compare activities grid
+     - Activity breakdown stat grid (reuses .tool-stat-grid)
+     - Number input spinner removal
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+============================================ */
+.cb-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.cb-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cb-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.cb-select-wrap .tool-select:focus + .cb-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UNIT LABEL ROW (weight unit switch)
+============================================ */
+.cb-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.cb-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+.cb-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.cb-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.cb-unit-select-wrap .cb-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   TWO-COLUMN FORM ROW
+============================================ */
+.cb-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.cb-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* ============================================
+   BUTTON ROW — Calculate + Reset side by side
+============================================ */
+.cb-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .cb-btn-row {
+    flex-direction: column;
+  }
+  .cb-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+============================================ */
+.cb-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.cb-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cb-section-icon {
+  display: flex;
+  align-items: center;
+  color: #f97316;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SNAPSHOT — 4-card summary grid
+   (mirrors .macro-summary-grid)
+============================================ */
+.cb-summary-card {
+  border-color: color-mix(in srgb, #f97316 35%, transparent);
+  background: color-mix(in srgb, #f97316 6%, var(--color-bg-card));
+}
+
+.cb-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.cb-summary-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+}
+
+.cb-summary-item--highlight {
+  background: color-mix(in srgb, #f97316 12%, transparent);
+  border-color: color-mix(in srgb, #f97316 30%, transparent);
+}
+
+.cb-summary-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.cb-summary-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.cb-summary-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .cb-summary-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.cb-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================
+   WEIGHT LOSS IMPACT — projection rows
+   (mirrors .macro-proj-table / .macro-proj-row)
+============================================ */
+.cb-proj-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cb-proj-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-3);
+}
+
+.cb-proj-row--highlight {
+  border-color: color-mix(in srgb, #f97316 35%, transparent);
+  background: color-mix(in srgb, #f97316 8%, transparent);
+}
+
+.cb-proj-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.cb-proj-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 800;
+  color: var(--color-text);
+  text-align: right;
+}
+
+/* ============================================
+   FOOD EQUIVALENTS GRID
+   (mirrors .macro-sources-grid)
+============================================ */
+.cb-food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-1);
+}
+
+.cb-food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px var(--sp-2);
+  gap: var(--sp-1);
+}
+
+.cb-food-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 0;
+}
+
+.cb-food-amount {
+  font-size: var(--fs-xs);
+  color: #f97316;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   COMPARE ACTIVITIES GRID
+   (mirrors .macro-range-grid / .macro-range-card,
+   2x2 layout for 4 activities)
+============================================ */
+.cb-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+}
+
+.cb-compare-card {
+  text-align: center;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3) var(--sp-2);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  position: relative;
+}
+
+.cb-compare-card--highlight {
+  border-width: 2px;
+  border-color: #f97316;
+  background: color-mix(in srgb, #f97316 10%, transparent);
+}
+
+.cb-compare-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  white-space: nowrap;
+  background: color-mix(in srgb, #f97316 15%, transparent);
+  color: #f97316;
+  border: 1px solid color-mix(in srgb, #f97316 40%, transparent);
+}
+
+.cb-compare-name {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: var(--sp-2);
+}
+
+.cb-compare-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--sp-1);
+}
+
+.cb-compare-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .cb-food-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cb-compare-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+} 
+
+/* ============================================
+   ACTIVITY BREAKDOWN — formula display
+   (reuses .tool-stat-grid for stats)
+============================================ */
+.cb-breakdown-formula {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-base), 3.5vw, var(--fs-lg));
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3);
+  margin-top: var(--sp-3);
+}

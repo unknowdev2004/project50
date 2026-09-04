@@ -1,0 +1,1086 @@
+/* ============================================
+   STUDY-HOURS-EXAM-PLANNER.CSS — Project 50
+   Study Hours & Exam Planner — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE mirrors the established multi-mode tool
+   pattern from grade-required-marks.css and the
+   collapsible / select-wrap pattern from
+   cgpa-percentage.css — new prefix: .shep-
+
+   SECTIONS
+     - Mode selector (5-tab bar, scrollable on mobile)
+     - Two/three-column field rows
+     - Select-wrap (custom chevron)
+     - Weekday selector (toggle button group)
+     - Subject row component (dynamic list)
+     - Collapsible advanced section
+     - Validation message
+     - Action button rows
+     - Result section cards, hero, status badges
+     - Breakdown / insights lists
+     - New Study / Revision / Buffer chip row
+     - Generated plan — desktop table + mobile day cards
+     - Readiness top-priority card
+     - Responsive: 768 / 640 / 480 / 380px
+============================================ */
+
+/* ============================================
+   MODE SELECTOR — 5-tab bar
+============================================ */
+
+.shep-mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.shep-mode-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.shep-mode-tab {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.shep-mode-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.shep-mode-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.shep-mode-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.shep-panel[hidden] {
+  display: none;
+}
+
+/* ============================================
+   FIELD ROWS
+============================================ */
+
+.shep-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.shep-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.shep-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.shep-field-group-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   SELECT-WRAP — custom chevron (never native arrow)
+============================================ */
+
+.shep-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.shep-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.shep-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.shep-select-wrap .tool-select:focus + .shep-select-arrow {
+  color: var(--color-primary);
+}
+
+/* Compact variant used inside subject rows */
+.shep-select-wrap--sm .tool-select {
+  height: 52px;
+  padding: 0 36px 0 12px;
+  font-size: var(--fs-sm);
+}
+
+.shep-select-wrap--sm .shep-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   WEEKDAY SELECTOR — toggle button group
+============================================ */
+
+.shep-weekday-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.shep-weekday-group-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.shep-weekday-selector {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+}
+
+.shep-weekday-btn {
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 4px;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.shep-weekday-btn:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.shep-weekday-btn[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.shep-weekday-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SUBJECT ROW COMPONENT — dynamic list
+============================================ */
+
+.shep-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 90px 110px 110px 40px;
+  gap: 8px;
+  padding: 0 2px 2px;
+}
+
+.shep-col-headers span {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.shep-subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shep-subject-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 110px 110px 48px;
+  gap: 8px;
+  align-items: center;
+}
+
+.shep-subject-row--simple {
+  grid-template-columns: 1fr 90px 40px;
+}
+
+/* Exam Planner without Difficulty & Priority visible — 3 real columns,
+   not the 5-column grid with two invisible tracks left empty. */
+.shep-subject-row--compact {
+  grid-template-columns: 1fr 90px 40px;
+}
+
+.shep-col-headers--compact {
+  grid-template-columns: 1fr 90px 40px;
+}
+
+.shep-name-field,
+.shep-hours-field,
+.shep-diff-field,
+.shep-priority-field,
+.shep-topics-field,
+.shep-per-topic-field,
+.shep-completion-field,
+.shep-confidence-field,
+.shep-importance-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 10px;
+}
+
+
+.shep-name-field {
+  margin-top: 10px;
+}
+
+.shep-field-mobile-label {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 15px;
+}
+
+.shep-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.shep-remove-btn {
+  width: 48px;
+  height: 48px;
+  margin-top: 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.shep-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: scale(1.05);
+}
+
+.shep-remove-btn:active {
+  transform: scale(0.95);
+}
+
+.shep-remove-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.shep-add-row-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.shep-subject-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   COLLAPSIBLE — Advanced Planning (progressive disclosure)
+============================================ */
+
+.shep-collapse-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.shep-collapse-toggle:hover {
+  border-color: var(--color-border-hover);
+}
+
+.shep-collapse-chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+  color: var(--color-text-muted);
+}
+
+.shep-collapse-toggle[aria-expanded="true"] .shep-collapse-chevron {
+  transform: rotate(180deg);
+}
+
+.shep-collapse-body {
+  margin-top: var(--sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.shep-collapse-body[hidden] {
+  display: none;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.shep-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+.shep-info-note {
+  padding: 10px 14px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #93c5fd;
+}
+
+.shep-warn-note {
+  padding: 10px 14px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #fbbf24;
+}
+
+/* ============================================
+   ACTION BUTTON ROWS
+============================================ */
+
+.shep-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.shep-actions .btn-primary {
+  flex: 1;
+}
+
+.shep-actions--three .btn-secondary:first-child {
+  min-width: 152px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.shep-actions--three .btn-secondary:last-child {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+.shep-actions:not(.shep-actions--three) .btn-secondary {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS — mirrors .grmc-section-card
+============================================ */
+
+.shep-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.shep-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.shep-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HERO RESULT + STATUS BADGE
+============================================ */
+
+.shep-hero-card {
+  text-align: center;
+}
+
+.shep-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+}
+
+.shep-hero-sub {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--sp-2);
+}
+
+.shep-status-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  margin: var(--sp-1) 0 var(--sp-2);
+}
+
+.shep-status-badge--on-track {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.shep-status-badge--tight {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.shep-status-badge--not-realistic {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.shep-status-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   NEW STUDY / REVISION / BUFFER CHIP ROW
+============================================ */
+
+.shep-chip-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+}
+
+.shep-chip {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) 10px;
+  min-width: 0;
+}
+
+.shep-chip-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-base), 3.5vw, var(--fs-lg));
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.shep-chip-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 4px;
+}
+
+.shep-chip--new .shep-chip-value  { color: #60a5fa; }
+.shep-chip--revision .shep-chip-value { color: #fbbf24; }
+.shep-chip--buffer .shep-chip-value   { color: #94a3b8; }
+.shep-chip--free .shep-chip-value     { color: #4ade80; }
+
+/* ============================================
+   BREAKDOWN / INSIGHTS LISTS
+============================================ */
+
+.shep-breakdown-list,
+.shep-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shep-breakdown-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--fs-sm);
+}
+
+.shep-breakdown-name {
+  color: var(--color-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.shep-breakdown-value {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.shep-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.shep-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.shep-insight-icon--positive { color: #34d399; }
+.shep-insight-icon--neutral  { color: #60a5fa; }
+.shep-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   ALTERNATIVES LIST — Catch-Up mode
+============================================ */
+
+.shep-alt-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.shep-alt-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.shep-alt-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.shep-alt-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+.shep-alt-desc {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+/* ============================================
+   GENERATED PLAN — desktop table
+============================================ */
+
+.shep-plan-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.shep-plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.shep-plan-table thead th {
+  text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  padding: 0 var(--sp-2) var(--sp-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.shep-plan-table thead th:last-child {
+  text-align: right;
+}
+
+.shep-plan-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.shep-plan-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.shep-plan-table tbody td {
+  padding: 10px var(--sp-2);
+  color: var(--color-text-muted);
+  vertical-align: top;
+}
+
+.shep-plan-table tbody td:first-child {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.shep-plan-table tbody td:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.shep-plan-focus-line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.shep-plan-focus-line + .shep-plan-focus-line {
+  margin-top: 4px;
+}
+
+.shep-plan-focus-name {
+  color: var(--color-text);
+}
+
+.shep-plan-focus-time {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   GENERATED PLAN — mobile day cards
+============================================ */
+
+.shep-plan-cards {
+  display: none;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.shep-plan-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.shep-plan-card-date {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.shep-plan-card-line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: 6px 0;
+  border-top: 1px dashed var(--color-border);
+}
+
+.shep-plan-card-line:first-of-type {
+  border-top: none;
+}
+
+.shep-plan-card-subject {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.shep-plan-card-time {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   READINESS — top priority + subject rows
+============================================ */
+
+.shep-readiness-top {
+  text-align: center;
+}
+
+.shep-readiness-top-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.shep-readiness-top-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 4px 0 var(--sp-2);
+}
+
+.shep-readiness-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+}
+
+.shep-readiness-detail-grid--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.shep-col-headers--readiness {
+  grid-template-columns: 1fr 110px 110px 110px 110px 40px;
+}
+
+/* Row uses the exact same track widths as the header above it. */
+.shep-subject-row--readiness {
+  grid-template-columns: 1fr 110px 110px 110px 110px 40px;
+}
+
+.shep-col-headers--syllabus {
+  grid-template-columns: 1fr 90px 100px 40px;
+}
+
+.shep-subject-row--syllabus {
+  grid-template-columns: 1fr 90px 100px 40px;
+}
+
+.shep-readiness-priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shep-readiness-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.shep-readiness-row-name {
+  font-weight: 600;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.shep-readiness-row-meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.shep-readiness-row-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-text);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.shep-readiness-row-score small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   EMPTY STATE
+============================================ */
+
+.shep-empty-state {
+  text-align: center;
+  padding: var(--sp-3) var(--sp-2);
+  color: var(--color-text-faint);
+  font-size: var(--fs-sm);
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .shep-mode-selector {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+
+  .shep-mode-tab {
+    padding: 9px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .shep-section-card {
+    padding: var(--sp-3);
+  }
+
+  .shep-row-2,
+  .shep-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .shep-col-headers {
+    display: none;
+  }
+
+  .tool-form.shep-form {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .shep-subject-row,
+  .shep-subject-row--simple {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-2);
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .shep-subject-row:focus-within {
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  /* Name field always spans the full row width, in DOM order first;
+     every other field auto-flows into the 2-column grid after it. */
+  .shep-subject-row .shep-name-field,
+  .shep-subject-row--simple .shep-name-field {
+    grid-column: 1 / -1;
+  }
+
+  /* Single standalone value fields also take the full row width rather
+     than sitting half-empty next to nothing: Exam Planner's Estimated
+     Hours (when Difficulty & Priority are hidden), and both Syllabus
+     Planner fields (Remaining Topics, Hours / Topic — shown stacked
+     per the Student Tools subject-card pattern). Readiness intentionally
+     keeps its 2-up pairing (Completion+Confidence, Difficulty+Importance)
+     via the default auto-flow behavior above. */
+  .shep-subject-row .shep-hours-field,
+  .shep-subject-row--syllabus .shep-topics-field,
+  .shep-subject-row--syllabus .shep-per-topic-field {
+    grid-column: 1 / -1;
+  }
+
+  .shep-field-mobile-label { display: block; }
+
+  /* Remove sits at the bottom-right of the card, in normal flow —
+     never floating over another field. */
+  .shep-remove-btn {
+    grid-column: 1 / -1;
+    justify-self: end;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 10px;
+    border-radius: 8px;
+    margin-top: 2px;
+  }
+
+  .shep-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .shep-subject-btn-row {
+    flex-direction: column;
+  }
+
+  .shep-subject-btn-row .btn,
+  #shep-syl-add-subject-btn,
+  #shep-rd-add-subject-btn {
+    width: 100%;
+  }
+
+  .shep-actions .btn-secondary,
+  .shep-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  .shep-breakdown-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .shep-breakdown-value {
+    text-align: left;
+  }
+
+  .shep-plan-table-wrap { display: none; }
+  .shep-plan-cards { display: flex; }
+
+  .shep-readiness-detail-grid,
+  .shep-readiness-detail-grid--5 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .shep-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .shep-chip-row {
+    grid-template-columns: 1fr;
+  }
+
+  .shep-weekday-btn {
+    padding: 8px 2px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — VERY SMALL (≤ 380px)
+============================================ */
+
+@media (max-width: 380px) {
+
+  .tool-form.shep-form {
+    padding: var(--sp-1) 14px;
+    gap: 14px;
+  }
+
+  .shep-subject-row {
+    padding: 14px;
+  }
+
+  .shep-big-number {
+    font-size: clamp(2rem, 14vw, 2.5rem);
+  }
+
+  .shep-mode-tab {
+    padding: 8px 10px;
+  }
+}

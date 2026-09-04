@@ -1,0 +1,471 @@
+/* ============================================
+   IDEAL-WEIGHT.CSS — Project 50
+   Ideal Weight Calculator — tool-specific styles.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-result, .tool-note, .tool-stat-grid,
+     .tool-stat, .tool-stat-value, .tool-stat-label,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers ideal-weight-specific components:
+     - Two-column form row (.iw-row)
+     - Unit label row (.iw-unit-label-row)
+     - Custom select wrapper (.iw-select-wrap)
+     - Compact unit select (.iw-unit-select)
+     - Validation message
+     - Button row
+     - Section cards
+     - Healthy weight snapshot grid (4-card)
+     - Range display
+     - Weight position bar
+     - Next step text
+     - Number input spinner removal
+============================================ */
+
+/* ============================================
+   NUMBER INPUT — Remove native spinners
+============================================ */
+.tool-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.tool-input[type="number"]::-webkit-inner-spin-button,
+.tool-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* ============================================
+   CUSTOM SELECT WRAPPER
+============================================ */
+.iw-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.iw-select-wrap .tool-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.iw-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.iw-select-wrap .tool-select:focus + .iw-select-arrow {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   UNIT LABEL ROW
+============================================ */
+.iw-unit-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.iw-unit-label-row .tool-field-label {
+  margin-bottom: 0;
+}
+
+.iw-unit-select-wrap {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.iw-unit-select {
+  height: 34px !important;
+  font-size: var(--fs-xs) !important;
+  font-weight: 600;
+  padding: 0 32px 0 12px !important;
+  border-radius: var(--radius-full) !important;
+  min-width: 80px;
+  letter-spacing: 0.02em;
+}
+
+.iw-unit-select-wrap .iw-select-arrow {
+  right: 10px;
+}
+
+/* ============================================
+   TWO-COLUMN FORM ROW (for ft/in)
+============================================ */
+.iw-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.iw-row--tight {
+  gap: var(--sp-1);
+  margin-top: 0;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+.iw-validation {
+  background: color-mix(in srgb, #f87171 10%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 30%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  color: #f87171;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+
+/* ============================================
+   BUTTON ROW
+============================================ */
+.iw-btn-row {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .iw-btn-row {
+    flex-direction: column;
+  }
+  .iw-btn-row .btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* ============================================
+   SECTION CARDS
+============================================ */
+.iw-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+
+.iw-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.iw-section-icon {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HEALTHY WEIGHT SNAPSHOT — 4-card grid
+   Mirrors macro-summary-grid exactly
+============================================ */
+.iw-summary-card {
+  border-color: color-mix(in srgb, #10b981 35%, transparent);
+  background: color-mix(in srgb, #10b981 6%, var(--color-bg-card));
+}
+
+.iw-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.iw-snapshot-item {
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-2) var(--sp-1);
+  position: relative;
+}
+
+/* Highlighted "Recommended" card */
+.iw-snapshot-item--highlight {
+  background: color-mix(in srgb, #10b981 10%, transparent);
+  border-color: #10b981;
+  border-width: 2px;
+}
+
+.iw-snapshot-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  white-space: nowrap;
+  background: color-mix(in srgb, #10b981 15%, transparent);
+  color: #10b981;
+  border: 1px solid color-mix(in srgb, #10b981 40%, transparent);
+}
+
+.iw-snapshot-val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-lg), 4vw, var(--fs-2xl));
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  margin-top: var(--sp-1);
+}
+
+.iw-snapshot-item--highlight .iw-snapshot-val {
+  margin-top: calc(var(--sp-1) + 16px); /* room for badge */
+}
+
+.iw-snapshot-unit {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+.iw-snapshot-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+/* Status card colour variants */
+.iw-snapshot-item--status[data-status="below"] {
+  background: color-mix(in srgb, #60a5fa 10%, transparent);
+  border-color: color-mix(in srgb, #60a5fa 25%, transparent);
+}
+
+.iw-snapshot-item--status[data-status="healthy"] {
+  background: color-mix(in srgb, #10b981 10%, transparent);
+  border-color: color-mix(in srgb, #10b981 25%, transparent);
+}
+
+.iw-snapshot-item--status[data-status="above"] {
+  background: color-mix(in srgb, #f59e0b 10%, transparent);
+  border-color: color-mix(in srgb, #f59e0b 25%, transparent);
+}
+
+.iw-status-val {
+  font-size: clamp(var(--fs-sm), 2.5vw, var(--fs-base));
+  font-weight: 700;
+}
+
+.iw-snapshot-item--status[data-status="below"]   .iw-status-val { color: #60a5fa; }
+.iw-snapshot-item--status[data-status="healthy"] .iw-status-val { color: #10b981; }
+.iw-snapshot-item--status[data-status="above"]   .iw-status-val { color: #f59e0b; }
+
+/* ============================================
+   HEALTHY WEIGHT RANGE DISPLAY
+============================================ */
+.iw-range-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: var(--sp-2) 0 var(--sp-1);
+}
+
+.iw-range-low,
+.iw-range-high {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.iw-range-sep {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.iw-range-unit {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  align-self: flex-end;
+  padding-bottom: 6px;
+}
+
+.iw-range-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  text-align: center;
+  line-height: 1.55;
+  margin: var(--sp-1) 0 0;
+}
+
+/* ============================================
+   CURRENT WEIGHT ANALYSIS — diff colour
+============================================ */
+.iw-diff-val {
+  color: var(--color-text);
+}
+
+.iw-diff-val[data-diff="below"]   { color: #60a5fa; }
+.iw-diff-val[data-diff="healthy"] { color: #10b981; }
+.iw-diff-val[data-diff="above"]   { color: #f59e0b; }
+
+/* ============================================
+   WEIGHT POSITION BAR
+   Mirrors body-fat category bar architecture.
+   3 segments: Underweight / Healthy / Overweight
+   Marker: translateX(-50%) centres dot on value.
+============================================ */
+.iw-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iw-bar {
+  display: flex;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 12px;
+}
+
+.iw-bar-segment {
+  flex: 1;
+}
+
+.iw-bar-under   { background: #60a5fa; }
+.iw-bar-healthy { background: #10b981; }
+.iw-bar-over    { background: #f59e0b; }
+
+.iw-bar-marker-wrap {
+  position: relative;
+  height: 16px;
+  overflow: visible;
+}
+
+.iw-bar-marker {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--color-text);
+  border: 2px solid var(--color-bg);
+  border-radius: 50%;
+  top: -82%;
+  transform: translate(-50%, -50%);
+  transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+  left: 50%; /* updated by JS */
+}
+
+.iw-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  padding: 0 2px;
+}
+
+.iw-bar-labels span {
+  flex: 1;
+  text-align: center;
+}
+
+.iw-bar-labels span:first-child { text-align: left; }
+.iw-bar-labels span:last-child  { text-align: right; }
+
+/* ============================================
+   RECOMMENDED NEXT STEP
+============================================ */
+.iw-next-step {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+============================================ */
+[data-theme="light"] .iw-bar-marker {
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 640px) {
+  .iw-section-card {
+    padding: var(--sp-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .iw-snapshot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .iw-snapshot-badge {
+    position: static;
+    transform: none;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .iw-snapshot-item--highlight .iw-snapshot-val {
+    margin-top: var(--sp-1);
+  }
+
+  .iw-bar-labels {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .iw-unit-label-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .iw-snapshot-val {
+    font-size: var(--fs-lg);
+  }
+
+  .iw-range-low,
+  .iw-range-high {
+    font-size: clamp(1.75rem, 12vw, 2.5rem);
+  }
+}

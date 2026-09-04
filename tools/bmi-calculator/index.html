@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator — Project 50</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly. Free, private, no login required. Get your BMI and health status in seconds.">
+  <meta name="keywords" content="bmi calculator, body mass index, bmi check, weight health check, free bmi tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/bmi-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/bmi-calculator/">
+  <meta property="og:title" content="BMI Calculator — Free Body Mass Index Tool | Project 50">
+  <meta property="og:description" content="Calculate your Body Mass Index instantly. Free, private, no login required. Supports metric and imperial units.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="BMI Calculator — Free Body Mass Index Tool | Project 50">
+  <meta name="twitter:description" content="Calculate your BMI in seconds. Free, private, no signup needed.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BMI Calculator",
+    "url": "https://project50.tools/tools/bmi-calculator/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Calculate your Body Mass Index (BMI) instantly. Supports metric and imperial units. Free and private.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Health & Fitness", "item": "https://project50.tools/tools/health/" },
+      { "@type": "ListItem", "position": 3, "name": "BMI Calculator", "item": "https://project50.tools/tools/bmi-calculator/" }
+    ]
+  }
+  </script>
+
+  <!-- =============================================
+       CSS LOAD ORDER — CANONICAL TOOL PAGE STACK
+       1. reset.css        — browser normalisation
+       2. variables.css    — design tokens
+       3. style.css        — global layout + utilities
+       4. buttons.css      — shared button system
+       5. header.css       — site header
+       6. sidebar.css      — mobile drawer
+       7. footer.css       — site footer
+       8. tool.css         — shared tool infrastructure
+       9. bmi.css          — BMI-specific components only
+  ============================================== -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="bmi.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumb — shared .tool-breadcrumb class -->
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/health/">Health &amp; Fitness</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">BMI Calculator</span>
+      </nav>
+
+      <!-- Tool wrapper — shared .tool-wrap -->
+      <div class="tool-wrap">
+
+        <!-- Tool header — shared .tool-header / .tool-icon / .tool-title / .tool-subtitle -->
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#10b981" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1"/><path d="M3 9h18"/><path d="M5.5 9 4 21h16l-1.5-12"/><path d="m7 9 1.5-6M17 9l-1.5-6"/></svg></div>
+          <div>
+            <h1 class="tool-title">BMI Calculator</h1>
+            <p class="tool-subtitle">Calculate your Body Mass Index instantly. No signup. 100% private.</p>
+          </div>
+        </header>
+
+        <!-- Form — shared .tool-form -->
+        <div class="tool-form">
+
+          <!-- Unit toggle — BMI-specific widget -->
+          <div class="unit-toggle" role="group" aria-label="Unit system">
+            <button class="unit-btn active" id="btn-metric" data-unit="metric">Metric (kg, cm)</button>
+            <button class="unit-btn" id="btn-imperial" data-unit="imperial">Imperial (lbs, ft)</button>
+          </div>
+
+          <!-- Metric inputs -->
+          <div class="bmi-inputs" id="bmi-inputs-metric">
+            <div class="bmi-field">
+              <label for="weight-kg">Weight (kg)</label>
+              <input type="number" id="weight-kg" placeholder="e.g. 70" min="1" max="500" aria-describedby="weight-hint">
+              <small id="weight-hint" class="field-hint">Enter your weight in kilograms</small>
+            </div>
+            <div class="bmi-field">
+              <label for="height-cm">Height (cm)</label>
+              <input type="number" id="height-cm" placeholder="e.g. 175" min="50" max="300">
+            </div>
+          </div>
+
+          <!-- Imperial inputs -->
+          <div class="bmi-inputs" id="bmi-inputs-imperial" style="display:none">
+            <div class="bmi-field">
+              <label for="weight-lbs">Weight (lbs)</label>
+              <input type="number" id="weight-lbs" placeholder="e.g. 154" min="1" max="1000">
+            </div>
+            <div class="bmi-row">
+              <div class="bmi-field">
+                <label for="height-ft">Height (ft)</label>
+                <input type="number" id="height-ft" placeholder="5" min="1" max="9">
+              </div>
+              <div class="bmi-field">
+                <label for="height-in">Height (in)</label>
+                <input type="number" id="height-in" placeholder="9" min="0" max="11">
+              </div>
+            </div>
+          </div>
+
+          <div class="bmi-btn-row">
+            <button class="btn btn-primary btn-lg" id="calculate-btn">
+              Calculate BMI
+            </button>
+            <button class="btn btn-secondary btn-lg" id="bmi-reset-btn" aria-label="Reset all fields">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Result — shared .tool-result -->
+        <div class="tool-result" id="bmi-result" aria-live="polite" aria-atomic="true" hidden>
+          <div class="bmi-result-value">
+            <span id="bmi-number">—</span>
+            <span class="bmi-result-unit">BMI</span>
+          </div>
+          <div class="bmi-result-label" id="bmi-label">—</div>
+
+          <!-- Scale — BMI-specific visualisation -->
+          <div class="bmi-scale" aria-label="BMI scale">
+            <div class="bmi-scale-bar">
+              <div class="bmi-scale-marker" id="bmi-marker"></div>
+            </div>
+            <div class="bmi-scale-labels" aria-hidden="true">
+              <span>Underweight</span>
+              <span>Normal</span>
+              <span>Overweight</span>
+              <span>Obese</span>
+            </div>
+          </div>
+
+          <p class="tool-note">BMI is a screening tool, not a diagnostic measure. Consult a healthcare provider for a complete assessment.</p>
+        </div>
+
+        <!-- Related Tools — rendered by bmi.js from tools.json, health-fitness only -->
+        <div class="tool-related" id="bmi-related-wrap" style="--tool-related-color:#10b981">
+          <h2 class="tool-related-title">Related Tools</h2>
+          <div class="tool-related-grid" id="bmi-related-grid"></div>
+        </div>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- ==========================================
+           SEO CONTENT SECTIONS — Phase 3.4
+           About / How To Use / FAQ
+      =========================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- About -->
+        <section class="tool-seo-section" aria-labelledby="bmi-about-heading">
+          <h2 class="tool-seo-section-title" id="bmi-about-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1"/><path d="M3 9h18"/><path d="M5.5 9 4 21h16l-1.5-12"/><path d="m7 9 1.5-6M17 9l-1.5-6"/></svg></span>
+            About the BMI Calculator
+          </h2>
+          <p>Body Mass Index (BMI) is a simple numeric value derived from a person's weight and height. It is widely used as a screening tool to categorise individuals as underweight, normal weight, overweight, or obese. Our BMI Calculator supports both metric (kg/cm) and imperial (lbs/ft) units.</p>
+          <p>BMI ranges: Underweight &lt; 18.5 · Normal 18.5–24.9 · Overweight 25–29.9 · Obese ≥ 30. Note that BMI is a population-level screening measure, not a clinical diagnosis — factors such as muscle mass, age, and ethnicity affect its accuracy.</p>
+        </section>
+
+        <!-- How To Use -->
+        <section class="tool-seo-section" aria-labelledby="bmi-howto-heading">
+          <h2 class="tool-seo-section-title" id="bmi-howto-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></span>
+            How To Use This BMI Calculator
+          </h2>
+          <ol class="tool-seo-steps">
+            <li>Select your preferred unit system — Metric (kg, cm) or Imperial (lbs, ft/in).</li>
+            <li>Enter your weight and height in the input fields.</li>
+            <li>
+              <p>Click <strong>Calculate BMI</strong> to see your result instantly.</p>
+            </li>
+            <li>Review your BMI value and category on the colour-coded scale.</li>
+          </ol>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="bmi-faq-heading">
+          <h2 class="tool-seo-section-title" id="bmi-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+          <div class="tool-faq-list" id="bmi-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bmi-faq-a1">
+                Is a BMI calculator accurate?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bmi-faq-a1" role="region">
+                BMI is a useful population-level screening indicator but it doesn't account for muscle mass, bone density, or fat distribution. Athletes may have a high BMI without excess body fat. Always consult a healthcare professional for a comprehensive assessment.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bmi-faq-a2">
+                What is a healthy BMI range?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bmi-faq-a2" role="region">
+                For most adults, a BMI between 18.5 and 24.9 is considered healthy. A BMI below 18.5 is classified as underweight, 25–29.9 as overweight, and 30 or above as obese. Ranges may differ for children and certain ethnic groups.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="bmi-faq-a3">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="bmi-faq-a3" role="region">
+                No. Everything runs entirely in your browser. No data is sent to any server and nothing is stored after you close the page.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- =============================================
+       SCRIPT LOAD ORDER — CANONICAL TOOL PAGE STACK
+       Synchronous (no defer): utils, categories,
+         storage, theme — must be available before
+         any deferred script executes.
+       Deferred: everything else, in dependency order.
+  ============================================== -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js" defer></script>
+  <script src="../../scripts/sidebar.js" defer></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="bmi.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+
+  <!-- FOOTER PARTIAL — injected by partials.js -->
+  <div id="partial-footer"></div>
+
+</body>
+</html>

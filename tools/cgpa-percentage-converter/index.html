@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGPA to Percentage Converter — Convert CGPA & Percentage Both Ways | Project 50</title>
+  <meta name="description" content="Convert CGPA to percentage or percentage to CGPA with verified institution formulas, general formulas, or your own custom formula. See exactly which formula was used and why results can differ.">
+  <meta name="keywords" content="cgpa to percentage, percentage to cgpa, cgpa percentage converter, cbse cgpa to percentage, anna university cgpa to percentage, cgpa calculator, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/cgpa-percentage-converter/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/cgpa-percentage-converter/">
+  <meta property="og:title" content="CGPA to Percentage Converter — Convert CGPA & Percentage Both Ways | Project 50">
+  <meta property="og:description" content="Convert CGPA to percentage and back, with verified institution formulas, general formulas, and a safe custom formula builder. Free and private — no login.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="CGPA to Percentage Converter — Convert CGPA & Percentage Both Ways | Project 50">
+  <meta name="twitter:description" content="Convert CGPA to percentage or percentage to CGPA using verified, general, or custom formulas — with full transparency on which formula was used.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CGPA to Percentage Converter",
+    "url": "https://project50.tools/tools/cgpa-percentage-converter/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Convert CGPA to percentage or percentage to CGPA using verified institution formulas, general formulas, or a safe custom formula builder.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "CGPA to Percentage Converter", "item": "https://project50.tools/tools/cgpa-percentage-converter/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is there one universal formula to convert CGPA to percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no single universal formula. Different boards, universities, programmes and even regulation years use different conversion rules. This tool supports verified institution formulas, general reference formulas, and a custom formula builder so you can use whichever one actually applies to you." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the CBSE formula (CGPA × 9.5) actually mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CGPA × 9.5 is a widely used indicative formula for CBSE Class X/XII results. It is commonly cited as an approximate conversion for general reference, not a certified marks equivalence — your official CBSE marksheet remains the authoritative record." }
+      },
+      {
+        "@type": "Question",
+        "name": "What formula does Anna University use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Anna University is commonly reported to use Percentage = CGPA × 10 for UG/PG programmes under several regulations. Some sources describe a different offset-based formula for specific cohorts, so always confirm against your own regulation's official notification or request an official conversion certificate." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert percentage back to CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a linear formula Percentage = (CGPA × multiplier) + offset, the reverse is CGPA = (Percentage − offset) ÷ multiplier. Switch to the Percentage → CGPA tab, keep the same conversion method, and enter your percentage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does it say reverse conversion is unavailable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Reverse conversion requires dividing by the formula's multiplier. If a custom formula's multiplier is zero, that division is undefined, so the tool disables the reverse calculation and shows this message instead of an incorrect result." }
+      },
+      {
+        "@type": "Question",
+        "name": "My institution isn't listed — what should I do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the Custom Formula option. Enter your institution's official multiplier and offset (found on your grading policy or marksheet) and the tool will calculate and reverse-calculate using that exact formula, plus generate a reference table for it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do different formulas give different percentages for the same CGPA?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each formula encodes a different institution's grading policy. A 10-point CGPA of 8.2 converts to 77.90% under CGPA × 9.5, but 82.00% under CGPA × 10 — neither is 'wrong', they simply represent different institutional rules. Use the Compare Other Conversion Methods section to see this side by side." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for a 4-point CGPA scale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, for the General Formula and Custom Formula methods you can select a 4-point scale. Verified institution presets use the scale defined by that institution's own published formula." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a 0 CGPA or 0% a valid input?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Zero is a valid value at either end of the scale and the calculator accepts it — only negative values or values above the selected scale's maximum are rejected." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your inputs and selected method are saved to your browser's local storage so they persist between visits. Calculations happen entirely in your browser — your academic information is never sent to any server." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="cgpa-percentage.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">CGPA to Percentage Converter</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">CGPA &amp; Percentage Converter</h1>
+            <p class="tool-subtitle">Convert CGPA to percentage and percentage to CGPA — with verified institution formulas, general formulas, or your own custom formula.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             CONVERSION METHOD — shared across both tabs so
+             the selected method stays consistent when the
+             direction changes.
+        ============================================== -->
+        <div class="cpc-method-card">
+
+          <div class="tool-field">
+            <label class="tool-field-label" for="cpc-method-select">Conversion Method</label>
+            <div class="cpc-select-wrap">
+              <select class="tool-select" id="cpc-method-select" aria-describedby="cpc-method-info"></select>
+              <span class="cpc-select-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="cpc-scale-group" id="cpc-scale-group">
+            <span class="cpc-scale-group-label" id="cpc-scale-group-label">CGPA Scale</span>
+            <div class="cpc-scale-selector" role="group" aria-labelledby="cpc-scale-group-label">
+              <button type="button" class="cpc-scale-btn" data-scale="10" aria-pressed="true">10-Point Scale</button>
+              <button type="button" class="cpc-scale-btn" data-scale="4" aria-pressed="false">4-Point Scale</button>
+            </div>
+          </div>
+          <p class="cpc-scale-fixed-note" id="cpc-scale-fixed-note" hidden></p>
+
+          <div class="cpc-custom-builder" id="cpc-custom-builder" hidden>
+            <div class="cpc-custom-row">
+              <span class="cpc-custom-static">Percentage = ( CGPA ×</span>
+              <input type="number" class="tool-input" id="cpc-custom-multiplier" placeholder="e.g. 10" step="any" inputmode="decimal" aria-label="Multiplier">
+              <span class="cpc-custom-static">)</span>
+              <div class="cpc-select-wrap">
+                <select class="tool-select" id="cpc-custom-sign" aria-label="Offset sign">
+                  <option value="+">+</option>
+                  <option value="-">&minus;</option>
+                </select>
+                <span class="cpc-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </div>
+              <input type="number" class="tool-input" id="cpc-custom-magnitude" placeholder="e.g. 7.5" step="any" min="0" inputmode="decimal" aria-label="Offset magnitude">
+            </div>
+            <div class="cpc-custom-validation" id="cpc-custom-validation" role="alert" aria-live="assertive" hidden></div>
+            <p class="cpc-custom-formula-preview" id="cpc-custom-formula-preview" aria-live="polite">Enter a multiplier to see the formula.</p>
+            <p class="cpc-reverse-note" id="cpc-custom-reverse-note" aria-live="polite"></p>
+          </div>
+
+          <div class="cpc-method-info" id="cpc-method-info" aria-live="polite"></div>
+        </div>
+
+        <!-- =============================================
+             MODE SELECTOR — compact tab-style
+        ============================================== -->
+        <div class="cpc-mode-selector" role="tablist" aria-label="Conversion direction">
+          <button type="button" role="tab" class="cpc-mode-tab" id="cpc-tab-cgpa-to-percentage" aria-selected="true" aria-controls="cpc-panel-cgpa-to-percentage" tabindex="0" data-mode="cgpa-to-percentage">
+            CGPA → Percentage
+          </button>
+          <button type="button" role="tab" class="cpc-mode-tab" id="cpc-tab-percentage-to-cgpa" aria-selected="false" aria-controls="cpc-panel-percentage-to-cgpa" tabindex="-1" data-mode="percentage-to-cgpa">
+            Percentage → CGPA
+          </button>
+        </div>
+
+        <!-- =============================================
+             MODE PANELS
+        ============================================== -->
+        <div class="cpc-panels">
+
+          <!-- =========================================
+               MODE 1 — CGPA → PERCENTAGE
+          ========================================== -->
+          <div class="cpc-panel" id="cpc-panel-cgpa-to-percentage" role="tabpanel" aria-labelledby="cpc-tab-cgpa-to-percentage" tabindex="0">
+
+            <div class="tool-form" role="form" aria-label="CGPA to Percentage">
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="cpc-cgpa-input">CGPA</label>
+                <input class="tool-input" type="number" id="cpc-cgpa-input" placeholder="e.g. 8.2" step="any" min="0" inputmode="decimal" aria-describedby="cpc-cgpa-scale-hint">
+                <span class="tool-field-hint" id="cpc-cgpa-scale-hint">0–10 (10-point scale)</span>
+              </div>
+
+              <div class="cpc-validation" id="cpc-cgpa-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="cpc-actions">
+                <button class="btn btn-primary btn-lg" id="cpc-cgpa-calc-btn" type="button">Calculate Percentage</button>
+                <button class="btn btn-secondary btn-lg" id="cpc-cgpa-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="cpc-cgpa-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="cpc-section-card cpc-hero-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Equivalent Percentage
+                </h2>
+                <div class="cpc-big-number" id="cpc-cgpa-hero">—</div>
+                <p class="cpc-hero-sub" id="cpc-cgpa-hero-sub">—</p>
+              </div>
+
+              <div class="cpc-section-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Result Details
+                </h2>
+                <ul class="cpc-detail-list">
+                  <li><span class="cpc-detail-label">Input</span><span class="cpc-detail-value" id="cpc-cgpa-detail-input">—</span></li>
+                  <li><span class="cpc-detail-label">Conversion Method</span><span class="cpc-detail-value" id="cpc-cgpa-detail-method">—</span></li>
+                  <li><span class="cpc-detail-label">Formula</span><span class="cpc-detail-value" id="cpc-cgpa-detail-formula">—</span></li>
+                  <li><span class="cpc-detail-label">Result</span><span class="cpc-detail-value" id="cpc-cgpa-detail-result">—</span></li>
+                </ul>
+              </div>
+
+              <div class="cpc-section-card">
+                <button class="cpc-collapse-toggle cpc-compare-toggle" id="cpc-cgpa-compare-toggle" type="button" aria-expanded="false" aria-controls="cpc-cgpa-compare-body">
+                  Compare Other Conversion Methods
+                  <svg class="cpc-collapse-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="cpc-collapse-body cpc-compare-body" id="cpc-cgpa-compare-body" hidden>
+                  <p class="tool-field-hint" style="margin-bottom:var(--sp-2)">Alternative calculations for the same CGPA. The method selected above remains the primary result.</p>
+                  <div class="cpc-compare-list" id="cpc-cgpa-compare-list"></div>
+                </div>
+              </div>
+
+              <div class="cpc-section-card">
+                <button class="cpc-collapse-toggle cpc-ref-toggle" id="cpc-cgpa-ref-toggle" type="button" aria-expanded="false" aria-controls="cpc-cgpa-ref-body">
+                  CGPA → Percentage Reference
+                  <svg class="cpc-collapse-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="cpc-collapse-body cpc-ref-body" id="cpc-cgpa-ref-body" hidden>
+                  <div class="cpc-ref-table-wrap">
+                    <table class="cpc-ref-table">
+                      <thead><tr><th>CGPA</th><th>Percentage</th></tr></thead>
+                      <tbody id="cpc-cgpa-ref-table-body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cpc-section-card" id="cpc-cgpa-insights-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="cpc-insights-list" id="cpc-cgpa-insights-list" aria-label="Conversion insights"></ul>
+              </div>
+
+              <p class="tool-note">Conversion formulas vary by institution, programme, regulation, and academic year. Use your institution's officially specified formula for applications, admissions, transcripts, or other official purposes.</p>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               MODE 2 — PERCENTAGE → CGPA
+          ========================================== -->
+          <div class="cpc-panel" id="cpc-panel-percentage-to-cgpa" role="tabpanel" aria-labelledby="cpc-tab-percentage-to-cgpa" tabindex="0" hidden>
+
+            <div class="tool-form" role="form" aria-label="Percentage to CGPA">
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="cpc-pct-input">Percentage</label>
+                <input class="tool-input" type="number" id="cpc-pct-input" placeholder="e.g. 77.9" step="any" min="0" max="100" inputmode="decimal" aria-describedby="cpc-pct-hint">
+                <span class="tool-field-hint" id="cpc-pct-hint">0–100%</span>
+              </div>
+
+              <p class="cpc-unavailable-note" id="cpc-pct-unavailable-note" hidden>Reverse conversion is unavailable for this formula (multiplier is zero). Choose a different method or update the custom multiplier above.</p>
+
+              <div class="cpc-validation" id="cpc-pct-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="cpc-actions">
+                <button class="btn btn-primary btn-lg" id="cpc-pct-calc-btn" type="button">Calculate CGPA</button>
+                <button class="btn btn-secondary btn-lg" id="cpc-pct-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="cpc-pct-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="cpc-section-card cpc-hero-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Equivalent CGPA
+                </h2>
+                <div class="cpc-big-number" id="cpc-pct-hero">—</div>
+                <p class="cpc-hero-sub" id="cpc-pct-hero-sub">—</p>
+              </div>
+
+              <div class="cpc-section-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Result Details
+                </h2>
+                <ul class="cpc-detail-list">
+                  <li><span class="cpc-detail-label">Input</span><span class="cpc-detail-value" id="cpc-pct-detail-input">—</span></li>
+                  <li><span class="cpc-detail-label">Conversion Method</span><span class="cpc-detail-value" id="cpc-pct-detail-method">—</span></li>
+                  <li><span class="cpc-detail-label">Formula</span><span class="cpc-detail-value" id="cpc-pct-detail-formula">—</span></li>
+                  <li><span class="cpc-detail-label">Result</span><span class="cpc-detail-value" id="cpc-pct-detail-result">—</span></li>
+                </ul>
+              </div>
+
+              <div class="cpc-section-card">
+                <button class="cpc-collapse-toggle cpc-compare-toggle" id="cpc-pct-compare-toggle" type="button" aria-expanded="false" aria-controls="cpc-pct-compare-body">
+                  Compare Other Conversion Methods
+                  <svg class="cpc-collapse-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="cpc-collapse-body cpc-compare-body" id="cpc-pct-compare-body" hidden>
+                  <p class="tool-field-hint" style="margin-bottom:var(--sp-2)">Alternative calculations for the same percentage. Formulas with a zero multiplier cannot be reversed.</p>
+                  <div class="cpc-compare-list" id="cpc-pct-compare-list"></div>
+                </div>
+              </div>
+
+              <div class="cpc-section-card">
+                <button class="cpc-collapse-toggle cpc-ref-toggle" id="cpc-pct-ref-toggle" type="button" aria-expanded="false" aria-controls="cpc-pct-ref-body">
+                  CGPA → Percentage Reference
+                  <svg class="cpc-collapse-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="cpc-collapse-body cpc-ref-body" id="cpc-pct-ref-body" hidden>
+                  <div class="cpc-ref-table-wrap">
+                    <table class="cpc-ref-table">
+                      <thead><tr><th>CGPA</th><th>Percentage</th></tr></thead>
+                      <tbody id="cpc-pct-ref-table-body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cpc-section-card" id="cpc-pct-insights-card">
+                <h2 class="cpc-section-title">
+                  <span class="cpc-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="cpc-insights-list" id="cpc-pct-insights-list" aria-label="Conversion insights"></ul>
+              </div>
+
+              <p class="tool-note">Conversion formulas vary by institution, programme, regulation, and academic year. Use your institution's officially specified formula for applications, admissions, transcripts, or other official purposes.</p>
+
+            </div>
+          </div>
+
+        </div><!-- /.cpc-panels -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="cpc-related-wrap" aria-labelledby="cpc-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="cpc-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="cpc-related-grid"
+               data-tool-id="cgpa-percentage-converter"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is CGPA to Percentage Conversion? -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            What Is CGPA to Percentage Conversion?
+          </h2>
+          <p>CGPA (Cumulative Grade Point Average) and percentage are two different ways of expressing academic performance. Many boards and universities report results as a CGPA, but job applications, higher-education admissions, and some competitive exams ask for a percentage — so students frequently need to convert between the two.</p>
+          <p>The catch is that there is no single formula that works everywhere. Each board or university defines its own conversion rule, and some don't publish one at all. This tool gives you three ways to get an accurate result: verified formulas from specific institutions, general reference formulas for a quick estimate, and a custom formula builder for anything not listed.</p>
+        </section>
+
+        <!-- 2. How Does CGPA to Percentage Conversion Work? -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-how-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-how-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M7 7h10M7 12h10M7 17h10"/></svg></span>
+            How Does CGPA to Percentage Conversion Work?
+          </h2>
+          <p>Every formula supported here follows the same safe, linear shape:</p>
+          <p><strong>Percentage = (CGPA × multiplier) + offset</strong></p>
+          <p>The multiplier scales your CGPA up to a percentage-like range, and an optional offset shifts the result. For example, CGPA × 9.5 uses a multiplier of 9.5 and no offset, so a CGPA of 8.2 converts to 77.90%. A formula like (CGPA − 0.75) × 10 is mathematically the same shape with a multiplier of 10 and an offset of −7.5. Restricting every formula to this structure keeps the calculation transparent and reversible, and avoids the risks of evaluating arbitrary, unverified expressions.</p>
+        </section>
+
+        <!-- 3. Why Different Institutions Use Different Formulas -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-why-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-why-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+            Why Different Institutions Use Different Formulas
+          </h2>
+          <p>Grading systems are set independently by each board, university, or programme — there is no central authority standardising how a 10-point or 4-point CGPA maps to a percentage. A conversion formula that one university publishes officially may have no relationship at all to another university's rule, even if both use a 10-point scale.</p>
+          <p>This is why the same CGPA can produce noticeably different percentages depending on which formula is applied. A 10-point CGPA of 8.2, for instance, converts to 77.90% under CGPA × 9.5 but 82.00% under CGPA × 10. Neither number is incorrect — they simply reflect different institutional policies.</p>
+        </section>
+
+        <!-- 4. How to Choose the Correct Conversion Formula -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-choose-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-choose-heading">
+            How to Choose the Correct Conversion Formula
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Check your marksheet, transcript, or official grading policy document first — many institutions print the exact conversion formula there.</p></li>
+            <li><p>If your institution appears under Verified Institution in the selector above, use that preset and read its applicability note before relying on the result.</p></li>
+            <li><p>If it isn't listed, use General Formula only for a rough estimate — it is explicitly not tied to any specific institution.</p></li>
+            <li><p>For an exact result from an unlisted institution, use Custom Formula and enter the multiplier and offset from your own official documentation.</p></li>
+            <li><p>For applications, admissions, or transcripts, always get a formula confirmed by your institution's examination office rather than relying solely on any online calculator, including this one.</p></li>
+          </ol>
+        </section>
+
+        <!-- 5. How to Convert Percentage Back to CGPA -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-reverse-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-reverse-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/></svg></span>
+            How to Convert Percentage Back to CGPA
+          </h2>
+          <p>Because every supported formula has the shape Percentage = (CGPA × multiplier) + offset, it can always be algebraically reversed to <strong>CGPA = (Percentage − offset) ÷ multiplier</strong>, as long as the multiplier isn't zero. Switch to the Percentage → CGPA tab, keep the same conversion method selected, enter your percentage, and the tool applies the reverse formula automatically.</p>
+          <p>If a custom formula's multiplier is exactly zero, that division is mathematically undefined — the percentage would be the same constant no matter what CGPA was entered — so the tool disables reverse conversion for that case and shows a clear message instead of a misleading number.</p>
+        </section>
+
+        <!-- 6. Understanding Institutional Conversion Rules -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-institutional-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-institutional-heading">
+            Understanding Institutional Conversion Rules
+          </h2>
+          <p>The Verified Institution presets in this tool are included only where a source and applicability could be reasonably identified — each one shows its formula, source, and applicability notes directly beneath the selector. These are still general references rather than guaranteed matches for every regulation year or programme at that institution, which is why each preset carries its own caveat.</p>
+          <p>The General Formula options (CGPA × 9.5, CGPA × 10) are not tied to any institution at all. They exist for a fast approximate answer when you don't yet know your institution's exact rule, and are clearly labelled as general, indicative calculations rather than official ones.</p>
+        </section>
+
+        <!-- 7. Common CGPA Conversion Mistakes -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common CGPA Conversion Mistakes
+          </h2>
+          <p><strong>Mistake 1 — Assuming one formula applies everywhere.</strong> CGPA × 9.5 and CGPA × 10 are both widely repeated online, but neither is universal. Using the wrong one can misrepresent your percentage by several points.</p>
+          <p><strong>Mistake 2 — Mixing up the CGPA scale.</strong> Entering a 4-point CGPA while a 10-point formula is selected (or vice versa) produces a meaningless result. Always confirm the scale first.</p>
+          <p><strong>Mistake 3 — Treating a general or custom result as official.</strong> Only your institution's own examination office can certify a percentage for official use — any calculator result, verified or not, should be treated as a reference.</p>
+        </section>
+
+        <!-- 8. Tips for Using CGPA Conversions Correctly -->
+        <section class="tool-seo-section" aria-labelledby="cpc-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="cpc-seo-tips-heading">
+            Tips for Using CGPA Conversions Correctly
+          </h2>
+          <p>Use the Compare Other Conversion Methods section to see how much your result would change under a different formula — this is especially useful when you're unsure which one your institution actually uses. If you're applying somewhere that asks for a specific formula (a scholarship, an employer, a foreign university), use Custom Formula with their exact multiplier and offset rather than guessing from a general preset.</p>
+          <p>Keep a copy of your official conversion certificate or marksheet alongside any calculator result — for high-stakes uses like visa applications or accreditation, institutions typically want the certified document, not a self-calculated figure.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="cpc-faq-heading">
+          <h2 class="tool-seo-section-title" id="cpc-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+
+          <div class="tool-faq-list" id="cpc-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a1">
+                Is there one universal formula to convert CGPA to percentage?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a1" role="region">
+                No. There is no single universal formula. Different boards, universities, programmes and even regulation years use different conversion rules. This tool supports verified institution formulas, general reference formulas, and a custom formula builder so you can use whichever one actually applies to you.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a2">
+                What does the CBSE formula (CGPA × 9.5) actually mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a2" role="region">
+                CGPA × 9.5 is a widely used indicative formula for CBSE Class X/XII results. It is commonly cited as an approximate conversion for general reference, not a certified marks equivalence — your official CBSE marksheet remains the authoritative record.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a3">
+                What formula does Anna University use?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a3" role="region">
+                Anna University is commonly reported to use Percentage = CGPA × 10 for UG/PG programmes under several regulations. Some sources describe a different offset-based formula for specific cohorts, so always confirm against your own regulation's official notification or request an official conversion certificate.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a4">
+                How do I convert percentage back to CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a4" role="region">
+                For a linear formula Percentage = (CGPA × multiplier) + offset, the reverse is CGPA = (Percentage − offset) ÷ multiplier. Switch to the Percentage → CGPA tab, keep the same conversion method, and enter your percentage.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a5">
+                Why does it say reverse conversion is unavailable?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a5" role="region">
+                Reverse conversion requires dividing by the formula's multiplier. If a custom formula's multiplier is zero, that division is undefined, so the tool disables the reverse calculation and shows this message instead of an incorrect result.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a6">
+                My institution isn't listed — what should I do?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a6" role="region">
+                Use the Custom Formula option. Enter your institution's official multiplier and offset (found on your grading policy or marksheet) and the tool will calculate and reverse-calculate using that exact formula, plus generate a reference table for it.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a7">
+                Why do different formulas give different percentages for the same CGPA?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a7" role="region">
+                Each formula encodes a different institution's grading policy. A 10-point CGPA of 8.2 converts to 77.90% under CGPA × 9.5, but 82.00% under CGPA × 10 — neither is "wrong", they simply represent different institutional rules. Use the Compare Other Conversion Methods section to see this side by side.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a8">
+                Can I use this for a 4-point CGPA scale?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a8" role="region">
+                Yes, for the General Formula and Custom Formula methods you can select a 4-point scale. Verified institution presets use the scale defined by that institution's own published formula.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a9">
+                Is a 0 CGPA or 0% a valid input?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a9" role="region">
+                Yes. Zero is a valid value at either end of the scale and the calculator accepts it — only negative values or values above the selected scale's maximum are rejected.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="cpc-faq-a10">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="cpc-faq-a10" role="region">
+                No. Calculations happen entirely in your browser. Your academic information is not sent to any server. Your inputs and selected method are saved to your browser's local storage so they persist between visits, and resetting a tab clears its saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="cgpa-percentage.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>
