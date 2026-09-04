@@ -14,27 +14,31 @@
 4. Project Priorities
 5. Technology Stack
 6. Browser Support
-7. Project Architecture
-8. Tool Architecture
-9. File & Folder Standards
-10. Coding Standards
+7. Performance Targets
+8. Project Architecture
+9. Tool Architecture
+10. File & Folder Standards
 11. HTML Standards
 12. CSS Standards
 13. JavaScript Standards
-14. Shared Systems
-15. Validation Standards
-16. Storage Standards
-17. Result Rendering Standards
-18. Related Tools Standards
-19. SEO Standards
-20. Accessibility Standards
-21. Performance Standards
-22. Integration Standards
-23. Testing Standards
-24. Release Standards
-25. Change Management
-26. Lessons Learned
-27. Golden Rules
+14. Naming Conventions
+15. Code Quality Rules
+16. Shared Systems Standards
+17. Validation Standards
+18. Storage Standards
+19. Result Rendering Standards
+20. Related Tools Standards
+21. Integration Standards
+22. Performance Standards
+23. Accessibility Standards
+24. SEO Standards
+25. Testing Standards
+26. QA Standards
+27. Release Standards
+28. Change Management
+29. Lessons Learned
+30. Golden Rules
+31. Final Engineering Checklist
 
 ---
 
@@ -581,13 +585,13 @@ Do not duplicate shared functionality inside individual tools.
 
 ## Documentation
 
-Project documentation belongs only inside:
+Project development-standards documentation (this document, `CLAUDE.md`, `design-system-and-ui-guidelines.md`, `project-workflow.md`, `new-tool-checklist.md`) lives inside:
 
 ```text
-docs/
+.claude/
 ```
 
-Do not place documentation inside tool folders.
+`.claude/` is the single source of truth for Project 50 development standards. Do not place documentation inside tool folders, and do not add new standards documents inside `docs/`.
 
 ---
 
@@ -693,6 +697,74 @@ Every page should include:
 
 ---
 
+## Skip Navigation
+
+Every tool page must begin the `<body>` with a skip link:
+
+```html
+<a href="#main-content" class="skip-link">Skip to main content</a>
+```
+
+`<main id="main-content">` must exist as the corresponding target. This is required on every tool page, not optional.
+
+---
+
+## Partial Mount Points
+
+Every tool page must include three empty mount points for shared partials, populated at runtime by `scripts/partials.js`:
+
+```html
+<div id="partial-header"></div>
+<div id="partial-sidebar"></div>
+<div id="partial-footer"></div>
+```
+
+Do not pre-populate these with static header/sidebar/footer markup — `partials.js` owns their content.
+
+---
+
+## Breadcrumb
+
+The final breadcrumb item must carry `aria-current="page"` and must not be a link:
+
+```html
+<nav class="tool-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  <span class="sep" aria-hidden="true">›</span>
+  <span aria-current="page">Tool Name</span>
+</nav>
+```
+
+`P50ToolBase.buildBreadcrumb(items)` generates this markup automatically and already applies `aria-current="page"` to the last item.
+
+---
+
+## Input Hint Text
+
+When an input has helper text, associate it explicitly rather than relying on visual proximity:
+
+```html
+<label for="weight-kg">Weight (kg)</label>
+<input type="number" id="weight-kg" aria-describedby="weight-hint">
+<small id="weight-hint" class="field-hint">Enter your weight in kilograms</small>
+```
+
+---
+
+## Keyboard Submission
+
+Every calculator input must trigger the primary calculate action on Enter, in addition to the Calculate button:
+
+```javascript
+document.querySelectorAll('.tool-field input').forEach(function (input) {
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') calculate();
+  });
+});
+```
+
+---
+
 # 12. CSS Standards
 
 Project 50 uses Vanilla CSS.
@@ -792,6 +864,30 @@ Do not recreate:
 * alerts
 * form controls
 * result layouts
+
+---
+
+## Quick Reference — Common Shared Classes
+
+Verified against live tools. Not exhaustive — inspect the latest benchmark tool for anything not listed here.
+
+| Class | Purpose | Defined in |
+|---|---|---|
+| `.tool-wrap` | Main tool container | `tool.css` |
+| `.tool-wrap--wide` | Wider variant for multi-column tools | `tool.css` |
+| `.tool-header` | Icon + title + subtitle block | `tool.css` |
+| `.tool-form` | Input form container | `tool.css` |
+| `.tool-field` / `.tool-input` / `.tool-select` | Form field wrapper and controls | `tool.css` |
+| `.tool-result` | Single-result output card (e.g. BMI, EMI) | `tool.css` |
+| `.macro-section-card` | Multi-card result layout (e.g. Macro Calculator) | tool-specific CSS, follows `tool.css` tokens |
+| `.tool-stat-grid` / `.tool-stat` | Grid of secondary result stats | `tool.css` |
+| `.tool-range` | Slider input (e.g. EMI Calculator) | `tool.css` |
+| `.tool-seo-sections` / `.tool-seo-section` | SEO content blocks below the calculator | `tool.css` |
+| `.tool-faq-list` / `.tool-faq-item` / `.tool-faq-question` / `.tool-faq-answer` | FAQ accordion | `tool.css`; behaviour via `faq-accordion.js` |
+| `.tool-related` / `.tool-related-grid` | Related tools section | `tool.css` |
+| `.btn.btn-primary.btn-lg` / `.btn.btn-secondary.btn-lg` | Primary / secondary action buttons | `components/buttons.css` |
+
+Both `.tool-result` (single-answer tools) and `.macro-section-card` (multi-card tools) are current and valid — choose based on whether the tool has one primary answer or several distinct result groups, per the Product Architecture Rule.
 
 ---
 
@@ -1480,13 +1576,13 @@ Do not recommend irrelevant tools.
 
 ## Rendering
 
-Use shared renderer:
+The shared helper is:
 
-```text
-P50Renderers.relatedToolCard()
+```javascript
+P50ToolBase.renderRelatedTools(containerId, currentToolId, categoryId);
 ```
 
-or the current shared Project 50 rendering helper.
+It fetches `data/tools.json`, filters to the same category (excluding the current tool, capped at 4), and renders via `P50Renderers.relatedToolCard()` when available. New tools should call this helper directly rather than reimplementing the fetch/filter/render logic — at least one existing tool currently duplicates this logic locally instead of calling the shared helper; new tools should not repeat that pattern.
 
 ---
 
@@ -1640,6 +1736,25 @@ Dynamic results should announce meaningful updates when appropriate.
 
 ---
 
+## FAQ Accordion Pattern
+
+Every FAQ accordion item follows this exact ARIA pattern:
+
+```html
+<div class="tool-faq-item">
+  <button class="tool-faq-question" aria-expanded="false" aria-controls="[unique-id]">
+    Question text
+  </button>
+  <div class="tool-faq-answer" id="[unique-id]" role="region">
+    Answer text
+  </div>
+</div>
+```
+
+`faq-accordion.js` toggles `aria-expanded` and the `.is-open` class based on the `aria-controls` → `id` relationship. IDs must be unique per tool (e.g. `[tool]-faq-a1`, `[tool]-faq-a2`).
+
+---
+
 ## Colour
 
 Never rely solely on colour to communicate meaning.
@@ -1754,6 +1869,8 @@ Never skip heading levels unnecessarily.
 ---
 
 ## Standard SEO Sections
+
+> **Verified (Sept 2026):** This 8-section structure is the current, actively implemented standard — confirmed against every Student Tools category tool (SGPA, CGPA, Attendance, Marks %, Grade/Required Marks, CGPA↔% Converter, Study Hours & Exam Planner), each of which labels its SEO block with the HTML comment `SEO SECTIONS — 8 required sections`. The original Health & Fitness and Finance tools (BMI, Macro, EMI, and the rest of that earlier June 2026 batch) were built with an earlier 3-section format (About, How To Use, FAQ) before this standard was adopted. New tools must follow the 8-section structure below; the 3-section tools are not being retrofitted automatically and should be treated as legacy, not as a pattern to copy.
 
 Every Project 50 tool should contain **8 standard informational sections** below the calculator.
 

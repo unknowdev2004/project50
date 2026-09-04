@@ -27,7 +27,7 @@
 - `tools/[category-slug]/` — category landing pages
 - `scripts/` — all shared JS globals (utils, storage, renderers, icons, search, partials, theme, animations)
 - `styles/variables.css` — all design tokens | `styles/tool.css` — shared tool page infrastructure
-- `.claude/new-tool-checklist.md` — mandatory pre-release checklist (phase-based). A `docs/new-tool-checklist.md` also exists as an older, superseded 15-step draft (emoji icons, 3 SEO sections) — do not follow it; it predates the current icon and SEO-section standards below.
+- `.claude/new-tool-checklist.md` — mandatory pre-release checklist (phase-based). An older, superseded 15-step draft (emoji icons, 3 SEO sections) has been moved to `docs/_deprecated/new-tool-checklist.md` — do not follow it; it predates the current icon and SEO-section standards below.
 
 ---
 
@@ -71,7 +71,7 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 
 ## 4. UI/UX Design System
 
-**Primary benchmark: Macro Calculator** (`tools/macro-calculator/`). When uncertain, copy its structure exactly.
+**Primary benchmark: Macro Calculator** (`tools/macro-calculator/`). When uncertain, copy its structure exactly — **except SEO section count**: Macro Calculator predates the current 8-section SEO standard (see SEO Section Rules below) and should not be copied for that part.
 
 ### Category Colors
 | Category | Color |
@@ -89,7 +89,7 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 4. Validate/Calculate button (`.btn.btn-primary.btn-lg`) + Reset (`.btn.btn-secondary.btn-lg`)
 5. Results: multiple `.macro-section-card` blocks, hidden until calculated
 6. Related tools grid (2-col, same category)
-7. SEO sections: About / How To Use (`<ol class="tool-seo-steps">`) / FAQ accordion
+7. SEO sections: 8 required informational sections + FAQ accordion (see SEO Section Rules below)
 
 ### Result Card Rules
 - Summary/quick-answer card always comes **first**
@@ -107,7 +107,17 @@ Each tool entry: `id`, `name`, `description`, `icon` (key string), `category` (c
 - Prevent wheel scroll on all number inputs
 
 ### SEO Section Rules
-- Three sections always present: About, How To Use, FAQ
+> Verified against the repository (Sept 2026): the original Health & Fitness and Finance tools (BMI, Macro, EMI, and the rest of that early June 2026 batch) were built with 3 sections (About, How To Use, FAQ). Every Student Tools category tool built since (SGPA, CGPA, Attendance, Marks %, Grade/Required Marks, CGPA↔% Converter, Study Hours & Exam Planner) — the most recent work in the project — implements **8 required informational sections plus FAQ**, and labels this explicitly in its own HTML (`<!-- SEO SECTIONS — 8 required sections -->`). Treat 8 sections + FAQ as the current standard for new tools; the 3-section pattern is superseded.
+
+- **Current standard — 8 sections + FAQ** (see `tool-standards.md` §24 for the canonical list and adapt section 5–6 to the tool's domain):
+  1. What Is [Tool Name]?
+  2. How Does/Is [Tool Name] Calculated/Work?
+  3. How To Use This Calculator
+  4. Understanding Your Results
+  5. A domain-specific section (e.g. "Grade Scales", "Attendance Rules")
+  6. A second domain-specific section (e.g. "Factors That Affect Results", "Tips")
+  7. Common Mistakes (& Tips)
+  8. FAQ
 - Last FAQ item is always "Does this tool store my data?" — keep it, pre-filled
 - FAQ uses `.tool-faq-item` / `.tool-faq-question` / `.tool-faq-answer` — activated by `faq-accordion.js`
 
@@ -200,7 +210,7 @@ Password Generator and Color Palette Generator are marked `popular: true` in `al
 - Set `--tool-color` on `.tool-icon` and `--tool-related-color` on `.tool-related`
 - Include aria attributes: `role="alert"` on validation, `aria-live="polite"` on results
 - Register new tools in `tools.json` before implementing
-- Include all three SEO sections on every tool page
+- Include all 8 required SEO sections plus FAQ on every new tool page (see §4 SEO Section Rules) — do not copy Macro Calculator's 3-section pattern for new tools; it predates this standard
 
 ---
 

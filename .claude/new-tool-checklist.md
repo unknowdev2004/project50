@@ -19,7 +19,7 @@ This checklist complements:
 - `.claude/design-system-and-ui-guidelines.md`
 - `.claude/project-workflow.md`
 
-(Note: `docs/tool-standards.md` and `docs/new-tool-checklist.md` also exist, but they are older, superseded drafts — e.g. they specify emoji icons and 3 SEO sections, which contradict the current standards in this repository. Use the `.claude/` versions.)
+(Note: older, superseded drafts of these two documents have been moved to `docs/_deprecated/tool-standards.md` and `docs/_deprecated/new-tool-checklist.md` — e.g. they specify emoji icons and 3 SEO sections, which contradict the current standards in this repository. Use the `.claude/` versions.)
 
 If any checklist item fails, the tool returns to the appropriate workflow step before release.
 
@@ -251,3 +251,53 @@ A Project 50 tool is only considered complete after every applicable checklist i
 # Final Principle
 
 > Every released tool should make Project 50 **more consistent, more reliable, and more valuable** than it was before.
+
+---
+
+# Appendix — Practical Build Steps
+
+Preserved from the older, superseded draft now at `docs/_deprecated/new-tool-checklist.md`. This supplements the checklist above with the literal mechanics of scaffolding a tool; it does not replace anything above. Note that this draft's own SEO guidance (3 sections, 3+ FAQs minimum) reflects the pre-August-2026 format — follow the current 8-section standard in `tool-standards.md` §24 instead.
+
+## Scaffold
+
+```bash
+cp -r tools/_template tools/[tool-slug]
+mv tools/[tool-slug]/tool-name.css tools/[tool-slug]/[tool-slug].css
+mv tools/[tool-slug]/tool-name.js  tools/[tool-slug]/[tool-slug].js
+```
+
+## Reference examples
+
+- `tools/bmi-calculator/index.html` — a real two-input form example.
+- `tools/emi-calculator/index.html` — a slider-based (`.tool-range`) form example.
+- `tools/bmi-calculator/bmi.js` — a complete `validate()` / `calculate()` / `render()` / storage example.
+
+## Registering a tool
+
+Add to `allTools`; also add to `popularTools` if the tool should be featured:
+
+```json
+{
+  "id": "[tool-slug]",
+  "name": "[Tool Name]",
+  "description": "[1–2 sentence description]",
+  "icon": "[icon key registered in P50IconMap, e.g. \"scale\" — not an emoji]",
+  "category": "[category-id]",
+  "tags": ["[tag1]", "[tag2]", "[tag3]"],
+  "popular": false,
+  "link": "/tools/[tool-slug]/"
+}
+```
+
+Note: an older draft of this checklist used an `[emoji]` placeholder for the icon field. That is obsolete — Project 50 icons are string keys resolved through `P50IconMap`/`P50Icons`, not emoji.
+
+## Automatic — no action needed
+
+The following are handled by shared systems and don't need to be rebuilt per-tool:
+
+- Header, footer, sidebar — injected by `partials.js`
+- Theme (dark/light) — handled by `theme.js`
+- Search indexing — handled by `search.js` reading `tools.json`
+- Related tools — can be rendered via `P50ToolBase.renderRelatedTools()` (see `tool-standards.md` §20)
+- FAQ accordion — activated by `faq-accordion.js`
+- Fade-in animations — triggered by `animations.js`
