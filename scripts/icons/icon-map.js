@@ -55,6 +55,7 @@
     'grade-required-marks-calculator': 'calculator',
     'cgpa-percentage-converter': 'arrow-left-right',
     'study-hours-exam-planner': 'calendar-clock',
+    'target-cgpa-calculator': 'target',
     'pomodoro-timer':     'timer',
     'word-counter':       'file-text',
     'essay-outline':      'layout-list',

@@ -488,6 +488,24 @@
       ],
       "popular": false,
       "link": "/tools/study-hours-exam-planner/"
+    },
+    {
+      "id": "target-cgpa-calculator",
+      "name": "Target CGPA Calculator",
+      "description": "Find the average SGPA you need across your remaining credits to reach a target CGPA, or see what final CGPA a future SGPA would produce. Supports 10-point and 4-point scales.",
+      "icon": "target",
+      "category": "student-tools",
+      "tags": [
+        "target cgpa",
+        "required sgpa",
+        "cgpa predictor",
+        "future cgpa",
+        "cgpa planning",
+        "student",
+        "academic"
+      ],
+      "popular": false,
+      "link": "/tools/target-cgpa-calculator/"
     }
   ]
 }

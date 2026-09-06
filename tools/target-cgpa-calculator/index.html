@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target CGPA Calculator — Required SGPA &amp; Projected CGPA | Project 50</title>
+  <meta name="description" content="Find the average SGPA you need across your remaining credits to hit a target CGPA, or see what final CGPA a future SGPA would produce. Free and private.">
+  <meta name="keywords" content="target cgpa calculator, required sgpa calculator, cgpa predictor, future cgpa calculator, sgpa needed calculator, student tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://project50.tools/tools/target-cgpa-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://project50.tools/tools/target-cgpa-calculator/">
+  <meta property="og:title" content="Target CGPA Calculator — Required SGPA &amp; Projected CGPA | Project 50">
+  <meta property="og:description" content="Work out the SGPA you need across your remaining credits to hit a target CGPA, or project your final CGPA from an expected future SGPA. Free and private — no login.">
+  <meta property="og:image" content="https://project50.tools/assets/images/og-image.png">
+  <meta property="og:site_name" content="Project 50">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@project50tools">
+  <meta name="twitter:title" content="Target CGPA Calculator — Required SGPA &amp; Projected CGPA | Project 50">
+  <meta name="twitter:description" content="Find the SGPA you need across your remaining credits to reach a target CGPA, or project your final CGPA from a future SGPA.">
+  <meta name="twitter:image" content="https://project50.tools/assets/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Target CGPA Calculator",
+    "url": "https://project50.tools/tools/target-cgpa-calculator/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Web Browser",
+    "description": "Find the average SGPA needed across remaining credits to reach a target CGPA, or project a final CGPA from an expected future SGPA.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "isPartOf": { "@type": "WebSite", "name": "Project 50", "url": "https://project50.tools/" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://project50.tools/" },
+      { "@type": "ListItem", "position": 2, "name": "Student Tools", "item": "https://project50.tools/tools/student/" },
+      { "@type": "ListItem", "position": 3, "name": "Target CGPA Calculator", "item": "https://project50.tools/tools/target-cgpa-calculator/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is the required SGPA calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Required SGPA = (Target CGPA \u00d7 Total Credits \u2212 Current CGPA \u00d7 Completed Credits) \u00f7 Remaining Credits, where Total Credits is Completed Credits plus Remaining Credits. This tells you the average SGPA you need across all your remaining credits to reach your target." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the projected CGPA calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Projected CGPA = (Current CGPA \u00d7 Completed Credits + Expected SGPA \u00d7 Remaining Credits) \u00f7 Total Credits. This shows the final CGPA you would end up with if you average the SGPA you enter across your remaining credits." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does \"Perfect SGPA Required\" mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means the required SGPA works out to exactly the maximum of your selected scale (10.00 or 4.00) \u2014 your target is mathematically reachable, but only with a flawless average across every remaining credit." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my target CGPA isn't achievable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If the required SGPA comes out above your scale's maximum, no achievable SGPA can reach your target from your current position. The calculator flags this clearly and shows the highest final CGPA you could still reach instead of a misleading number." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my Current CGPA field disabled sometimes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When your completed credits are 0, you have no academic history yet, so a current CGPA has no mathematical meaning. The field is disabled and treated as 0 so the calculation starts cleanly from zero instead of using a confusing or arbitrary number." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I have 0 remaining credits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is nothing left to plan \u2014 your current CGPA is already your final CGPA. The calculator shows this explanatory message instead of performing a projection." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for a 4-point GPA scale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Switch the GPA Scale toggle to 4-Point before entering your numbers. Switching scales automatically re-checks your entered values and clears anything that is no longer valid on the new scale." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a 0 CGPA or 0 SGPA a valid input?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Zero is a valid value for current CGPA, completed credits, and expected SGPA. Only remaining credits must be greater than zero, since a projection needs at least some credits ahead of you." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this assume one semester or multiple semesters?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Neither specifically \u2014 enter the total number of credits you have left, whether that spans one semester or several. The result is the average SGPA needed (or projected) across all of those remaining credits combined, not a semester-by-semester breakdown." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool store my data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your inputs are saved to your browser's local storage so they persist between visits. Calculations happen entirely in your browser \u2014 your academic information is never sent to any server. Resetting a tab clears its saved data immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- CSS load order — canonical tool page stack -->
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/variables.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="../../styles/components/buttons.css">
+  <link rel="stylesheet" href="../../styles/components/header.css">
+  <link rel="stylesheet" href="../../styles/components/sidebar.css">
+  <link rel="stylesheet" href="../../styles/components/footer.css">
+  <link rel="stylesheet" href="../../styles/tool.css">
+  <link rel="stylesheet" href="target-cgpa.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="partial-header"></div>
+  <div id="partial-sidebar"></div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="/tools/student/">Student Tools</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span aria-current="page">Target CGPA Calculator</span>
+      </nav>
+
+      <div class="tool-wrap">
+
+        <header class="tool-header">
+          <div class="tool-icon" style="--tool-color:#3b82f6" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div>
+            <h1 class="tool-title">Target CGPA Calculator</h1>
+            <p class="tool-subtitle">Find the SGPA you need across your remaining credits to hit a target CGPA, or project the CGPA a future SGPA would produce.</p>
+          </div>
+        </header>
+
+        <!-- =============================================
+             SHARED INPUTS — used by both tabs
+        ============================================== -->
+        <div class="tcg-shared-card">
+
+          <div class="tcg-row-3">
+            <div class="tool-field">
+              <label class="tool-field-label" for="tcg-current-cgpa">Current CGPA</label>
+              <input class="tool-input" type="number" id="tcg-current-cgpa" placeholder="e.g. 7.5" step="any" min="0" inputmode="decimal" aria-describedby="tcg-current-cgpa-hint">
+              <span class="tool-field-hint" id="tcg-current-cgpa-hint">0–10 (10-point scale)</span>
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="tcg-completed-credits">Completed Credits</label>
+              <input class="tool-input" type="number" id="tcg-completed-credits" placeholder="e.g. 90" step="any" min="0" inputmode="decimal">
+            </div>
+            <div class="tool-field">
+              <label class="tool-field-label" for="tcg-remaining-credits">Remaining Credits</label>
+              <input class="tool-input" type="number" id="tcg-remaining-credits" placeholder="e.g. 30" step="any" min="0" inputmode="decimal">
+              <span class="tool-field-hint">Across all remaining semesters, not just one</span>
+            </div>
+          </div>
+
+          <div class="tcg-scale-group" id="tcg-scale-group">
+            <span class="tcg-scale-group-label" id="tcg-scale-group-label">GPA Scale</span>
+            <div class="tcg-scale-selector" id="tcg-scale-selector" role="group" aria-labelledby="tcg-scale-group-label">
+              <button type="button" class="tcg-scale-btn" data-scale="10" aria-pressed="true">10-Point Scale</button>
+              <button type="button" class="tcg-scale-btn" data-scale="4" aria-pressed="false">4-Point Scale</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- =============================================
+             MODE SELECTOR — compact tab-style
+        ============================================== -->
+        <div class="tcg-mode-selector" role="tablist" aria-label="Calculation direction">
+          <button type="button" role="tab" class="tcg-mode-tab" id="tcg-tab-required" aria-selected="true" aria-controls="tcg-panel-required" tabindex="0" data-mode="required">
+            Required SGPA
+          </button>
+          <button type="button" role="tab" class="tcg-mode-tab" id="tcg-tab-projected" aria-selected="false" aria-controls="tcg-panel-projected" tabindex="-1" data-mode="projected">
+            Projected CGPA
+          </button>
+        </div>
+
+        <!-- =============================================
+             MODE PANELS
+        ============================================== -->
+        <div class="tcg-panels">
+
+          <!-- =========================================
+               TAB 1 — REQUIRED SGPA
+          ========================================== -->
+          <div class="tcg-panel" id="tcg-panel-required" role="tabpanel" aria-labelledby="tcg-tab-required" tabindex="0">
+
+            <div class="tool-form" role="form" aria-label="Required SGPA">
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="tcg-target-cgpa">Target CGPA</label>
+                <input class="tool-input" type="number" id="tcg-target-cgpa" placeholder="e.g. 8.0" step="any" min="0" inputmode="decimal" aria-describedby="tcg-target-cgpa-hint">
+                <span class="tool-field-hint" id="tcg-target-cgpa-hint">0–10 (10-point scale)</span>
+              </div>
+
+              <div class="tcg-validation" id="tcg-required-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="tcg-actions">
+                <button class="btn btn-primary btn-lg" id="tcg-required-calc-btn" type="button">Calculate Required SGPA</button>
+                <button class="btn btn-secondary btn-lg" id="tcg-required-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="tcg-required-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="tcg-section-card tcg-hero-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Required SGPA
+                </h2>
+                <div class="tcg-big-number" id="tcg-required-display">—</div>
+                <p class="tcg-hero-sub" id="tcg-required-hero-sub">—</p>
+              </div>
+
+              <div class="tcg-section-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                  Target Status
+                </h2>
+                <div class="tcg-status-badge" id="tcg-required-status-badge">—</div>
+                <p class="tcg-status-text" id="tcg-required-status-text">—</p>
+              </div>
+
+              <div class="tcg-section-card" id="tcg-required-best-possible-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></span>
+                  Best Possible Final CGPA
+                </h2>
+                <div class="tool-stat-grid" style="grid-template-columns: 1fr;">
+                  <div class="tool-stat">
+                    <div class="tool-stat-value" id="tcg-required-best-possible-value">—</div>
+                    <div class="tool-stat-label">Maximum Reachable CGPA</div>
+                  </div>
+                </div>
+                <p class="tool-note">This assumes a perfect SGPA across all of your remaining credits.</p>
+              </div>
+
+              <div class="tcg-section-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Your Inputs
+                </h2>
+                <ul class="tcg-detail-list">
+                  <li><span class="tcg-detail-label">Current CGPA</span><span class="tcg-detail-value" id="tcg-required-detail-current">—</span></li>
+                  <li><span class="tcg-detail-label">Completed Credits</span><span class="tcg-detail-value" id="tcg-required-detail-completed">—</span></li>
+                  <li><span class="tcg-detail-label">Remaining Credits</span><span class="tcg-detail-value" id="tcg-required-detail-remaining">—</span></li>
+                  <li><span class="tcg-detail-label">Target CGPA</span><span class="tcg-detail-value" id="tcg-required-detail-target">—</span></li>
+                  <li><span class="tcg-detail-label">GPA Scale</span><span class="tcg-detail-value" id="tcg-required-detail-scale">—</span></li>
+                </ul>
+              </div>
+
+              <div class="tcg-section-card" id="tcg-required-insights-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="tcg-insights-list" id="tcg-required-insights-list" aria-label="Required SGPA insights"></ul>
+              </div>
+
+              <p class="tool-note">This is a planning estimate based on the figures you enter. Always confirm your official CGPA and credit totals against your institution's transcript.</p>
+
+            </div>
+          </div>
+
+          <!-- =========================================
+               TAB 2 — PROJECTED CGPA
+          ========================================== -->
+          <div class="tcg-panel" id="tcg-panel-projected" role="tabpanel" aria-labelledby="tcg-tab-projected" tabindex="0" hidden>
+
+            <div class="tool-form" role="form" aria-label="Projected CGPA">
+
+              <div class="tool-field">
+                <label class="tool-field-label" for="tcg-expected-sgpa">Expected Future SGPA</label>
+                <input class="tool-input" type="number" id="tcg-expected-sgpa" placeholder="e.g. 8.5" step="any" min="0" inputmode="decimal" aria-describedby="tcg-expected-sgpa-hint">
+                <span class="tool-field-hint" id="tcg-expected-sgpa-hint">0–10 (10-point scale)</span>
+              </div>
+
+              <div class="tcg-validation" id="tcg-projected-validation" role="alert" aria-live="assertive" hidden></div>
+
+              <div class="tcg-actions">
+                <button class="btn btn-primary btn-lg" id="tcg-projected-calc-btn" type="button">Calculate Projected CGPA</button>
+                <button class="btn btn-secondary btn-lg" id="tcg-projected-reset-btn" type="button" aria-label="Reset this tab">Reset</button>
+              </div>
+            </div>
+
+            <div id="tcg-projected-results" aria-live="polite" aria-atomic="true" hidden>
+
+              <div class="tcg-section-card tcg-hero-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>
+                  Projected CGPA
+                </h2>
+                <div class="tcg-big-number" id="tcg-projected-display">—</div>
+                <p class="tcg-hero-sub" id="tcg-projected-hero-sub">—</p>
+              </div>
+
+              <div class="tcg-section-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+                  Your Inputs
+                </h2>
+                <ul class="tcg-detail-list">
+                  <li><span class="tcg-detail-label">Current CGPA</span><span class="tcg-detail-value" id="tcg-projected-detail-current">—</span></li>
+                  <li><span class="tcg-detail-label">Completed Credits</span><span class="tcg-detail-value" id="tcg-projected-detail-completed">—</span></li>
+                  <li><span class="tcg-detail-label">Remaining Credits</span><span class="tcg-detail-value" id="tcg-projected-detail-remaining">—</span></li>
+                  <li><span class="tcg-detail-label">Expected SGPA</span><span class="tcg-detail-value" id="tcg-projected-detail-expected">—</span></li>
+                  <li><span class="tcg-detail-label">GPA Scale</span><span class="tcg-detail-value" id="tcg-projected-detail-scale">—</span></li>
+                </ul>
+              </div>
+
+              <div class="tcg-section-card" id="tcg-projected-insights-card">
+                <h2 class="tcg-section-title">
+                  <span class="tcg-section-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M12 17v4"/></svg></span>
+                  Insights
+                </h2>
+                <ul class="tcg-insights-list" id="tcg-projected-insights-list" aria-label="Projected CGPA insights"></ul>
+              </div>
+
+              <p class="tool-note">This is a planning estimate based on the figures you enter. Always confirm your official CGPA and credit totals against your institution's transcript.</p>
+
+            </div>
+          </div>
+
+        </div><!-- /.tcg-panels -->
+
+        <!-- Related Tools -->
+        <section class="tool-related" id="tcg-related-wrap" aria-labelledby="tcg-related-heading" style="--tool-related-color:#3b82f6">
+          <h2 class="tool-related-title" id="tcg-related-heading">Related Tools</h2>
+          <div class="tool-related-grid" id="tcg-related-grid"
+               data-tool-id="target-cgpa-calculator"
+               data-category-id="student-tools"></div>
+        </section>
+
+      </div><!-- /.tool-wrap -->
+
+      <!-- =============================================
+           SEO SECTIONS — 8 required sections + FAQ
+      ============================================== -->
+      <div class="tool-seo-sections">
+
+        <!-- 1. What Is a Target CGPA Calculator? -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-what-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-what-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+            What Is a Target CGPA Calculator?
+          </h2>
+          <p>A Target CGPA Calculator is a forward-planning tool, not a historical one. The SGPA and CGPA calculators tell you what your grade point average already is; the CGPA &amp; Percentage Converter and Grade &amp; Required Marks Calculator work with a single course's percentage. This tool instead answers two planning questions at once: what average SGPA do you need across your remaining credits to hit a target CGPA, and what final CGPA would a given future SGPA actually produce.</p>
+          <p>It works across your entire remaining academic journey — a single upcoming semester or several — rather than assuming any particular semester structure.</p>
+        </section>
+
+        <!-- 2. How Does Required SGPA Work? -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-required-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-required-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+            How Does Required SGPA Work?
+          </h2>
+          <p>Required SGPA mode works backward from a target CGPA to tell you the average you need across everything still ahead of you:</p>
+          <p><strong>Required SGPA = (Target CGPA × Total Credits − Current CGPA × Completed Credits) ÷ Remaining Credits</strong></p>
+          <p>Total Credits is your Completed Credits plus your Remaining Credits. If the result is zero or below, your target is already secured no matter what you score next. If it lands between zero and your scale's maximum, that is the average you need. If it comes out to exactly your scale's maximum, only a flawless average will do — and if it exceeds the maximum, the target cannot be reached from where you currently stand.</p>
+        </section>
+
+        <!-- 3. How Does Projected CGPA Work? -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-projected-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-projected-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            How Does Projected CGPA Work?
+          </h2>
+          <p>Projected CGPA mode runs the same relationship in reverse: instead of solving for an SGPA from a target, you supply a hypothetical future SGPA and see exactly where it would leave your final CGPA:</p>
+          <p><strong>Projected CGPA = (Current CGPA × Completed Credits + Expected SGPA × Remaining Credits) ÷ Total Credits</strong></p>
+          <p>This is useful for testing scenarios — "what if I average 8.5 instead of 7.5 across my remaining credits?" — without committing to a single target CGPA. The projection only reflects the current CGPA, completed credits, remaining credits and expected SGPA you enter.</p>
+        </section>
+
+        <!-- 4. Understanding Your Results -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-understanding-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-understanding-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+            Understanding Your Results
+          </h2>
+          <p>Required SGPA mode classifies your target into one of four states. <strong>Target Already Secured</strong> means your current position already guarantees the target regardless of what comes next. <strong>Target Achievable</strong> means the required average falls within your scale's normal range. <strong>Perfect SGPA Required</strong> means it is reachable only with a flawless average across every remaining credit — there is no margin for a single weak result. <strong>Target Not Achievable</strong> means even a perfect average across your remaining credits would fall short, in which case the calculator shows the highest final CGPA you could still reach.</p>
+        </section>
+
+        <!-- 5. Why Your Current CGPA Sometimes Isn't Used -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-zerocredits-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-zerocredits-heading">
+            Why Your Current CGPA Sometimes Isn't Used
+          </h2>
+          <p>If you enter 0 completed credits, the Current CGPA field is disabled and treated as 0. A CGPA is only meaningful once you have some completed credits behind it — with none, there is nothing to average, so the calculation starts cleanly from zero rather than using a leftover or placeholder number. In that case, the required SGPA equals your target CGPA directly, and the projected CGPA equals your expected SGPA directly, since there is no prior history to blend in.</p>
+        </section>
+
+        <!-- 6. How Many Credits Should You Plan For? -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-credits-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-credits-heading">
+            How Many Credits Should You Plan For?
+          </h2>
+          <ol class="tool-seo-steps">
+            <li><p>Add up every credit you have already completed and confirm it against your current CGPA on your transcript.</p></li>
+            <li><p>Add up every credit still ahead of you — this can span one upcoming semester or your entire remaining programme, whichever matches the question you're trying to answer.</p></li>
+            <li><p>Use Required SGPA if you want to know the average needed across that whole remaining stretch to hit a target CGPA.</p></li>
+            <li><p>Use Projected CGPA if you already have a realistic SGPA expectation and want to see where it leaves you.</p></li>
+            <li><p>Recalculate after each completed semester — your completed and remaining credit totals change every time, and so does the SGPA you need going forward.</p></li>
+          </ol>
+        </section>
+
+        <!-- 7. Common Mistakes When Planning Your CGPA -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-mistakes-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-mistakes-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+            Common Mistakes When Planning Your CGPA
+          </h2>
+          <p><strong>Mistake 1 — Treating "remaining credits" as one semester by default.</strong> Enter the actual total credits left in your programme, or just the next semester's credits, depending on which question you're answering — the result changes significantly between the two.</p>
+          <p><strong>Mistake 2 — Assuming any target is reachable.</strong> If the required SGPA exceeds your scale's maximum, no realistic average can close the gap. Check the status badge before committing to a target.</p>
+          <p><strong>Mistake 3 — Mixing up the GPA scale.</strong> Entering a 10-point CGPA while the 4-Point Scale is selected (or vice versa) produces a meaningless result. Confirm the scale toggle first.</p>
+          <p><strong>Mistake 4 — Forgetting Best Possible Final CGPA is a ceiling, not a prediction.</strong> It assumes a perfect SGPA on everything remaining — treat it as the mathematical upper bound, not an expected outcome.</p>
+        </section>
+
+        <!-- 8. Tips for Setting a Realistic Target CGPA -->
+        <section class="tool-seo-section" aria-labelledby="tcg-seo-tips-heading">
+          <h2 class="tool-seo-section-title" id="tcg-seo-tips-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.53 2.573a.5.5 0 0 1 .94 0l2.31 6.482a.5.5 0 0 0 .465.325h6.804a.5.5 0 0 1 .3.9l-5.61 4.156a.5.5 0 0 0-.176.556l2.31 6.481a.5.5 0 0 1-.767.559l-5.61-4.155a.5.5 0 0 0-.592 0l-5.61 4.155a.5.5 0 0 1-.767-.559l2.31-6.48a.5.5 0 0 0-.176-.557L2.152 10.28a.5.5 0 0 1 .3-.9h6.803a.5.5 0 0 0 .465-.326z"/></svg></span>
+            Tips for Setting a Realistic Target CGPA
+          </h2>
+          <p>If Required SGPA comes back as "Perfect SGPA Required" or "Not Achievable," switch to Projected CGPA and test a few realistic SGPA values instead — this shows you what's actually attainable rather than chasing a number that leaves no margin for error.</p>
+          <p>Revisit both tabs after every completed semester. Your completed and remaining credits shift each time, which changes both the SGPA you need and the CGPA a given future SGPA would produce — a target that was realistic last semester may not be anymore, in either direction.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-seo-section" aria-labelledby="tcg-faq-heading">
+          <h2 class="tool-seo-section-title" id="tcg-faq-heading">
+            <span class="seo-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            Frequently Asked Questions
+          </h2>
+
+          <div class="tool-faq-list" id="tcg-faq-list">
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a1">
+                How is the required SGPA calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a1" role="region">
+                Required SGPA = (Target CGPA × Total Credits − Current CGPA × Completed Credits) ÷ Remaining Credits, where Total Credits is Completed Credits plus Remaining Credits. This tells you the average SGPA you need across all your remaining credits to reach your target.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a2">
+                How is the projected CGPA calculated?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a2" role="region">
+                Projected CGPA = (Current CGPA × Completed Credits + Expected SGPA × Remaining Credits) ÷ Total Credits. This shows the final CGPA you would end up with if you average the SGPA you enter across your remaining credits.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a3">
+                What does "Perfect SGPA Required" mean?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a3" role="region">
+                It means the required SGPA works out to exactly the maximum of your selected scale (10.00 or 4.00) — your target is mathematically reachable, but only with a flawless average across every remaining credit.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a4">
+                What happens if my target CGPA isn't achievable?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a4" role="region">
+                If the required SGPA comes out above your scale's maximum, no achievable SGPA can reach your target from your current position. The calculator flags this clearly and shows the highest final CGPA you could still reach instead of a misleading number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a5">
+                Why is my Current CGPA field disabled sometimes?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a5" role="region">
+                When your completed credits are 0, you have no academic history yet, so a current CGPA has no mathematical meaning. The field is disabled and treated as 0 so the calculation starts cleanly from zero instead of using a confusing or arbitrary number.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a6">
+                What happens if I have 0 remaining credits?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a6" role="region">
+                There is nothing left to plan — your current CGPA is already your final CGPA. The calculator shows this explanatory message instead of performing a projection.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a7">
+                Can I use this for a 4-point GPA scale?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a7" role="region">
+                Yes. Switch the GPA Scale toggle to 4-Point before entering your numbers. Switching scales automatically re-checks your entered values and clears anything that is no longer valid on the new scale.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a8">
+                Is a 0 CGPA or 0 SGPA a valid input?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a8" role="region">
+                Yes. Zero is a valid value for current CGPA, completed credits, and expected SGPA. Only remaining credits must be greater than zero, since a projection needs at least some credits ahead of you.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a9">
+                Does this assume one semester or multiple semesters?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a9" role="region">
+                Neither specifically — enter the total number of credits you have left, whether that spans one semester or several. The result is the average SGPA needed (or projected) across all of those remaining credits combined, not a semester-by-semester breakdown.
+              </div>
+            </div>
+
+            <div class="tool-faq-item">
+              <button class="tool-faq-question" aria-expanded="false" aria-controls="tcg-faq-a10">
+                Does this tool store my data?
+                <svg class="tool-faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="tool-faq-answer" id="tcg-faq-a10" role="region">
+                Your inputs are saved to your browser's local storage so they persist between visits. Calculations happen entirely in your browser — your academic information is never sent to any server. Resetting a tab clears its saved data immediately.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /.tool-seo-sections -->
+    </div><!-- /.container -->
+  </main>
+
+  <!-- Canonical tool page script stack -->
+  <script src="../../scripts/utils.js"></script>
+  <script src="../../scripts/icons/icons.js"></script>
+  <script src="../../scripts/icons/icon-map.js"></script>
+  <script src="../../scripts/config/categories.js"></script>
+  <script src="../../scripts/storage.js"></script>
+  <script src="../../scripts/renderers.js"></script>
+  <script src="../../scripts/partials.js"></script>
+  <script src="../../scripts/theme.js"></script>
+  <script src="../../scripts/tool-base.js"></script>
+  <script src="../../scripts/header.js"></script>
+  <script src="../../scripts/sidebar.js"></script>
+  <script src="../../scripts/animations.js" defer></script>
+  <script src="../../scripts/search.js" defer></script>
+  <script src="target-cgpa.js" defer></script>
+  <script src="../../scripts/faq-accordion.js" defer></script>
+
+  <div id="partial-footer"></div>
+
+</body>
+</html>

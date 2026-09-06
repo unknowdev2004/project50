@@ -1,0 +1,443 @@
+/* ============================================
+   TARGET-CGPA.CSS — Project 50
+   Target CGPA Calculator — tool-specific styles only.
+
+   DEPENDS ON: tool.css (loaded first)
+   tool.css covers:
+     .tool-breadcrumb, .tool-wrap, .tool-header,
+     .tool-icon, .tool-title, .tool-subtitle,
+     .tool-form, .tool-field, .tool-field-label,
+     .tool-field-hint, .tool-input, .tool-select,
+     .tool-stat-grid, .tool-stat, .tool-stat-value,
+     .tool-stat-label, .tool-note,
+     .tool-related-*, .tool-seo-*, .tool-faq-*
+
+   THIS FILE covers (mirrors cgpa-percentage.css /
+   grade-required-marks.css structure exactly —
+   same visual language, new prefix):
+     - Shared inputs card (Current CGPA / Completed
+       Credits / Remaining Credits / GPA Scale)
+     - Scale selector (2-button group, mirrors
+       .sgpa-scale-selector / .cpc-scale-selector)
+     - Mode selector (tab bar) — 2 tabs only
+     - Section cards / hero result / status badge
+     - Detail list ("Your Inputs")
+     - Insights list
+     - Responsive: 768px, 640px, 480px
+============================================ */
+
+/* ============================================
+   SHARED INPUTS CARD
+============================================ */
+
+.tcg-shared-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.tcg-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+/* ---- Scale selector — mirrors .sgpa-scale-selector / .cpc-scale-selector ---- */
+
+.tcg-scale-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tcg-scale-group-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.tcg-scale-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+}
+
+.tcg-scale-btn {
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.tcg-scale-btn:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.tcg-scale-btn[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.tcg-scale-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---- Not-used note (0 completed credits) ---- */
+
+.tcg-input-disabled-note {
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+/* ============================================
+   MODE SELECTOR — compact tab bar
+   Mirrors .cpc-mode-selector / .grmc-mode-selector exactly.
+============================================ */
+
+.tcg-mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  margin-bottom: var(--sp-3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tcg-mode-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.tcg-mode-tab {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.tcg-mode-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card-hover);
+}
+
+.tcg-mode-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+}
+
+.tcg-mode-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tcg-panel[hidden] {
+  display: none;
+}
+
+/* ============================================
+   VALIDATION MESSAGE
+============================================ */
+
+.tcg-validation {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: #f87171;
+}
+
+.tcg-input--error {
+  border-color: rgba(239, 68, 68, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+/* ============================================
+   ACTION BUTTON ROW
+============================================ */
+
+.tcg-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tcg-actions .btn-primary {
+  flex: 1;
+}
+
+.tcg-actions .btn-secondary {
+  min-width: 88px;
+  white-space: nowrap;
+  flex: none;
+}
+
+/* ============================================
+   RESULT SECTION CARDS
+   Mirrors .grmc-section-card / .cpc-section-card exactly.
+============================================ */
+
+.tcg-section-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+
+}
+
+.tcg-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.tcg-section-icon {
+  display: flex;
+  align-items: center;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HERO RESULT
+============================================ */
+
+.tcg-hero-card {
+  text-align: center;
+}
+
+.tcg-big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: var(--sp-2) 0 var(--sp-1);
+  text-align: center;
+}
+
+.tcg-hero-sub {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Status badge — mirrors .grmc-status-badge exactly */
+.tcg-status-badge {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  margin: var(--sp-1) 0 var(--sp-2);
+  text-align: center;
+}
+
+.tcg-status-badge--achieved {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.tcg-status-badge--achievable {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+}
+
+.tcg-status-badge--perfect {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.tcg-status-badge--impossible {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.tcg-status-text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* ============================================
+   DETAIL LIST — "Your Inputs"
+   Mirrors .cpc-detail-list exactly.
+============================================ */
+
+.tcg-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tcg-detail-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: var(--fs-sm);
+}
+
+.tcg-detail-label {
+  color: var(--color-text-faint);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.tcg-detail-value {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* ============================================
+   INSIGHTS LIST
+============================================ */
+
+.tcg-insights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tcg-insights-list li {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.tcg-insight-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.tcg-insight-icon--positive { color: #34d399; }
+.tcg-insight-icon--neutral  { color: #60a5fa; }
+.tcg-insight-icon--warning  { color: #fbbf24; }
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 768px)
+============================================ */
+
+@media (max-width: 768px) {
+  .tcg-mode-selector {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 640px)
+============================================ */
+
+@media (max-width: 640px) {
+
+  .tcg-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .tcg-mode-tab {
+    padding: 9px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .tcg-shared-card,
+  .tcg-section-card {
+    padding: var(--sp-3);
+  }
+
+  .tcg-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .tcg-actions .btn-secondary,
+  .tcg-actions .btn-primary {
+    width: 100%;
+    min-width: unset;
+    flex: none;
+  }
+
+  .tcg-detail-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .tcg-detail-value {
+    text-align: left;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL (≤ 480px)
+============================================ */
+
+@media (max-width: 480px) {
+
+  .tcg-hero-card {
+    text-align: left;
+  }
+
+  .tcg-big-number {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+}
